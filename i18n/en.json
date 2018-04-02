@@ -11,6 +11,6 @@
 	"apihelp-wikidiscover-summary": "Get a list of wikis on a CreateWiki wikifarm.",
 	"apihelp-wikidiscover-param-state": "Filter by the CreateWiki defined state of a wiki.",
 	"apihelp-wikidiscover-param-siteprop": "Information to return about a defined wiki.",
-	"apihelp-sitematrix-param-limit": "Maximum number of results to show.",
-	"apihelp-sitematrix-example": "Show all wikis on the form."
+	"apihelp-wikidiscover-param-limit": "Maximum number of results to show.",
+	"apihelp-wikidiscover-example": "Show all wikis on the form."
 }

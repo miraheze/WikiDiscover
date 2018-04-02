@@ -26,6 +26,7 @@ class ApiWikiDiscover extends ApiBase {
 
 		$count = 0;
 		$wikis = [];
+
 		foreach ( $wikidiscover->getWikis() as $wiki ) {
 			$dbName = $wiki;
 			$dbName .= 'wiki';
@@ -36,20 +37,48 @@ class ApiWikiDiscover extends ApiBase {
 			$data['dbname'] = $dbName;
 			$data['sitename'] = $wikidiscover->getSitename( $dbName );
 			$data['languagecode'] = $wikidiscover->getLanguageCode( $dbName );
-			$data['language'] = $wikidiscover->getLanguage( $dbName );
+
+			$skip = true;
+			if ( $all ) {
+				$skip = false;
+			}
 
 			if ( $wikidiscover->isPrivate( $dbName ) ) {
 				$data['private'] = true;
+
+				if ( $private ) {
+					$skip = false;
+				}
 			} else {
 				$data['public'] = true;
+
+				if ( $public ) {
+					$skip = false;
+				}
 			}
 
 			if ( $wikidiscover->isClosed( $dbName ) ) {
 				$data['closed'] = true;
+
+				if ( $closed ) {
+					$skip = false;
+				}
 			} elseif ( $wikidiscover->isInactive( $dbName ) ) {
 				$data['inactive'] = true;
+
+				if ( $inactive ) {
+					$skip = false;
+				}
 			} else {
 				$data['active'] = true;
+
+				if ( $active ) {
+					$skip = false;
+				}
+			}
+
+			if ( $skip ) {
+				continue;
 			}
 
 			$wikis[] = $data;
@@ -79,9 +108,8 @@ class ApiWikiDiscover extends ApiBase {
 					'dbname',
 					'sitename',
 					'languagecode',
-					'language',
 				],
-				ApiBase::PARAM_DFLT => 'url|dbname|sitename|languagecode|language',
+				ApiBase::PARAM_DFLT => 'url|dbname|sitename|languagecode',
 			],
 			'limit' => [
 				ApiBase::PARAM_TYPE => 'limit',

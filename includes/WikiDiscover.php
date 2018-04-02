@@ -41,8 +41,9 @@ class WikiDiscover {
 		$wikiprefixes = [];
 
 		foreach ( $wgLocalDatabases as $db ) {
-			preg_match( "/(.*)wiki\$/", $db, $a ) ) {
+			if ( preg_match( "/(.*)wiki\$/", $db, $a ) ) {
 			$wikiprefixes[] = $a[1];
+			}
 		}
 
 		return $wikiprefixes;

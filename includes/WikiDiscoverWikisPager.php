@@ -12,8 +12,8 @@ class WikiDiscoverWikisPager extends TablePager {
 		$headers = [
 			'wiki_dbname' => 'wikidiscover-table-wiki',
 			'wiki_language' => 'wikidiscover-table-language',
-			'wiki_closed' => 'wikidiscover-table-closed',
-			'wiki_private' => 'wikidiscover-table-private',
+			'wiki_closed' => 'wikidiscover-table-state',
+			'wiki_private' => 'wikidiscover-table-visibility',
 		];
 
 		foreach ( $headers as &$msg ) {

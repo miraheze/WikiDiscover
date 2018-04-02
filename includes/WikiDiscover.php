@@ -9,6 +9,9 @@ class WikiDiscover {
 
 	protected $wikis;
 
+
+	protected $wikiprefixes;
+
 	public function getCount() {
 		global $wgLocalDatabases;
 
@@ -29,6 +32,20 @@ class WikiDiscover {
 		}
 
 		return $wikis;
+	}
+
+
+	public function getWikiPrefixes() {
+		global $wgLocalDatabases;
+
+		$wikiprefixes = [];
+
+		foreach ( $wgLocalDatabases as $db ) {
+			preg_match( "/(.*)wiki\$/", $db, $a ) ) {
+			$wikiprefixes[] = $a[1];
+		}
+
+		return $wikiprefixes;
 	}
 
 	public function getUrl( $database ) {

@@ -27,7 +27,7 @@ class ApiWikiDiscover extends ApiBase {
 		$count = 0;
 		$wikis = [];
 
-		foreach ( $wikidiscover->getWikis() as $wiki ) {
+		foreach ( $wikidiscover->getWikiPrefixes() as $wiki ) {
 			$dbName = $wiki;
 			$dbName .= 'wiki';
 			$url = $wikidiscover->getUrl( $dbName );

@@ -87,6 +87,7 @@ class ApiWikiDiscover extends ApiBase {
 				ApiBase::PARAM_TYPE => 'limit',
 				ApiBase::PARAM_MIN => 1,
 				ApiBase::PARAM_MAX => 5000,
+				ApiBase::PARAM_MAX2 => 5000,
 				ApiBase::PARAM_DFLT => 5000,
 			],
 		];

@@ -19,10 +19,12 @@ class WikiDiscover {
 	public function getWikis() {
 		global $wgLocalDatabases;
 
+		$wikis = [];
+
 		foreach ( $wgLocalDatabases as $db ) {
 			if ( preg_match( "/(.*)wiki\$/", $db, $a ) ) {
 				$wiki = $a[1];
-				$wikis = [ $wiki, 'wiki' ];
+				$wikis[] = [ $wiki, 'wiki' ];
 			}
 		}
 

@@ -17,7 +17,7 @@
 	"AutoloadClasses": {
 		"WikiDiscover": "includes/WikiDiscover.php",
 		"SpecialWikiDiscover": "includes/SpecialWikiDiscover.php",
-		"WikiDiscoverWikisPager": "includes/WikiDiscoverWikisPager"
+		"WikiDiscoverWikisPager": "includes/WikiDiscoverWikisPager.php"
 	},
 	"config": {
 		"wgWikiDiscoverClosedList": "",

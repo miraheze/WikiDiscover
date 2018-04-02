@@ -9,12 +9,12 @@
 	"SpecialPages": {
 		"WikiDiscover": "SpecialWikiDiscover"
 	},
-	"MessageDirs": {
+	"MessagesDirs": {
 		"WikiDiscover": [
 			"i18n"
 		]
 	},
-	"AutoLoadClasses": {
+	"AutoloadClasses": {
 		"WikiDiscover": "includes/WikiDiscover.php",
 		"SpecialWikiDiscover": "includes/SpecialWikiDiscover.php",
 		"WikiDiscoverWikisPager": "includes/WikiDiscoverWikisPager"

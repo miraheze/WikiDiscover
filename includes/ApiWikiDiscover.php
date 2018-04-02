@@ -81,7 +81,7 @@ class ApiWikiDiscover extends ApiBase {
 					'languagecode',
 					'language',
 				],
-				ApiBase::PARAMDFLT => 'url|dbname|sitename|languagecode|language',
+				ApiBase::PARAM_DFLT => 'url|dbname|sitename|languagecode|language',
 			],
 			'limit' => [
 				ApiBase::PARAM_TYPE => 'limit',

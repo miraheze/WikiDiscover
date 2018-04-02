@@ -68,7 +68,7 @@ class WikiDiscoverWikisPager extends TablePager {
 			'tables' => [ 'cw_wikis' ],
 			'fields' => [' wiki_dbname', 'wiki_language', 'wiki_private', 'wiki_closed' ],
 			'conds' => [],
-			'joins_conds => [],
+			'joins_conds' => [],
 		];
 
 		return $info;

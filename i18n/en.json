@@ -5,7 +5,7 @@
 	"wikidiscover": "WikiDiscover",
 	"wikidiscover-desc": "Allows [[Special:WikiDiscover|discovering wikis]] on a wiki farm with [[Special:CreateWiki|CreateWiki]].",
 	"wikidiscover-table-language": "Language",
-	"wikidiscover-table-state": "Activity",
-	"wikidiscover-table-visibility": "Visibility",
+	"wikidiscover-table-closed": "Activity",
+	"wikidiscover-table-private": "Visibility",
 	"wikidiscover-table-wiki": "Wiki Name"
 }

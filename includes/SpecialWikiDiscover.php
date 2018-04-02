@@ -17,4 +17,8 @@ class SpecialWikiDiscover extends SpecialPage {
 
 		$out->addHTML( $pager->getNavigationBar() . $table . $pager->getNavigationBar() );
 	}
+
+	protected function getGroupName() {
+		return 'wikimanage';
+	}
 }

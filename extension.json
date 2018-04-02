@@ -4,10 +4,13 @@
 	"author": "John Lewis",
 	"descriptionmsg": "wikidiscover-desc",
 	"url": "https://github.com/miraheze/WikiDiscover",
-	"license-name": "agpl-3.0-or-later",
+	"license-name": "AGPL-3.0-or-later",
 	"type": "specialpage",
 	"SpecialPages": {
 		"WikiDiscover": "SpecialWikiDiscover"
+	},
+	"APIModules": {
+		"wikidiscover": "ApiWikiDiscover"
 	},
 	"MessagesDirs": {
 		"WikiDiscover": [
@@ -17,12 +20,16 @@
 	"AutoloadClasses": {
 		"WikiDiscover": "includes/WikiDiscover.php",
 		"SpecialWikiDiscover": "includes/SpecialWikiDiscover.php",
-		"WikiDiscoverWikisPager": "includes/WikiDiscoverWikisPager.php"
+		"WikiDiscoverWikisPager": "includes/WikiDiscoverWikisPager.php",
+		"ApiWikiDiscover": "includes/ApiWikiDiscover.php"
 	},
 	"config": {
-		"wgWikiDiscoverClosedList": "",
-		"wgWikiDiscoverInactiveList": "",
-		"wgWikiDiscoverPrivateList": ""
+		"@wgWikiDiscoverClosedList": "A file with the list of all closed wikis.",
+		"wgWikiDiscoverClosedList": null,
+		"@wgWikiDiscoverInactiveList": "A file with the list of all inactive wikis.",
+		"wgWikiDiscoverInactiveList": null,
+		"@wgWikiDiscoverPrivateList": "A file with the list of all private wikis.",
+		"wgWikiDiscoverPrivateList": null
 	},
 	"manifest_version": 1
 }

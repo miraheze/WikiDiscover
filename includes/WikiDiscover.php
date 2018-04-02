@@ -7,10 +7,26 @@ class WikiDiscover {
 
 	protected $count;
 
+	protected $wikis;
+
 	public function getCount() {
 		global $wgLocalDatabases;
 
 		return count( $wgLocalDatabases );
+	}
+
+
+	public function getWikis() {
+		global $wgLocalDatabases;
+
+		foreach ( $wgLocalDatabases as $db ) {
+			if ( preg_match( "/(.*)wiki\$/", $db, $a ) ) {
+				$wiki = $a[1];
+				$wikis = [ $wiki, 'wiki' ];
+			}
+		}
+
+		return $wikis;
 	}
 
 	public function getUrl( $database ) {

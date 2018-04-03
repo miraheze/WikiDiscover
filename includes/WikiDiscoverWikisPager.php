@@ -33,8 +33,6 @@ class WikiDiscoverWikisPager extends TablePager {
 
 		$wiki = $row->wiki_dbname;
 
-		$remotewiki = RemoteWiki::newFromName( $wiki );
-
 		switch ( $name ) {
 			case 'wiki_dbname':
 				$url = $wikidiscover->getUrl( $wiki );
@@ -62,7 +60,7 @@ class WikiDiscoverWikisPager extends TablePager {
 				break;
 			case 'wiki_category':
 				$wikicategories = array_flip( $wgCreateWikiCategories );
-				$formatted = $wikicategories[$remotewiki->getCategory()];
+				$formatted = $wikicategories[$row->wiki_category];
 				break;
 			default:
 				$formatted = "Unable to format $name";
@@ -75,7 +73,7 @@ class WikiDiscoverWikisPager extends TablePager {
 	function getQueryInfo() {
 		$info = [
 			'tables' => [ 'cw_wikis' ],
-			'fields' => ['wiki_dbname', 'wiki_language', 'wiki_private', 'wiki_closed' ],
+			'fields' => [ 'wiki_dbname', 'wiki_language', 'wiki_private', 'wiki_closed', 'wiki_category' ],
 			'conds' => [],
 			'joins_conds' => [],
 		];

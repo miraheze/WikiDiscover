@@ -5,19 +5,28 @@ class WikiDiscover {
 
 	protected $inactive;
 
+	protected $private;
+
 	protected $count;
 
 	protected $wikis;
 
-
 	protected $wikiprefixes;
+
+	function __construct() {
+		global $wgWikiDiscoverClosedList, $wgWikiDiscoverPrivateList, $wgWikiDiscoverInactiveList;
+
+		$this->private = array_map( 'trim', file( $wgWikiDiscoverPrivateList ) );
+		$this->closed = array_map( 'trim', file( $wgWikiDiscoverClosedList ) );
+		$this->inactive = array_map( 'trim', file( $wgWikiDiscoverInactiveList ) );
+	}
+
 
 	public function getCount() {
 		global $wgLocalDatabases;
 
 		return count( $wgLocalDatabases );
 	}
-
 
 	public function getWikis() {
 		global $wgLocalDatabases;
@@ -42,7 +51,7 @@ class WikiDiscover {
 
 		foreach ( $wgLocalDatabases as $db ) {
 			if ( preg_match( "/(.*)wiki\$/", $db, $a ) ) {
-			$wikiprefixes[] = $a[1];
+				$wikiprefixes[] = $a[1];
 			}
 		}
 
@@ -74,30 +83,14 @@ class WikiDiscover {
 	}
 
 	public function isClosed( $database ) {
-		global $wgWikiDiscoverClosedList;
-
-		$closed = $this->extractDBList( $wgWikiDiscoverClosedList );
-
-		return in_array( $database, $closed );
+		return in_array( $database, $this->closed );
 	}
 
 	public function isInactive( $database ) {
-		global $wgWikiDiscoverInactiveList;
-
-		$inactive = $this->extractDBList( $wgWikiDiscoverInactiveList );
-
-		return in_array( $database, $inactive );
+		return in_array( $database, $this->inactive );
 	}
 
 	public function isPrivate( $database ) {
-		global $wgWikiDiscoverPrivateList;
-
-		$private = $this->extractDBList( $wgWikiDiscoverPrivateList );
-
-		return in_array( $database, $private );
-	}
-
-	private function extractDBList( $dblist ) {
-		return array_map( 'trim', file( $dblist ) );
+		return in_array( $database, $this->private );
 	}
 }

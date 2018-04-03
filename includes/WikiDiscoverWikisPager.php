@@ -3,6 +3,7 @@
 class WikiDiscoverWikisPager extends TablePager {
 	function __construct( $wiki ) {
 		$this->wiki = $wiki;
+		$this->wikiDiscover = new WikiDiscover();
 		parent::__construct( $this->getContext() );
 	}
 
@@ -29,7 +30,7 @@ class WikiDiscoverWikisPager extends TablePager {
 
 		$row = $this->mCurrentRow;
 
-		$wikidiscover = new WikiDiscover();
+		$wikidiscover = $this->wikiDiscover;
 
 		$wiki = $row->wiki_dbname;
 

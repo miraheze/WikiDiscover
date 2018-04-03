@@ -14,6 +14,7 @@ class WikiDiscoverWikisPager extends TablePager {
 			'wiki_language' => 'wikidiscover-table-language',
 			'wiki_closed' => 'wikidiscover-table-state',
 			'wiki_private' => 'wikidiscover-table-visibility',
+			'wiki_category' => 'wikidiscover-table-category',
 		];
 
 		foreach ( $headers as &$msg ) {
@@ -24,17 +25,21 @@ class WikiDiscoverWikisPager extends TablePager {
 	}
 
 	function formatValue( $name, $value ) {
+		global $wgCreateWikiCategories;
+
 		$row = $this->mCurrentRow;
 
 		$wikidiscover = new WikiDiscover();
 
 		$wiki = $row->wiki_dbname;
 
+		$remotewiki = RemoteWiki::newFromName( $wiki );
+
 		switch ( $name ) {
 			case 'wiki_dbname':
 				$url = $wikidiscover->getUrl( $wiki );
 				$name = $wikidiscover->getSitename( $wiki );
-				$formatted = "<a href\"{$url}\">{$name}</a>";
+				$formatted = "<a href=\"{$url}\">{$name}</a>";
 				break;
 			case 'wiki_language':
 				$formatted = $wikidiscover->getLanguage( $wiki );
@@ -54,6 +59,10 @@ class WikiDiscoverWikisPager extends TablePager {
 				} else {
 					$formatted = 'Public';
 				}
+				break;
+			case 'wiki_category':
+				$wikicategories = array_flip( $wgCreateWikiCategories );
+				$formatted = $wikicategories[$remotewiki->getCategory()];
 				break;
 			default:
 				$formatted = "Unable to format $name";

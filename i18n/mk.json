@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bjankuloski06"
+		]
+	},
+	"wikidiscover": "Викиоткривање",
+	"wikidiscover-desc": "Овозможува [[Special:WikiDiscover|откривање на викија]] на фармата со [[Special:CreateWiki|Создај вики]].",
+	"wikidiscover-table-category": "Категорија",
+	"wikidiscover-table-language": "Јазик",
+	"wikidiscover-table-state": "Активност",
+	"wikidiscover-table-visibility": "Видливост",
+	"wikidiscover-table-wiki": "Име на викито",
+	"apihelp-wikidiscover-summary": "Дај список на викија во фармата на „Создај вики“.",
+	"apihelp-wikidiscover-param-state": "Филтрирај по состојба на викито според „Создај вики“",
+	"apihelp-wikidiscover-param-siteprop": "Кои информации за определеното вики да се дадат.",
+	"apihelp-wikidiscover-param-limit": "Највеќе ставки за приказ.",
+	"apihelp-wikidiscover-example": "Прикажи ги сите викија на фармата."
+}

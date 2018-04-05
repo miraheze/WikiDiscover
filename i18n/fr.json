@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gomoko"
+		]
+	},
+	"wikidiscover": "WikiDiscover",
+	"wikidiscover-desc": "Permet de [[Special:WikiDiscover|découvrir des wikis]] dans une ferme de wikis avec [[Special:CreateWiki|CreateWiki]].",
+	"wikidiscover-table-category": "Catégorie",
+	"wikidiscover-table-language": "Langue",
+	"wikidiscover-table-state": "Activité",
+	"wikidiscover-table-visibility": "Visibilité",
+	"wikidiscover-table-wiki": "Nom du wiki",
+	"apihelp-wikidiscover-summary": "Obtenir une liste de wikis dans une ferme wiki CreateWiki.",
+	"apihelp-wikidiscover-param-state": "Filtrer par l’état CreateWiki défini sur un wiki.",
+	"apihelp-wikidiscover-param-siteprop": "Information à renvoyer sur un wiki défini.",
+	"apihelp-wikidiscover-param-limit": "Nombre maximal de résultats à afficher.",
+	"apihelp-wikidiscover-example": "Afficher tous les wikis sur le formulaire."
+}

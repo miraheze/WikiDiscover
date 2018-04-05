@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Nikosgranturismogt"
+		]
+	},
+	"wikidiscover": "WikiDiscover",
+	"wikidiscover-table-category": "Κατηγορία",
+	"wikidiscover-table-language": "Γλώσσα",
+	"wikidiscover-table-state": "Δραστηριότητα",
+	"wikidiscover-table-visibility": "Ορατότητα",
+	"wikidiscover-table-wiki": "Όνομα βίκι",
+	"apihelp-wikidiscover-param-state": "Φιλτράρισμα κατά την ορισμένη κατάσταση CreateWiki ενός βίκι.",
+	"apihelp-wikidiscover-param-limit": "Μέγιστος αριθμός αποτελεσμάτων προς εμφάνιση."
+}

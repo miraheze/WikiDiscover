@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Mainframe98"
+		]
+	},
+	"wikidiscover-table-category": "Categorie",
+	"wikidiscover-table-language": "Taal",
+	"wikidiscover-table-visibility": "Zichtbaarheid",
+	"wikidiscover-table-wiki": "Wikinaam",
+	"apihelp-wikidiscover-param-limit": "Het maximale aantal weer te geven resultaten."
+}

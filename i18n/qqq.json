@@ -1,12 +1,15 @@
 {
 	"@metadata": {
-		"authors": [ "MacFan4000" ]
+		"authors": [
+			"MacFan4000",
+			"Robby"
+		]
 	},
 	"wikidiscover": "WikiDiscover",
 	"wikidiscover-desc": "Allows [[Special:WikiDiscover|discovering wikis]] on a wiki farm with [[Special:CreateWiki|CreateWiki]].",
-	"wikidiscover-table-category": "Label for 'Category'",
-	"wikidiscover-table-language": "Label for 'Language'",
-	"wikidiscover-table-state": "Label for 'Activity'",
+	"wikidiscover-table-category": "Label for 'Category'\n{{Identical|Category}}",
+	"wikidiscover-table-language": "Label for 'Language'\n{{Identical|Language}}",
+	"wikidiscover-table-state": "Label for 'Activity'\n{{Identical|Activity}}",
 	"wikidiscover-table-visibility": "Label for 'Visibility'",
 	"wikidiscover-table-wiki": "Label for 'Wiki Name'",
 	"apihelp-wikidiscover-summary": "Get a list of wikis on a CreateWiki wikifarm.",

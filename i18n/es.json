@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fitoschido"
+		]
+	},
+	"wikidiscover-table-category": "Categoría",
+	"wikidiscover-table-language": "Idioma",
+	"wikidiscover-table-state": "Actividad",
+	"wikidiscover-table-visibility": "Visibilidad",
+	"wikidiscover-table-wiki": "Nombre del wiki",
+	"apihelp-wikidiscover-param-limit": "Número máximo de resultados para mostrar."
+}

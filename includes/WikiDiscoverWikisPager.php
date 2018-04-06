@@ -1,8 +1,10 @@
 <?php
 
 class WikiDiscoverWikisPager extends TablePager {
-	function __construct( $wiki ) {
+	function __construct( $wiki, $language, $category ) {
 		$this->wiki = $wiki;
+		$this->language = $language;
+		$this->category = $category;
 		$this->wikiDiscover = new WikiDiscover();
 		parent::__construct( $this->getContext() );
 	}
@@ -78,6 +80,14 @@ class WikiDiscoverWikisPager extends TablePager {
 			'conds' => [],
 			'joins_conds' => [],
 		];
+
+		if ( $this->language ) {
+			$info['conds']['wiki_language'] = $this->language;
+		}
+
+		if ( $this->category ) {
+			$info['conds']['wiki_category'] = $this->category;
+		}
 
 		return $info;
 	}

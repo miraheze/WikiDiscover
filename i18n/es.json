@@ -9,5 +9,6 @@
 	"wikidiscover-table-state": "Actividad",
 	"wikidiscover-table-visibility": "Visibilidad",
 	"wikidiscover-table-wiki": "Nombre del wiki",
-	"apihelp-wikidiscover-param-limit": "Número máximo de resultados para mostrar."
+	"apihelp-wikidiscover-param-limit": "Número máximo de resultados para mostrar.",
+	"apihelp-wikidiscover-example": "Mostrar todos los wikis del formulario."
 }

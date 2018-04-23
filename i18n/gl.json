@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Navhy"
+		]
+	},
+	"wikidiscover": "WikiDescuberta",
+	"wikidiscover-table-category": "Categoría",
+	"wikidiscover-table-language": "Lingua",
+	"wikidiscover-table-state": "Actividade",
+	"wikidiscover-table-visibility": "Visibilidade",
+	"wikidiscover-table-wiki": "Nome da wiki",
+	"apihelp-wikidiscover-summary": "Obter unha listaxe das wikis nun sitio de aloxamento de wikis CrearWiki.",
+	"apihelp-wikidiscover-param-state": "Filtrar polo estado dunha wiki definida por CrearWiki.",
+	"apihelp-wikidiscover-param-siteprop": "A información a devolver sobre unha wiki definida.",
+	"apihelp-wikidiscover-param-limit": "O número máximo de resultados a seren amosados.",
+	"apihelp-wikidiscover-example": "Amosar tódalas wikis no sitio."
+}

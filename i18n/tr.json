@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hedda"
+		]
+	},
+	"wikidiscover": "VikiKeşif",
+	"wikidiscover-desc": "[[Special:CreateWiki|CreateWiki]] ile bir viki çiftliğindeki  [[Special:WikiDiscover|viki'leri keşfetmeye]] yarar.",
+	"wikidiscover-table-category": "Kategori",
+	"wikidiscover-table-language": "Dil",
+	"wikidiscover-table-state": "Etkinlik",
+	"wikidiscover-table-visibility": "Görünürlük",
+	"wikidiscover-table-wiki": "Viki Adı",
+	"apihelp-wikidiscover-summary": "CreateWiki viki çiftliğindeki viki'lerin bir listesini alın.",
+	"apihelp-wikidiscover-param-state": "Bir viki'nin CreateWiki tanımlı durumuna göre filtreleyin.",
+	"apihelp-wikidiscover-param-siteprop": "Tanımlanmış bir wiki hakkındaki bilgiye dönüş yapın.",
+	"apihelp-wikidiscover-param-limit": "Gösterilecek maksimum sonuç sayısı.",
+	"apihelp-wikidiscover-example": "Tüm vikileri formda göster."
+}

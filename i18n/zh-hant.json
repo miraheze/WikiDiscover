@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kly"
+		]
+	},
+	"wikidiscover": "WikiDiscover",
+	"wikidiscover-desc": "允許在具有 [[Special:CreateWiki|CreateWiki]] 的 wiki 農場裡[[Special:WikiDiscover|探索 wiki]]。",
+	"wikidiscover-table-category": "分類",
+	"wikidiscover-table-language": "語言",
+	"wikidiscover-table-state": "動態",
+	"wikidiscover-table-visibility": "能見度",
+	"wikidiscover-table-wiki": "Wiki 名稱",
+	"apihelp-wikidiscover-summary": "取得在 CreateWiki 維基農場的 wiki 清單。",
+	"apihelp-wikidiscover-param-state": "依 CreateWiki 所定義的 wiki 狀態篩選。",
+	"apihelp-wikidiscover-param-siteprop": "回有有關定義 wiki 的訊息。",
+	"apihelp-wikidiscover-param-limit": "結果顯示的數量上限。",
+	"apihelp-wikidiscover-example": "顯示在表單裡的所有 wiki。"
+}

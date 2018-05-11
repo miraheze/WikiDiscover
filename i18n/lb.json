@@ -10,5 +10,6 @@
 	"wikidiscover-table-state": "Aktivitéit",
 	"wikidiscover-table-visibility": "Visibilitéit",
 	"wikidiscover-table-wiki": "Numm vun der Wiki",
-	"apihelp-wikidiscover-param-limit": "Maximal Zuel vun de Resultater déi gewise ginn"
+	"apihelp-wikidiscover-param-limit": "Maximal Zuel vun de Resultater déi gewise ginn",
+	"apihelp-wikidiscover-example": "All Wikien am Formulaire weisen."
 }

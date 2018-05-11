@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Happy13241",
+			"Ole Yves"
+		]
+	},
+	"wikidiscover": "WikiDiscover",
+	"wikidiscover-desc": "Позволяет [[Special:WikiDiscover|обнаруживать вики]] на вики-ферме вики с [[Special:CreateWiki|CreateWiki]].",
+	"wikidiscover-table-category": "Категория",
+	"wikidiscover-table-language": "Язык",
+	"wikidiscover-table-state": "Активность",
+	"wikidiscover-table-visibility": "Видимость",
+	"wikidiscover-table-wiki": "Имя вики",
+	"apihelp-wikidiscover-summary": "Получить список вики на вики-ферме CreateWiki.",
+	"apihelp-wikidiscover-param-state": "Фильтровать по установленному CreateWiki состоянию вики.",
+	"apihelp-wikidiscover-param-siteprop": "Информация, которую нужно вернуть о переданной вики.",
+	"apihelp-wikidiscover-param-limit": "Максимальное количество результатов для отображения.",
+	"apihelp-wikidiscover-example": "Показать все вики в форме."
+}

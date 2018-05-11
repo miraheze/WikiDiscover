@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cusolotto"
+		]
+	},
+	"wikidiscover-table-category": "Categoria",
+	"wikidiscover-table-language": "Lengua",
+	"wikidiscover-table-state": "Atività",
+	"wikidiscover-table-visibility": "Visibilità",
+	"wikidiscover-table-wiki": "Nome Wiki",
+	"apihelp-wikidiscover-param-limit": "Numaro masimo de risultati da vardar."
+}

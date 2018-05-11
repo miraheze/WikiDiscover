@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Avatar6"
+		]
+	},
+	"wikidiscover-table-category": "Категорія",
+	"wikidiscover-table-language": "Мова",
+	"wikidiscover-table-visibility": "Видимість",
+	"apihelp-wikidiscover-param-limit": "Максимальна кількість результатів для показу."
+}

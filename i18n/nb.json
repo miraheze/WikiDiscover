@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Imre Eilertsen"
+		]
+	},
+	"wikidiscover-table-category": "Kategori",
+	"wikidiscover-table-language": "Språk",
+	"wikidiscover-table-state": "Aktivitet",
+	"wikidiscover-table-visibility": "Synlighet",
+	"wikidiscover-table-wiki": "Wikiens navn"
+}

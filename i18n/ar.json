@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"ديفيد"
+		]
+	},
+	"wikidiscover": "اكتشاف الويكي",
+	"wikidiscover-desc": "يسمح [[Special:WikiDiscover|باكتشاف ويكيات]] في مزرعة ويكي مع [[Special:CreateWiki|إنشاء ويكي]].",
+	"wikidiscover-table-category": "التصنيف",
+	"wikidiscover-table-language": "اللغة",
+	"wikidiscover-table-state": "النشاط",
+	"wikidiscover-table-visibility": "الرؤية",
+	"wikidiscover-table-wiki": "اسم الويكي",
+	"apihelp-wikidiscover-summary": "الحصول على قائمة الويكيات في مزرعة الويكي إنشاء ويكي.",
+	"apihelp-wikidiscover-param-state": "قم بالتصفية حسب حالة إنشاء الويكي المعرفة للويكي.",
+	"apihelp-wikidiscover-param-siteprop": "معلومات للعودة عن ويكي محددة.",
+	"apihelp-wikidiscover-param-limit": "أقصى عدد من النتائج لإظهارها.",
+	"apihelp-wikidiscover-example": "عرض جميع الويكيات في النموذج."
+}

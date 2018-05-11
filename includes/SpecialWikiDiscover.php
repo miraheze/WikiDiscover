@@ -29,7 +29,7 @@ class SpecialWikiDiscover extends SpecialPage {
 				'name' => 'language',
 				'label-message' => 'wikidiscover-table-language',
 				'options' => $options,
-				'default' => ( $language ) ? $language : en,
+				'default' => ( $language ) ? $language : 'en',
 			],
 			'category' => [
 				'type' => 'select',

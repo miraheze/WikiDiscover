@@ -41,12 +41,16 @@ class SpecialWikiDiscover extends SpecialPage {
 		];
 
 		$htmlForm = HTMLForm::factory( 'ooui', $formDescriptor, $this->getContext() );
-		$htmlForm->setAction( $this->getTitle( 'Special:WikiDiscover' )->getLocalURL() )->setMethod( 'get' )->prepareForm()->show();
+		$htmlForm->setSubmitCallback( [ $this, 'dummyProcess' ] )->setMethod( 'get' )->prepareForm()->show();
 
 		$pager = new WikiDiscoverWikisPager( $wiki, $language, $category );
 		$table = $pager->getBody();
 
 		$out->addHTML( $pager->getNavigationBar() . $table . $pager->getNavigationBar() );
+	}
+
+	static function dummyProcess( $formData ) {
+		return false; // Because we need a submission callback but we don't!
 	}
 
 	protected function getGroupName() {

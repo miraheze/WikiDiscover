@@ -19,6 +19,7 @@
 	},
 	"AutoloadClasses": {
 		"WikiDiscover": "includes/WikiDiscover.php",
+		"WikiDiscoverRandom": "includes/WikiDiscoverRandom.php",
 		"SpecialWikiDiscover": "includes/SpecialWikiDiscover.php",
 		"WikiDiscoverWikisPager": "includes/WikiDiscoverWikisPager.php",
 		"ApiWikiDiscover": "includes/ApiWikiDiscover.php"

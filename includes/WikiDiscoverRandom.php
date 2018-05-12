@@ -1,16 +1,21 @@
 <?php
 class WikiDiscoverRandom {
-	public static function randomWiki( $state = "open", $category = "uncategorised", $language = "en" ) {
-		$conditions = array(
-			'wiki_category' => $category,
-			'wiki_language' => $language,
-		);
+	public static function randomWiki( $state = false, $category = false, $language = false ) {
+		$conditions = array();
+
+		if ( $category ) {
+			$conditions['wiki_category'] = $category;
+		}
+
+		if ( $language ) {
+			$conditions['wiki_language'] = $language;
+		}
 
 		if ( $state == "inactive" ) {
 			$conditions['wiki_inactive'] = 1;
 		} elseif ( $state == "closed" ) {
 			$conditions['wiki_closed'] = 1;
-		} else {
+		} elseif ( $state == "open" ) {
 			$conditions['wiki_closed'] = 0;
 		}
 

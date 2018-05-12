@@ -1,6 +1,6 @@
 <?php
 class WikiDiscoverRandom {
-	public static function randomWiki( $state = false, $category = false, $language = false ) {
+	public static function randomWiki( $state = 0, $category = 0, $language = 0 ) {
 		$conditions = array();
 
 		if ( $category ) {
@@ -11,11 +11,11 @@ class WikiDiscoverRandom {
 			$conditions['wiki_language'] = $language;
 		}
 
-		if ( $state == "inactive" ) {
+		if ( $state === "inactive" ) {
 			$conditions['wiki_inactive'] = 1;
-		} elseif ( $state == "closed" ) {
+		} elseif ( $state === "closed" ) {
 			$conditions['wiki_closed'] = 1;
-		} elseif ( $state == "open" ) {
+		} elseif ( $state === "open" ) {
 			$conditions['wiki_closed'] = 0;
 		}
 

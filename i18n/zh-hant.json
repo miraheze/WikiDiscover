@@ -4,6 +4,8 @@
 			"Kly"
 		]
 	},
+	"randomwiki": "隨機 wiki",
+	"randomwiki-header": "選擇下方一個分類與語言並提交後，您將被會重新導向到符合條件標準的 wiki！",
 	"wikidiscover": "WikiDiscover",
 	"wikidiscover-desc": "允許在具有 [[Special:CreateWiki|CreateWiki]] 的 wiki 農場裡[[Special:WikiDiscover|探索 wiki]]。",
 	"wikidiscover-table-category": "分類",

@@ -4,6 +4,8 @@
 			"Fitoschido"
 		]
 	},
+	"randomwiki": "Wiki al azar",
+	"randomwiki-header": "Selecciona más abajo una categoría y un idioma y te redirigiremos al azar a un wiki que cumpla con ambos criterios.",
 	"wikidiscover-table-category": "Categoría",
 	"wikidiscover-table-language": "Idioma",
 	"wikidiscover-table-state": "Actividad",

@@ -4,6 +4,8 @@
 			"Metalhead64"
 		]
 	},
+	"randomwiki": "Zufälliges Wiki",
+	"randomwiki-header": "Wähle unten eine Kategorie und eine Sprache aus und nach dem Absenden wirst du auf ein zufälliges Wiki weitergeleitet, das die ausgewählten Kriterien erfüllt!",
 	"wikidiscover": "Wikientdeckung",
 	"wikidiscover-desc": "Ermöglicht die [[Special:WikiDiscover|Entdeckung von Wikis]] auf einer Wikifarm mit [[Special:CreateWiki|CreateWiki]].",
 	"wikidiscover-table-category": "Kategorie",

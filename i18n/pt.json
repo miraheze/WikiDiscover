@@ -4,6 +4,8 @@
 			"Hamilton Abreu"
 		]
 	},
+	"randomwiki": "Wiki aleatória",
+	"randomwiki-header": "Selecione uma categoria e uma língua abaixo e ao enviar será redirecionado para uma wiki aleatória que preenche os critérios selecionados!",
 	"wikidiscover": "WikiDescoberta",
 	"wikidiscover-desc": "Permite [[Special:WikiDiscover|descobrir wikis]] num sítio de alojamento de wikis com [[Special:CreateWiki|CriarWiki]].",
 	"wikidiscover-table-category": "Categoria",

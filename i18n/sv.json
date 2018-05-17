@@ -4,6 +4,7 @@
 			"WikiPhoenix"
 		]
 	},
+	"randomwiki": "Slumpwiki",
 	"wikidiscover": "WikiDiscover",
 	"wikidiscover-desc": "Gör det möjligt att [[Special:WikiDiscover|upptäcka wikier]] på en wikifarm med [[Special:CreateWiki|CreateWiki]].",
 	"wikidiscover-table-category": "Kategori",

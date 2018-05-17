@@ -4,6 +4,8 @@
 			"Gomoko"
 		]
 	},
+	"randomwiki": "Wiki aléatoire",
+	"randomwiki-header": "Sélectionner une catégorie et une langue ci-dessous et à la soumission, vous serez redirigé aléatoirement vers un wiki qui correspond aux critères sélectionnés !",
 	"wikidiscover": "WikiDiscover",
 	"wikidiscover-desc": "Permet de [[Special:WikiDiscover|découvrir des wikis]] dans une ferme de wikis avec [[Special:CreateWiki|CreateWiki]].",
 	"wikidiscover-table-category": "Catégorie",

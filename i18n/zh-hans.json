@@ -4,6 +4,8 @@
 			"Liuxinyu970226"
 		]
 	},
+	"randomwiki": "随机Wiki",
+	"randomwiki-header": "在下方选择分类和语言，并在提交后您将随机重定向到符合选择标准的wiki！",
 	"wikidiscover": "WikiDiscover",
 	"wikidiscover-desc": "允许在有[[Special:CreateWiki|CreateWiki]]的维基农场[[Special:WikiDiscover|探索wiki]]。",
 	"wikidiscover-table-category": "分类",

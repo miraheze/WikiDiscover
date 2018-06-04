@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Xuacu"
+		]
+	},
+	"randomwiki": "Wiki al debalu",
+	"randomwiki-header": "Escueye más abaxo una categoría y un idioma y vamos redirixite al debalu a una wiki que cumpla colos criterios seleicionaos.",
+	"wikidiscover": "WikiDiscover",
+	"wikidiscover-desc": "Permite [[Special:WikiDiscover|descubrir wikis]] d'una granxa wiki con [[Special:CreateWiki|CreateWiki]].",
+	"wikidiscover-table-category": "Categoría",
+	"wikidiscover-table-language": "Llingua",
+	"wikidiscover-table-state": "Actividá",
+	"wikidiscover-table-visibility": "Visibilidá",
+	"wikidiscover-table-wiki": "Nome de la wiki",
+	"apihelp-wikidiscover-summary": "Llograr una llista de les wikis d'una granxa de wikis CreateWiki.",
+	"apihelp-wikidiscover-param-state": "Filtriar pol estáu CreateWiki definíu d'una wiki.",
+	"apihelp-wikidiscover-param-siteprop": "Información a devolver sobro una wiki definida.",
+	"apihelp-wikidiscover-param-limit": "Númberu máximu de resultancies a amosar.",
+	"apihelp-wikidiscover-example": "Amosar toles wikis del formulariu."
+}

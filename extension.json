@@ -6,6 +6,7 @@
 	"url": "https://github.com/miraheze/WikiDiscover",
 	"license-name": "AGPL-3.0-or-later",
 	"type": "specialpage",
+	"callback": "WikiDiscover::onRegistration",
 	"SpecialPages": {
 		"RandomWiki": "SpecialRandomWiki",
 		"WikiDiscover": "SpecialWikiDiscover"
@@ -32,8 +33,7 @@
 		"@wgWikiDiscoverInactiveList": "A file with the list of all inactive wikis.",
 		"WikiDiscoverInactiveList": null,
 		"@wgWikiDiscoverPrivateList": "A file with the list of all private wikis.",
-		"WikiDiscoverPrivateList": null,
-		"CreateWikiDatabase": "metawiki"
+		"WikiDiscoverPrivateList": null
 	},
 	"manifest_version": 1
 }

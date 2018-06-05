@@ -32,8 +32,7 @@
 		"@wgWikiDiscoverInactiveList": "A file with the list of all inactive wikis.",
 		"WikiDiscoverInactiveList": null,
 		"@wgWikiDiscoverPrivateList": "A file with the list of all private wikis.",
-		"WikiDiscoverPrivateList": null,
-		"CreateWikiDatabase": "metawiki"
+		"WikiDiscoverPrivateList": null
 	},
 	"manifest_version": 1
 }

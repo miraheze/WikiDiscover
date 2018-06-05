@@ -28,12 +28,12 @@
 	},
 	"config": {
 		"@wgWikiDiscoverClosedList": "A file with the list of all closed wikis.",
-		"wgWikiDiscoverClosedList": null,
+		"WikiDiscoverClosedList": null,
 		"@wgWikiDiscoverInactiveList": "A file with the list of all inactive wikis.",
-		"wgWikiDiscoverInactiveList": null,
+		"WikiDiscoverInactiveList": null,
 		"@wgWikiDiscoverPrivateList": "A file with the list of all private wikis.",
-		"wgWikiDiscoverPrivateList": null,
-		"wgCreateWikiDatabase": "metawiki"
+		"WikiDiscoverPrivateList": null,
+		"CreateWikiDatabase": "metawiki"
 	},
 	"manifest_version": 1
 }

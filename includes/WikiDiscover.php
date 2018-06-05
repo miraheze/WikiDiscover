@@ -21,14 +21,6 @@ class WikiDiscover {
 		$this->inactive = array_map( 'trim', file( $wgWikiDiscoverInactiveList ) );
 	}
 
-	public static function onRegistration() {
-		global $wgCreateWikiDatabase;
-
-                if ( !isset( $wgCreateWikiDatabase ) ) {
-                        $wgCreateWikiDatabase = 'metawiki';
-                }
-	}
-
 	public function getCount() {
 		global $wgLocalDatabases;
 

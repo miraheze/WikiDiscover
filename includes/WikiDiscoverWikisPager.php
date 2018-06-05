@@ -1,12 +1,24 @@
 <?php
 
+use MediaWiki\MediaWikiServices;
+
 class WikiDiscoverWikisPager extends TablePager {
 	function __construct( $wiki, $language, $category ) {
+		$this->mDb = self::getCreateWikiDatabase();
 		$this->wiki = $wiki;
 		$this->language = $language;
 		$this->category = $category;
 		$this->wikiDiscover = new WikiDiscover();
 		parent::__construct( $this->getContext() );
+	}
+
+	static function getCreateWikiDatabase() {
+		global $wgCreateWikiDatabase;
+
+		$factory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
+		$lb = $factory->getMainLB( $wgCreateWikiDatabase );
+
+		return $lb->getConnectionRef( DB_REPLICA, 'cw_wikis', $wgCreateWikiDatabase );
 	}
 
 	function getFieldNames() {

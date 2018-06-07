@@ -30,6 +30,7 @@ class WikiDiscoverWikisPager extends TablePager {
 			'wiki_closed' => 'wikidiscover-table-state',
 			'wiki_private' => 'wikidiscover-table-visibility',
 			'wiki_category' => 'wikidiscover-table-category',
+			'wiki_deletable' => 'wikidiscover-table-deletable',
 		];
 
 		foreach ( $headers as &$msg ) {
@@ -77,6 +78,13 @@ class WikiDiscoverWikisPager extends TablePager {
 				$wikicategories = array_flip( $wgCreateWikiCategories );
 				$formatted = $wikicategories[$row->wiki_category];
 				break;
+			case 'wiki_deletable':
+				if ( isset( $row->wiki_closed_timestamp ) && $res->wiki_closed_timestamp < date( "YmdHis", strtotime( "-180 days" ) ) ) {
+					$formatted = 'Yes';
+				} else {
+					$formatted = 'No';
+				}
+				break;
 			default:
 				$formatted = "Unable to format $name";
 				break;
@@ -88,7 +96,7 @@ class WikiDiscoverWikisPager extends TablePager {
 	function getQueryInfo() {
 		$info = [
 			'tables' => [ 'cw_wikis' ],
-			'fields' => [ 'wiki_dbname', 'wiki_language', 'wiki_private', 'wiki_closed', 'wiki_category' ],
+			'fields' => [ 'wiki_dbname', 'wiki_language', 'wiki_private', 'wiki_closed', 'wiki_closed_timestamp', 'wiki_category' ],
 			'conds' => [],
 			'joins_conds' => [],
 		];

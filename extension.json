@@ -6,6 +6,11 @@
 	"url": "https://github.com/miraheze/WikiDiscover",
 	"license-name": "AGPL-3.0-or-later",
 	"type": "specialpage",
+	"requires": {
+		"extensions": {
+			"CreateWiki": "*"
+		}
+	},
 	"SpecialPages": {
 		"RandomWiki": "SpecialRandomWiki",
 		"WikiDiscover": "SpecialWikiDiscover"

@@ -5,12 +5,17 @@
 		]
 	},
 	"randomwiki": "Τυχαίο βίκι",
+	"randomwiki-header": "Επιλέξτε μια κατηγορία και γλώσσα παρακάτω και στην υποβολή θα ανακατευθυνθείτε τυχαίως σε ένα βίκι που πληρεί τα επιλεγμένα κριτήρια!",
 	"wikidiscover": "WikiDiscover",
+	"wikidiscover-desc": "Επιτρέπει την [[Special:WikiDiscover|ανακάλυψη βίκι]] σε μια φάρμα βίκι με το [[Special:CreateWiki|CreateWiki]].",
 	"wikidiscover-table-category": "Κατηγορία",
 	"wikidiscover-table-language": "Γλώσσα",
 	"wikidiscover-table-state": "Δραστηριότητα",
 	"wikidiscover-table-visibility": "Ορατότητα",
 	"wikidiscover-table-wiki": "Όνομα βίκι",
+	"apihelp-wikidiscover-summary": "Πάρτε μια λίστα βίκι σε μια βικιφάρμα CreateWiki.",
 	"apihelp-wikidiscover-param-state": "Φιλτράρισμα κατά την ορισμένη κατάσταση CreateWiki ενός βίκι.",
-	"apihelp-wikidiscover-param-limit": "Μέγιστος αριθμός αποτελεσμάτων προς εμφάνιση."
+	"apihelp-wikidiscover-param-siteprop": "Πληροφορίες για επιστροφή σχετικά με ένα ορισμένο βίκι.",
+	"apihelp-wikidiscover-param-limit": "Μέγιστος αριθμός αποτελεσμάτων προς εμφάνιση.",
+	"apihelp-wikidiscover-example": "Εμφάνιση όλων των βίκι στη φόρμα."
 }

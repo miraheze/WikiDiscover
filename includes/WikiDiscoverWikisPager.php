@@ -78,7 +78,7 @@ class WikiDiscoverWikisPager extends TablePager {
 				$wikicategories = array_flip( $wgCreateWikiCategories );
 				$formatted = $wikicategories[$row->wiki_category];
 				break;
-			case 'wiki_deletable':
+			case 'wiki_closed_timestamp':
 				if ( isset( $row->wiki_closed_timestamp ) && $res->wiki_closed_timestamp < date( "YmdHis", strtotime( "-180 days" ) ) ) {
 					$formatted = 'Yes';
 				} else {

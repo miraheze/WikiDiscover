@@ -30,7 +30,7 @@ class WikiDiscoverWikisPager extends TablePager {
 			'wiki_closed' => 'wikidiscover-table-state',
 			'wiki_private' => 'wikidiscover-table-visibility',
 			'wiki_category' => 'wikidiscover-table-category',
-			'wiki_deletable' => 'wikidiscover-table-deletable',
+			'wiki_closed_timestamp' => 'wikidiscover-table-deletable',
 		];
 
 		foreach ( $headers as &$msg ) {

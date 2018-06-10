@@ -92,4 +92,34 @@ class WikiDiscover {
 	public function isPrivate( $database ) {
 		return in_array( $database, $this->private );
 	}
+
+	/**
+	 * @param Parser &$parser
+	 * @param array &$cache
+	 * @param string &$magicWordId
+	 * @param string &$ret
+	 * @param PPFrame|null $frame
+	 * @return bool true
+	 */
+	public static function onParserGetVariableValueSwitch(
+		Parser &$parser,
+		&$cache,
+		&$magicWordId,
+		&$ret,
+		$frame = null ) {
+		if ( $magicWordId == 'numberofwikis' ) {
+			global $wgLocalDatabases;
+			$ret = count( $wgLocalDatabases );
+		}
+		return true;
+	}
+
+	/**
+	 * @param array &$customVariableIds
+	 * @return bool true
+	 */
+	public static function onMagicWordwgVariableIDs( &$customVariableIds ) {
+		$customVariableIds[] = 'numberofwikis';
+		return true;
+	}
 }

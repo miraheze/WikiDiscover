@@ -9,6 +9,7 @@
 	"wikidiscover": "Wikientdeckung",
 	"wikidiscover-desc": "Ermöglicht die [[Special:WikiDiscover|Entdeckung von Wikis]] auf einer Wikifarm mit [[Special:CreateWiki|CreateWiki]].",
 	"wikidiscover-table-category": "Kategorie",
+	"wikidiscover-table-deletable": "Löschbar?",
 	"wikidiscover-table-language": "Sprache",
 	"wikidiscover-table-state": "Aktivität",
 	"wikidiscover-table-visibility": "Sichtbarkeit",

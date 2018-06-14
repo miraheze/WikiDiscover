@@ -9,6 +9,7 @@
 	"wikidiscover": "WikiDiscover",
 	"wikidiscover-desc": "Επιτρέπει την [[Special:WikiDiscover|ανακάλυψη βίκι]] σε μια φάρμα βίκι με το [[Special:CreateWiki|CreateWiki]].",
 	"wikidiscover-table-category": "Κατηγορία",
+	"wikidiscover-table-deletable": "Διαγράψιμο;",
 	"wikidiscover-table-language": "Γλώσσα",
 	"wikidiscover-table-state": "Δραστηριότητα",
 	"wikidiscover-table-visibility": "Ορατότητα",

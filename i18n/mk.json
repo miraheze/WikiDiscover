@@ -9,6 +9,7 @@
 	"wikidiscover": "Викиоткривање",
 	"wikidiscover-desc": "Овозможува [[Special:WikiDiscover|откривање на викија]] на фармата со [[Special:CreateWiki|Создај вики]].",
 	"wikidiscover-table-category": "Категорија",
+	"wikidiscover-table-deletable": "Бришливо?",
 	"wikidiscover-table-language": "Јазик",
 	"wikidiscover-table-state": "Активност",
 	"wikidiscover-table-visibility": "Видливост",

@@ -8,6 +8,7 @@
 	"wikidiscover": "WikiDiscover",
 	"wikidiscover-desc": "Gör det möjligt att [[Special:WikiDiscover|upptäcka wikier]] på en wikifarm med [[Special:CreateWiki|CreateWiki]].",
 	"wikidiscover-table-category": "Kategori",
+	"wikidiscover-table-deletable": "Går att radera?",
 	"wikidiscover-table-language": "Språk",
 	"wikidiscover-table-state": "Aktivitet",
 	"wikidiscover-table-visibility": "Synlighet",

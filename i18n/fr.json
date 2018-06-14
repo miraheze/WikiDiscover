@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Gomoko"
+			"Gomoko",
+			"Wladek92"
 		]
 	},
 	"randomwiki": "Wiki aléatoire",
@@ -9,6 +10,7 @@
 	"wikidiscover": "WikiDiscover",
 	"wikidiscover-desc": "Permet de [[Special:WikiDiscover|découvrir des wikis]] dans une ferme de wikis avec [[Special:CreateWiki|CreateWiki]].",
 	"wikidiscover-table-category": "Catégorie",
+	"wikidiscover-table-deletable": "Supprimable?",
 	"wikidiscover-table-language": "Langue",
 	"wikidiscover-table-state": "Activité",
 	"wikidiscover-table-visibility": "Visibilité",

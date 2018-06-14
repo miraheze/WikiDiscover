@@ -9,6 +9,7 @@
 	"wikidiscover": "WikiDescoberta",
 	"wikidiscover-desc": "Permite [[Special:WikiDiscover|descobrir wikis]] num sítio de alojamento de wikis com [[Special:CreateWiki|CriarWiki]].",
 	"wikidiscover-table-category": "Categoria",
+	"wikidiscover-table-deletable": "Eliminável?",
 	"wikidiscover-table-language": "Língua",
 	"wikidiscover-table-state": "Atividade",
 	"wikidiscover-table-visibility": "Visibilidade",

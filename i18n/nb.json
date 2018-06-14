@@ -1,10 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Imre Eilertsen"
+			"Imre Eilertsen",
+			"Citadell"
 		]
 	},
 	"wikidiscover-table-category": "Kategori",
+	"wikidiscover-table-deletable": "Slettbar?",
 	"wikidiscover-table-language": "Språk",
 	"wikidiscover-table-state": "Aktivitet",
 	"wikidiscover-table-visibility": "Synlighet",

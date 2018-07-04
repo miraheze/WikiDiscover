@@ -79,7 +79,7 @@ class WikiDiscoverWikisPager extends TablePager {
 				$formatted = $wikicategories[$row->wiki_category];
 				break;
 			case 'wiki_closed_timestamp':
-				if ( isset( $row->wiki_closed_timestamp ) && $row->wiki_closed_timestamp < date( "YmdHis", strtotime( "-180 days" ) ) ) {
+				if ( isset( $row->wiki_closed_timestamp ) && $row->wiki_closed_timestamp < date( "YmdHis", strtotime( "-120 days" ) ) ) {
 					$formatted = 'Yes';
 				} else {
 					$formatted = 'No';

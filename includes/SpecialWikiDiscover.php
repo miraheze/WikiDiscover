@@ -43,7 +43,7 @@ class SpecialWikiDiscover extends SpecialPage {
 		$htmlForm = HTMLForm::factory( 'ooui', $formDescriptor, $this->getContext() );
 		$htmlForm->setSubmitCallback( [ $this, 'dummyProcess' ] )->setMethod( 'get' )->prepareForm()->show();
 
-		$pager = new WikiDiscoverWikisPager( $wiki, $language, $category );
+		$pager = new WikiDiscoverWikisPager( $language, $category );
 		$table = $pager->getBody();
 
 		$out->addHTML( $pager->getNavigationBar() . $table . $pager->getNavigationBar() );

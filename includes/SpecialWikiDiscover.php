@@ -14,6 +14,7 @@ class SpecialWikiDiscover extends SpecialPage {
 
 		$out = $this->getOutput();
 
+		$wiki = $this->getRequest()->getText( 'wiki' );
 		$language = $this->getRequest()->getText( 'language' );
 		$category = $this->getRequest()->getText( 'category' );
 		$languages = Language::fetchLanguageNames( null, 'wmfile' );

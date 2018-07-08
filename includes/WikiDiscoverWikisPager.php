@@ -3,9 +3,8 @@
 use MediaWiki\MediaWikiServices;
 
 class WikiDiscoverWikisPager extends TablePager {
-	function __construct( $wiki, $language, $category ) {
+	function __construct( $language, $category ) {
 		$this->mDb = self::getCreateWikiDatabase();
-		$this->wiki = $wiki;
 		$this->language = $language;
 		$this->category = $category;
 		$this->wikiDiscover = new WikiDiscover();

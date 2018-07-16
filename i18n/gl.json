@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Navhy"
+			"Navhy",
+			"Banjo"
 		]
 	},
+	"randomwiki": "Wiki aleatoria",
 	"wikidiscover": "WikiDescuberta",
 	"wikidiscover-table-category": "Categoría",
 	"wikidiscover-table-language": "Lingua",

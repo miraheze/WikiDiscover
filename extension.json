@@ -1,6 +1,5 @@
 {
 	"name": "WikiDiscover",
-	"version": "1.0",
 	"author": "John Lewis",
 	"descriptionmsg": "wikidiscover-desc",
 	"url": "https://github.com/miraheze/WikiDiscover",
@@ -43,12 +42,21 @@
 		]
 	},
 	"config": {
-		"@wgWikiDiscoverClosedList": "A file with the list of all closed wikis.",
-		"WikiDiscoverClosedList": null,
-		"@wgWikiDiscoverInactiveList": "A file with the list of all inactive wikis.",
-		"WikiDiscoverInactiveList": null,
-		"@wgWikiDiscoverPrivateList": "A file with the list of all private wikis.",
-		"WikiDiscoverPrivateList": null
+		"WikiDiscoverClosedList": {
+			"description": "String. Path to a file of all closed wikis.",
+			"public": true,
+			"value": null
+		},
+		"WikiDiscoverInactiveList": {
+			"description": "String. Path to a file of all inactive wikis.",
+			"public": true,
+			"value": null
+		},
+		"WikiDiscoverPrivateList": {
+			"description": "String. Path to a file of all private wikis.",
+			"public": true,
+			"value": null
+		}
 	},
-	"manifest_version": 1
+	"manifest_version": 2
 }

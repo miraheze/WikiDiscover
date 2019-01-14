@@ -1,11 +1,23 @@
 {
 	"@metadata": {
 		"authors": [
-			"Avatar6"
+			"Avatar6",
+			"Piramidion"
 		]
 	},
+	"randomwiki": "Випадкова вікі",
+	"randomwiki-header": "Виберіть нижче категорію й мову, і після підтвердження Вас буде перенаправлено на випадкову вікі, яка відповідає вибраним критеріям!",
+	"wikidiscover": "WikiDiscover",
+	"wikidiscover-desc": "Дозволяє [[Special:WikiDiscover|виявляти вікі]] на вікі-фермі, яка має можливість [[Special:CreateWiki|створення вікі]].",
 	"wikidiscover-table-category": "Категорія",
+	"wikidiscover-table-deletable": "Можна вилучити?",
 	"wikidiscover-table-language": "Мова",
+	"wikidiscover-table-state": "Активність",
 	"wikidiscover-table-visibility": "Видимість",
-	"apihelp-wikidiscover-param-limit": "Максимальна кількість результатів для показу."
+	"wikidiscover-table-wiki": "Назва вікі",
+	"apihelp-wikidiscover-summary": "Отримати список вікі на вікі-фермі з CreateWiki.",
+	"apihelp-wikidiscover-param-state": "Фільтрувати за станом вікі, визначеним через CreateWiki.",
+	"apihelp-wikidiscover-param-siteprop": "Інформація, яку слід повернути про визначену вікі.",
+	"apihelp-wikidiscover-param-limit": "Максимальна кількість результатів для показу.",
+	"apihelp-wikidiscover-example": "Показати всі вікі в указаній формі."
 }

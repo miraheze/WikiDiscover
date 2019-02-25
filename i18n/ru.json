@@ -4,7 +4,8 @@
 			"Happy13241",
 			"Ole Yves",
 			"Stjn",
-			"Nk88"
+			"Nk88",
+			"Movses"
 		]
 	},
 	"randomwiki": "\nСлучайная Вики",
@@ -12,6 +13,7 @@
 	"wikidiscover": "WikiDiscover",
 	"wikidiscover-desc": "Позволяет [[Special:WikiDiscover|обнаруживать вики]] на вики-ферме вики с [[Special:CreateWiki|CreateWiki]].",
 	"wikidiscover-table-category": "Категория",
+	"wikidiscover-table-deletable": "Возможно удалить?",
 	"wikidiscover-table-language": "Язык",
 	"wikidiscover-table-state": "Активность",
 	"wikidiscover-table-visibility": "Видимость",

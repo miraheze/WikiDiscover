@@ -7,8 +7,16 @@
 	"randomwiki": "Uicchi a uecchije",
 	"randomwiki-header": "Scacchie 'na cateogrije e 'na lènghe aqquà sotte e sus 'a conferme avìne mannate a uecchije sus a 'na uicchi ca s'accocchie cu 'u criterie de recerche scacchiate!",
 	"wikidiscover": "UicchiScuperte",
+	"wikidiscover-desc": "Face [[Special:WikiDiscover|scuprì le uicchi]] sus a 'na uicchi fabbreche cu [[Special:CreateWiki|CreateWiki]].",
+	"wikidiscover-table-category": "Categorije",
+	"wikidiscover-table-deletable": "Scangellabbele?",
 	"wikidiscover-table-language": "Lènghe",
 	"wikidiscover-table-state": "Attività",
 	"wikidiscover-table-visibility": "Visibbiletà",
-	"wikidiscover-table-wiki": "Nome d'a uicchi"
+	"wikidiscover-table-wiki": "Nome d'a uicchi",
+	"apihelp-wikidiscover-summary": "Pigghie 'n'elenghe de uicchi sus a fabbreche de uicchi CreateWiki.",
+	"apihelp-wikidiscover-param-state": "Filtre pe 'nu state definite de CreateWiki de 'na uicchi.",
+	"apihelp-wikidiscover-param-siteprop": "'Mbormazione ca a turnà sus a 'na uicchi definite.",
+	"apihelp-wikidiscover-param-limit": "Numere massime de resultate da 'ndrucà.",
+	"apihelp-wikidiscover-example": "Fà 'ndrucà tutte le uicchi sus a 'u module."
 }

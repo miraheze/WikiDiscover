@@ -27,10 +27,9 @@ class ApiWikiDiscover extends ApiBase {
 		$count = 0;
 		$wikis = [];
 
-		if ( isset( $params['wikis'] ) && $params['wikis'] ) {
+		$wikislist = null;
+		if ( isset( $params['wikislist'] ) && $params['wikislist'] ) {
 			$wikislist = $params['wikislist'];
-		} else {
-			$wikislist = null;
 		}
 
 		foreach ( $wikidiscover->getWikiPrefixes( $wikislist ) as $wiki ) {

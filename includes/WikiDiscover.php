@@ -27,12 +27,17 @@ class WikiDiscover {
 		return count( $wgLocalDatabases );
 	}
 
-	public function getWikis() {
+	public function getWikis( $dbname ) {
 		global $wgLocalDatabases;
 
 		$wikis = [];
 
-		foreach ( $wgLocalDatabases as $db ) {
+		$name = $wgLocalDatabases;
+		if ( isset( $dbname ) && $dbname ) {
+			$name = explode( ',', $dbname );
+		}
+
+		foreach ( $name as $db ) {
 			if ( preg_match( "/(.*)wiki\$/", $db, $a ) ) {
 				$wiki = $a[1];
 				$wikis[] = [ $wiki, 'wiki' ];
@@ -46,15 +51,14 @@ class WikiDiscover {
 	public function getWikiPrefixes( $dbname ) {
 		global $wgLocalDatabases;
 
-		if ( $dbname ) {
-			$dbname = $dbname;
-		} else {
-			$dbname = $wgLocalDatabases;
-		}
-
 		$wikiprefixes = [];
 
-		foreach ( $dbname as $db ) {
+		$name = $wgLocalDatabases;
+		if ( isset( $dbname ) && $dbname ) {
+			$name = explode(',', $dbname);
+		}
+
+		foreach ( $name as $db ) {
 			if ( preg_match( "/(.*)wiki\$/", $db, $a ) ) {
 				$wikiprefixes[] = $a[1];
 			}

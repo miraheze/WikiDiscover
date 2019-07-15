@@ -27,7 +27,12 @@ class ApiWikiDiscover extends ApiBase {
 		$count = 0;
 		$wikis = [];
 
-		foreach ( $wikidiscover->getWikiPrefixes() as $wiki ) {
+		$wikislist = null;
+		if ( isset( $params['wikislist'] ) && $params['wikislist'] ) {
+			$wikislist = $params['wikislist'];
+		}
+
+		foreach ( $wikidiscover->getWikiPrefixes( $wikislist ) as $wiki ) {
 			$dbName = $wiki;
 			$dbName .= 'wiki';
 			$url = $wikidiscover->getUrl( $dbName );
@@ -117,6 +122,9 @@ class ApiWikiDiscover extends ApiBase {
 				ApiBase::PARAM_MAX => 5000,
 				ApiBase::PARAM_MAX2 => 5000,
 				ApiBase::PARAM_DFLT => 5000,
+			],
+			'wikislist' => [
+				ApiBase::PARAM_TYPE => 'string',
 			],
 		];
 	}

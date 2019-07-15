@@ -43,12 +43,18 @@ class WikiDiscover {
 	}
 
 
-	public function getWikiPrefixes() {
+	public function getWikiPrefixes( $dbname ) {
 		global $wgLocalDatabases;
+
+		if ( $dbname ) {
+			$dbname = $dbname;
+		} else {
+			$dbname = $wgLocalDatabases;
+		}
 
 		$wikiprefixes = [];
 
-		foreach ( $wgLocalDatabases as $db ) {
+		foreach ( $dbname as $db ) {
 			if ( preg_match( "/(.*)wiki\$/", $db, $a ) ) {
 				$wikiprefixes[] = $a[1];
 			}

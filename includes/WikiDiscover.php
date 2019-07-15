@@ -32,10 +32,7 @@ class WikiDiscover {
 
 		$wikis = [];
 
-		$wikiList = $wgLocalDatabases;
-		if ( $dbname ) {
-			$wikiList = explode( ',', $dbname );
-		}
+		$wikiList = $dbname ? explode( ',', $dbname ) : $wgLocalDatabases;
 
 		foreach ( $wikiList as $db ) {
 			if ( preg_match( "/(.*)wiki\$/", $db, $a ) ) {
@@ -53,10 +50,7 @@ class WikiDiscover {
 
 		$wikiprefixes = [];
 
-		$wikiList = $wgLocalDatabases;
-		if ( $wikiList ) {
-			$wikiList = explode( ',', $dbname );
-		}
+		$wikiList = $dbname ? explode( ',', $dbname ) : $wgLocalDatabases;
 
 		foreach ( $wikiList as $db ) {
 			if ( preg_match( "/(.*)wiki\$/", $db, $a ) ) {

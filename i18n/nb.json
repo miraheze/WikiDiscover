@@ -2,13 +2,23 @@
 	"@metadata": {
 		"authors": [
 			"Imre Eilertsen",
-			"Citadell"
+			"Citadell",
+			"Jon Harald Søby"
 		]
 	},
+	"randomwiki": "Tilfeldig wiki",
+	"randomwiki-header": "Velg en kategori og et språk nedenfor, så blir du automatisk omdirigert til en wiki som imøtekommer de valgte kriteriene!",
+	"wikidiscover": "Wikioppdager",
+	"wikidiscover-desc": "Gjør det mulig å [[Special:WikiDiscover|oppdage wikier]] på en wikifarm med [[Special:CreateWiki|CreateWiki]].",
 	"wikidiscover-table-category": "Kategori",
 	"wikidiscover-table-deletable": "Slettbar?",
 	"wikidiscover-table-language": "Språk",
 	"wikidiscover-table-state": "Aktivitet",
 	"wikidiscover-table-visibility": "Synlighet",
-	"wikidiscover-table-wiki": "Wikiens navn"
+	"wikidiscover-table-wiki": "Wikiens navn",
+	"apihelp-wikidiscover-summary": "Hent en liste over wikier på en CreateWiki-wikifarm.",
+	"apihelp-wikidiscover-param-state": "Filtrer etter den CreateWiki-definerte statusen til en wiki.",
+	"apihelp-wikidiscover-param-siteprop": "Informasjon som skal returneres om en definert wiki.",
+	"apihelp-wikidiscover-param-limit": "Maksimalt antall resultater som skal vises.",
+	"apihelp-wikidiscover-example": "Vis alle wikier med formen."
 }

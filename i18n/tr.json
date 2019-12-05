@@ -1,12 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"Hedda"
+			"Hedda",
+			"BaRaN6161 TURK"
 		]
 	},
+	"randomwiki": "Rastgele Wiki",
+	"randomwiki-header": "Aşağıdan bir kategori ve bir dil seçin ve başvuru sırasında rastgele seçilen kriterleri karşılayan bir wikiye yönlendirileceksiniz!",
 	"wikidiscover": "VikiKeşif",
 	"wikidiscover-desc": "[[Special:CreateWiki|CreateWiki]] ile bir viki çiftliğindeki  [[Special:WikiDiscover|viki'leri keşfetmeye]] yarar.",
 	"wikidiscover-table-category": "Kategori",
+	"wikidiscover-table-deletable": "Silinebilir mi?",
 	"wikidiscover-table-language": "Dil",
 	"wikidiscover-table-state": "Etkinlik",
 	"wikidiscover-table-visibility": "Görünürlük",

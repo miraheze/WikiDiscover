@@ -3,15 +3,16 @@
 		"authors": [
 			"Gomoko",
 			"Wladek92",
-			"Verdy p"
+			"Verdy p",
+			"Thibaut120094"
 		]
 	},
 	"randomwiki": "Wiki aléatoire",
-	"randomwiki-header": "Sélectionnez une catégorie et une langue ci-dessous,  lorsque vous les soumettrez vous serez redirigé aléatoirement vers un wiki qui correspond aux critères sélectionnés !",
+	"randomwiki-header": "Sélectionnez une catégorie et une langue ci-dessous,  lorsque vous les soumettrez vous serez redirigé aléatoirement vers un wiki qui correspond aux critères sélectionnés !",
 	"wikidiscover": "WikiDiscover",
 	"wikidiscover-desc": "Permet de [[Special:WikiDiscover|découvrir des wikis]] dans une ferme de wikis proposant à leurs utilisateurs la fonctionnalité [[Special:CreateWiki|Créer un wiki]].",
 	"wikidiscover-table-category": "Catégorie",
-	"wikidiscover-table-deletable": "Supprimable ?",
+	"wikidiscover-table-deletable": "Supprimable ?",
 	"wikidiscover-table-language": "Langue",
 	"wikidiscover-table-state": "Activité",
 	"wikidiscover-table-visibility": "Visibilité",

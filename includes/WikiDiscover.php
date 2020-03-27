@@ -113,7 +113,7 @@ class WikiDiscover {
 		$frame = null ) {
 		if ( $magicWordId == 'numberofwikis' ) {
 			global $wgLocalDatabases;
-			$ret = count( $wgLocalDatabases );
+			$ret = $cache[$magicWordId] = count( $wgLocalDatabases );
 		}
 		return true;
 	}

@@ -16,19 +16,11 @@ class SpecialRandomWiki extends SpecialPage {
 
 		$out->addWikiMsg( 'randomwiki-header' );
 
-		$languages = Language::fetchLanguageNames( null, 'wmfile' );
-		ksort( $languages );
-		$options = array();
-		foreach ( $languages as $code => $name ) {
-			$options["$code - $name"] = $code;
-		}
-
 		$formDescriptor = [
 			'language' => [
-				'type' => 'select',
+				'type' => 'language',
 				'name' => 'language',
 				'label-message' => 'wikidiscover-table-language',
-				'options' => $options,
 				'default' => 'en',
 			],
 			'category' => [

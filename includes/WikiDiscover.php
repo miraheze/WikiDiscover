@@ -1,5 +1,7 @@
 <?php
 
+use MediaWiki\MediaWikiServices;
+
 class WikiDiscover {
 	protected $closed;
 
@@ -82,7 +84,7 @@ class WikiDiscover {
 	public function getLanguage( $database ) {
 		$languagecode = $this->getLanguageCode( $database );
 
-		return Language::fetchLanguageName( $languagecode );
+		return MediaWikiServices::getInstance()->getLanguageNameUtils()->getLanguageName( $languagecode );
 	}
 
 	public function isClosed( $database ) {

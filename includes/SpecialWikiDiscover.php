@@ -16,19 +16,12 @@ class SpecialWikiDiscover extends SpecialPage {
 
 		$language = $this->getRequest()->getText( 'language' );
 		$category = $this->getRequest()->getText( 'category' );
-		$languages = Language::fetchLanguageNames( null, 'wmfile' );
-		ksort( $languages );
-		$options = array();
-		foreach ( $languages as $code => $name ) {
-			$options["$code - $name"] = $code;
-		}
 
 		$formDescriptor = [
 			'language' => [
-				'type' => 'select',
+				'type' => 'language',
 				'name' => 'language',
 				'label-message' => 'wikidiscover-table-language',
-				'options' => $options,
 				'default' => ( $language ) ? $language : 'en',
 			],
 			'category' => [
@@ -44,9 +37,7 @@ class SpecialWikiDiscover extends SpecialPage {
 		$htmlForm->setSubmitCallback( [ $this, 'dummyProcess' ] )->setMethod( 'get' )->prepareForm()->show();
 
 		$pager = new WikiDiscoverWikisPager( $language, $category );
-		$table = $pager->getBody();
-
-		$out->addHTML( $pager->getNavigationBar() . $table . $pager->getNavigationBar() );
+		$pager->getFullOutput();
 	}
 
 	static function dummyProcess( $formData ) {

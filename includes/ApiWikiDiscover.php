@@ -92,7 +92,7 @@ class ApiWikiDiscover extends ApiBase {
 		$result->addValue( null, "wikidiscover", $wikis );
 	}
 
-	public function getAllowedParams() {
+	protected function getAllowedParams() {
 		return [
 			'state' => [
 				ApiBase::PARAM_ISMULTI => true,

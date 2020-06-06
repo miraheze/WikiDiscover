@@ -37,9 +37,8 @@ class SpecialWikiDiscover extends SpecialPage {
 		$htmlForm->setSubmitCallback( [ $this, 'dummyProcess' ] )->setMethod( 'get' )->prepareForm()->show();
 
 		$pager = new WikiDiscoverWikisPager( $language, $category );
-		$pager->getFullOutput();
 
-		$this->getOutput()->addParserOutputContent( $pager );
+		$this->getOutput()->addParserOutputContent( $pager->getFullOutput() );
 	}
 
 	static function dummyProcess( $formData ) {

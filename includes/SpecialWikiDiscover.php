@@ -38,6 +38,8 @@ class SpecialWikiDiscover extends SpecialPage {
 
 		$pager = new WikiDiscoverWikisPager( $language, $category );
 		$pager->getFullOutput();
+
+		$this->getOutput()->addParserOutputContent( $pager );
 	}
 
 	static function dummyProcess( $formData ) {

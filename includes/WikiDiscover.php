@@ -138,22 +138,20 @@ class WikiDiscover {
 	}
 
 	/**
-	 * @param Parser &$parser
+	 * @param Parser $parser
 	 * @param array &$cache
-	 * @param string &$magicWordId
+	 * @param string $magicWordId
 	 * @param string &$ret
-	 * @param PPFrame|null $frame
 	 * @return bool true
 	 */
 	public static function onParserGetVariableValueSwitch(
-		Parser &$parser,
+		Parser $parser,
 		&$cache,
-		&$magicWordId,
-		&$ret,
-		$frame = null ) {
+		$magicWordId,
+		&$ret ) {
 		if ( $magicWordId == 'numberofwikis' ) {
 			global $wgLocalDatabases;
-			$ret = count( $wgLocalDatabases );
+			$ret = $cache[$magicWordId] = count( $wgLocalDatabases );
 		}
 		return true;
 	}

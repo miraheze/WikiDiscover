@@ -26,7 +26,7 @@ class WikiDiscover {
  			[
 				'wiki_closed',
  				'wiki_dbname',
-				'wiki_inactive'
+				'wiki_inactive',
  				'wiki_language',
 				'wiki_private',
  			],

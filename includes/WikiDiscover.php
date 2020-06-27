@@ -42,7 +42,6 @@ class WikiDiscover {
 		if ( $res ) {
 			foreach ( $res as $row ) {
 				if ( $row->wiki_closed === "1" ) {
-					$wikis_closed[$row->wiki_dbname];
 					$wikis_closed[] = $row->wiki_dbname;
 				}
 

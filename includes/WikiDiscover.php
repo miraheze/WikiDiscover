@@ -81,10 +81,8 @@ class WikiDiscover {
 		return $remoteWiki->getLanguage();
 	}
 
-	public function getLanguage( $database ) {
-		$languagecode = $this->getLanguageCode( $database );
-
-		return MediaWikiServices::getInstance()->getLanguageNameUtils()->getLanguageName( $languagecode );
+	public function getLanguage( $database, $langCode ) {
+		return MediaWikiServices::getInstance()->getLanguageNameUtils()->getLanguageName( $langCode );
 	}
 
 	public function isClosed( $database ) {

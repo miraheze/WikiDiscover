@@ -8,6 +8,8 @@ class WikiDiscover {
 	protected $inactive;
 
 	protected $private;
+	
+	protected $langCodes;
 
 	protected $count;
 
@@ -95,9 +97,8 @@ class WikiDiscover {
 	}
 
 	public function getLanguageCode( $database ) {
-		$remoteWiki = RemoteWiki::newFromName( $database );
-
-		return $remoteWiki->getLanguage();
+		// If wiki does not exist in langCodes than fallback to 'en'.
+		return $this->langCodes[$database] ?? 'en';
 	}
 
 	public function getLanguage( $database ) {

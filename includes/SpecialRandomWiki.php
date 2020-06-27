@@ -38,9 +38,11 @@ class SpecialRandomWiki extends SpecialPage {
 	}
 
 	function redirectWiki( $formData ) {
+		global $wgWikiDiscoverSubdomain;
+
 		$randomwiki = WikiDiscoverRandom::randomWiki( 0, $category = $formData['category'], $formData['language'] );
 
-		header( "Location: https://" . substr( $randomwiki->wiki_dbname, 0, -4 ) . ".miraheze.org/" );
+		header( "Location: https://" . substr( $randomwiki->wiki_dbname, 0, -4 ) . $wgWikiDiscoverSubdomain . "/" );
 
 		return true;
 	}

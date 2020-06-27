@@ -42,17 +42,18 @@ class WikiDiscover {
 		if ( $res ) {
 			foreach ( $res as $row ) {
 				if ( $row->wiki_closed === "1" ) {
-					$wikis_closed[$row->wiki_dbname] = $row->wiki_closed;
+					$wikis_closed[$row->wiki_dbname];
+					$wikis_closed[] = $row->wiki_dbname;
 				}
 
 				if ( $row->wiki_inactive === "1" ) {
-					$wikis_inactive[$row->wiki_dbname] = $row->wiki_closed;
+					$wikis_inactive[] = $row->wiki_dbname;
 				}
 
 				$wikis_lang[$row->wiki_dbname] = $row->wiki_language;
 				
 				if ( $row->wiki_private === "1" ) {
-					$wikis_private[$row->wiki_dbname] = $row->wiki_private;
+					$wikis_private[] = $row->wiki_dbname;
 				}
 			}
 		}

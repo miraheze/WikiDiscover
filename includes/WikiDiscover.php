@@ -24,7 +24,9 @@ class WikiDiscover {
  		$res = $dbw->select(
  			'cw_wikis',
  			[
+				'wiki_closed',
  				'wiki_dbname',
+				'wiki_inactive'
  				'wiki_language',
 				'wiki_private',
  			],

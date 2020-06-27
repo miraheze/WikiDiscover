@@ -57,8 +57,8 @@ class ApiWikiDiscover extends ApiBase {
 			$data = [];
 			$data['url'] = $url;
 			$data['dbname'] = $dbName;
-			$data['sitename'] = $wikis_lang[$dbName];
-			$data['languagecode'] = $wikidiscover->getLanguageCode( $dbName, $data['sitename'] );
+			$data['sitename'] = $wikidiscover->getSitename( $dbName );
+			$data['languagecode'] = $wikis_lang[$dbName];
 
 			$skip = true;
 			if ( $all ) {

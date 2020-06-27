@@ -78,7 +78,7 @@ class WikiDiscover {
 	public function getLanguageCode( $database ) {
 		global $wgConf;
 
-		return $wgConf->get( '$wgLanguageCode', $database );
+		return $wgConf->get( 'wgLanguageCode', $database );
 	}
 
 	public function getLanguage( $database ) {

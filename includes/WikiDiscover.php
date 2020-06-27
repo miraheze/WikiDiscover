@@ -18,12 +18,7 @@ class WikiDiscover {
 	protected $wikiprefixes;
 
 	function __construct() {
-		global $wgCreateWikiDatabase, $wgWikiDiscoverClosedList, $wgWikiDiscoverPrivateList,
-			$wgWikiDiscoverInactiveList;
-
-		$this->private = array_map( 'trim', file( $wgWikiDiscoverPrivateList ) );
-		$this->closed = array_map( 'trim', file( $wgWikiDiscoverClosedList ) );
-		$this->inactive = array_map( 'trim', file( $wgWikiDiscoverInactiveList ) );
+		global $wgCreateWikiDatabase;
 
 		$dbw = wfGetDB( DB_MASTER, [], $wgCreateWikiDatabase );
  		$res = $dbw->select(
@@ -31,20 +26,39 @@ class WikiDiscover {
  			[
  				'wiki_dbname',
  				'wiki_language',
+				'wiki_private',
  			],
  			[],
  			__METHOD__
  		);
 
+		$wikis_closed = [];
+		$wikis_inactive = [];
 		$wikis_lang = [];
-		
+		$wikis_private = [];
+
 		if ( $res ) {
 			foreach ( $res as $row ) {
+				if ( $row->wiki_closed === "1" ) {
+					$wikis_closed[$row->wiki_dbname] = $row->wiki_closed;
+				}
+
+				if ( $row->wiki_inactive === "1" ) {
+					$wikis_inactive[$row->wiki_dbname] = $row->wiki_closed;
+				}
+
 				$wikis_lang[$row->wiki_dbname] = $row->wiki_language;
+				
+				if ( $row->wiki_private === "1" ) {
+					$wikis_private[$row->wiki_dbname] = $row->wiki_private;
+				}
 			}
 		}
 
+		$this->closed = $wikis_closed;
+		$this->inactive = $wikis_inactive;
 		$this->langCodes = $wikis_lang;
+		$this->private = $wikis_private;
 	}
 
 	public function getCount() {

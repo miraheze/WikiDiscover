@@ -76,9 +76,9 @@ class WikiDiscover {
 	}
 
 	public function getLanguageCode( $database ) {
-		$remoteWiki = RemoteWiki::newFromName( $database );
+		global $wgConf;
 
-		return $remoteWiki->getLanguage();
+		return $wgConf->get( '$wgLanguageCode', $database );
 	}
 
 	public function getLanguage( $database ) {

@@ -41,12 +41,6 @@
 			"WikiDiscover::onMagicWordwgVariableIDs"
 		]
 	},
-	"config": {
-		"WikiDiscoverSubdomain": {
- 			"description": "String. Subdomain for example .example.org.",
- 			"public": true,
- 			"value": ""
- 		}
-	},
+	"config": {},
 	"manifest_version": 2
 }

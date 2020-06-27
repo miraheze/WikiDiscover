@@ -9,6 +9,8 @@ class WikiDiscover {
 
 	protected $private;
 
+	protected $langCodes;
+
 	protected $count;
 
 	protected $wikis;
@@ -16,11 +18,33 @@ class WikiDiscover {
 	protected $wikiprefixes;
 
 	function __construct() {
-		global $wgWikiDiscoverClosedList, $wgWikiDiscoverPrivateList, $wgWikiDiscoverInactiveList;
+		global $wgCreateWikiDatabase, $wgWikiDiscoverClosedList, $wgWikiDiscoverPrivateList,
+			$wgWikiDiscoverInactiveList;
 
 		$this->private = array_map( 'trim', file( $wgWikiDiscoverPrivateList ) );
 		$this->closed = array_map( 'trim', file( $wgWikiDiscoverClosedList ) );
 		$this->inactive = array_map( 'trim', file( $wgWikiDiscoverInactiveList ) );
+
+		$dbw = wfGetDB( DB_MASTER, [], $wgCreateWikiDatabase );
+ 		$res = $dbw->select(
+ 			'cw_wikis',
+ 			[
+ 				'wiki_dbname',
+ 				'wiki_language',
+ 			],
+ 			[],
+ 			__METHOD__
+ 		);
+
+		$wikis_lang = [];
+		
+		if ( $res ) {
+			foreach ( $res as $row ) {
+				$wikis_lang[$row->wiki_dbname] = $row->wiki_language;
+			}
+		}
+
+		$this->langCodes = $wikis_lang;
 	}
 
 	public function getCount() {
@@ -76,9 +100,7 @@ class WikiDiscover {
 	}
 
 	public function getLanguageCode( $database ) {
-		$remoteWiki = RemoteWiki::newFromName( $database );
-
-		return $remoteWiki->getLanguage();
+		return $this->langCodes[$database];
 	}
 
 	public function getLanguage( $database ) {

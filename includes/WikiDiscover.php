@@ -8,7 +8,7 @@ class WikiDiscover {
 	protected $inactive;
 
 	protected $private;
-	
+
 	protected $langCodes;
 
 	protected $count;

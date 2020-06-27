@@ -42,7 +42,7 @@ class SpecialRandomWiki extends SpecialPage {
 
 		$randomwiki = WikiDiscoverRandom::randomWiki( 0, $category = $formData['category'], $formData['language'] );
 
-		header( "Location: https://" . substr( $randomwiki->wiki_dbname, 0, -4 ) . $wgWikiDiscoverSubdomain . "/" );
+		header( "Location: https://" . substr( $randomwiki->wiki_dbname, 0, -4 ) . "{$wgWikiDiscoverSubdomain}/" );
 
 		return true;
 	}

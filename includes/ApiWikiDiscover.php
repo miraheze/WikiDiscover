@@ -6,6 +6,7 @@ class ApiWikiDiscover extends ApiBase {
 	}
 
 	public function execute() {
+		global $wgCreateWikiDatabase;
 		$result = $this->getResult();
 
 		$wikidiscover = new WikiDiscover();
@@ -32,6 +33,22 @@ class ApiWikiDiscover extends ApiBase {
 			$wikislist = $params['wikislist'];
 		}
 
+		$dbw = wfGetDB( DB_MASTER, [], $wgCreateWikiDatabase );
+		$res = $dbw->select(
+			'cw_wikis',
+			[
+				'wiki_dbname',
+				'wiki_language',
+			],
+			[],
+			__METHOD__
+		);
+
+		$wikis_lang = [];
+		foreach ( $res as $row ) {
+			$wikis_lang[$row->wiki_dbname] = $row->wiki_language;
+		}
+
 		foreach ( $wikidiscover->getWikiPrefixes( $wikislist ) as $wiki ) {
 			$dbName = $wiki;
 			$dbName .= 'wiki';
@@ -40,8 +57,8 @@ class ApiWikiDiscover extends ApiBase {
 			$data = [];
 			$data['url'] = $url;
 			$data['dbname'] = $dbName;
-			$data['sitename'] = $wikidiscover->getSitename( $dbName );
-			$data['languagecode'] = $wikidiscover->getLanguageCode( $dbName );
+			$data['sitename'] = $wikis_lang[$dbName];
+			$data['languagecode'] = $wikidiscover->getLanguageCode( $dbName, $data['sitename'] );
 
 			$skip = true;
 			if ( $all ) {

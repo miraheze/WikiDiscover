@@ -42,11 +42,6 @@
 		]
 	},
 	"config": {
-		"WikiDiscoverSubdomain": {
- 			"description": "String. Subdomain for example .example.org.",
- 			"public": true,
- 			"value": ""
- 		},
 		"WikiDiscoverClosedList": {
 			"description": "String. Path to a file of all closed wikis.",
 			"public": true,

@@ -100,8 +100,7 @@ class WikiDiscover {
 	}
 
 	public function getLanguageCode( $database ) {
-		// If wiki does not exist in langCodes than fallback to 'en'.
-		return $this->langCodes[$database] ?? 'en';
+		return $this->langCodes[$database];
 	}
 
 	public function getLanguage( $database ) {

@@ -37,9 +37,12 @@ class WikiDiscover {
  		);
 
 		$wikis_lang = [];
- 		foreach ( $res as $row ) {
- 			$wikis_lang[$row->wiki_dbname] = $row->wiki_language;
- 		}
+		
+		if ( $res ) {
+			foreach ( $res as $row ) {
+				$wikis_lang[$row->wiki_dbname] = $row->wiki_language;
+			}
+		}
 
 		$this->langCodes = $wikis_lang;
 	}

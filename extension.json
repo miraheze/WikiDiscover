@@ -41,22 +41,5 @@
 			"WikiDiscover::onMagicWordwgVariableIDs"
 		]
 	},
-	"config": {
-		"WikiDiscoverClosedList": {
-			"description": "String. Path to a file of all closed wikis.",
-			"public": true,
-			"value": null
-		},
-		"WikiDiscoverInactiveList": {
-			"description": "String. Path to a file of all inactive wikis.",
-			"public": true,
-			"value": null
-		},
-		"WikiDiscoverPrivateList": {
-			"description": "String. Path to a file of all private wikis.",
-			"public": true,
-			"value": null
-		}
-	},
 	"manifest_version": 2
 }

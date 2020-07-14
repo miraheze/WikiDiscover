@@ -3,27 +3,13 @@
 use MediaWiki\MediaWikiServices;
 
 class WikiDiscover {
-	protected $closed;
-
-	protected $inactive;
-
-	protected $private;
-
-	protected $langCodes;
-
-	protected $count;
-
-	protected $wikis;
-
-	protected $wikiprefixes;
+	private $closed = [];
+	private $inactive = [];
+	private $private = [];
+	private $langCodes = [];
 
 	function __construct() {
-		global $wgCreateWikiDatabase, $wgWikiDiscoverClosedList, $wgWikiDiscoverPrivateList,
-			$wgWikiDiscoverInactiveList;
-
-		$this->private = array_map( 'trim', file( $wgWikiDiscoverPrivateList ) );
-		$this->closed = array_map( 'trim', file( $wgWikiDiscoverClosedList ) );
-		$this->inactive = array_map( 'trim', file( $wgWikiDiscoverInactiveList ) );
+		global $wgCreateWikiDatabase;
 
 		$dbw = wfGetDB( DB_MASTER, [], $wgCreateWikiDatabase );
  		$res = $dbw->select(
@@ -31,20 +17,31 @@ class WikiDiscover {
  			[
  				'wiki_dbname',
  				'wiki_language',
+			    'wiki_private',
+			    'wiki_closed',
+			    'wiki_inactive'
  			],
  			[],
  			__METHOD__
  		);
-
-		$wikis_lang = [];
 		
 		if ( $res ) {
 			foreach ( $res as $row ) {
-				$wikis_lang[$row->wiki_dbname] = $row->wiki_language;
+				$this->langCodes[$row->wiki_dbname] = $row->wiki_language;
+
+				if ( $row->wiki_private ) {
+					$this->private[] = $row->wiki_dbname;
+				}
+
+				if ( $row->wiki_closed ) {
+					$this->closed[] = $row->wiki_dbname;
+				}
+
+				if ( $row->wiki_inactive ) {
+					$this->inactive[] = $row->wiki_dbname;
+				}
 			}
 		}
-
-		$this->langCodes = $wikis_lang;
 	}
 
 	public function getCount() {

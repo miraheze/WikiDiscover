@@ -1,10 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
+			"Sabelöga",
 			"WikiPhoenix"
 		]
 	},
 	"randomwiki": "Slumpwiki",
+	"randomwiki-header": "Välj en kategori och ett språk nedan och vid föreläggande kommer du omdirigeras slumpmässigt till en wiki som möter kriterierna du valt!",
 	"wikidiscover": "WikiDiscover",
 	"wikidiscover-desc": "Gör det möjligt att [[Special:WikiDiscover|upptäcka wikier]] på en wikifarm med [[Special:CreateWiki|CreateWiki]].",
 	"wikidiscover-table-category": "Kategori",

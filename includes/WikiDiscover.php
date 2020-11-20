@@ -134,6 +134,16 @@ class WikiDiscover {
 			global $wgLocalDatabases;
 			$ret = $cache[$magicWordId] = count( $wgLocalDatabases );
 		}
+		if ( $magicWordId == 'numberofprivatewikis' ) {
+			global $wgCreateWikiDatabase;
+			$dbw = wfGetDB( DB_MASTER, [], $wgCreateWikiDatabase );
+			$ret = $cache['numberofprivatewikis'] = $dbw->selectRowCount( 'cw_wikis', '*', 'wiki_private = 1' );
+		}
+		if ( $magicWordId == 'numberofclosedwikis' ) {
+			global $wgCreateWikiDatabase;
+			$dbw = wfGetDB( DB_MASTER, [], $wgCreateWikiDatabase );
+			$ret = $cache[$magicWordId] = $dbw->selectRowCount( 'cw_wikis', '*', 'wiki_closed = 1' );
+		}
 		return true;
 	}
 
@@ -143,6 +153,8 @@ class WikiDiscover {
 	 */
 	public static function onMagicWordwgVariableIDs( &$customVariableIds ) {
 		$customVariableIds[] = 'numberofwikis';
+		$customVariableIds[] = 'numberofprivatewikis';
+		$customVariableIds[] = 'numberofclosedwikis';
 		return true;
 	}
 }

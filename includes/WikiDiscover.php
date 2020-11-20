@@ -137,7 +137,7 @@ class WikiDiscover {
 		if ( $magicWordId == 'numberofprivatewikis' ) {
 			global $wgCreateWikiDatabase;
 			$dbw = wfGetDB( DB_MASTER, [], $wgCreateWikiDatabase );
-			$ret = $cache['numberofprivatewikis'] = $dbw->selectRowCount( 'cw_wikis', '*', 'wiki_private = 1' );
+			$ret = $cache[$magicWordId] = $dbw->selectRowCount( 'cw_wikis', '*', 'wiki_private = 1' );
 		}
 		if ( $magicWordId == 'numberofactivewikis' ) {
 			global $wgCreateWikiDatabase;

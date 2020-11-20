@@ -130,11 +130,40 @@ class WikiDiscover {
 		&$cache,
 		$magicWordId,
 		&$ret ) {
+		$parser->setFunctionHook( 'numberofwikisincategory', [ __CLASS__, 'numberOfWikisInCategory' ], Parser::SFH_NO_HASH );
+		
 		if ( $magicWordId == 'numberofwikis' ) {
 			global $wgLocalDatabases;
 			$ret = $cache[$magicWordId] = count( $wgLocalDatabases );
 		}
+		
+		if ( $magicWordId == 'numberofprivatewikis' ) {
+			global $wgCreateWikiDatabase;
+			$dbw = wfGetDB( DB_MASTER, [], $wgCreateWikiDatabase );
+			$ret = $cache[$magicWordId] = $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_private' => 1 ] );
+		}
+		
+		if ( $magicWordId == 'numberofactivewikis' ) {
+			global $wgCreateWikiDatabase;
+			$dbw = wfGetDB( DB_MASTER, [], $wgCreateWikiDatabase );
+			$ret = $cache[$magicWordId] = $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_inactive' => 0 ] );
+		}
+		
+		if ( $magicWordId == 'numberofclosedwikis' ) {
+			global $wgCreateWikiDatabase;
+			$dbw = wfGetDB( DB_MASTER, [], $wgCreateWikiDatabase );
+			$ret = $cache[$magicWordId] = $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_closed' => 1 ] );
+		}
+		
 		return true;
+	}
+
+	public static function numberOfWikisInCategory( Parser $parser, String $category = '' ) {
+		global $wgCreateWikiDatabase;
+		$dbw = wfGetDB( DB_MASTER, [], $wgCreateWikiDatabase );
+		$ret = $cache[$magicWordId] = $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_category' => strtolower( $category ) ] );
+
+		return $ret;
 	}
 
 	/**
@@ -143,6 +172,11 @@ class WikiDiscover {
 	 */
 	public static function onMagicWordwgVariableIDs( &$customVariableIds ) {
 		$customVariableIds[] = 'numberofwikis';
+		$customVariableIds[] = 'numberofprivatewikis';
+		$customVariableIds[] = 'numberofactivewikis';
+		$customVariableIds[] = 'numberofclosedwikis';
+		$customVariableIds[] = 'numberofwikisincategory';
+
 		return true;
 	}
 }

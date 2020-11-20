@@ -30,6 +30,7 @@ class WikiDiscoverWikisPager extends TablePager {
 			'wiki_private' => 'wikidiscover-table-visibility',
 			'wiki_category' => 'wikidiscover-table-category',
 			'wiki_closed_timestamp' => 'wikidiscover-table-deletable',
+			'wiki_creation' => 'wikidiscover-table-established',
 		];
 
 		foreach ( $headers as &$msg ) {
@@ -84,6 +85,13 @@ class WikiDiscoverWikisPager extends TablePager {
 					$formatted = 'No';
 				}
 				break;
+			case 'wiki_creation':
+				if ( isset( $row->wiki_creation ) ) {
+					$formatted = date( 'F j, Y', strtotime( $row->wiki_creation ) );
+				} else {
+					$formatted = 'N/A';
+				}
+				break;
 			default:
 				$formatted = "Unable to format $name";
 				break;
@@ -95,7 +103,7 @@ class WikiDiscoverWikisPager extends TablePager {
 	function getQueryInfo() {
 		$info = [
 			'tables' => [ 'cw_wikis' ],
-			'fields' => [ 'wiki_dbname', 'wiki_language', 'wiki_private', 'wiki_closed', 'wiki_closed_timestamp', 'wiki_category' ],
+			'fields' => [ 'wiki_dbname', 'wiki_language', 'wiki_private', 'wiki_closed', 'wiki_closed_timestamp', 'wiki_category', 'wiki_creation' ],
 			'conds' => [],
 			'joins_conds' => [],
 		];

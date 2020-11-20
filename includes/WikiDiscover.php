@@ -130,7 +130,7 @@ class WikiDiscover {
 		&$cache,
 		$magicWordId,
 		&$ret ) {
-		$parser->setFunctionHook( 'numberofwikisincategory', [ __CLASS__, 'numberofwikisincategory' ], Parser::SFH_NO_HASH );
+		$parser->setFunctionHook( 'numberofwikisincategory', [ __CLASS__, 'numberOfWikisInCategory' ], Parser::SFH_NO_HASH );
 		
 		if ( $magicWordId == 'numberofwikis' ) {
 			global $wgLocalDatabases;

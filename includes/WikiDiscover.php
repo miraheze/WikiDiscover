@@ -158,7 +158,7 @@ class WikiDiscover {
 		return true;
 	}
 
-	public static function numberofwikisincategory( Parser $parser, $category = '' ) {
+	public static function numberOfWikisInCategory( Parser $parser, String $category = '' ) {
 		global $wgCreateWikiDatabase;
 		$dbw = wfGetDB( DB_MASTER, [], $wgCreateWikiDatabase );
 		$ret = $cache[$magicWordId] = $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_category' => strtolower( $category ) ] );

@@ -178,6 +178,11 @@ class WikiDiscover {
 				$dbw = wfGetDB( DB_MASTER, [], $wgCreateWikiDatabase );
 				$ret = $cache[$magicWordId] = $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_inactive_exempt' => 1 ] );
 				break;
+			case 'numberofcustomdomains':
+				global $wgCreateWikiDatabase;
+				$dbw = wfGetDB( DB_MASTER, [], $wgCreateWikiDatabase );
+				$ret = $cache[$magicWordId] = $dbw->selectRowCount( 'cw_wikis', 'wiki_url', [ 'wiki_deleted' => 0 ] );
+				break;
 		}
 		
 		return true;
@@ -213,6 +218,7 @@ class WikiDiscover {
 		$customVariableIds[] = 'numberoflockedwikis';
 		$customVariableIds[] = 'numberofdeletedwikis';
 		$customVariableIds[] = 'numberofinactivityexemptwikis';
+		$customVariableIds[] = 'numberofcustomdomains';
 		$customVariableIds[] = 'numberofwikisincategory';
 		$customVariableIds[] = 'numberofwikisinlanguage';
 

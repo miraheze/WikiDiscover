@@ -15,8 +15,8 @@ class WikiDiscover {
  		$res = $dbw->select(
  			'cw_wikis',
  			[
- 				'wiki_dbname',
- 				'wiki_language',
+ 			    'wiki_dbname',
+ 			    'wiki_language',
 			    'wiki_private',
 			    'wiki_closed',
 			    'wiki_inactive'
@@ -131,28 +131,53 @@ class WikiDiscover {
 		$magicWordId,
 		&$ret ) {
 		$parser->setFunctionHook( 'numberofwikisincategory', [ __CLASS__, 'numberOfWikisInCategory' ], Parser::SFH_NO_HASH );
-		
-		if ( $magicWordId == 'numberofwikis' ) {
-			global $wgLocalDatabases;
-			$ret = $cache[$magicWordId] = count( $wgLocalDatabases );
-		}
-		
-		if ( $magicWordId == 'numberofprivatewikis' ) {
-			global $wgCreateWikiDatabase;
-			$dbw = wfGetDB( DB_MASTER, [], $wgCreateWikiDatabase );
-			$ret = $cache[$magicWordId] = $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_private' => 1 ] );
-		}
-		
-		if ( $magicWordId == 'numberofactivewikis' ) {
-			global $wgCreateWikiDatabase, $wgLocalDatabases;
-			$dbw = wfGetDB( DB_MASTER, [], $wgCreateWikiDatabase );
-			$ret = $cache[$magicWordId] = count( $wgLocalDatabases ) - $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_inactive' => 1 ] );
-		}
-		
-		if ( $magicWordId == 'numberofclosedwikis' ) {
-			global $wgCreateWikiDatabase;
-			$dbw = wfGetDB( DB_MASTER, [], $wgCreateWikiDatabase );
-			$ret = $cache[$magicWordId] = $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_closed' => 1 ] );
+		$parser->setFunctionHook( 'numberofwikisinlanguage', [ __CLASS__, 'numberOfWikisInLanguage' ], Parser::SFH_NO_HASH );
+
+		switch ( $magicWordId ) {
+			case 'numberofwikis':
+				global $wgLocalDatabases;
+				$ret = $cache[$magicWordId] = count( $wgLocalDatabases );
+				break;
+			case 'numberofprivatewikis':
+				global $wgCreateWikiDatabase;
+				$dbw = wfGetDB( DB_MASTER, [], $wgCreateWikiDatabase );
+				$ret = $cache[$magicWordId] = $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_private' => 1 ] );
+				break;
+			case 'numberofpublicwikis':
+				global $wgCreateWikiDatabase, $wgLocalDatabases;
+				$dbw = wfGetDB( DB_MASTER, [], $wgCreateWikiDatabase );
+				$ret = $cache[$magicWordId] = count( $wgLocalDatabases ) - $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_private' => 1 ] );
+				break;
+			case 'numberofactivewikis':
+				global $wgCreateWikiDatabase, $wgLocalDatabases;
+				$dbw = wfGetDB( DB_MASTER, [], $wgCreateWikiDatabase );
+				$ret = $cache[$magicWordId] = count( $wgLocalDatabases ) - $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_inactive' => 1 ] );
+				break;
+			case 'numberofinactivewikis':
+				global $wgCreateWikiDatabase;
+				$dbw = wfGetDB( DB_MASTER, [], $wgCreateWikiDatabase );
+				$ret = $cache[$magicWordId] = $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_inactive' => 1 ] );
+				break;
+			case 'numberofclosedwikis':
+				global $wgCreateWikiDatabase;
+				$dbw = wfGetDB( DB_MASTER, [], $wgCreateWikiDatabase );
+				$ret = $cache[$magicWordId] = $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_closed' => 1 ] );
+				break;
+			case 'numberoflockedwikis':
+				global $wgCreateWikiDatabase;
+				$dbw = wfGetDB( DB_MASTER, [], $wgCreateWikiDatabase );
+				$ret = $cache[$magicWordId] = $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_locked' => 1 ] );
+				break;
+			case 'numberofdeletedwikis':
+				global $wgCreateWikiDatabase;
+				$dbw = wfGetDB( DB_MASTER, [], $wgCreateWikiDatabase );
+				$ret = $cache[$magicWordId] = $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 1 ] );
+				break;
+			case 'numberofinactivityexemptwikis':
+				global $wgCreateWikiDatabase;
+				$dbw = wfGetDB( DB_MASTER, [], $wgCreateWikiDatabase );
+				$ret = $cache[$magicWordId] = $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_inactive_exempt' => 1 ] );
+				break;
 		}
 		
 		return true;
@@ -166,6 +191,14 @@ class WikiDiscover {
 		return $ret;
 	}
 
+	public static function numberOfWikisInLanguage( Parser $parser, String $language = '' ) {
+		global $wgCreateWikiDatabase;
+		$dbw = wfGetDB( DB_MASTER, [], $wgCreateWikiDatabase );
+		$ret = $cache[$magicWordId] = $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_language' => strtolower( $language ) ] );
+
+		return $ret;
+	}
+
 	/**
 	 * @param array &$customVariableIds
 	 * @return bool true
@@ -173,9 +206,15 @@ class WikiDiscover {
 	public static function onMagicWordwgVariableIDs( &$customVariableIds ) {
 		$customVariableIds[] = 'numberofwikis';
 		$customVariableIds[] = 'numberofprivatewikis';
+		$customVariableIds[] = 'numberofpublicwikis';
 		$customVariableIds[] = 'numberofactivewikis';
+		$customVariableIds[] = 'numberofinactivewikis';
 		$customVariableIds[] = 'numberofclosedwikis';
+		$customVariableIds[] = 'numberoflockedwikis';
+		$customVariableIds[] = 'numberofdeletedwikis';
+		$customVariableIds[] = 'numberofinactivityexemptwikis';
 		$customVariableIds[] = 'numberofwikisincategory';
+		$customVariableIds[] = 'numberofwikisinlanguage';
 
 		return true;
 	}

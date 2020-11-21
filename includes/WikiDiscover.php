@@ -141,32 +141,32 @@ class WikiDiscover {
 			case 'numberofprivatewikis':
 				global $wgCreateWikiDatabase;
 				$dbw = wfGetDB( DB_MASTER, [], $wgCreateWikiDatabase );
-				$ret = $cache[$magicWordId] = $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_private' => 1 ] );
+				$ret = $cache[$magicWordId] = $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_private' => 1 ] );
 				break;
 			case 'numberofpublicwikis':
-				global $wgCreateWikiDatabase, $wgLocalDatabases;
+				global $wgCreateWikiDatabase;
 				$dbw = wfGetDB( DB_MASTER, [], $wgCreateWikiDatabase );
-				$ret = $cache[$magicWordId] = count( $wgLocalDatabases ) - $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_private' => 1 ] );
+				$ret = $cache[$magicWordId] = $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_private' => 0 ] );
 				break;
 			case 'numberofactivewikis':
-				global $wgCreateWikiDatabase, $wgLocalDatabases;
+				global $wgCreateWikiDatabase;
 				$dbw = wfGetDB( DB_MASTER, [], $wgCreateWikiDatabase );
-				$ret = $cache[$magicWordId] = count( $wgLocalDatabases ) - $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_inactive' => 1 ] );
+				$ret = $cache[$magicWordId] = $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_closed' => 0, 'wiki_deleted' => 0, 'wiki_inactive' => 0 ] );
 				break;
 			case 'numberofinactivewikis':
 				global $wgCreateWikiDatabase;
 				$dbw = wfGetDB( DB_MASTER, [], $wgCreateWikiDatabase );
-				$ret = $cache[$magicWordId] = $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_inactive' => 1 ] );
+				$ret = $cache[$magicWordId] = $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_inactive' => 1 ] );
 				break;
 			case 'numberofclosedwikis':
 				global $wgCreateWikiDatabase;
 				$dbw = wfGetDB( DB_MASTER, [], $wgCreateWikiDatabase );
-				$ret = $cache[$magicWordId] = $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_closed' => 1 ] );
+				$ret = $cache[$magicWordId] = $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_closed' => 1 ] );
 				break;
 			case 'numberoflockedwikis':
 				global $wgCreateWikiDatabase;
 				$dbw = wfGetDB( DB_MASTER, [], $wgCreateWikiDatabase );
-				$ret = $cache[$magicWordId] = $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_locked' => 1 ] );
+				$ret = $cache[$magicWordId] = $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_locked' => 1 ] );
 				break;
 			case 'numberofdeletedwikis':
 				global $wgCreateWikiDatabase;
@@ -176,7 +176,7 @@ class WikiDiscover {
 			case 'numberofinactivityexemptwikis':
 				global $wgCreateWikiDatabase;
 				$dbw = wfGetDB( DB_MASTER, [], $wgCreateWikiDatabase );
-				$ret = $cache[$magicWordId] = $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_inactive_exempt' => 1 ] );
+				$ret = $cache[$magicWordId] = $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_inactive_exempt' => 1 ] );
 				break;
 		}
 		

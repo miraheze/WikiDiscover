@@ -144,9 +144,9 @@ class WikiDiscover {
 		}
 		
 		if ( $magicWordId == 'numberofactivewikis' ) {
-			global $wgCreateWikiDatabase, $wgLocalDatabases;
+			global $wgCreateWikiDatabase;
 			$dbw = wfGetDB( DB_MASTER, [], $wgCreateWikiDatabase );
-			$ret = $cache[$magicWordId] = count( $wgLocalDatabases ) - $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_inactive' => 1 ] );
+			$ret = $cache[$magicWordId] = $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_closed' => 0, 'wiki_deleted' => 0, 'wiki_inactive' => 0 ] );
 		}
 		
 		if ( $magicWordId == 'numberofclosedwikis' ) {

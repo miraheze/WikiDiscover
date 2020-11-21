@@ -12,6 +12,7 @@ $magicWords['en'] = [
 	'numberoflockedwikis' => [ 0, 'numberoflockedwikis' ],
 	'numberofdeletedwikis' => [ 0, 'numberofdeletedwikis' ],
 	'numberofinactivityexemptwikis' => [ 0, 'numberofinactivityexemptwikis' ],
+	'numberofcustomdomains' => [ 0, 'numberofcustomdomains' ],
 	'numberofwikisincategory' => [ 0, 'numberofwikisincategory' ],
 	'numberofwikisinlanguage' => [ 0, 'numberofwikisinlanguage' ],
 

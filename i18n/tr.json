@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"BaRaN6161 TURK",
-			"Hedda"
+			"Hedda",
+			"MuratTheTurkish"
 		]
 	},
 	"randomwiki": "Rastgele Viki",
@@ -11,6 +12,7 @@
 	"wikidiscover-desc": "[[Special:CreateWiki|CreateWiki]] ile bir viki çiftliğindeki  [[Special:WikiDiscover|vikileri keşfetmeye]] izin verir.",
 	"wikidiscover-table-category": "Kategori",
 	"wikidiscover-table-deletable": "Silinebilir mi?",
+	"wikidiscover-table-established": "Kuruldu",
 	"wikidiscover-table-language": "Dil",
 	"wikidiscover-table-state": "Etkinlik",
 	"wikidiscover-table-visibility": "Görünürlük",

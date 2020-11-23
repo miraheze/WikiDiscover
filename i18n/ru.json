@@ -5,6 +5,7 @@
 			"Movses",
 			"Nk88",
 			"Ole Yves",
+			"Rubin16",
 			"Stjn"
 		]
 	},
@@ -14,6 +15,7 @@
 	"wikidiscover-desc": "Позволяет [[Special:WikiDiscover|обнаруживать вики]] на вики-ферме вики с [[Special:CreateWiki|CreateWiki]].",
 	"wikidiscover-table-category": "Категория",
 	"wikidiscover-table-deletable": "Возможно удалить?",
+	"wikidiscover-table-established": "Установлено",
 	"wikidiscover-table-language": "Язык",
 	"wikidiscover-table-state": "Активность",
 	"wikidiscover-table-visibility": "Видимость",

@@ -191,7 +191,7 @@ class WikiDiscover {
 	public static function numberOfWikisInCategory( Parser $parser, String $category = '' ) {
 		global $wgCreateWikiDatabase;
 		$dbw = wfGetDB( DB_MASTER, [], $wgCreateWikiDatabase );
-		$ret = $cache[$magicWordId] = $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_category' => strtolower( $category ) ] );
+		$ret = $cache[$magicWordId] = $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_category' => strtolower( $category ) ] );
 
 		return $ret;
 	}
@@ -199,7 +199,7 @@ class WikiDiscover {
 	public static function numberOfWikisInLanguage( Parser $parser, String $language = '' ) {
 		global $wgCreateWikiDatabase;
 		$dbw = wfGetDB( DB_MASTER, [], $wgCreateWikiDatabase );
-		$ret = $cache[$magicWordId] = $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_language' => strtolower( $language ) ] );
+		$ret = $cache[$magicWordId] = $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_language' => strtolower( $language ) ] );
 
 		return $ret;
 	}

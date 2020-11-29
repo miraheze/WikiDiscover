@@ -1,7 +1,7 @@
 <?php
 class WikiDiscoverRandom {
 	public static function randomWiki( $state = 0, $category = 0, $language = 0 ) {
-		$conditions = array();
+		$conditions = [];
 
 		if ( $category ) {
 			$conditions['wiki_category'] = $category;

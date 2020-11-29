@@ -3,15 +3,16 @@
 use MediaWiki\MediaWikiServices;
 
 class WikiDiscover {
+	private $config;
 	private $closed = [];
 	private $inactive = [];
 	private $private = [];
 	private $langCodes = [];
 
 	function __construct() {
-		global $wgCreateWikiDatabase;
+		$this->config = $this->getConfig();
 
-		$dbw = wfGetDB( DB_MASTER, [], $wgCreateWikiDatabase );
+		$dbw = wfGetDB( DB_MASTER, [], $config->get( 'CreateWikiDatabase' ) );
  		$res = $dbw->select(
  			'cw_wikis',
  			[
@@ -45,17 +46,13 @@ class WikiDiscover {
 	}
 
 	public function getCount() {
-		global $wgLocalDatabases;
-
-		return count( $wgLocalDatabases );
+		return count( $this->config->get( 'LocalDatabases' ) );
 	}
 
 	public function getWikis( $dbname ) {
-		global $wgLocalDatabases;
-
 		$wikis = [];
 
-		$wikiList = $dbname ? explode( ',', $dbname ) : $wgLocalDatabases;
+		$wikiList = $dbname ? explode( ',', $dbname ) : $config->get( 'LocalDatabases' );
 
 		foreach ( $wikiList as $db ) {
 			if ( preg_match( "/(.*)wiki\$/", $db, $a ) ) {
@@ -69,11 +66,9 @@ class WikiDiscover {
 
 
 	public function getWikiPrefixes( $dbname ) {
-		global $wgLocalDatabases;
-
 		$wikiprefixes = [];
 
-		$wikiList = $dbname ? explode( ',', $dbname ) : $wgLocalDatabases;
+		$wikiList = $dbname ? explode( ',', $dbname ) : $config->get( 'LocalDatabases' );
 
 		foreach ( $wikiList as $db ) {
 			if ( preg_match( "/(.*)wiki\$/", $db, $a ) ) {
@@ -85,15 +80,11 @@ class WikiDiscover {
 	}
 
 	public function getUrl( $database ) {
-		global $wgConf;
-
-		return $wgConf->get( 'wgServer', $database );
+		return $this->config->get( 'Conf' )->get( 'wgServer', $database );
 	}
 
 	public function getSitename( $database ) {
-		global $wgConf;
-
-		return $wgConf->get( 'wgSitename', $database );
+		return $this->config->get( 'Conf' )->get( 'wgSitename', $database );
 	}
 
 	public function getLanguageCode( $database ) {
@@ -130,76 +121,115 @@ class WikiDiscover {
 		&$cache,
 		$magicWordId,
 		&$ret ) {
+		$config = MediaWikiServices::getInstance()->getMainConfig();
+
 		$parser->setFunctionHook( 'numberofwikisincategory', [ __CLASS__, 'numberOfWikisInCategory' ], Parser::SFH_NO_HASH );
 		$parser->setFunctionHook( 'numberofwikisinlanguage', [ __CLASS__, 'numberOfWikisInLanguage' ], Parser::SFH_NO_HASH );
+		$parser->setFunctionHook( 'numberofwikisbysetting', [ __CLASS__, 'numberOfWikisBySetting' ], Parser::SFH_NO_HASH );
 
 		switch ( $magicWordId ) {
 			case 'numberofwikis':
-				global $wgLocalDatabases;
-				$ret = $cache[$magicWordId] = count( $wgLocalDatabases );
+				$ret = $cache[$magicWordId] = count( $config->get( 'LocalDatabases' ) );
 				break;
 			case 'numberofprivatewikis':
-				global $wgCreateWikiDatabase;
-				$dbw = wfGetDB( DB_MASTER, [], $wgCreateWikiDatabase );
+				$dbw = wfGetDB( DB_MASTER, [], $config->get( 'CreateWikiDatabase' ) );
 				$ret = $cache[$magicWordId] = $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_private' => 1 ] );
 				break;
 			case 'numberofpublicwikis':
-				global $wgCreateWikiDatabase;
-				$dbw = wfGetDB( DB_MASTER, [], $wgCreateWikiDatabase );
+				$dbw = wfGetDB( DB_MASTER, [], $config->get( 'CreateWikiDatabase' ) );
 				$ret = $cache[$magicWordId] = $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_private' => 0 ] );
 				break;
 			case 'numberofactivewikis':
-				global $wgCreateWikiDatabase;
-				$dbw = wfGetDB( DB_MASTER, [], $wgCreateWikiDatabase );
+				$dbw = wfGetDB( DB_MASTER, [], $config->get( 'CreateWikiDatabase' ) );
 				$ret = $cache[$magicWordId] = $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_closed' => 0, 'wiki_deleted' => 0, 'wiki_inactive' => 0 ] );
 				break;
 			case 'numberofinactivewikis':
-				global $wgCreateWikiDatabase;
-				$dbw = wfGetDB( DB_MASTER, [], $wgCreateWikiDatabase );
+				$dbw = wfGetDB( DB_MASTER, [], $config->get( 'CreateWikiDatabase' ) );
 				$ret = $cache[$magicWordId] = $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_inactive' => 1 ] );
 				break;
 			case 'numberofclosedwikis':
-				global $wgCreateWikiDatabase;
-				$dbw = wfGetDB( DB_MASTER, [], $wgCreateWikiDatabase );
+				$dbw = wfGetDB( DB_MASTER, [], $config->get( 'CreateWikiDatabase' ) );
 				$ret = $cache[$magicWordId] = $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_closed' => 1 ] );
 				break;
 			case 'numberoflockedwikis':
-				global $wgCreateWikiDatabase;
-				$dbw = wfGetDB( DB_MASTER, [], $wgCreateWikiDatabase );
+				$dbw = wfGetDB( DB_MASTER, [], $config->get( 'CreateWikiDatabase' ) );
 				$ret = $cache[$magicWordId] = $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_locked' => 1 ] );
 				break;
 			case 'numberofdeletedwikis':
-				global $wgCreateWikiDatabase;
-				$dbw = wfGetDB( DB_MASTER, [], $wgCreateWikiDatabase );
+				$dbw = wfGetDB( DB_MASTER, [], $config->get( 'CreateWikiDatabase' ) );
 				$ret = $cache[$magicWordId] = $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 1 ] );
 				break;
 			case 'numberofinactivityexemptwikis':
-				global $wgCreateWikiDatabase;
-				$dbw = wfGetDB( DB_MASTER, [], $wgCreateWikiDatabase );
+				$dbw = wfGetDB( DB_MASTER, [], $config->get( 'CreateWikiDatabase' ) );
 				$ret = $cache[$magicWordId] = $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_inactive_exempt' => 1 ] );
 				break;
 			case 'numberofcustomdomains':
-				global $wgCreateWikiDatabase;
-				$dbw = wfGetDB( DB_MASTER, [], $wgCreateWikiDatabase );
+				$dbw = wfGetDB( DB_MASTER, [], $config->get( 'CreateWikiDatabase' ) );
 				$ret = $cache[$magicWordId] = $dbw->selectRowCount( 'cw_wikis', 'wiki_url', [ 'wiki_deleted' => 0 ] );
 				break;
 		}
-		
-		return true;
 	}
 
 	public static function numberOfWikisInCategory( Parser $parser, String $category = '' ) {
-		global $wgCreateWikiDatabase;
-		$dbw = wfGetDB( DB_MASTER, [], $wgCreateWikiDatabase );
+		$config = MediaWikiServices::getInstance()->getMainConfig();
+
+		$dbw = wfGetDB( DB_MASTER, [], $config->get( 'CreateWikiDatabase' ) );
 		$ret = $cache[$magicWordId] = $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_category' => strtolower( $category ) ] );
 
 		return $ret;
 	}
 
 	public static function numberOfWikisInLanguage( Parser $parser, String $language = '' ) {
-		global $wgCreateWikiDatabase;
-		$dbw = wfGetDB( DB_MASTER, [], $wgCreateWikiDatabase );
+		$config = MediaWikiServices::getInstance()->getMainConfig();
+
+		$dbw = wfGetDB( DB_MASTER, [], $config->get( 'CreateWikiDatabase' ) );
 		$ret = $cache[$magicWordId] = $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_language' => strtolower( $language ) ] );
+
+		return $ret;
+	}
+	
+	public static function numberOfWikisBySetting( $parser, $setting = null, $value = null ) {
+		if ( !$setting && !$value ) {
+			return 'Error: no input specified.';
+		}
+
+		$config = MediaWikiServices::getInstance()->getMainConfig();
+		$dbw = wfGetDB( DB_MASTER, [], $config->get( 'CreateWikiDatabase' ) );
+
+		$mwExt = new ManageWikiExtensions( $config->get( 'DBname') );
+		$extList = $mwExt->list();
+        
+		if ( !$value && !in_array( $setting, $extList ) ) {
+			return 0;
+		}
+        
+		if ( in_array( $setting, $extList ) ) {
+			$s_extensions = (array)$dbw->selectField( 'mw_settings', 's_extensions' );
+			$res = $dbw->select( 'mw_settings', 's_extensions' );
+			$extensionUsageCount = 0;
+
+			foreach ( $res as $row ) {
+				if( in_array( $setting, array_flip( $s_extensions ) ) ) {
+					$extensionUsageCount++;
+				}
+			}
+
+			$ret = $cache[$magicWordId] = $extensionUsageCount;
+
+			return $ret;
+		}
+        
+		$s_settings = (array)json_decode( $dbw->selectField( 'mw_settings', 's_settings' ) );
+		$res = $dbw->select( 'mw_settings', 's_settings' );
+		$settingUsageCount = 0;
+
+		foreach ( $res as $row ) {
+			if( $s_settings[$setting] === $value ) {
+				$settingUsageCount++;
+			}
+		}
+
+		$ret = $cache[$magicWordId] = $settingUsageCount;
 
 		return $ret;
 	}
@@ -221,7 +251,6 @@ class WikiDiscover {
 		$customVariableIds[] = 'numberofcustomdomains';
 		$customVariableIds[] = 'numberofwikisincategory';
 		$customVariableIds[] = 'numberofwikisinlanguage';
-
-		return true;
+		$customVariableIds[] = 'numberofwikisbysetting';
 	}
 }

@@ -23,8 +23,9 @@ class WikiDiscoverRandom {
 	}
 
 	protected static function randFromConds( $conds ) {
-		global $wgCreateWikiDatabase;
-		$dbr = wfGetDB( DB_REPLICA, [], $wgCreateWikiDatabase );
+		$config = MediaWikiServices::getInstance()->getMainConfig();
+
+		$dbr = wfGetDB( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
 
 		$possiblewikis = $dbr->selectFieldValues( 'cw_wikis', 'wiki_dbname', $conds, __METHOD__ );
 

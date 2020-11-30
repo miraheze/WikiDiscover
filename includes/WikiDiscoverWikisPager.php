@@ -12,12 +12,12 @@ class WikiDiscoverWikisPager extends TablePager {
 	}
 
 	static function getCreateWikiDatabase() {
-		global $wgCreateWikiDatabase;
+		$config = MediaWikiServices::getInstance()->getMainConfig();
 
 		$factory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
 		$lb = $factory->getMainLB( $wgCreateWikiDatabase );
 
-		return $lb->getConnectionRef( DB_REPLICA, 'cw_wikis', $wgCreateWikiDatabase );
+		return $lb->getConnectionRef( DB_REPLICA, 'cw_wikis', $config->get( 'CreateWikiDatabase' ) );
 	}
 
 	function getFieldNames() {
@@ -41,8 +41,6 @@ class WikiDiscoverWikisPager extends TablePager {
 	}
 
 	function formatValue( $name, $value ) {
-		global $wgCreateWikiCategories;
-
 		$row = $this->mCurrentRow;
 
 		$wikidiscover = $this->wikiDiscover;
@@ -75,7 +73,7 @@ class WikiDiscoverWikisPager extends TablePager {
 				}
 				break;
 			case 'wiki_category':
-				$wikicategories = array_flip( $wgCreateWikiCategories );
+				$wikicategories = array_flip( $this->getConfig()->get( 'CreateWikiCategories' ) );
 				$formatted = $wikicategories[$row->wiki_category];
 				break;
 			case 'wiki_closed_timestamp':

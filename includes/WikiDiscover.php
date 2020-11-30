@@ -12,7 +12,7 @@ class WikiDiscover {
 	function __construct() {
 		$this->config = $this->getConfig();
 
-		$dbw = wfGetDB( DB_MASTER, [], $config->get( 'CreateWikiDatabase' ) );
+		$dbw = wfGetDB( DB_MASTER, [], $this->config->get( 'CreateWikiDatabase' ) );
  		$res = $dbw->select(
  			'cw_wikis',
  			[
@@ -52,7 +52,7 @@ class WikiDiscover {
 	public function getWikis( $dbname ) {
 		$wikis = [];
 
-		$wikiList = $dbname ? explode( ',', $dbname ) : $config->get( 'LocalDatabases' );
+		$wikiList = $dbname ? explode( ',', $dbname ) : $this->config->get( 'LocalDatabases' );
 
 		foreach ( $wikiList as $db ) {
 			if ( preg_match( "/(.*)wiki\$/", $db, $a ) ) {
@@ -68,7 +68,7 @@ class WikiDiscover {
 	public function getWikiPrefixes( $dbname ) {
 		$wikiprefixes = [];
 
-		$wikiList = $dbname ? explode( ',', $dbname ) : $config->get( 'LocalDatabases' );
+		$wikiList = $dbname ? explode( ',', $dbname ) : $this->config->get( 'LocalDatabases' );
 
 		foreach ( $wikiList as $db ) {
 			if ( preg_match( "/(.*)wiki\$/", $db, $a ) ) {

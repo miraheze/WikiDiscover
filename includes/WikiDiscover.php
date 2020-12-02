@@ -155,7 +155,7 @@ class WikiDiscover {
 		}
 
 		$config = MediaWikiServices::getInstance()->getMainConfig();
-		$dbw = wfGetDB( DB_MASTER, [], $config->get( 'CreateWikiDatabase' ) );
+		$dbr = wfGetDB( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
 
 		$mwExt = new ManageWikiExtensions( $config->get( 'DBname') );
 		$extList = $mwExt->list();
@@ -165,8 +165,8 @@ class WikiDiscover {
 		}
         
 		if ( in_array( $setting, $extList ) ) {
-			$s_extensions = (array)$dbw->selectField( 'mw_settings', 's_extensions' );
-			$res = $dbw->select( 'mw_settings', 's_extensions' );
+			$s_extensions = (array)$dbr->selectField( 'mw_settings', 's_extensions' );
+			$res = $dbr->select( 'mw_settings', 's_extensions' );
 			$extensionUsageCount = 0;
 
 			foreach ( $res as $row ) {
@@ -178,8 +178,8 @@ class WikiDiscover {
 			return $extensionUsageCount;
 		}
         
-		$s_settings = (array)json_decode( $dbw->selectField( 'mw_settings', 's_settings' ) );
-		$res = $dbw->select( 'mw_settings', 's_settings' );
+		$s_settings = (array)json_decode( $dbr->selectField( 'mw_settings', 's_settings' ) );
+		$res = $dbr->select( 'mw_settings', 's_settings' );
 		$settingUsageCount = 0;
 
 		foreach ( $res as $row ) {

@@ -247,7 +247,7 @@ class WikiDiscover {
 				break;
 		}
 	}
-	
+
 	/**
 	 * @param array &$variableIDs
 	 */

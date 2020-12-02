@@ -1,4 +1,6 @@
 <?php
+use MediaWiki\MediaWikiServices;
+
 class WikiDiscoverRandom {
 	public static function randomWiki( $state = 0, $category = 0, $language = 0 ) {
 		$conditions = array();

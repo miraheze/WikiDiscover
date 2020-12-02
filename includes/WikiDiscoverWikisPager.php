@@ -15,7 +15,7 @@ class WikiDiscoverWikisPager extends TablePager {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
 
 		$factory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
-		$lb = $factory->getMainLB( $wgCreateWikiDatabase );
+		$lb = $factory->getMainLB( $config->get( 'CreateWikiDatabase' ) );
 
 		return $lb->getConnectionRef( DB_REPLICA, 'cw_wikis', $config->get( 'CreateWikiDatabase' ) );
 	}

@@ -34,11 +34,14 @@
 		"ApiWikiDiscover": "includes/ApiWikiDiscover.php"
 	},
 	"Hooks": {
+		"ParserFirstCallInit": [
+			"WikiDiscover::onParserFirstCallInit"
+		],
 		"ParserGetVariableValueSwitch": [
 			"WikiDiscover::onParserGetVariableValueSwitch"
 		],
-		"MagicWordwgVariableIDs": [
-			"WikiDiscover::onMagicWordwgVariableIDs"
+		"GetMagicVariableIDs": [
+			"WikiDiscover::onGetMagicVariableIDs"
 		]
 	},
 	"manifest_version": 2

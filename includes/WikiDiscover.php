@@ -170,15 +170,12 @@ class WikiDiscover {
 
 			return $extensionUsageCount;
 		}
-        
-		$s_settings = (array)json_decode( $dbr->selectField( 'mw_settings', 's_settings' ) );
-		$res = $dbr->select( 'mw_settings', 's_settings' );
+
+		$s_settings = $dbr->selectFieldValues( 'mw_settings', 's_settings' );
 		$settingUsageCount = 0;
 
-		foreach ( $res as $row ) {
-			if( $s_settings[$setting] === $value ) {
-				$settingUsageCount++;
-			}
+		foreach( array_flip( $s_settings ) as $key ) {
+			$settingUsageCount += substr_count( urldecode( http_build_query( json_decode( $s_settings[$key] ) ) ), $setting . '=' . $value );
 		}
 
 		return $settingUsageCount;

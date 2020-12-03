@@ -119,7 +119,7 @@ class WikiDiscover {
 	
 	/**
 	 * @param Parser $parser
-	 * @param String $category|null
+	 * @param string $category|null
 	 * @return integer
 	 */
 	public static function numberOfWikisInCategory( Parser $parser, String $category = null ) {
@@ -132,7 +132,7 @@ class WikiDiscover {
 
 	/**
 	 * @param Parser $parser
-	 * @param String $language|null
+	 * @param string $language|null
 	 * @return integer
 	 */
 	public static function numberOfWikisInLanguage( Parser $parser, String $language = null ) {

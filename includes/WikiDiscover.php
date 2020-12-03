@@ -157,23 +157,16 @@ class WikiDiscover {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
 		$dbr = wfGetDB( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
 
-		$mwExt = new ManageWikiExtensions( $config->get( 'DBname') );
-		$extList = $mwExt->list();
+		$extList = array_keys( $config->get( 'ManageWikiExtensions') );
         
 		if ( !$value && !in_array( $setting, $extList ) ) {
 			return 0;
 		}
         
 		if ( in_array( $setting, $extList ) ) {
-			$s_extensions = (array)$dbr->selectField( 'mw_settings', 's_extensions' );
-			$res = $dbr->select( 'mw_settings', 's_extensions' );
-			$extensionUsageCount = 0;
-
-			foreach ( $res as $row ) {
-				if( in_array( $setting, array_flip( $s_extensions ) ) ) {
-					$extensionUsageCount++;
-				}
-			}
+			$s_extensions = implode( ',', $dbr->selectFieldValues( 'mw_settings', 's_extensions' ) );
+			
+			$extensionUsageCount = substr_count( $s_extensions, '"' . $setting . '"' );
 
 			return $extensionUsageCount;
 		}

@@ -10,7 +10,9 @@ class ApiWikiDiscover extends ApiBase {
 
 		$wikidiscover = new WikiDiscover();
 
-		$wikicount = [ 'count' => $wikidiscover->getCount() ];
+		$wikicount = [
+			'count' => $wikidiscover->getCount()
+		];
 
 		$params = $this->extractRequestParams();
 		$state = array_flip( $params['state'] );
@@ -130,6 +132,8 @@ class ApiWikiDiscover extends ApiBase {
 	}
 
 	protected function getExamplesMessages() {
-		return [ 'action=wikidiscover' => 'apihelp-wikidiscover-example' ];
+		return [
+			'action=wikidiscover' => 'apihelp-wikidiscover-example'
+		];
 	}
 }

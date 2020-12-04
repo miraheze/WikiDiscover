@@ -157,25 +157,23 @@ class WikiDiscover {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
 		$dbr = wfGetDB( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
 
-		$extList = array_keys( $config->get( 'ManageWikiExtensions') );
+		$extList = array_keys( $config->get( 'ManageWikiExtensions' ) );
         
 		if ( !$value && !in_array( $setting, $extList ) ) {
 			return 0;
 		}
         
 		if ( in_array( $setting, $extList ) ) {
-			$s_extensions = implode( ',', $dbr->selectFieldValues( 'mw_settings', 's_extensions' ) );
-			
-			$extensionUsageCount = substr_count( $s_extensions, '"' . $setting . '"' );
+			$selectExtensions = implode( ',', $dbr->selectFieldValues( 'mw_settings', 's_extensions' ) );
 
-			return $extensionUsageCount;
+			return substr_count( $selectExtensions, '"' . $setting . '"' );
 		}
 
-		$s_settings = $dbr->selectFieldValues( 'mw_settings', 's_settings' );
+		$selectSettings = $dbr->selectFieldValues( 'mw_settings', 's_settings' );
 		$settingUsageCount = 0;
 
-		foreach( array_flip( $s_settings ) as $key ) {
-			$settingUsageCount += substr_count( urldecode( http_build_query( json_decode( $s_settings[$key] ) ) ), $setting . '=' . $value );
+		foreach( array_flip( $selectSettings ) as $key ) {
+			$settingUsageCount += substr_count( urldecode( http_build_query( json_decode( $selectSettings[$key] ) ) ), $setting . '=' . $value );
 		}
 
 		return $settingUsageCount;

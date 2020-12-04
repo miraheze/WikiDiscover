@@ -11,8 +11,7 @@
 	"requires": {
 		"MediaWiki": ">= 1.35.0",
 		"extensions": {
-			"CreateWiki": "*",
-			"ManageWiki": "*"
+			"CreateWiki": "*"
 		}
 	},
 	"SpecialPages": {

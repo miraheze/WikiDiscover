@@ -169,14 +169,18 @@ class WikiDiscover {
 			return substr_count( $selectExtensions, '"' . $setting . '"' );
 		}
 
-		$selectSettings = $dbr->selectFieldValues( 'mw_settings', 's_settings' );
-		$settingUsageCount = 0;
-
-		foreach( $selectSettings as $key ) {
-			$settingUsageCount += substr_count( urldecode( http_build_query( json_decode( $selectSettings[$key] ) ) ), $setting . '=' . $value );
+		function is_not_empty($val){
+			return !empty( $val ) || $val === 0;
 		}
 
-		return $settingUsageCount;
+		$selectSettings = $dbr->selectFieldValues( 'mw_settings', 's_settings' );
+		$settingUsageCount = [];
+		
+		foreach( $selectSettings as $key ) {
+			$settingUsageCount[] = array_search( $value, (array)json_decode( $key, true )[$setting] );
+		}
+
+		return count( array_filter( $settingUsageCount, 'is_not_empty' ) );
 	}
 	
 	/**

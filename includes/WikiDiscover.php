@@ -169,7 +169,7 @@ class WikiDiscover {
 			return substr_count( $selectExtensions, '"' . $setting . '"' );
 		}
 
-		function is_not_empty($val){
+		function is_not_empty( $val ){
 			return !empty( $val ) || $val === 0;
 		}
 

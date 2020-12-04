@@ -158,31 +158,27 @@ class WikiDiscover {
 		$dbr = wfGetDB( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
 
 		$extList = array_keys( $config->get( 'ManageWikiExtensions' ) );
-        
+
 		if ( !$value && !in_array( $setting, $extList ) ) {
 			return 0;
 		}
-        
+
 		if ( in_array( $setting, $extList ) ) {
 			$selectExtensions = implode( ',', $dbr->selectFieldValues( 'mw_settings', 's_extensions' ) );
 
 			return substr_count( $selectExtensions, '"' . $setting . '"' );
 		}
 
-		function is_not_empty( $val ){
-			return !empty( $val ) || $val === 0;
-		}
-
 		$selectSettings = $dbr->selectFieldValues( 'mw_settings', 's_settings' );
-		$settingUsageCount = [];
-		
+		$settingUsageCount = 0;
+
 		foreach( $selectSettings as $key ) {
-			if ( in_array( $setting, (array)json_decode( $key, true ) ) ) {
-				$settingUsageCount[] = array_search( $value, (array)json_decode( $key, true )[$setting] );
+			if ( !is_bool( array_search( $value, (array)( json_decode( $key, true )[$setting] ?? [] ) ) ) ) {
+				$settingUsageCount++;
 			}
 		}
 
-		return count( array_filter( $settingUsageCount, 'is_not_empty' ) );
+		return $settingUsageCount;
 	}
 	
 	/**

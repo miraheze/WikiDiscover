@@ -177,7 +177,9 @@ class WikiDiscover {
 		$settingUsageCount = [];
 		
 		foreach( $selectSettings as $key ) {
-			$settingUsageCount[] = array_search( $value, (array)json_decode( $key, true )[$setting] );
+			if ( in_array( $setting, (array)json_decode( $key, true ) ) ) {
+				$settingUsageCount[] = array_search( $value, (array)json_decode( $key, true )[$setting] );
+			}
 		}
 
 		return count( array_filter( $settingUsageCount, 'is_not_empty' ) );

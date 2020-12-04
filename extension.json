@@ -1,11 +1,15 @@
 {
 	"name": "WikiDiscover",
-	"author": "John Lewis",
+	"author": [
+		"John Lewis",
+		"Universal Omega"
+	],
 	"descriptionmsg": "wikidiscover-desc",
 	"url": "https://github.com/miraheze/WikiDiscover",
 	"license-name": "AGPL-3.0-or-later",
 	"type": "specialpage",
 	"requires": {
+		"MediaWiki": ">= 1.35.0",
 		"extensions": {
 			"CreateWiki": "*"
 		}
@@ -34,11 +38,14 @@
 		"ApiWikiDiscover": "includes/ApiWikiDiscover.php"
 	},
 	"Hooks": {
+		"ParserFirstCallInit": [
+			"WikiDiscover::onParserFirstCallInit"
+		],
 		"ParserGetVariableValueSwitch": [
 			"WikiDiscover::onParserGetVariableValueSwitch"
 		],
-		"MagicWordwgVariableIDs": [
-			"WikiDiscover::onMagicWordwgVariableIDs"
+		"GetMagicVariableIDs": [
+			"WikiDiscover::onGetMagicVariableIDs"
 		]
 	},
 	"manifest_version": 2

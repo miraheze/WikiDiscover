@@ -1,14 +1,15 @@
 <?php
 
 class SpecialRandomWiki extends SpecialPage {
-
+	private $config;
+	
 	function __construct() {
+		$this->config = $this->getConfig();
+
 		parent::__construct( 'RandomWiki' );
 	}
 
 	function execute( $par ) {
-		global $wgCreateWikiCategories;
-
 		$this->setHeaders();
 		$this->outputHeader();
 
@@ -27,7 +28,7 @@ class SpecialRandomWiki extends SpecialPage {
 				'type' => 'select',
 				'name' => 'category',
 				'label-message' => 'wikidiscover-table-category',
-				'options' => $wgCreateWikiCategories,
+				'options' => $this->config->get( 'CreateWikiCategories' ),
 				'default' => 'uncategorised',
 			],
 		];
@@ -38,11 +39,9 @@ class SpecialRandomWiki extends SpecialPage {
 	}
 
 	function redirectWiki( $formData ) {
-		global $wgCreateWikiSubdomain;
-
 		$randomwiki = WikiDiscoverRandom::randomWiki( 0, $category = $formData['category'], $formData['language'] );
 
-		header( "Location: https://" . substr( $randomwiki->wiki_dbname, 0, -4 ) . ".{$wgCreateWikiSubdomain}/" );
+		header( "Location: https://" . substr( $randomwiki->wiki_dbname, 0, -4 ) . ".{$this->config->get( 'CreateWikiSubdomain' )}/" );
 
 		return true;
 	}

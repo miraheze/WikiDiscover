@@ -7,8 +7,6 @@ class SpecialWikiDiscover extends SpecialPage {
 	}
 
 	function execute( $par ) {
-		global $wgCreateWikiCategories;
-
 		$this->setHeaders();
 		$this->outputHeader();
 
@@ -28,7 +26,7 @@ class SpecialWikiDiscover extends SpecialPage {
 				'type' => 'select',
 				'name' => 'category',
 				'label-message' => 'wikidiscover-table-category',
-				'options' => $wgCreateWikiCategories,
+				'options' => $this->getConfig()->get( 'CreateWikiCategories' ),
 				'default' => ( $category ) ? $category : 'uncategorised',
 			],
 		];

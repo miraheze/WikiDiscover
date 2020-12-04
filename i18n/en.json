@@ -1,6 +1,9 @@
 {
 	"@metadata": {
-		"authors": [ "John Lewis" ]
+		"authors": [ 
+			"John Lewis",
+			"Universal Omega"
+		]
 	},
 	"randomwiki": "Random Wiki",
 	"randomwiki-header": "Select a category and a language below and on submission you will redirected randomly to a wiki which meets the criteria selected!",

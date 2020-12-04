@@ -172,7 +172,7 @@ class WikiDiscover {
 		$selectSettings = $dbr->selectFieldValues( 'mw_settings', 's_settings' );
 		$settingUsageCount = 0;
 
-		foreach( array_flip( $selectSettings ) as $key ) {
+		foreach( $selectSettings as $key ) {
 			$settingUsageCount += substr_count( urldecode( http_build_query( json_decode( $selectSettings[$key] ) ) ), $setting . '=' . $value );
 		}
 

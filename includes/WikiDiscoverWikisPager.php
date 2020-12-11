@@ -26,9 +26,10 @@ class WikiDiscoverWikisPager extends TablePager {
 		$headers = [
 			'wiki_dbname' => 'wikidiscover-table-wiki',
 			'wiki_language' => 'wikidiscover-table-language',
+			'wiki_category' => 'wikidiscover-table-category',
+			'wiki_description' => 'wikidiscover-table-description',
 			'wiki_closed' => 'wikidiscover-table-state',
 			'wiki_private' => 'wikidiscover-table-visibility',
-			'wiki_category' => 'wikidiscover-table-category',
 			'wiki_closed_timestamp' => 'wikidiscover-table-deletable',
 			'wiki_creation' => 'wikidiscover-table-established',
 		];
@@ -56,6 +57,13 @@ class WikiDiscoverWikisPager extends TablePager {
 			case 'wiki_language':
 				$formatted = $wikidiscover->getLanguage( $wiki );
 				break;
+			case 'wiki_category':
+				$wikicategories = array_flip( $this->getConfig()->get( 'CreateWikiCategories' ) );
+				$formatted = $wikicategories[$row->wiki_category];
+				break;
+			case 'wiki_description':
+				$formatted = $row->wiki_description;
+				break;
 			case 'wiki_closed':
 				if ($wikidiscover->isClosed( $wiki ) === true ) {
 					$formatted = 'Closed';
@@ -71,10 +79,6 @@ class WikiDiscoverWikisPager extends TablePager {
 				} else {
 					$formatted = 'Public';
 				}
-				break;
-			case 'wiki_category':
-				$wikicategories = array_flip( $this->getConfig()->get( 'CreateWikiCategories' ) );
-				$formatted = $wikicategories[$row->wiki_category];
 				break;
 			case 'wiki_closed_timestamp':
 				if ( isset( $row->wiki_closed_timestamp ) && $row->wiki_closed_timestamp < date( "YmdHis", strtotime( "-120 days" ) ) ) {
@@ -97,7 +101,16 @@ class WikiDiscoverWikisPager extends TablePager {
 	function getQueryInfo() {
 		$info = [
 			'tables' => [ 'cw_wikis' ],
-			'fields' => [ 'wiki_dbname', 'wiki_language', 'wiki_private', 'wiki_closed', 'wiki_closed_timestamp', 'wiki_category', 'wiki_creation' ],
+			'fields' => [
+				'wiki_dbname',
+				'wiki_language',
+				'wiki_description',
+				'wiki_private',
+				'wiki_closed',
+				'wiki_closed_timestamp',
+				'wiki_category',
+				'wiki_creation'
+			],
 			'conds' => [],
 			'joins_conds' => [],
 		];

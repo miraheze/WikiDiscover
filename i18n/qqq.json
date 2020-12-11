@@ -9,7 +9,7 @@
 	"wikidiscover": "WikiDiscover",
 	"wikidiscover-desc": "Allows [[Special:WikiDiscover|discovering wikis]] on a wiki farm with [[Special:CreateWiki|CreateWiki]].",
 	"wikidiscover-table-category": "Label for 'Category'\n{{Identical|Category}}",
-	"wikidiscover-table-description": "Label for 'Wiki Description'",
+	"wikidiscover-table-description": "Label for 'Description'",
 	"wikidiscover-table-established": "Label for 'Established'",
 	"wikidiscover-table-language": "Label for 'Language'\n{{Identical|Language}}",
 	"wikidiscover-table-state": "Label for 'Activity'\n{{Identical|Activity}}",

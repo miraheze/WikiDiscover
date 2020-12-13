@@ -108,6 +108,19 @@ class WikiDiscover {
 		return in_array( $database, $this->private );
 	}
 	
+	public static function hasSettingValue( $database, $setting, $value ) {
+		$config = MediaWikiServices::getInstance()->getMainConfig();
+		$dbw = wfGetDB( DB_MASTER, [], $config->get( 'CreateWikiDatabase' ) );
+		$selectSettings = $dbw->selectFieldValues( 'mw_settings', 's_settings', [ 's_dbname' => $database ] );
+		$settings = (array)json_decode( $selectSettings[0], true )[$setting];
+        
+		if ( $settings[0] === $value || ( is_array( $settings ) && in_array( $value, $settings ) ) ) {
+			return true;
+		}
+		
+		return false;
+	}
+
 	/**
 	 * @param Parser $parser
 	 */

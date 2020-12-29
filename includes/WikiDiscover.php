@@ -146,11 +146,11 @@ class WikiDiscover {
 	
 	/**
 	 * @param Parser $parser
-	 * @param mixed $setting|false
-	 * @param mixed $value|false
+	 * @param mixed $setting|null
+	 * @param mixed $value|null
 	 * @return string|integer
 	 */
-	public static function numberOfWikisBySetting( $parser, $setting = false, $value = false ) {
+	public static function numberOfWikisBySetting( $parser, $setting = null, $value = null ) {
 		if ( !$setting && !$value ) {
 			return 'Error: no input specified.';
 		}
@@ -184,10 +184,10 @@ class WikiDiscover {
 	
 	/**
 	 * @param Parser $parser
-	 * @param string $wikiDatebase|false
+	 * @param string $wikiDatebase|null
 	 * @return string
 	 */
-	public static function wikiCreationDate( Parser $parser, String $wikiDatabase = false ) {
+	public static function wikiCreationDate( Parser $parser, String $wikiDatabase = null ) {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
 
 		$dbw = wfGetDB( DB_MASTER, [], $config->get( 'CreateWikiDatabase' ) );

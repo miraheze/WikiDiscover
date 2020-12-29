@@ -115,41 +115,42 @@ class WikiDiscover {
 		$parser->setFunctionHook( 'numberofwikisincategory', [ __CLASS__, 'numberOfWikisInCategory' ], Parser::SFH_NO_HASH );
 		$parser->setFunctionHook( 'numberofwikisinlanguage', [ __CLASS__, 'numberOfWikisInLanguage' ], Parser::SFH_NO_HASH );
 		$parser->setFunctionHook( 'numberofwikisbysetting', [ __CLASS__, 'numberOfWikisBySetting' ], Parser::SFH_NO_HASH );
+		$parser->setFunctionHook( 'wikicreationdate', [ __CLASS__, 'wikiCreationDate' ], Parser::SFH_NO_HASH );
 	}
 	
 	/**
 	 * @param Parser $parser
-	 * @param string $category|null
+	 * @param string $category|uncategorized
 	 * @return integer
 	 */
-	public static function numberOfWikisInCategory( Parser $parser, String $category = null ) {
+	public static function numberOfWikisInCategory( Parser $parser, String $category = 'uncategorized' ) {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
 
 		$dbw = wfGetDB( DB_MASTER, [], $config->get( 'CreateWikiDatabase' ) );
 
-		return $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_category' => strtolower( $category ) ] );;
+		return $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_category' => strtolower( $category ) ] );
 	}
 
 	/**
 	 * @param Parser $parser
-	 * @param string $language|null
+	 * @param string $language|en
 	 * @return integer
 	 */
-	public static function numberOfWikisInLanguage( Parser $parser, String $language = null ) {
+	public static function numberOfWikisInLanguage( Parser $parser, String $language = 'en' ) {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
 
 		$dbw = wfGetDB( DB_MASTER, [], $config->get( 'CreateWikiDatabase' ) );
 
-		return $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_language' => strtolower( $language ) ] );;
+		return $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_language' => strtolower( $language ) ] );
 	}
 	
 	/**
 	 * @param Parser $parser
-	 * @param mixed $setting|null
-	 * @param mixed $value|null
+	 * @param mixed $setting|false
+	 * @param mixed $value|false
 	 * @return string|integer
 	 */
-	public static function numberOfWikisBySetting( $parser, $setting = null, $value = null ) {
+	public static function numberOfWikisBySetting( $parser, $setting = false, $value = false ) {
 		if ( !$setting && !$value ) {
 			return 'Error: no input specified.';
 		}
@@ -179,6 +180,23 @@ class WikiDiscover {
 		}
 
 		return $settingUsageCount;
+	}
+	
+	/**
+	 * @param Parser $parser
+	 * @param string $wikiDatebase|false
+	 * @return string
+	 */
+	public static function wikiCreationDate( Parser $parser, String $wikiDatabase = false ) {
+		$config = MediaWikiServices::getInstance()->getMainConfig();
+
+		$dbw = wfGetDB( DB_MASTER, [], $config->get( 'CreateWikiDatabase' ) );
+		
+		$wikiDatabase = $wikiDatabase ? $wikiDatabase : $config->get( 'DBname' );
+		
+		$creationDate = $dbw->selectField( 'cw_wikis', 'wiki_creation', [ 'wiki_dbname' => $wikiDatabase ] );
+		
+		return date( 'F j, Y', strtotime( $creationDate ) );
 	}
 	
 	/**

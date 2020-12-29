@@ -16,6 +16,7 @@ $magicWords['en'] = [
 	'numberofwikisincategory' => [ 0, 'numberofwikisincategory' ],
 	'numberofwikisinlanguage' => [ 0, 'numberofwikisinlanguage', 'numberofwikisinlanguagecode' ],
 	'numberofwikisbysetting' => [ 0, 'numberofwikisbysetting', 'numberofwikisbyextension', 'numberofwikisusingextension' ],
+	'wikicreationdate' => [ 0, 'wikicreationdate' ],
 
 ];
 

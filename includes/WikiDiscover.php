@@ -190,11 +190,11 @@ class WikiDiscover {
 	public static function wikiCreationDate( Parser $parser, String $wikiDatabase = null ) {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
 
-		$dbw = wfGetDB( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
+		$dbr = wfGetDB( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
 		
 		$wikiDatabase = $wikiDatabase ? $wikiDatabase : $config->get( 'DBname' );
 		
-		$creationDate = $dbw->selectField( 'cw_wikis', 'wiki_creation', [ 'wiki_dbname' => $wikiDatabase ] );
+		$creationDate = $dbr->selectField( 'cw_wikis', 'wiki_creation', [ 'wiki_dbname' => $wikiDatabase ] );
 		
 		return date( 'F j, Y', strtotime( $creationDate ) );
 	}

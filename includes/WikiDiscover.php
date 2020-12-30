@@ -192,7 +192,7 @@ class WikiDiscover {
 
 		$dbr = wfGetDB( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
 		
-		$wikiDatabase = $wikiDatabase ? $wikiDatabase : $config->get( 'DBname' );
+		$wikiDatabase = $wikiDatabase ?? $config->get( 'DBname' );
 		
 		$creationDate = $dbr->selectField( 'cw_wikis', 'wiki_creation', [ 'wiki_dbname' => $wikiDatabase ] );
 		

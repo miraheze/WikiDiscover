@@ -120,10 +120,10 @@ class WikiDiscover {
 	
 	/**
 	 * @param Parser $parser
-	 * @param string $category|uncategorized
+	 * @param string $category|uncategorised
 	 * @return integer
 	 */
-	public static function numberOfWikisInCategory( Parser $parser, String $category = 'uncategorized' ) {
+	public static function numberOfWikisInCategory( Parser $parser, String $category = 'uncategorised' ) {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
 
 		$dbw = wfGetDB( DB_MASTER, [], $config->get( 'CreateWikiDatabase' ) );

@@ -27,7 +27,8 @@
 		]
 	},
 	"ExtensionMessagesFiles": {
-		"WikiDiscoverMagic": "WikiDiscover.i18n.magic.php"
+		"WikiDiscoverMagic": "WikiDiscover.i18n.magic.php",
+		"WikiDiscoverAliases": "WikiDiscover.i18n.alias.php"
 	},
 	"AutoloadClasses": {
 		"WikiDiscover": "includes/WikiDiscover.php",

@@ -139,9 +139,9 @@ class WikiDiscover {
 	public static function numberOfWikisInCategory( Parser $parser, String $category = 'uncategorised' ) {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
 
-		$dbw = wfGetDB( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
+		$dbr = wfGetDB( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
 
-		return $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_category' => strtolower( $category ) ] );
+		return $dbr->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_category' => strtolower( $category ) ] );
 	}
 
 	/**
@@ -152,9 +152,9 @@ class WikiDiscover {
 	public static function numberOfWikisInLanguage( Parser $parser, String $language = 'en' ) {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
 
-		$dbw = wfGetDB( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
+		$dbr = wfGetDB( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
 
-		return $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_language' => strtolower( $language ) ] );
+		return $dbr->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_language' => strtolower( $language ) ] );
 	}
 	
 	/**
@@ -230,40 +230,40 @@ class WikiDiscover {
 				$ret = $cache[$magicWordId] = count( $config->get( 'LocalDatabases' ) );
 				break;
 			case 'numberofprivatewikis':
-				$dbw = wfGetDB( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
-				$ret = $cache[$magicWordId] = $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_private' => 1 ] );
+				$dbr = wfGetDB( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
+				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_private' => 1 ] );
 				break;
 			case 'numberofpublicwikis':
-				$dbw = wfGetDB( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
-				$ret = $cache[$magicWordId] = $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_private' => 0 ] );
+				$dbr = wfGetDB( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
+				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_private' => 0 ] );
 				break;
 			case 'numberofactivewikis':
-				$dbw = wfGetDB( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
-				$ret = $cache[$magicWordId] = $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_closed' => 0, 'wiki_deleted' => 0, 'wiki_inactive' => 0 ] );
+				$dbr = wfGetDB( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
+				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_wikis', '*', [ 'wiki_closed' => 0, 'wiki_deleted' => 0, 'wiki_inactive' => 0 ] );
 				break;
 			case 'numberofinactivewikis':
-				$dbw = wfGetDB( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
-				$ret = $cache[$magicWordId] = $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_inactive' => 1 ] );
+				$dbr = wfGetDB( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
+				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_inactive' => 1 ] );
 				break;
 			case 'numberofclosedwikis':
-				$dbw = wfGetDB( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
-				$ret = $cache[$magicWordId] = $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_closed' => 1 ] );
+				$dbr = wfGetDB( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
+				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_closed' => 1 ] );
 				break;
 			case 'numberoflockedwikis':
-				$dbw = wfGetDB( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
-				$ret = $cache[$magicWordId] = $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_locked' => 1 ] );
+				$dbr = wfGetDB( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
+				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_locked' => 1 ] );
 				break;
 			case 'numberofdeletedwikis':
-				$dbw = wfGetDB( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
-				$ret = $cache[$magicWordId] = $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 1 ] );
+				$dbr = wfGetDB( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
+				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 1 ] );
 				break;
 			case 'numberofinactivityexemptwikis':
-				$dbw = wfGetDB( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
-				$ret = $cache[$magicWordId] = $dbw->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_inactive_exempt' => 1 ] );
+				$dbr = wfGetDB( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
+				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_inactive_exempt' => 1 ] );
 				break;
 			case 'numberofcustomdomains':
-				$dbw = wfGetDB( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
-				$ret = $cache[$magicWordId] = $dbw->selectRowCount( 'cw_wikis', 'wiki_url', [ 'wiki_deleted' => 0 ] );
+				$dbr = wfGetDB( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
+				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_wikis', 'wiki_url', [ 'wiki_deleted' => 0 ] );
 				break;
 		}
 	}

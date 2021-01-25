@@ -19,5 +19,6 @@
 	"apihelp-wikidiscover-param-state": "Filtrar pelo estado de uma wiki definido por CriarWiki.",
 	"apihelp-wikidiscover-param-siteprop": "Informações para retornar sobre um wiki definido.",
 	"apihelp-wikidiscover-param-limit": "O número máximo de resultados a serem mostrados.",
+	"apihelp-wikidiscover-param-wikislist": "Obtenha uma lista de todas as wikis.",
 	"apihelp-wikidiscover-example": "Mostrar todas as wikis no site."
 }

@@ -18,5 +18,6 @@
 	"wikidiscover-table-wiki": "Nazwa wiki",
 	"apihelp-wikidiscover-summary": "Pobierz listę wiki na farmie z rozszerzeniem CreateWiki.",
 	"apihelp-wikidiscover-param-limit": "Maksymalna liczba wyników do pokazania.",
+	"apihelp-wikidiscover-param-wikislist": "Pozyskaj listę wszystkich wiki.",
 	"apihelp-wikidiscover-example": "Wyświetl wszystkie wiki w formularzu."
 }

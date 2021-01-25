@@ -19,5 +19,6 @@
 	"apihelp-wikidiscover-param-state": "依 CreateWiki 所定義的 wiki 狀態篩選。",
 	"apihelp-wikidiscover-param-siteprop": "回有有關定義 wiki 的訊息。",
 	"apihelp-wikidiscover-param-limit": "結果顯示的數量上限。",
+	"apihelp-wikidiscover-param-wikislist": "取得所有 wiki 的清單。",
 	"apihelp-wikidiscover-example": "顯示在表單裡的所有 wiki。"
 }

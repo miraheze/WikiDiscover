@@ -19,5 +19,6 @@
 	"apihelp-wikidiscover-param-state": "Filtre pe 'nu state definite de CreateWiki de 'na uicchi.",
 	"apihelp-wikidiscover-param-siteprop": "'Mbormazione ca a turnà sus a 'na uicchi definite.",
 	"apihelp-wikidiscover-param-limit": "Numere massime de resultate da 'ndrucà.",
+	"apihelp-wikidiscover-param-wikislist": "Pigghie l'elenghe de tutte le uicchi",
 	"apihelp-wikidiscover-example": "Fà 'ndrucà tutte le uicchi sus a 'u module."
 }

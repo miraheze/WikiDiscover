@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"ديفيد"
+			"ديفيد",
+			"محمد أحمد عبد الفتاح"
 		]
 	},
 	"randomwiki": "ويكي عشوائي",
@@ -18,5 +19,6 @@
 	"apihelp-wikidiscover-param-state": "قم بالتصفية حسب حالة إنشاء الويكي المعرفة للويكي.",
 	"apihelp-wikidiscover-param-siteprop": "معلومات للعودة عن ويكي محددة.",
 	"apihelp-wikidiscover-param-limit": "أقصى عدد من النتائج لإظهارها.",
+	"apihelp-wikidiscover-param-wikislist": "احصل على قائمة بكل الويكيات",
 	"apihelp-wikidiscover-example": "عرض جميع الويكيات في النموذج."
 }

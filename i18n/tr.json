@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Agaafd",
 			"BaRaN6161 TURK",
 			"Hedda",
 			"MuratTheTurkish"
@@ -21,5 +22,6 @@
 	"apihelp-wikidiscover-param-state": "Bir vikinin CreateWiki tanımlı durumuna göre filtreleyin.",
 	"apihelp-wikidiscover-param-siteprop": "Tanımlanmış bir viki hakkındaki bilgiye dönüş yapın.",
 	"apihelp-wikidiscover-param-limit": "Gösterilecek maksimum sonuç sayısı.",
+	"apihelp-wikidiscover-param-wikislist": "Tüm wiki'lerin bir listesini alın.",
 	"apihelp-wikidiscover-example": "Tüm vikileri formda göster."
 }

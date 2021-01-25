@@ -19,5 +19,6 @@
 	"apihelp-wikidiscover-param-state": "Филтрирај по состојба на викито според „Создај вики“",
 	"apihelp-wikidiscover-param-siteprop": "Кои информации за определеното вики да се дадат.",
 	"apihelp-wikidiscover-param-limit": "Највеќе ставки за приказ.",
+	"apihelp-wikidiscover-param-wikislist": "Дај список на сите викија.",
 	"apihelp-wikidiscover-example": "Прикажи ги сите викија на фармата."
 }

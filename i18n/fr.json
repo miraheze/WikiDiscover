@@ -3,6 +3,7 @@
 		"authors": [
 			"Florian COLLIN",
 			"Gomoko",
+			"Tektasc",
 			"Thibaut120094",
 			"Verdy p",
 			"Wladek92"
@@ -23,5 +24,6 @@
 	"apihelp-wikidiscover-param-state": "Filtrer par l’état CreateWiki défini sur un wiki.",
 	"apihelp-wikidiscover-param-siteprop": "Information à renvoyer sur un wiki défini.",
 	"apihelp-wikidiscover-param-limit": "Nombre maximal de résultats à afficher.",
+	"apihelp-wikidiscover-param-wikislist": "Obtenir une liste de tous les wikis.",
 	"apihelp-wikidiscover-example": "Afficher tous les wikis sur le formulaire."
 }

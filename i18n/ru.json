@@ -6,7 +6,8 @@
 			"Nk88",
 			"Ole Yves",
 			"Rubin16",
-			"Stjn"
+			"Stjn",
+			"WerySkok"
 		]
 	},
 	"randomwiki": "\nСлучайная Вики",
@@ -24,5 +25,6 @@
 	"apihelp-wikidiscover-param-state": "Фильтровать по установленному CreateWiki состоянию вики.",
 	"apihelp-wikidiscover-param-siteprop": "Информация, которую нужно вернуть о переданной вики.",
 	"apihelp-wikidiscover-param-limit": "Максимальное количество результатов для отображения.",
+	"apihelp-wikidiscover-param-wikislist": "Получить список всех вики.",
 	"apihelp-wikidiscover-example": "Показать все вики в форме."
 }

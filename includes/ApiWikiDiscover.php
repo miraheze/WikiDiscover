@@ -50,7 +50,13 @@ class ApiWikiDiscover extends ApiBase {
 				}
 			}
 
-			if ( $wikidiscover->isClosed( $dbName ) ) {
+			if ( $wikidiscover->isDeleted( $dbName ) ) {
+				$data['deleted'] = true;
+
+				if ( $state['deleted'] ) {
+					$skip = false;
+				}
+			} elseif ( $wikidiscover->isClosed( $dbName ) ) {
 				$data['closed'] = true;
 
 				if ( $state['closed'] ) {
@@ -68,6 +74,11 @@ class ApiWikiDiscover extends ApiBase {
 				if ( $state['active'] ) {
 					$skip = false;
 				}
+			}
+
+			if ( $wikidiscover->isLocked( $dbName ) ) {
+				$data['locked'] = true;
+				$skip = false; // Always include a locked wiki state
 			}
 
 			if ( $skip ) {
@@ -90,7 +101,8 @@ class ApiWikiDiscover extends ApiBase {
 					'inactive',
 					'active',
 					'private',
-					'public'
+					'public',
+					'deleted'
 				],
 				ApiBase::PARAM_DFLT => 'all',
 			],

@@ -6,6 +6,8 @@ class WikiDiscover {
 	private $closed = [];
 	private $inactive = [];
 	private $private = [];
+	private $deleted = [];
+	private $locked = [];
 	private $langCodes = [];
 
 	function __construct() {
@@ -39,6 +41,14 @@ class WikiDiscover {
 
 				if ( $row->wiki_inactive ) {
 					$this->inactive[] = $row->wiki_dbname;
+				}
+
+				if ( $row->wiki_deleted ) {
+					$this->deleted[] = $row->wiki_dbname;
+				}
+
+				if ( $row->wiki_locked ) {
+					$this->locked[] = $row->wiki_dbname;
 				}
 			}
 		}
@@ -106,6 +116,14 @@ class WikiDiscover {
 
 	public function isPrivate( $database ) {
 		return in_array( $database, $this->private );
+	}
+
+	public function isDeleted( $database ) {
+		return in_array( $database, $this->deleted );
+	}
+
+	public function isLocked( $database ) {
+		return in_array( $database, $this->locked );
 	}
 	
 	public static function hasSettingValue( $database, $setting, $value ) {
@@ -197,10 +215,10 @@ class WikiDiscover {
 	
 	/**
 	 * @param Parser $parser
-	 * @param string $wikiDatebase|null
+	 * @param string|null $wikiDatabase
 	 * @return string
 	 */
-	public static function wikiCreationDate( Parser $parser, String $wikiDatabase = null ) {
+	public static function wikiCreationDate( Parser $parser, string $wikiDatabase = null ) {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
 
 		$dbr = wfGetDB( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );

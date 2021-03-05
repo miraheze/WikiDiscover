@@ -10,23 +10,11 @@ class ApiWikiDiscover extends ApiBase {
 
 		$wikidiscover = new WikiDiscover();
 
-		$wikicount = [
-			'count' => $wikidiscover->getCount()
-		];
-
 		$params = $this->extractRequestParams();
 		$state = array_flip( $params['state'] );
 		$siteprop = array_flip( $params['siteprop'] );
 		$limit = $params['limit'];
 
-		$all = isset( $state['all'] );
-		$closed = isset( $state['closed'] );
-		$inactive = isset( $state['inactive'] );
-		$active = isset( $state['active'] );
-		$private = isset( $state['private'] );
-		$public = isset( $state['public'] );
-
-		$count = 0;
 		$wikis = [];
 
 		$wikislist = null;
@@ -35,31 +23,29 @@ class ApiWikiDiscover extends ApiBase {
 		}
 
 		foreach ( $wikidiscover->getWikiPrefixes( $wikislist ) as $wiki ) {
-			$dbName = $wiki;
-			$dbName .= 'wiki';
-			$url = $wikidiscover->getUrl( $dbName );
+			$dbName = $wiki . 'wiki';
 
 			$data = [];
-			$data['url'] = $url;
+			$data['url'] = $wikidiscover->getUrl( $dbName );
 			$data['dbname'] = $dbName;
 			$data['sitename'] = $wikidiscover->getSitename( $dbName );
 			$data['languagecode'] = $wikidiscover->getLanguageCode( $dbName );
 
 			$skip = true;
-			if ( $all ) {
+			if ( $state['all'] ) {
 				$skip = false;
 			}
 
 			if ( $wikidiscover->isPrivate( $dbName ) ) {
 				$data['private'] = true;
 
-				if ( $private ) {
+				if ( $state['private'] ) {
 					$skip = false;
 				}
 			} else {
 				$data['public'] = true;
 
-				if ( $public ) {
+				if ( $state['public'] ) {
 					$skip = false;
 				}
 			}
@@ -67,19 +53,19 @@ class ApiWikiDiscover extends ApiBase {
 			if ( $wikidiscover->isClosed( $dbName ) ) {
 				$data['closed'] = true;
 
-				if ( $closed ) {
+				if ( $state['closed'] ) {
 					$skip = false;
 				}
 			} elseif ( $wikidiscover->isInactive( $dbName ) ) {
 				$data['inactive'] = true;
 
-				if ( $inactive ) {
+				if ( $state['inactive'] ) {
 					$skip = false;
 				}
 			} else {
 				$data['active'] = true;
 
-				if ( $active ) {
+				if ( $state['active'] ) {
 					$skip = false;
 				}
 			}
@@ -88,10 +74,10 @@ class ApiWikiDiscover extends ApiBase {
 				continue;
 			}
 
-			$wikis[] = $data;
+			$wikis[] = array_intersect( $data, $siteprop );
 		}
 
-		$result->addValue( null, "wikidiscover", $wikis );
+		$result->addValue( null, "wikidiscover", array_slice( $wikis, 0, $limit ) );
 	}
 
 	protected function getAllowedParams() {

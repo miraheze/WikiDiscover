@@ -102,11 +102,11 @@ class WikiDiscoverWikisPager extends TablePager {
 			'joins_conds' => [],
 		];
 
-		if ( $this->language ) {
+		if ( $this->language && $this->language !== 'any' ) {
 			$info['conds']['wiki_language'] = $this->language;
 		}
 
-		if ( $this->category ) {
+		if ( $this->category && $this->category !== 'any' ) {
 			$info['conds']['wiki_category'] = $this->category;
 		}
 

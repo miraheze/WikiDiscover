@@ -18,16 +18,17 @@ class SpecialWikiDiscover extends SpecialPage {
 		$formDescriptor = [
 			'language' => [
 				'type' => 'language',
+				'options' => [ '(any)' => 'any' ],
 				'name' => 'language',
 				'label-message' => 'wikidiscover-table-language',
-				'default' => ( $language ) ? $language : 'en',
+				'default' => ( $language ) ? $language : 'any',
 			],
 			'category' => [
 				'type' => 'select',
 				'name' => 'category',
 				'label-message' => 'wikidiscover-table-category',
-				'options' => $this->getConfig()->get( 'CreateWikiCategories' ),
-				'default' => ( $category ) ? $category : 'uncategorised',
+				'options' => $this->getConfig()->get( 'CreateWikiCategories' ) + [ '(any)' => 'any' ],
+				'default' => ( $category ) ? $category : 'any',
 			],
 		];
 

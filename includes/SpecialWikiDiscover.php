@@ -27,7 +27,7 @@ class SpecialWikiDiscover extends SpecialPage {
 				'type' => 'select',
 				'name' => 'category',
 				'label-message' => 'wikidiscover-table-category',
-				'options' => $this->getConfig()->get( 'CreateWikiCategories' ) + [ '(any)' => 'any' ],
+				'options' => [ '(any)' => 'any' ] + $this->getConfig()->get( 'CreateWikiCategories' ),
 				'default' => ( $category ) ? $category : 'any',
 			],
 		];

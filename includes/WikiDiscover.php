@@ -15,16 +15,15 @@ class WikiDiscover {
 
 		$dbw = wfGetDB( DB_MASTER, [], $this->config->get( 'CreateWikiDatabase' ) );
  		$res = $dbw->select(
- 			'cw_wikis',
- 			[
- 			    'wiki_dbname',
- 			    'wiki_language',
-			    'wiki_private',
-			    'wiki_closed',
-			    'wiki_inactive'
+ 			'cw_wikis', [
+				'wiki_dbname',
+				'wiki_language',
+				'wiki_private',
+				'wiki_closed',
+				'wiki_inactive',
+				'wiki_locked',
+				'wiki_deleted',
  			],
- 			[],
- 			__METHOD__
  		);
 		
 		if ( $res ) {

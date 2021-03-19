@@ -12,7 +12,7 @@ class ApiWikiDiscover extends ApiBase {
 
 		$params = $this->extractRequestParams();
 		$state = array_flip( $params['state'] );
-		$siteprop = $this->makeSitePropsArray( array_flip( $params['siteprop'] ) );
+		$siteprop = array_flip( $params['siteprop'] );
 		$limit = $params['limit'];
 
 		$wikis = [];
@@ -26,10 +26,18 @@ class ApiWikiDiscover extends ApiBase {
 			$dbName = $wiki . 'wiki';
 
 			$data = [];
-			$data['url'] = $wikidiscover->getUrl( $dbName );
-			$data['dbname'] = $dbName;
-			$data['sitename'] = $wikidiscover->getSitename( $dbName );
-			$data['languagecode'] = $wikidiscover->getLanguageCode( $dbName );
+			if ( isset( $siteprop['url'] ) ) {
+				$data['url'] = $wikidiscover->getUrl( $dbName );
+			}
+			if ( isset( $siteprop['dbname'] ) ) {
+				$data['dbname'] = $dbName;
+			}
+			if ( isset( $siteprop['sitename'] ) ) {
+				$data['sitename'] = $wikidiscover->getSitename( $dbName );
+			}
+			if ( isset( $siteprop['languagecode'] ) ) {
+				$data['languagecode'] = $wikidiscover->getLanguageCode( $dbName );
+			}
 
 			$skip = true;
 			if ( isset( $state['all'] ) ) {
@@ -89,31 +97,6 @@ class ApiWikiDiscover extends ApiBase {
 		}
 
 		$result->addValue( null, "wikidiscover", array_slice( $wikis, 0, $limit ) );
-	}
-	
-	/**
-	 * The returned value for $params['state'] is not an array so we convert it to one.
-	 **/
-	private function makeSitePropsArray( $prop ) {
-		$data = [];
-
-		if ( isset( $prop['url'] ) ) {
-			$data['url'];
-		}
-
-		if ( isset( $prop['dbname'] ) ) {
-			$data['dbname'];
-		}
-
-		if ( isset( $prop['sitename'] ) ) {
-			$data['sitename'];
-		}
-
-		if ( isset( $prop['languagecode'] ) ) {
-			$data['languagecode'];
-		}
-
-		return $data;
 	}
 
 	protected function getAllowedParams() {

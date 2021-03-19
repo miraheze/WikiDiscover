@@ -12,7 +12,7 @@ class ApiWikiDiscover extends ApiBase {
 
 		$params = $this->extractRequestParams();
 		$state = array_flip( $params['state'] );
-		$siteprop = array_flip( $params['siteprop'] );
+		$siteprop = $this->makeSitePropsArray( array_flip( $params['siteprop'] ) );
 		$limit = $params['limit'];
 
 		$wikis = [];
@@ -89,6 +89,31 @@ class ApiWikiDiscover extends ApiBase {
 		}
 
 		$result->addValue( null, "wikidiscover", array_slice( $wikis, 0, $limit ) );
+	}
+	
+	/**
+	 * The returned value for $params['state'] is not an array so we convert it to one.
+	 **/
+	private function makeSitePropsArray( $prop ) {
+		$data = [];
+
+		if ( isset( $prop['url'] ) ) {
+			$data['url'];
+		}
+
+		if ( isset( $prop['dbname'] ) ) {
+			$data['dbname'];
+		}
+
+		if ( isset( $prop['sitename'] ) ) {
+			$data['sitename'];
+		}
+
+		if ( isset( $prop['languagecode'] ) ) {
+			$data['languagecode'];
+		}
+
+		return $data;
 	}
 
 	protected function getAllowedParams() {

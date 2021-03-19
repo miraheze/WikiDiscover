@@ -26,26 +26,34 @@ class ApiWikiDiscover extends ApiBase {
 			$dbName = $wiki . 'wiki';
 
 			$data = [];
-			$data['url'] = $wikidiscover->getUrl( $dbName );
-			$data['dbname'] = $dbName;
-			$data['sitename'] = $wikidiscover->getSitename( $dbName );
-			$data['languagecode'] = $wikidiscover->getLanguageCode( $dbName );
+			if ( isset( $siteprop['url'] ) ) {
+				$data['url'] = $wikidiscover->getUrl( $dbName );
+			}
+			if ( isset( $siteprop['dbname'] ) ) {
+				$data['dbname'] = $dbName;
+			}
+			if ( isset( $siteprop['sitename'] ) ) {
+				$data['sitename'] = $wikidiscover->getSitename( $dbName );
+			}
+			if ( isset( $siteprop['languagecode'] ) ) {
+				$data['languagecode'] = $wikidiscover->getLanguageCode( $dbName );
+			}
 
 			$skip = true;
-			if ( $state['all'] ) {
+			if ( isset( $state['all'] ) ) {
 				$skip = false;
 			}
 
 			if ( $wikidiscover->isPrivate( $dbName ) ) {
 				$data['private'] = true;
 
-				if ( $state['private'] ) {
+				if ( isset( $state['private'] ) ) {
 					$skip = false;
 				}
 			} else {
 				$data['public'] = true;
 
-				if ( $state['public'] ) {
+				if ( isset( $state['public'] ) ) {
 					$skip = false;
 				}
 			}
@@ -53,25 +61,25 @@ class ApiWikiDiscover extends ApiBase {
 			if ( $wikidiscover->isDeleted( $dbName ) ) {
 				$data['deleted'] = true;
 
-				if ( $state['deleted'] ) {
+				if ( isset( $state['deleted'] ) ) {
 					$skip = false;
 				}
 			} elseif ( $wikidiscover->isClosed( $dbName ) ) {
 				$data['closed'] = true;
 
-				if ( $state['closed'] ) {
+				if ( isset( $state['closed'] ) ) {
 					$skip = false;
 				}
 			} elseif ( $wikidiscover->isInactive( $dbName ) ) {
 				$data['inactive'] = true;
 
-				if ( $state['inactive'] ) {
+				if ( isset( $state['inactive'] ) ) {
 					$skip = false;
 				}
 			} else {
 				$data['active'] = true;
 
-				if ( $state['active'] ) {
+				if ( isset( $state['active'] ) ) {
 					$skip = false;
 				}
 			}
@@ -85,7 +93,7 @@ class ApiWikiDiscover extends ApiBase {
 				continue;
 			}
 
-			$wikis[] = array_intersect( $data, $siteprop );
+			$wikis[] = $data;
 		}
 
 		$result->addValue( null, "wikidiscover", array_slice( $wikis, 0, $limit ) );

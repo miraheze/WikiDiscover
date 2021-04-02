@@ -84,7 +84,7 @@ class WikiDiscoverWikisPager extends TablePager {
 				}
 				break;
 			case 'wiki_creation':
-				$formatted = date( 'F j, Y', strtotime( $row->wiki_creation ) );
+				$formatted = date( 'j F Y', strtotime( $row->wiki_creation ) );
 				break;
 			default:
 				$formatted = "Unable to format $name";

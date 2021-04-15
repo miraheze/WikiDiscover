@@ -13,7 +13,7 @@ class WikiDiscover {
 	function __construct() {
 		$this->config = MediaWikiServices::getInstance()->getMainConfig();
 
-		$dbw = wfGetDB( DB_MASTER, [], $this->config->get( 'CreateWikiDatabase' ) );
+		$dbw = wfGetDB( DB_PRIMARY, [], $this->config->get( 'CreateWikiDatabase' ) );
  		$res = $dbw->select(
  			'cw_wikis', [
 				'wiki_dbname',

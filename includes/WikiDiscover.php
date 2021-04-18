@@ -140,7 +140,7 @@ class WikiDiscover {
 	 * @param string $category|uncategorised
 	 * @return integer
 	 */
-	public static function numberOfWikisInCategory( Parser $parser, String $category = 'uncategorised' ) {
+	public static function numberOfWikisInCategory( Parser $parser, string $category = 'uncategorised' ) {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
 
 		$dbr = wfGetDB( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
@@ -153,7 +153,7 @@ class WikiDiscover {
 	 * @param string $language|en
 	 * @return integer
 	 */
-	public static function numberOfWikisInLanguage( Parser $parser, String $language = 'en' ) {
+	public static function numberOfWikisInLanguage( Parser $parser, string $language = 'en' ) {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
 
 		$dbr = wfGetDB( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
@@ -167,7 +167,7 @@ class WikiDiscover {
 	 * @param mixed $value|null
 	 * @return string|integer
 	 */
-	public static function numberOfWikisBySetting( $parser, $setting = null, $value = null ) {
+	public static function numberOfWikisBySetting( Parser $parser, $setting = null, $value = null ) {
 		if ( !$setting && !$value ) {
 			return 'Error: no input specified.';
 		}
@@ -201,7 +201,7 @@ class WikiDiscover {
 	
 	/**
 	 * @param Parser $parser
-	 * @param string|null $wikiDatabase
+	 * @param string $wikiDatabase|null
 	 * @return string
 	 */
 	public static function wikiCreationDate( Parser $parser, string $wikiDatabase = null ) {
@@ -213,7 +213,7 @@ class WikiDiscover {
 		
 		$creationDate = $dbr->selectField( 'cw_wikis', 'wiki_creation', [ 'wiki_dbname' => $wikiDatabase ] );
 		
-		return date( 'F j, Y', strtotime( $creationDate ) );
+		return date( 'j F Y', strtotime( $creationDate ) );
 	}
 	
 	/**
@@ -269,6 +269,9 @@ class WikiDiscover {
 				$dbr = wfGetDB( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
 				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_wikis', 'wiki_url', [ 'wiki_deleted' => 0 ] );
 				break;
+			case 'wikicreationdate':
+				$ret = $cache[$magicWordId] = self::wikiCreationDate( $parser );
+				break;
 		}
 	}
 
@@ -286,5 +289,6 @@ class WikiDiscover {
 		$variableIDs[] = 'numberofdeletedwikis';
 		$variableIDs[] = 'numberofinactivityexemptwikis';
 		$variableIDs[] = 'numberofcustomdomains';
+		$variableIDs[] = 'wikicreationdate';
 	}
 }

@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Yardom78"
+		]
+	},
+	"randomwiki": "Náhodná wiki",
+	"randomwiki-header": "Vyberte kategóriu a jazyk a pri odoslaní budete odkázaní na náhodnú wiki, ktorá bude spĺňať vybrané kritéria!",
+	"wikidiscover": "Wikiobjav",
+	"wikidiscover-desc": "Umožňuje [[Special:WikiDiscover|objavovať wiki]] na wiki farme s [[Special:CreateWiki|Vytvoriť wiki]].",
+	"wikidiscover-table-category": "Kategória",
+	"wikidiscover-table-deletable": "Vymazateľná?",
+	"wikidiscover-table-established": "Ustanovená",
+	"wikidiscover-table-language": "Jazyk",
+	"wikidiscover-table-state": "Aktivita",
+	"wikidiscover-table-visibility": "Viditeľnosť",
+	"wikidiscover-table-wiki": "Názov wiki",
+	"apihelp-wikidiscover-summary": "Získať zoznam wiki stránok na farme Vytvor wiki.",
+	"apihelp-wikidiscover-param-state": "Filtrovať podľa určeného stavu wiki.",
+	"apihelp-wikidiscover-param-siteprop": "Informácie o definovanej wiki.",
+	"apihelp-wikidiscover-param-limit": "Maximálny počet zobrazených výsledkov.",
+	"apihelp-wikidiscover-param-wikislist": "Získať zoznam všetkých wiki.",
+	"apihelp-wikidiscover-example": "Zobraziť všetky wiki na formulári."
+}

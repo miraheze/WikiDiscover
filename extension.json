@@ -18,6 +18,9 @@
 		"RandomWiki": "SpecialRandomWiki",
 		"WikiDiscover": "SpecialWikiDiscover"
 	},
+	"APIModules": {
+		"wikidiscover": "ApiWikiDiscover"
+	},
 	"MessagesDirs": {
 		"WikiDiscover": [
 			"i18n"
@@ -32,7 +35,8 @@
 		"WikiDiscoverRandom": "includes/WikiDiscoverRandom.php",
 		"SpecialRandomWiki": "includes/SpecialRandomWiki.php",
 		"SpecialWikiDiscover": "includes/SpecialWikiDiscover.php",
-		"WikiDiscoverWikisPager": "includes/WikiDiscoverWikisPager.php"
+		"WikiDiscoverWikisPager": "includes/WikiDiscoverWikisPager.php",
+		"ApiWikiDiscover": "includes/ApiWikiDiscover.php"
 	},
 	"Hooks": {
 		"ParserFirstCallInit": [

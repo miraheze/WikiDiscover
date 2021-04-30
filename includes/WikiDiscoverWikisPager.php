@@ -57,10 +57,12 @@ class WikiDiscoverWikisPager extends TablePager {
 				$formatted = $wikidiscover->getLanguage( $wiki );
 				break;
 			case 'wiki_closed':
-				if ( $wikidiscover->isClosed( $wiki ) === true ) {
+				if ( $wikidiscover->isClosed( $wiki ) ) {
 					$formatted = 'Closed';
-				} elseif ( $wikidiscover->isInactive( $wiki ) === true ) {
+				} elseif ( $wikidiscover->isInactive( $wiki ) ) {
 					$formatted = 'Inactive';
+				} elseif ( $wikidiscover->isDeleted( $wiki ) ) {
+					$formatted = 'Deleted';
 				} else {
 					$formatted = 'Open';
 				}

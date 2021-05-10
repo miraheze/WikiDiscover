@@ -1,12 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
+			"MITO",
 			"Nike"
 		]
 	},
+	"randomwiki": "Satunnainen wiki",
+	"wikidiscover": "WikiDiscover",
 	"wikidiscover-table-category": "Luokka",
 	"wikidiscover-table-language": "Kieli",
 	"wikidiscover-table-state": "Aktiivisuus",
 	"wikidiscover-table-visibility": "Näkyvyys",
-	"wikidiscover-table-wiki": "Wikin nimi"
+	"wikidiscover-table-wiki": "Wikin nimi",
+	"apihelp-wikidiscover-param-wikislist": "Hanki luettelo kaikista wikeistä."
 }

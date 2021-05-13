@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"SolidBlock"
 		]
 	},
 	"randomwiki": "随机Wiki",
@@ -18,5 +19,6 @@
 	"apihelp-wikidiscover-param-state": "按CreateWiki定义的wiki状态过滤。",
 	"apihelp-wikidiscover-param-siteprop": "要返回有关定义wiki的信息。",
 	"apihelp-wikidiscover-param-limit": "显示的最大数量。",
+	"apihelp-wikidiscover-param-wikislist": "获得所有wiki的列表。",
 	"apihelp-wikidiscover-example": "显示表单上的所有wiki。"
 }

@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Agent",
 			"Fitoschido",
 			"Jakeukalane"
 		]
@@ -20,5 +21,6 @@
 	"apihelp-wikidiscover-param-state": "Filtrar por el estado definido de CreateWiki de una wiki.",
 	"apihelp-wikidiscover-param-siteprop": "Información que devolver acerca de un wiki definido.",
 	"apihelp-wikidiscover-param-limit": "Número máximo de resultados para mostrar.",
+	"apihelp-wikidiscover-param-wikislist": "Conseguir una lista de todos los wikis.",
 	"apihelp-wikidiscover-example": "Mostrar todos los wikis del formulario."
 }

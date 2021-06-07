@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"ArticleEditor404"
+		]
+	},
+	"randomwiki": "Juhuslik Wiki",
+	"wikidiscover-table-language": "Keel",
+	"wikidiscover-table-state": "Tegevus",
+	"wikidiscover-table-visibility": "Nähtavus",
+	"apihelp-wikidiscover-param-wikislist": "Saate nimekirja kõigist wikidest."
+}

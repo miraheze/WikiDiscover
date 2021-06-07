@@ -206,6 +206,7 @@ class WikiDiscover {
 	 */
 	public static function wikiCreationDate( Parser $parser, string $wikiDatabase = null ) {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
+		$lang = RequestContext::getMain()->getLanguage();
 
 		$dbr = wfGetDB( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
 		
@@ -213,7 +214,7 @@ class WikiDiscover {
 		
 		$creationDate = $dbr->selectField( 'cw_wikis', 'wiki_creation', [ 'wiki_dbname' => $wikiDatabase ] );
 		
-		return date( 'j F Y', strtotime( $creationDate ) );
+		return $lang->date( wfTimestamp( TS_MW, strtotime( $creationDate ) ) );
 	}
 	
 	/**

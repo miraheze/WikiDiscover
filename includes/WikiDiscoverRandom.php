@@ -22,6 +22,8 @@ class WikiDiscoverRandom {
 			$conditions['wiki_closed'] = 0;
 		}
 
+		$conditions['wiki_private'] = 0;
+
 		return self::randFromConds( $conditions );
 	}
 

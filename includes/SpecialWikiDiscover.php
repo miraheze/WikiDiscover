@@ -15,6 +15,7 @@ class SpecialWikiDiscover extends SpecialPage {
 		$language = $this->getRequest()->getText( 'language' );
 		$category = $this->getRequest()->getText( 'category' );
 		$state = $this->getRequest()->getText( 'state' );
+		$visibility = $this->getRequest()->getText( 'visibility' );
 
 		$formDescriptor = [
 			'language' => [
@@ -44,12 +45,23 @@ class SpecialWikiDiscover extends SpecialPage {
 				],
 				'default' => ( $state ) ? $state : 'any',
 			],
+			'visibility' => [
+				'type' => 'select',
+				'name' => 'visibility',
+				'label-message' => 'wikidiscover-table-visibility',
+				'options' => [
+					'(any)' => 'any',
+					'Public' => 'public',
+					'Private' => 'private'
+				],
+				'default' => ( $visibility ) ? $visibility : 'any',
+			],
 		];
 
 		$htmlForm = HTMLForm::factory( 'ooui', $formDescriptor, $this->getContext() );
 		$htmlForm->setSubmitCallback( [ $this, 'dummyProcess' ] )->setMethod( 'get' )->prepareForm()->show();
 
-		$pager = new WikiDiscoverWikisPager( $language, $category, $state );
+		$pager = new WikiDiscoverWikisPager( $language, $category, $state, $visibility );
 
 		$this->getOutput()->addParserOutputContent( $pager->getFullOutput() );
 	}

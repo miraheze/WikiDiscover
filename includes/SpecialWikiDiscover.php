@@ -34,7 +34,7 @@ class SpecialWikiDiscover extends SpecialPage {
 			'state' => [
 				'type' => 'select',
 				'name' => 'state',
-				'label-message' => 'wikidiscover-table-category',
+				'label-message' => 'wikidiscover-table-state',
 				'options' => [
 					'(any)' => 'any',
 					'Active' => 'active',

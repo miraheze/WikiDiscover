@@ -14,6 +14,7 @@ class SpecialWikiDiscover extends SpecialPage {
 
 		$language = $this->getRequest()->getText( 'language' );
 		$category = $this->getRequest()->getText( 'category' );
+		$state = $this->getRequest()->getText( 'state' );
 
 		$formDescriptor = [
 			'language' => [
@@ -30,12 +31,25 @@ class SpecialWikiDiscover extends SpecialPage {
 				'options' => [ '(any)' => 'any' ] + $this->getConfig()->get( 'CreateWikiCategories' ),
 				'default' => ( $category ) ? $category : 'any',
 			],
+			'state' => [
+				'type' => 'select',
+				'name' => 'state',
+				'label-message' => 'wikidiscover-table-category',
+				'options' => [
+					'(any)' => 'any',
+					'Active' => 'active',
+					'Closed' => 'closed',
+					'Deleted' => 'deleted',
+					'Inactive' => 'Inactive'
+				],
+				'default' => ( $state ) ? $state : 'any',
+			],
 		];
 
 		$htmlForm = HTMLForm::factory( 'ooui', $formDescriptor, $this->getContext() );
 		$htmlForm->setSubmitCallback( [ $this, 'dummyProcess' ] )->setMethod( 'get' )->prepareForm()->show();
 
-		$pager = new WikiDiscoverWikisPager( $language, $category );
+		$pager = new WikiDiscoverWikisPager( $language, $category, $state );
 
 		$this->getOutput()->addParserOutputContent( $pager->getFullOutput() );
 	}

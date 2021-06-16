@@ -3,11 +3,17 @@
 use MediaWiki\MediaWikiServices;
 
 class WikiDiscoverWikisPager extends TablePager {
-	function __construct( $language, $category ) {
+	function __construct( $language, $category, $state, $visibility ) {
 		$this->mDb = self::getCreateWikiDatabase();
+
 		$this->language = $language;
 		$this->category = $category;
+
+		$this->state = $state;
+		$this->visibility = $visibility;
+
 		$this->wikiDiscover = new WikiDiscover();
+
 		parent::__construct( $this->getContext() );
 	}
 
@@ -99,7 +105,7 @@ class WikiDiscoverWikisPager extends TablePager {
 	function getQueryInfo() {
 		$info = [
 			'tables' => [ 'cw_wikis' ],
-			'fields' => [ 'wiki_dbname', 'wiki_language', 'wiki_private', 'wiki_closed', 'wiki_closed_timestamp', 'wiki_category', 'wiki_creation' ],
+			'fields' => [ 'wiki_dbname', 'wiki_language', 'wiki_private', 'wiki_closed', 'wiki_closed_timestamp', 'wiki_inactive', 'wiki_deleted', 'wiki_category', 'wiki_creation' ],
 			'conds' => [],
 			'joins_conds' => [],
 		];
@@ -110,6 +116,28 @@ class WikiDiscoverWikisPager extends TablePager {
 
 		if ( $this->category && $this->category !== 'any' ) {
 			$info['conds']['wiki_category'] = $this->category;
+		}
+
+		if ( $this->state && $this->state !== 'any' ) {
+			if ( $this->state === 'deleted' ) {
+				$info['conds']['wiki_deleted'] = 1;
+			} elseif ( $this->state === 'closed' ) {
+				$info['conds']['wiki_closed'] = 1;
+			} elseif ( $this->state === 'inactive' ) {
+				$info['conds']['wiki_inactive'] = 1;
+			} elseif ( $this->state === 'active' ) {
+				$info['conds']['wiki_closed'] = 0;
+				$info['conds']['wiki_deleted'] = 0;
+				$info['conds']['wiki_inactive'] = 0;
+			}
+		}
+
+		if ( $this->visibility && $this->visibility !== 'any' ) {
+			if ( $this->visibility === 'public' ) {
+				$info['conds']['wiki_private'] = 0;
+			} elseif ( $this->visibility === 'private' ) {
+				$info['conds']['wiki_private'] = 1;
+			}
 		}
 
 		return $info;

@@ -41,7 +41,7 @@ class SpecialWikiDiscover extends SpecialPage {
 					'Active' => 'active',
 					'Closed' => 'closed',
 					'Deleted' => 'deleted',
-					'Inactive' => 'Inactive'
+					'Inactive' => 'inactive'
 				],
 				'default' => ( $state ) ? $state : 'any',
 			],

@@ -86,7 +86,7 @@ class WikiDiscoverWikisPager extends TablePager {
 				}
 				break;
 			case 'wiki_creation':
-				$lang = RequestContext::getMain()->getLanguage();
+				$lang = MediaWikiServices::getInstance()->getContentLanguage();
 
 				$formatted = $lang->date( wfTimestamp( TS_MW, strtotime( $row->wiki_creation ) ) );
 				break;

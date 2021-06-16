@@ -123,7 +123,9 @@ class WikiDiscoverWikisPager extends TablePager {
 				$info['conds']['wiki_deleted'] = 1;
 			} elseif ( $this->state === 'closed' ) {
 				$info['conds']['wiki_closed'] = 1;
+				$info['conds']['wiki_deleted'] = 0;
 			} elseif ( $this->state === 'inactive' ) {
+				$info['conds']['wiki_deleted'] = 0;
 				$info['conds']['wiki_inactive'] = 1;
 			} elseif ( $this->state === 'active' ) {
 				$info['conds']['wiki_closed'] = 0;

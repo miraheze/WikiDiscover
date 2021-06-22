@@ -35,7 +35,6 @@ class WikiDiscoverWikisPager extends TablePager {
 			'wiki_closed' => 'wikidiscover-table-state',
 			'wiki_private' => 'wikidiscover-table-visibility',
 			'wiki_category' => 'wikidiscover-table-category',
-			'wiki_closed_timestamp' => 'wikidiscover-table-deletable',
 			'wiki_creation' => 'wikidiscover-table-established',
 		];
 
@@ -84,13 +83,6 @@ class WikiDiscoverWikisPager extends TablePager {
 				$wikicategories = array_flip( $this->getConfig()->get( 'CreateWikiCategories' ) );
 				$formatted = $wikicategories[$row->wiki_category] ?? 'Uncategorised';
 				break;
-			case 'wiki_closed_timestamp':
-				if ( isset( $row->wiki_closed_timestamp ) && $row->wiki_closed_timestamp < date( "YmdHis", strtotime( "-120 days" ) ) ) {
-					$formatted = 'Yes';
-				} else {
-					$formatted = 'No';
-				}
-				break;
 			case 'wiki_creation':
 				$lang = RequestContext::getMain()->getLanguage();
 
@@ -107,7 +99,7 @@ class WikiDiscoverWikisPager extends TablePager {
 	function getQueryInfo() {
 		$info = [
 			'tables' => [ 'cw_wikis' ],
-			'fields' => [ 'wiki_dbname', 'wiki_language', 'wiki_private', 'wiki_closed', 'wiki_closed_timestamp', 'wiki_inactive', 'wiki_deleted', 'wiki_category', 'wiki_creation' ],
+			'fields' => [ 'wiki_dbname', 'wiki_language', 'wiki_private', 'wiki_closed', 'wiki_inactive', 'wiki_deleted', 'wiki_category', 'wiki_creation' ],
 			'conds' => [],
 			'joins_conds' => [],
 		];

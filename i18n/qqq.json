@@ -11,7 +11,7 @@
 	"wikidiscover-table-category": "Label for 'Category'\n{{Identical|Category}}",
 	"wikidiscover-table-established": "Label for 'Established'",
 	"wikidiscover-table-language": "Label for 'Language'\n{{Identical|Language}}",
-	"wikidiscover-table-state": "Label for 'Activity'\n{{Identical|Activity}}",
+	"wikidiscover-table-state": "Label for 'State'\n{{Identical|State}}",
 	"wikidiscover-table-visibility": "Label for 'Visibility'",
 	"wikidiscover-table-wiki": "Label for 'Wiki Name'",
 	"apihelp-wikidiscover-summary": "Get a list of wikis on a CreateWiki wikifarm.",

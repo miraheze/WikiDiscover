@@ -10,7 +10,6 @@
 	"wikidiscover": "WikiDiscover",
 	"wikidiscover-desc": "允许在有[[Special:CreateWiki|CreateWiki]]的维基农场[[Special:WikiDiscover|探索wiki]]。",
 	"wikidiscover-table-category": "分类",
-	"wikidiscover-table-deletable": "可以删除么？",
 	"wikidiscover-table-language": "语言",
 	"wikidiscover-table-state": "活跃",
 	"wikidiscover-table-visibility": "可见性",

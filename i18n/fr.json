@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Ajeje Brazorf",
 			"Florian COLLIN",
 			"Gomoko",
 			"Tektasc",
@@ -16,7 +17,7 @@
 	"wikidiscover-table-category": "Catégorie",
 	"wikidiscover-table-established": "Établie",
 	"wikidiscover-table-language": "Langue",
-	"wikidiscover-table-state": "Activité",
+	"wikidiscover-table-state": "État",
 	"wikidiscover-table-visibility": "Visibilité",
 	"wikidiscover-table-wiki": "Nom du wiki",
 	"apihelp-wikidiscover-summary": "Obtenir une liste de wikis sur une ferme de wikis CreateWiki.",

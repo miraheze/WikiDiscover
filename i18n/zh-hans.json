@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"GuoPC",
 			"Liuxinyu970226",
 			"SolidBlock"
 		]
@@ -11,7 +12,7 @@
 	"wikidiscover-desc": "允许在有[[Special:CreateWiki|CreateWiki]]的维基农场[[Special:WikiDiscover|探索wiki]]。",
 	"wikidiscover-table-category": "分类",
 	"wikidiscover-table-language": "语言",
-	"wikidiscover-table-state": "活跃",
+	"wikidiscover-table-state": "状态",
 	"wikidiscover-table-visibility": "可见性",
 	"wikidiscover-table-wiki": "Wiki名称",
 	"apihelp-wikidiscover-summary": "获取基于CreateWiki的维基农场的wiki列表。",

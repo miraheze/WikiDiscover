@@ -9,13 +9,15 @@
 	"wikidiscover": "Wikientdeckung",
 	"wikidiscover-desc": "Ermöglicht die [[Special:WikiDiscover|Entdeckung von Wikis]] auf einer Wikifarm mit [[Special:CreateWiki|CreateWiki]].",
 	"wikidiscover-table-category": "Kategorie",
+	"wikidiscover-table-established": "Gegründet",
 	"wikidiscover-table-language": "Sprache",
-	"wikidiscover-table-state": "Aktivität",
+	"wikidiscover-table-state": "Status",
 	"wikidiscover-table-visibility": "Sichtbarkeit",
 	"wikidiscover-table-wiki": "Name des Wikis",
 	"apihelp-wikidiscover-summary": "Ruft eine Liste der Wikis auf einer CreateWiki-Wikifarm ab.",
 	"apihelp-wikidiscover-param-state": "Filtert nach dem CreateWiki-definierten Status eines Wikis.",
 	"apihelp-wikidiscover-param-siteprop": "Zurückzugebende Informationen über ein angegebenes Wiki.",
 	"apihelp-wikidiscover-param-limit": "Maximale Anzahl der anzuzeigenden Ergebnisse.",
+	"apihelp-wikidiscover-param-wikislist": "Zeigt eine Liste aller Wikis.",
 	"apihelp-wikidiscover-example": "Zeigt alle Wikis auf der Farm an."
 }

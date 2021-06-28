@@ -4,7 +4,8 @@
 			"Agaafd",
 			"BaRaN6161 TURK",
 			"Hedda",
-			"MuratTheTurkish"
+			"MuratTheTurkish",
+			"SaldırganSincap"
 		]
 	},
 	"randomwiki": "Rastgele Viki",
@@ -14,7 +15,7 @@
 	"wikidiscover-table-category": "Kategori",
 	"wikidiscover-table-established": "Kuruldu",
 	"wikidiscover-table-language": "Dil",
-	"wikidiscover-table-state": "Etkinlik",
+	"wikidiscover-table-state": "İl",
 	"wikidiscover-table-visibility": "Görünürlük",
 	"wikidiscover-table-wiki": "Viki Adı",
 	"apihelp-wikidiscover-summary": "CreateWiki viki çiftliğindeki vikilerin bir listesini alın.",

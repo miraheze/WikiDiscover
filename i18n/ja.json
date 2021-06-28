@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kkairri",
+			"しぃ"
+		]
+	},
+	"randomwiki": "ランダムWiki",
+	"randomwiki-header": "以下のカテゴリーと言語を選択して送信すると、選択した条件を満たすWikiにランダムにリダイレクトされます。",
+	"wikidiscover": "Wikiを見つける",
+	"wikidiscover-desc": "[[Special:CreateWiki|CreateWiki]]を使って[[Special:WikiDiscover|Wikiファーム上のWiki]] を発見することができます。",
+	"wikidiscover-table-category": "カテゴリ",
+	"wikidiscover-table-established": "設立",
+	"wikidiscover-table-language": "言語",
+	"wikidiscover-table-state": "状態",
+	"wikidiscover-table-visibility": "閲覧レベル",
+	"wikidiscover-table-wiki": "Wikiの名前",
+	"apihelp-wikidiscover-summary": "CreateWikiのwikifarmに登録されているWikiのリストを取得します。",
+	"apihelp-wikidiscover-param-state": "CreateWikiで定義されたWikiの状態でフィルタリングします。",
+	"apihelp-wikidiscover-param-siteprop": "定義されたWikiに関する情報を返します。",
+	"apihelp-wikidiscover-param-limit": "表示する結果の最大数",
+	"apihelp-wikidiscover-param-wikislist": "全てのWikiのリストを取得します。",
+	"apihelp-wikidiscover-example": "フォームに表示されているすべてのWikiを表示します。"
+}

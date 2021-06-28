@@ -12,7 +12,7 @@
 	"wikidiscover-desc": "Umożliwia [[Special:WikiDiscover|odkrywanie wiki]] na farmie z rozszerzeniem [[Special:CreateWiki|CreateWiki]].",
 	"wikidiscover-table-category": "Kategoria",
 	"wikidiscover-table-language": "Język",
-	"wikidiscover-table-state": "Aktywność",
+	"wikidiscover-table-state": "Status",
 	"wikidiscover-table-visibility": "Widoczność",
 	"wikidiscover-table-wiki": "Nazwa wiki",
 	"apihelp-wikidiscover-summary": "Pobierz listę wiki na farmie z rozszerzeniem CreateWiki.",

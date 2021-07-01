@@ -1,12 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"ArticleEditor404"
+			"ArticleEditor404",
+			"Pikne"
 		]
 	},
-	"randomwiki": "Juhuslik Wiki",
+	"randomwiki": "Juhuslik viki",
 	"wikidiscover-table-language": "Keel",
-	"wikidiscover-table-state": "Tegevus",
+	"wikidiscover-table-state": "Olek",
 	"wikidiscover-table-visibility": "Nähtavus",
-	"apihelp-wikidiscover-param-wikislist": "Saate nimekirja kõigist wikidest."
+	"apihelp-wikidiscover-param-wikislist": "Hangi kõigi vikide nimekiri."
 }

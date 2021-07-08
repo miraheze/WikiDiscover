@@ -3,6 +3,7 @@
 		"authors": [
 			"Agent",
 			"Fitoschido",
+			"Jackiezelaya",
 			"Jakeukalane"
 		]
 	},
@@ -13,7 +14,7 @@
 	"wikidiscover-table-category": "Categoría",
 	"wikidiscover-table-established": "Establecido",
 	"wikidiscover-table-language": "Idioma",
-	"wikidiscover-table-state": "Actividad",
+	"wikidiscover-table-state": "Estado o provincia",
 	"wikidiscover-table-visibility": "Visibilidad",
 	"wikidiscover-table-wiki": "Nombre del wiki",
 	"apihelp-wikidiscover-summary": "Obtenga una lista de wikis de una granja de wiki de CreateWiki.",

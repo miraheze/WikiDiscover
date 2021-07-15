@@ -1,0 +1,25 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ajeje Brazorf",
+			"Executive",
+			"Lorem Ipsum"
+		]
+	},
+	"randomwiki": "Wiki casuale",
+	"randomwiki-header": "Seleziona una categoria e una lingua sotto e sulla sottomissione che reindirizzerai casualmente ad una Wiki che incontra il criterio selezionato!",
+	"wikidiscover": "ScoprireWiki",
+	"wikidiscover-desc": "Consenti [[Special:WikiDiscover|scoprire wikis]] in un incubatore di Wiki con [[Special:CreateWiki|CreaWiki]].",
+	"wikidiscover-table-category": "Categoria",
+	"wikidiscover-table-established": "Stabilito",
+	"wikidiscover-table-language": "Lingua",
+	"wikidiscover-table-state": "Stato",
+	"wikidiscover-table-visibility": "Visibilità",
+	"wikidiscover-table-wiki": "Nome Wiki",
+	"apihelp-wikidiscover-summary": "Ottieni una lista di Wikis con CreaWiki incubatore di wiki.",
+	"apihelp-wikidiscover-param-state": "Filtra in base ad uno stato definito da CreaWiki di una Wiki.",
+	"apihelp-wikidiscover-param-siteprop": "Informazione da restituire su una Wiki definita.",
+	"apihelp-wikidiscover-param-limit": "Numero massimo di risultati da mostrare.",
+	"apihelp-wikidiscover-param-wikislist": "Ottieni una lista di tutte le Wikis.",
+	"apihelp-wikidiscover-example": "Mostra tutte le Wiki nel modulo."
+}

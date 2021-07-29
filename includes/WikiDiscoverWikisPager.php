@@ -88,6 +88,9 @@ class WikiDiscoverWikisPager extends TablePager {
 
 				$formatted = $lang->date( wfTimestamp( TS_MW, strtotime( $row->wiki_creation ) ) );
 				break;
+			case 'wiki_creation':
+				$formatted = $config->get( 'WikiDiscoverDescription' );
+				break;
 			default:
 				$formatted = "Unable to format $name";
 				break;

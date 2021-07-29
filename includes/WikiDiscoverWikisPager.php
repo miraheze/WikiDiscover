@@ -95,9 +95,7 @@ class WikiDiscoverWikisPager extends TablePager {
 				$selectSettings = $dbr->selectFieldValues( 'mw_settings', 's_settings', [ 's_dbname' => $wiki ] );
 				$settings = (array)json_decode( $selectSettings[0], true )['wgWikiDiscoverDescription'] ?? [];
 
-				if ( $settings ) {
-					$formatted = $settings[0];
-				}
+				$formatted = $settings[0] ?? '';
 				break;
 			default:
 				$formatted = "Unable to format $name";

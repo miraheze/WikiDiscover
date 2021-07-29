@@ -93,7 +93,7 @@ class WikiDiscoverWikisPager extends TablePager {
 				$config = MediaWikiServices::getInstance()->getMainConfig();
 				$dbr = wfGetDB( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
 				$selectSettings = $dbr->selectFieldValues( 'mw_settings', 's_settings', [ 's_dbname' => $wiki ] );
-				$settings = (array)json_decode( $selectSettings[0], true )['wgWikiDiscoverDescription'] ?? [];
+				$settings = ( (array)json_decode( $selectSettings[0], true )['wgWikiDiscoverDescription'] ) ?? [];
 
 				$formatted = $settings[0] ?? '';
 				break;

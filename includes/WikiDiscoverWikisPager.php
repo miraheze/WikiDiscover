@@ -90,6 +90,8 @@ class WikiDiscoverWikisPager extends TablePager {
 				$formatted = $lang->date( wfTimestamp( TS_MW, strtotime( $row->wiki_creation ) ) );
 				break;
 			case 'wiki_description':
+				$config = MediaWikiServices::getInstance()->getMainConfig();
+
 				$formatted = $config->get( 'WikiDiscoverDescription' );
 				break;
 			default:

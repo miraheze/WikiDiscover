@@ -36,6 +36,7 @@ class WikiDiscoverWikisPager extends TablePager {
 			'wiki_private' => 'wikidiscover-table-visibility',
 			'wiki_category' => 'wikidiscover-table-category',
 			'wiki_creation' => 'wikidiscover-table-established',
+			'wiki_description' => 'wikidiscover-table-description',
 		];
 
 		foreach ( $headers as &$msg ) {
@@ -88,7 +89,7 @@ class WikiDiscoverWikisPager extends TablePager {
 
 				$formatted = $lang->date( wfTimestamp( TS_MW, strtotime( $row->wiki_creation ) ) );
 				break;
-			case 'wiki_creation':
+			case 'wiki_description':
 				$formatted = $config->get( 'WikiDiscoverDescription' );
 				break;
 			default:

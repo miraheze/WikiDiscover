@@ -38,6 +38,10 @@ class WikiDiscoverWikisPager extends TablePager {
 			'wiki_creation' => 'wikidiscover-table-established',
 		];
 
+		if ( ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' ) && $this->getConfig()->get( 'WikiDiscoverUseDescriptions' ) ) {
+			$headers['wiki_description'] = 'wikidiscover-table-description';
+		}
+
 		foreach ( $headers as &$msg ) {
 			$msg = $this->msg( $msg )->text();
 		}
@@ -87,6 +91,19 @@ class WikiDiscoverWikisPager extends TablePager {
 				$lang = RequestContext::getMain()->getLanguage();
 
 				$formatted = $lang->date( wfTimestamp( TS_MW, strtotime( $row->wiki_creation ) ) );
+				break;
+			case 'wiki_description':
+				$config = MediaWikiServices::getInstance()->getMainConfig();
+				$dbr = wfGetDB( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
+				$selectSettings = $dbr->selectFieldValues( 'mw_settings', 's_settings', [ 's_dbname' => $wiki ] );
+
+				if ( array_key_exists( 'wgWikiDiscoverDescription', (array)json_decode( $selectSettings[0], true ) ) ) { 
+					$settings = (array)json_decode( $selectSettings[0], true )['wgWikiDiscoverDescription'];
+				} else {
+					$settings = [];
+				}
+
+				$formatted = $settings[0] ?? '';
 				break;
 			default:
 				$formatted = "Unable to format $name";

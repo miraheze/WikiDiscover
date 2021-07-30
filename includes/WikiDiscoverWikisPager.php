@@ -161,6 +161,6 @@ class WikiDiscoverWikisPager extends TablePager {
 	}
 
 	function isFieldSortable( $name ) {
-		return $name === 'wiki_description' ? false : true;
+		return $name !== 'wiki_description';
 	}
 }

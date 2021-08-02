@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Kkairri",
+			"MathXplore",
 			"しぃ"
 		]
 	},
@@ -10,6 +11,7 @@
 	"wikidiscover": "Wikiを見つける",
 	"wikidiscover-desc": "[[Special:CreateWiki|CreateWiki]]を使って[[Special:WikiDiscover|Wikiファーム上のWiki]] を発見することができます。",
 	"wikidiscover-table-category": "カテゴリ",
+	"wikidiscover-table-description": "説明",
 	"wikidiscover-table-established": "設立",
 	"wikidiscover-table-language": "言語",
 	"wikidiscover-table-state": "状態",

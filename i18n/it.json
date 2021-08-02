@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Ajeje Brazorf",
+			"Beta16",
 			"Executive",
 			"Lorem Ipsum"
 		]
@@ -11,6 +12,7 @@
 	"wikidiscover": "ScoprireWiki",
 	"wikidiscover-desc": "Consenti [[Special:WikiDiscover|scoprire wikis]] in un incubatore di Wiki con [[Special:CreateWiki|CreaWiki]].",
 	"wikidiscover-table-category": "Categoria",
+	"wikidiscover-table-description": "Descrizione",
 	"wikidiscover-table-established": "Stabilito",
 	"wikidiscover-table-language": "Lingua",
 	"wikidiscover-table-state": "Stato",

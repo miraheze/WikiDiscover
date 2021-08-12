@@ -11,6 +11,8 @@
 	"wikidiscover": "WikiDiscover",
 	"wikidiscover-desc": "Дозволяє [[Special:WikiDiscover|виявляти вікі]] на вікі-фермі, яка має можливість [[Special:CreateWiki|створення вікі]].",
 	"wikidiscover-table-category": "Категорія",
+	"wikidiscover-table-description": "Опис",
+	"wikidiscover-table-established": "Встановлено",
 	"wikidiscover-table-language": "Мова",
 	"wikidiscover-table-state": "Стан",
 	"wikidiscover-table-visibility": "Видимість",
@@ -19,5 +21,6 @@
 	"apihelp-wikidiscover-param-state": "Фільтрувати за станом вікі, визначеним через CreateWiki.",
 	"apihelp-wikidiscover-param-siteprop": "Інформація, яку слід повернути про визначену вікі.",
 	"apihelp-wikidiscover-param-limit": "Максимальна кількість результатів для показу.",
+	"apihelp-wikidiscover-param-wikislist": "Отримайте список усіх вікі.",
 	"apihelp-wikidiscover-example": "Показати всі вікі в указаній формі."
 }

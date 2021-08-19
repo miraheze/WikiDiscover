@@ -7,10 +7,20 @@
 		]
 	},
 	"randomwiki": "Willekeurige Wiki",
+	"randomwiki-header": "Kies hieronder een categorie en een taal. Met een druk op de knop wordt u dan willekeurig doorgestuurd naar een wiki die voldoet aan de gekozen criteria.",
+	"wikidiscover": "Wiki-ontdekking",
+	"wikidiscover-desc": "Maakt het mogelijk [[Special:WikiDiscover|wiki's te ontdekken]] op een wikifarm met [[Special:CreateWiki|CreateWiki]].",
 	"wikidiscover-table-category": "Categorie",
+	"wikidiscover-table-description": "Beschrijving",
+	"wikidiscover-table-established": "Opgericht",
 	"wikidiscover-table-language": "Taal",
 	"wikidiscover-table-state": "Staat",
 	"wikidiscover-table-visibility": "Zichtbaarheid",
 	"wikidiscover-table-wiki": "Wikinaam",
-	"apihelp-wikidiscover-param-limit": "Het maximale aantal weer te geven resultaten."
+	"apihelp-wikidiscover-summary": "Roept een lijst op van de wiki's op een CreateWiki-wikifarm.",
+	"apihelp-wikidiscover-param-state": "Filteren op de door CreateWiki gedefinieerde staat van een wiki.",
+	"apihelp-wikidiscover-param-siteprop": "Informatie om terug te geven over een aangegeven wiki.",
+	"apihelp-wikidiscover-param-limit": "Het maximale aantal weer te geven resultaten.",
+	"apihelp-wikidiscover-param-wikislist": "Roept een lijst op van alle wiki's.",
+	"apihelp-wikidiscover-example": "Toont alle wiki's op het formulier."
 }

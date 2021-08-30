@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kly"
+			"Kly",
+			"铁桶"
 		]
 	},
 	"randomwiki": "隨機 wiki",
@@ -10,7 +11,7 @@
 	"wikidiscover-desc": "允許在具有 [[Special:CreateWiki|CreateWiki]] 的 wiki 農場裡[[Special:WikiDiscover|探索 wiki]]。",
 	"wikidiscover-table-category": "分類",
 	"wikidiscover-table-description": "描述",
-	"wikidiscover-table-established": "已建立",
+	"wikidiscover-table-established": "建立時間",
 	"wikidiscover-table-language": "語言",
 	"wikidiscover-table-state": "狀態",
 	"wikidiscover-table-visibility": "能見度",

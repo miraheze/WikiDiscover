@@ -3,6 +3,9 @@
 use MediaWiki\MediaWikiServices;
 
 class WikiDiscover {
+	/** @var Config */
+	private $config;
+
 	/** @var array */
 	private $closed = [];
 
@@ -211,7 +214,7 @@ class WikiDiscover {
 
 	/**
 	 * @param Parser $parser
-	 * @param string $wikiDatabase|null
+	 * @param string ?$wikiDatabase
 	 * @return string
 	 */
 	public static function wikiCreationDate( Parser $parser, string $wikiDatabase = null ) {

@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"Guycn2",
 			"לואיקה"
 		]
@@ -13,7 +14,7 @@
 	"wikidiscover-table-description": "תיאור",
 	"wikidiscover-table-established": "נוצר",
 	"wikidiscover-table-language": "שפה",
-	"wikidiscover-table-state": "פעילות",
+	"wikidiscover-table-state": "מצב",
 	"wikidiscover-table-visibility": "מצג תצוגה",
 	"wikidiscover-table-wiki": "שם הוויקי",
 	"apihelp-wikidiscover-summary": "קבלת רשימה של אתרי ויקי בחוות־ויקי של CreateWiki.",

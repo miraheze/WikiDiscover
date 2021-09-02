@@ -2,11 +2,11 @@
 
 class SpecialWikiDiscover extends SpecialPage {
 
-	function __construct() {
+	public function __construct() {
 		parent::__construct( 'WikiDiscover' );
 	}
 
-	function execute( $par ) {
+	public function execute( $par ) {
 		$this->setHeaders();
 		$this->outputHeader();
 
@@ -66,11 +66,11 @@ class SpecialWikiDiscover extends SpecialPage {
 		$this->getOutput()->addParserOutputContent( $pager->getFullOutput() );
 	}
 
-	static function dummyProcess( $formData ) {
-		return false; // Because we need a submission callback but we don't!
-	}
-
 	protected function getGroupName() {
 		return 'wikimanage';
+	}
+
+	private static function dummyProcess( $formData ) {
+		return false; // Because we need a submission callback but we don't!
 	}
 }

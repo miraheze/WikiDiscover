@@ -214,7 +214,7 @@ class WikiDiscover {
 
 	/**
 	 * @param Parser $parser
-	 * @param string ?$wikiDatabase
+	 * @param ?string $wikiDatabase
 	 * @return string
 	 */
 	public static function wikiCreationDate( Parser $parser, string $wikiDatabase = null ) {

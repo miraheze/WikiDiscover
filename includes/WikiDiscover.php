@@ -3,14 +3,25 @@
 use MediaWiki\MediaWikiServices;
 
 class WikiDiscover {
+	/** @var array */
 	private $closed = [];
+
+	/** @var array */
 	private $inactive = [];
+
+	/** @var array */
 	private $private = [];
+
+	/** @var array */
 	private $deleted = [];
+
+	/** @var array */
 	private $locked = [];
+
+	/** @var array */
 	private $langCodes = [];
 
-	function __construct() {
+	public function __construct() {
 		$this->config = MediaWikiServices::getInstance()->getMainConfig();
 
 		$dbw = wfGetDB( DB_PRIMARY, [], $this->config->get( 'CreateWikiDatabase' ) );

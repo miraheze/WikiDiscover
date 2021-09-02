@@ -3,6 +3,21 @@
 use MediaWiki\MediaWikiServices;
 
 class WikiDiscoverWikisPager extends TablePager {
+	/** @var string */
+	private $language;
+
+	/** @var string */
+	private $category;
+
+	/** @var string */
+	private $state;
+
+	/** @var string */
+	private $visibility;
+
+	/** @var WikiDiscover */
+	private $wikiDiscover;
+
 	public function __construct( $language, $category, $state, $visibility ) {
 		$this->mDb = self::getCreateWikiDatabase();
 

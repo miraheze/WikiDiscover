@@ -34,7 +34,7 @@ class WikiDiscoverRandom {
 
 		$possiblewikis = $dbr->selectFieldValues( 'cw_wikis', 'wiki_dbname', $conds, __METHOD__ );
 
-		$randwiki = $possiblewikis[array_rand($possiblewikis)];
+		$randwiki = $possiblewikis[array_rand( $possiblewikis )];
 
 		return $dbr->selectRow( 'cw_wikis', [ 'wiki_dbname', 'wiki_sitename', 'wiki_language', 'wiki_private', 'wiki_closed', 'wiki_inactive', 'wiki_category' ], [ 'wiki_dbname' => $randwiki ], __METHOD__ );
 	}

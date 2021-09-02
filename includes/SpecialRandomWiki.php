@@ -3,7 +3,7 @@
 class SpecialRandomWiki extends SpecialPage {
 	/** @var Config */
 	private $config;
-	
+
 	public function __construct() {
 		$this->config = $this->getConfig();
 
@@ -36,7 +36,6 @@ class SpecialRandomWiki extends SpecialPage {
 
 		$htmlForm = HTMLForm::factory( 'ooui', $formDescriptor, $this->getContext() );
 		$htmlForm->setSubmitCallback( [ $this, 'redirectWiki' ] )->setMethod( 'post' )->prepareForm()->show();
-
 	}
 
 	protected function getGroupName() {

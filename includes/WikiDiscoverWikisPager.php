@@ -97,7 +97,7 @@ class WikiDiscoverWikisPager extends TablePager {
 				$dbr = wfGetDB( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
 				$selectSettings = $dbr->selectFieldValues( 'mw_settings', 's_settings', [ 's_dbname' => $wiki ] );
 
-				if ( array_key_exists( 'wgWikiDiscoverDescription', (array)json_decode( $selectSettings[0], true ) ) ) { 
+				if ( array_key_exists( 'wgWikiDiscoverDescription', (array)json_decode( $selectSettings[0], true ) ) ) {
 					$settings = (array)json_decode( $selectSettings[0], true )['wgWikiDiscoverDescription'];
 				} else {
 					$settings = [];

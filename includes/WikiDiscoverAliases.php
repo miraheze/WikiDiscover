@@ -27,7 +27,7 @@ $specialPageAliases['da'] = [
 ];
 
 $specialPageAliases['de'] = [
-	'RandomWiki' => [ 'Zufälliges Wiki'],
+	'RandomWiki' => [ 'Zufälliges Wiki' ],
 	'WikiDiscover' => [ 'Wikientdeckung' ],
 ];
 
@@ -44,7 +44,7 @@ $specialPageAliases['es'] = [
 ];
 
 $specialPageAliases['fa'] = [
-	'RandomWiki' => ['ویکی تصادفی' ],
+	'RandomWiki' => [ 'ویکی تصادفی' ],
 ];
 
 $specialPageAliases['fr'] = [
@@ -119,7 +119,6 @@ $specialPageAliases['tr'] = [
 $specialPageAliases['uk'] = [
 	'RandomWiki' => [ 'Випадкова вікі' ],
 ];
-
 
 $specialPageAliases['zh-hans'] = [
 	'RandomWiki' => [ 'Випадкова вікі' ],

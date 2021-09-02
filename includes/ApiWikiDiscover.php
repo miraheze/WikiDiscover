@@ -86,7 +86,9 @@ class ApiWikiDiscover extends ApiBase {
 
 			if ( $wikidiscover->isLocked( $dbName ) ) {
 				$data['locked'] = true;
-				$skip = false; // Always include a locked wiki state
+
+				// Always include a locked wiki state
+				$skip = false;
 			}
 
 			if ( $skip ) {

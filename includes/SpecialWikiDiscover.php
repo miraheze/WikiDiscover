@@ -71,6 +71,7 @@ class SpecialWikiDiscover extends SpecialPage {
 	}
 
 	private static function dummyProcess( $formData ) {
-		return false; // Because we need a submission callback but we don't!
+		// Because we need a submission callback but we don't!
+		return false;
 	}
 }

@@ -1,15 +1,16 @@
 <?php
 
 class SpecialRandomWiki extends SpecialPage {
+	/** @var Config */
 	private $config;
-	
-	function __construct() {
+
+	public function __construct() {
 		$this->config = $this->getConfig();
 
 		parent::__construct( 'RandomWiki' );
 	}
 
-	function execute( $par ) {
+	public function execute( $par ) {
 		$this->setHeaders();
 		$this->outputHeader();
 
@@ -35,18 +36,17 @@ class SpecialRandomWiki extends SpecialPage {
 
 		$htmlForm = HTMLForm::factory( 'ooui', $formDescriptor, $this->getContext() );
 		$htmlForm->setSubmitCallback( [ $this, 'redirectWiki' ] )->setMethod( 'post' )->prepareForm()->show();
-
 	}
 
-	function redirectWiki( $formData ) {
+	protected function getGroupName() {
+		return 'wikimanage';
+	}
+
+	private function redirectWiki( $formData ) {
 		$randomwiki = WikiDiscoverRandom::randomWiki( 0, $category = $formData['category'], $formData['language'] );
 
 		header( "Location: https://" . substr( $randomwiki->wiki_dbname, 0, -4 ) . ".{$this->config->get( 'CreateWikiSubdomain' )}/" );
 
 		return true;
-	}
-
-	protected function getGroupName() {
-		return 'wikimanage';
 	}
 }

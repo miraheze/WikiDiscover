@@ -3,19 +3,33 @@
 use MediaWiki\MediaWikiServices;
 
 class WikiDiscover {
+	/** @var Config */
+	private $config;
+
+	/** @var array */
 	private $closed = [];
+
+	/** @var array */
 	private $inactive = [];
+
+	/** @var array */
 	private $private = [];
+
+	/** @var array */
 	private $deleted = [];
+
+	/** @var array */
 	private $locked = [];
+
+	/** @var array */
 	private $langCodes = [];
 
-	function __construct() {
+	public function __construct() {
 		$this->config = MediaWikiServices::getInstance()->getMainConfig();
 
 		$dbw = wfGetDB( DB_PRIMARY, [], $this->config->get( 'CreateWikiDatabase' ) );
- 		$res = $dbw->select(
- 			'cw_wikis', [
+		$res = $dbw->select(
+			'cw_wikis', [
 				'wiki_dbname',
 				'wiki_language',
 				'wiki_private',
@@ -23,9 +37,9 @@ class WikiDiscover {
 				'wiki_inactive',
 				'wiki_locked',
 				'wiki_deleted',
- 			],
- 		);
-		
+			],
+		);
+
 		if ( $res ) {
 			foreach ( $res as $row ) {
 				$this->langCodes[$row->wiki_dbname] = $row->wiki_language;
@@ -71,7 +85,6 @@ class WikiDiscover {
 
 		return $wikis;
 	}
-
 
 	public function getWikiPrefixes( $dbname ) {
 		$wikiprefixes = [];
@@ -134,7 +147,7 @@ class WikiDiscover {
 		$parser->setFunctionHook( 'numberofwikisbysetting', [ __CLASS__, 'numberOfWikisBySetting' ], Parser::SFH_NO_HASH );
 		$parser->setFunctionHook( 'wikicreationdate', [ __CLASS__, 'wikiCreationDate' ], Parser::SFH_NO_HASH );
 	}
-	
+
 	/**
 	 * @param Parser $parser
 	 * @param string $category|uncategorised
@@ -160,7 +173,7 @@ class WikiDiscover {
 
 		return $dbr->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_language' => strtolower( $language ) ] );
 	}
-	
+
 	/**
 	 * @param Parser $parser
 	 * @param mixed $setting|null
@@ -190,7 +203,7 @@ class WikiDiscover {
 		$selectSettings = $dbr->selectFieldValues( 'mw_settings', 's_settings' );
 		$settingUsageCount = 0;
 
-		foreach( $selectSettings as $key ) {
+		foreach ( $selectSettings as $key ) {
 			if ( !is_bool( array_search( $value, (array)( json_decode( $key, true )[$setting] ?? [] ) ) ) ) {
 				$settingUsageCount++;
 			}
@@ -198,10 +211,10 @@ class WikiDiscover {
 
 		return $settingUsageCount;
 	}
-	
+
 	/**
 	 * @param Parser $parser
-	 * @param string $wikiDatabase|null
+	 * @param ?string $wikiDatabase
 	 * @return string
 	 */
 	public static function wikiCreationDate( Parser $parser, string $wikiDatabase = null ) {
@@ -209,14 +222,14 @@ class WikiDiscover {
 		$lang = RequestContext::getMain()->getLanguage();
 
 		$dbr = wfGetDB( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
-		
+
 		$wikiDatabase = $wikiDatabase ?? $config->get( 'DBname' );
-		
+
 		$creationDate = $dbr->selectField( 'cw_wikis', 'wiki_creation', [ 'wiki_dbname' => $wikiDatabase ] );
-		
+
 		return $lang->date( wfTimestamp( TS_MW, strtotime( $creationDate ) ) );
 	}
-	
+
 	/**
 	 * @param Parser $parser
 	 * @param array &$cache

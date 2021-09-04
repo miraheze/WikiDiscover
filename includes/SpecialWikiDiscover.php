@@ -2,11 +2,11 @@
 
 class SpecialWikiDiscover extends SpecialPage {
 
-	function __construct() {
+	public function __construct() {
 		parent::__construct( 'WikiDiscover' );
 	}
 
-	function execute( $par ) {
+	public function execute( $par ) {
 		$this->setHeaders();
 		$this->outputHeader();
 
@@ -23,14 +23,14 @@ class SpecialWikiDiscover extends SpecialPage {
 				'options' => [ '(any)' => 'any' ],
 				'name' => 'language',
 				'label-message' => 'wikidiscover-table-language',
-				'default' => ( $language ) ? $language : 'any',
+				'default' => $language ?: 'any',
 			],
 			'category' => [
 				'type' => 'select',
 				'name' => 'category',
 				'label-message' => 'wikidiscover-table-category',
 				'options' => [ '(any)' => 'any' ] + $this->getConfig()->get( 'CreateWikiCategories' ),
-				'default' => ( $category ) ? $category : 'any',
+				'default' => $category ?: 'any',
 			],
 			'state' => [
 				'type' => 'select',
@@ -43,7 +43,7 @@ class SpecialWikiDiscover extends SpecialPage {
 					'Deleted' => 'deleted',
 					'Inactive' => 'inactive'
 				],
-				'default' => ( $state ) ? $state : 'any',
+				'default' => $state ?: 'any',
 			],
 			'visibility' => [
 				'type' => 'select',
@@ -54,7 +54,7 @@ class SpecialWikiDiscover extends SpecialPage {
 					'Public' => 'public',
 					'Private' => 'private'
 				],
-				'default' => ( $visibility ) ? $visibility : 'any',
+				'default' => $visibility ?: 'any',
 			],
 		];
 
@@ -66,11 +66,12 @@ class SpecialWikiDiscover extends SpecialPage {
 		$this->getOutput()->addParserOutputContent( $pager->getFullOutput() );
 	}
 
-	static function dummyProcess( $formData ) {
-		return false; // Because we need a submission callback but we don't!
-	}
-
 	protected function getGroupName() {
 		return 'wikimanage';
+	}
+
+	private static function dummyProcess( $formData ) {
+		// Because we need a submission callback but we don't!
+		return false;
 	}
 }

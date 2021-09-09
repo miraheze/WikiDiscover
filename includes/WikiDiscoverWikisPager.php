@@ -108,18 +108,11 @@ class WikiDiscoverWikisPager extends TablePager {
 				$formatted = $lang->date( wfTimestamp( TS_MW, strtotime( $row->wiki_creation ) ) );
 				break;
 			case 'wiki_description':
-				$config = MediaWikiServices::getInstance()->getMainConfig();
-				$dbr = wfGetDB( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
-				$selectSettings = $dbr->selectFieldValues( 'mw_settings', 's_settings', [ 's_dbname' => $wiki ] );
+				$siteConfiguration = new SiteConfiguration;
 
-				if ( array_key_exists( 'wgWikiDiscoverDescription', (array)json_decode( $selectSettings[0], true ) ) ) {
-					// @phan-suppress-next-line PhanTypeArraySuspiciousNullable
-					$settings = (array)json_decode( $selectSettings[0], true )['wgWikiDiscoverDescription'];
-				} else {
-					$settings = [];
-				}
+				$value = $siteConfiguration->get( 'wgWikiDiscoverDescription', $wiki );
 
-				$formatted = $settings[0] ?? '';
+				$formatted = $value ?? '';
 				break;
 			default:
 				$formatted = "Unable to format $name";

@@ -89,25 +89,6 @@ jobs:
         if: steps.cache-mediawiki.outputs.cache-hit != 'true'
         run: bash .github/workflows/download-mediawiki.sh ${{ matrix.mw }} ${{ matrix.repo }}
 
-      - name: Clone extension dependencies
-        if: ${{ matrix.repo != 'miraheze' }}
-        run: |
-          rm -rf mediawiki/extensions/*
-          git clone https://github.com/wikimedia/mediawiki-extensions-CentralAuth.git --depth=1 --branch=${{ matrix.mw }} mediawiki/extensions/CentralAuth
-          git clone https://github.com/wikimedia/mediawiki-extensions-BlogPage.git --depth=1 mediawiki/extensions/BlogPage
-          git clone https://github.com/wikimedia/mediawiki-extensions-SocialProfile.git --depth=1 mediawiki/extensions/SocialProfile
-          git clone https://github.com/Universal-Omega/SimpleBlogPage.git --depth=1 mediawiki/extensions/SimpleBlogPage
-
-      - name: Checkout extension dependencies
-        if: ${{ matrix.repo == 'miraheze' }}
-        run: |
-          cd mediawiki
-          rm -rf extensions/*
-          git submodule update --init extensions/CentralAuth
-          git submodule update --init extensions/BlogPage
-          git submodule update --init extensions/SimpleBlogPage
-          git submodule update --init extensions/SocialProfile
-
       - name: Run phan
         continue-on-error: ${{ matrix.continue-on-error }}
         run: |

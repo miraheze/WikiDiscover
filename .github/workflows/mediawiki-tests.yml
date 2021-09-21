@@ -315,7 +315,7 @@ jobs:
             done
           fi
           cd src/includes
-          echo 'require_once __DIR__ . "/extensions/${{ github.event.repository.name }}/.github/workflows/globals.php";' >> DevelopmentSettings.php
+          echo 'require_once __DIR__ . "/../extensions/${{ github.event.repository.name }}/.github/workflows/globals.php";' >> DevelopmentSettings.php
           cd ../..
           git -C src/ log -n 1 --format="%H"
 

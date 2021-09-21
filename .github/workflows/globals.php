@@ -6,9 +6,9 @@ $wgCreateWikiCacheDirectory = "$IP/cache";
 $wgContinuousIntegrationInstance = true;
 $wgWikimediaJenkinsCI = true;
 
-$wgHooks['SetupAfterCache'][] = 'onSetupAfterCache';
+$wgHooks['SetupAfterCache'][] = 'wfOnSetupAfterCache';
 
-function onSetupAfterCache() {
+function wfOnSetupAfterCache() {
 	$wm = new WikiManager( 'wikidb' );
 	$wm->create( 'TestWiki', 'en', false, 'uncategorised', 'WikiAdmin', 'WikiAdmin', 'TestWiki' );
 }

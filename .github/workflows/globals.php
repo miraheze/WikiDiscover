@@ -18,8 +18,13 @@ function wfOnMediaWikiServices() {
 			'wiki_sitename' => 'TestWiki',
 			'wiki_language' => 'en',
 			'wiki_private' => (int)0,
-			'wiki_creation' => 1632266296,
-			'wiki_category' => 'uncategorised'
+			'wiki_creation' => $dbw->timestamp(),
+			'wiki_category' => 'uncategorised',
+			'wiki_closed' => (int)0,
+			'wiki_deleted' => (int)0,
+			'wiki_locked' => (int)0,
+			'wiki_inactive' => (int)0,
+			'wiki_inactive_exempt' => (int)0
 		]
 	);
 }

@@ -6,10 +6,9 @@ $wgCreateWikiCacheDirectory = "$IP/cache";
 $wgContinuousIntegrationInstance = true;
 $wgWikimediaJenkinsCI = true;
 
-require_once( "$IP/extensions/CreateWiki/includes/WikiManager.php" );
+$wgHooks['MediaWikiServices'][] = 'wfOnMediaWikiServices';
 
-$factory = new ConfigFactory();
-$factory->register( 'createwiki', 'GlobalVarConfig::newInstance' );
-
-$wm = new WikiManager( 'wikidb' );
-$wm->create( 'TestWiki', 'en', false, 'uncategorised', 'WikiAdmin', 'WikiAdmin', 'TestWiki' );
+function wfOnMediaWikiServices() {
+	$wm = new WikiManager( 'wikidb' );
+	$wm->create( 'TestWiki', 'en', false, 'uncategorised', 'WikiAdmin', 'WikiAdmin', 'TestWiki' );
+}

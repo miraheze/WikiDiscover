@@ -6,9 +6,16 @@ $wgCreateWikiCacheDirectory = "$IP/cache";
 $wgContinuousIntegrationInstance = true;
 $wgWikimediaJenkinsCI = true;
 
-$wgHooks['MediaWikiServices'][] = 'wfOnMediaWikiServices';
-
-function wfOnMediaWikiServices() {
-	$wm = new WikiManager( 'wikidb' );
-	$wm->create( 'TestWiki', 'en', false, 'uncategorised', 'WikiAdmin', 'WikiAdmin', 'TestWiki' );
-}
+wfGetDB( DB_PRIMARY );
+$dbw->insert(
+	'cw_wikis',
+	[
+		'wiki_dbname' => 'wikidb',
+		'wiki_dbcluster' => 'c1',
+		'wiki_sitename' => 'TestWiki',
+		'wiki_language' => 'en',
+		'wiki_private' => (int)0,
+		'wiki_creation' => $dbw->timestamp(),
+		'wiki_category' => 'uncategorised'
+	]
+);

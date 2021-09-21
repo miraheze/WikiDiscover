@@ -9,7 +9,7 @@ $wgWikimediaJenkinsCI = true;
 $wgHooks['MediaWikiServices'][] = 'wfOnMediaWikiServices';
 
 function wfOnMediaWikiServices() {
-	wfGetDB( DB_PRIMARY );
+	$dbw = wfGetDB( DB_PRIMARY );
 	$dbw->insert(
 		'cw_wikis',
 		[

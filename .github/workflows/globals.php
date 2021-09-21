@@ -1,5 +1,18 @@
 <?php
 
+require_once "$IP/extensions/CreateWiki/includes/WikiInitialise.php";
+$wi = new WikiInitialise();
+
+$wi->setVariables(
+	"$IP/cache",
+	[
+		''
+	],
+	[
+		'127.0.0.1' => ''
+	]
+);
+
 $wgCreateWikiGlobalWiki = 'wikidb';
 $wgCreateWikiDatabase = 'wikidb';
 $wgCreateWikiCacheDirectory = "$IP/cache";

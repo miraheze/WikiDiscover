@@ -37,6 +37,10 @@ $wgCreateWikiCacheDirectory = "$IP/cache";
 $wgHooks['MediaWikiServices'][] = 'wfOnMediaWikiServices';
 
 function wfOnMediaWikiServices() {
+	MediaWiki\MediaWikiServices::getInstance()
+		->getDBLoadBalancerFactory()
+		->disableChronologyProtection();
+
 	$dbr = wfGetDB( DB_REPLICA );
 	$check = $dbr->selectRow(
 		'cw_wikis',

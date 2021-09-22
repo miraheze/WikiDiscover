@@ -54,7 +54,8 @@ function wfOnMediaWikiServices() {
 				'wiki_deleted' => (int)0,
 				'wiki_locked' => (int)0,
 				'wiki_inactive' => (int)0,
-				'wiki_inactive_exempt' => (int)0
+				'wiki_inactive_exempt' => (int)0,
+				'wiki_url' => 'http://127.0.0.1:9412'
 			]
 		);
 	} catch ( Wikimedia\Rdbms\DBQueryError $e ) {

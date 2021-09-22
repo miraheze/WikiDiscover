@@ -316,12 +316,12 @@ jobs:
           fi
 
           cd src/includes
-          if [ -e $(pwd)/../extensions/${{ github.event.repository.name }}/.github/workflows/setup-fix.php ]; then
+          if [ -e "${PWD%/*}"/extensions/${{ github.event.repository.name }}/.github/workflows/setup-fix.php ]; then
             rm Setup.php
             mv ../extensions/${{ github.event.repository.name }}/.github/workflows/setup-fix.php Setup.php
           fi
 
-          if [ -e $(pwd)/../extensions/${{ github.event.repository.name }}/.github/workflows/globals.php ]; then
+          if [ -e "${PWD%/*}"/extensions/${{ github.event.repository.name }}/.github/workflows/globals.php ]; then
             echo 'require_once __DIR__ . "/../extensions/${{ github.event.repository.name }}/.github/workflows/globals.php";' >> DevelopmentSettings.php
           fi
           cd ../..

@@ -75,7 +75,6 @@ function wfOnSetupAfterCache() {
 		->disableChronologyProtection();
 }
 
-
 $wi->readCache();
 $wi->config->extractAllGlobals( $wi->dbname );
 $wgConf = $wi->config;

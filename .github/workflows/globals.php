@@ -39,7 +39,7 @@ $wgHooks['MediaWikiServices'][] = 'wfOnMediaWikiServices';
 function wfOnMediaWikiServices() {
 	global $wgRequest;
 
-	$wgRequest->setHeader( 'MediaWiki-Chronology-Protection', false );
+	$wgRequest->setHeader( 'MediaWiki-Chronology-Protection', 'false' );
 
 	$dbr = wfGetDB( DB_REPLICA );
 	$check = $dbr->selectRow(

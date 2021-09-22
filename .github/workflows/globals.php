@@ -35,7 +35,6 @@ $wgCreateWikiDatabase = 'wikidb';
 $wgCreateWikiCacheDirectory = "$IP/cache";
 
 $wgHooks['MediaWikiServices'][] = 'wfOnMediaWikiServices';
-$wgHooks['SetupAfterCache'][] = 'wfOnSetupAfterCache';
 
 function wfOnMediaWikiServices() {
 	$dbr = wfGetDB( DB_REPLICA );
@@ -69,11 +68,9 @@ function wfOnMediaWikiServices() {
 	}
 }
 
-function wfOnSetupAfterCache() {
-	MediaWiki\MediaWikiServices::getInstance()
-		->getDBLoadBalancerFactory()
-		->disableChronologyProtection();
-}
+MediaWiki\MediaWikiServices::getInstance()
+	->getDBLoadBalancerFactory()
+	->disableChronologyProtection();
 
 $wi->readCache();
 $wi->config->extractAllGlobals( $wi->dbname );

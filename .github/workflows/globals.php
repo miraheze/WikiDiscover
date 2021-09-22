@@ -1,5 +1,7 @@
 <?php
 
+define( MW_DB, 'wikidb' );
+
 require_once "$IP/extensions/CreateWiki/includes/WikiInitialise.php";
 $wi = new WikiInitialise();
 
@@ -13,11 +15,11 @@ $wi->setVariables(
 	]
 );
 
+$wgWikimediaJenkinsCI = true;
+
 $wgCreateWikiGlobalWiki = 'wikidb';
 $wgCreateWikiDatabase = 'wikidb';
 $wgCreateWikiCacheDirectory = "$IP/cache";
-$wgContinuousIntegrationInstance = true;
-$wgWikimediaJenkinsCI = true;
 
 $wgHooks['MediaWikiServices'][] = 'wfOnMediaWikiServices';
 

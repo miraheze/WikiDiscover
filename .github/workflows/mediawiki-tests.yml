@@ -315,16 +315,20 @@ jobs:
             done
           fi
 
-          cd src/includes
-          if [ -e "${PWD%/*}"/extensions/${{ github.event.repository.name }}/.github/workflows/setup-fix.php ]; then
+          cd src
+          if [ -e extensions/${{ github.event.repository.name }}/.github/workflows/setup-fix.php ]; then
+            cd includes
             rm Setup.php
             mv ../extensions/${{ github.event.repository.name }}/.github/workflows/setup-fix.php Setup.php
+            cd ..
           fi
 
-          if [ -e "${PWD%/*}"/extensions/${{ github.event.repository.name }}/.github/workflows/globals.php ]; then
+          if [ -e extensions/${{ github.event.repository.name }}/.github/workflows/globals.php ]; then
+            cd includes
             echo 'require_once __DIR__ . "/../extensions/${{ github.event.repository.name }}/.github/workflows/globals.php";' >> DevelopmentSettings.php
+            cd ..
           fi
-          cd ../..
+          cd ..
 
           git -C src/ log -n 1 --format="%H"
 

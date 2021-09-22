@@ -47,8 +47,6 @@ function wfOnMediaWikiServices() {
 	);
 
 	if ( !$check ) {
-		
-
 		$dbw = wfGetDB( DB_PRIMARY );
 		$dbw->insert(
 			'cw_wikis',

@@ -35,12 +35,9 @@ $wgCreateWikiDatabase = 'wikidb';
 $wgCreateWikiCacheDirectory = "$IP/cache";
 
 $wgHooks['MediaWikiServices'][] = 'wfOnMediaWikiServices';
+$wgHooks['SetupAfterCache'][] = 'wfOnSetupAfterCache';
 
 function wfOnMediaWikiServices() {
-	MediaWiki\MediaWikiServices::getInstance()
-		->getDBLoadBalancerFactory()
-		->disableChronologyProtection();
-
 	$dbr = wfGetDB( DB_REPLICA );
 	$check = $dbr->selectRow(
 		'cw_wikis',
@@ -71,6 +68,13 @@ function wfOnMediaWikiServices() {
 		);
 	}
 }
+
+function wfOnSetupAfterCache() {
+	MediaWiki\MediaWikiServices::getInstance()
+		->getDBLoadBalancerFactory()
+		->disableChronologyProtection();
+}
+
 
 $wi->readCache();
 $wi->config->extractAllGlobals( $wi->dbname );

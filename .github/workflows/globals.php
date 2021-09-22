@@ -37,16 +37,11 @@ $wgCreateWikiCacheDirectory = "$IP/cache";
 $wgHooks['MediaWikiServices'][] = 'wfOnMediaWikiServices';
 
 function wfOnMediaWikiServices() {
-	MediaWiki\MediaWikiServices::getInstance()
-		->getDBLoadBalancerFactory()
-		->disableChronologyProtection();
+	global $wgRequest;
+
+	$wgRequest->setHeader( 'MediaWiki-Chronology-Protection', false );
 
 	$dbr = wfGetDB( DB_REPLICA );
-
-	MediaWiki\MediaWikiServices::getInstance()
-		->getDBLoadBalancerFactory()
-		->disableChronologyProtection();
-
 	$check = $dbr->selectRow(
 		'cw_wikis',
 		'*',
@@ -55,17 +50,8 @@ function wfOnMediaWikiServices() {
 		]
 	);
 
-	MediaWiki\MediaWikiServices::getInstance()
-		->getDBLoadBalancerFactory()
-		->disableChronologyProtection();
-
 	if ( !$check ) {
 		$dbw = wfGetDB( DB_PRIMARY );
-
-		MediaWiki\MediaWikiServices::getInstance()
-			->getDBLoadBalancerFactory()
-			->disableChronologyProtection();
-
 		$dbw->insert(
 			'cw_wikis',
 			[
@@ -83,10 +69,6 @@ function wfOnMediaWikiServices() {
 				'wiki_inactive_exempt' => (int)0
 			]
 		);
-
-		MediaWiki\MediaWikiServices::getInstance()
-			->getDBLoadBalancerFactory()
-			->disableChronologyProtection();
 	}
 }
 

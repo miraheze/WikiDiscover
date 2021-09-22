@@ -28,7 +28,7 @@ $wi->config->settings += [
 ];
 
 $wgWikimediaJenkinsCI = true;
-$wgCommandLineMode = true;
+$wgCommandLineMode = false;
 
 $wgCreateWikiGlobalWiki = 'wikidb';
 $wgCreateWikiDatabase = 'wikidb';
@@ -37,10 +37,6 @@ $wgCreateWikiCacheDirectory = "$IP/cache";
 $wgHooks['MediaWikiServices'][] = 'wfOnMediaWikiServices';
 
 function wfOnMediaWikiServices() {
-	global $wgRequest;
-
-	$wgRequest->setHeader( 'MediaWiki-Chronology-Protection', 'false' );
-
 	$dbr = wfGetDB( DB_REPLICA );
 	$check = $dbr->selectRow(
 		'cw_wikis',

@@ -315,12 +315,12 @@ jobs:
             done
           fi
 
-          if [ -e /home/runner/src/extensions/"${{ github.event.repository.name }}"/.github/workflows/setup-fix.php ]; then
+          if [ -e .github/workflows/setup-fix.php ]; then
             rm /home/runner/src/includes/Setup.php
             mv /home/runner/src/extensions/${{ github.event.repository.name }}/.github/workflows/setup-fix.php /home/runner/src/includes/Setup.php
           fi
 
-          if [ -e /home/runner/src/extensions/"${{ github.event.repository.name }}"/.github/workflows/globals.php ]; then
+          if [ -e .github/workflows/globals.php ]; then
             cd src/includes
             echo 'require_once __DIR__ . "/../extensions/${{ github.event.repository.name }}/.github/workflows/globals.php";' >> DevelopmentSettings.php
             cd ../..

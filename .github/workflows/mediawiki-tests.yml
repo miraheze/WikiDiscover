@@ -317,7 +317,7 @@ jobs:
 
           cd src/includes
           rm Setup.php
-          mv $pwd/../extensions/${{ github.event.repository.name }}/.github/workflows/setup-fix.php Setup.php
+          mv /home/runner/src/extensions/${{ github.event.repository.name }}/.github/workflows/setup-fix.php Setup.php
 
           echo 'require_once __DIR__ . "/../extensions/${{ github.event.repository.name }}/.github/workflows/globals.php";' >> DevelopmentSettings.php
           cd ../..

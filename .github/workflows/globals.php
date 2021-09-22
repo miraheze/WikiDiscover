@@ -28,6 +28,7 @@ $wi->config->settings += [
 ];
 
 $wgWikimediaJenkinsCI = true;
+$wgCommandLineMode = true;
 
 $wgCreateWikiGlobalWiki = 'wikidb';
 $wgCreateWikiDatabase = 'wikidb';
@@ -46,7 +47,7 @@ function wfOnMediaWikiServices() {
 	);
 
 	if ( !$check ) {
-		$lbFactory = MediaWiki\MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
+		
 
 		$dbw = wfGetDB( DB_PRIMARY );
 		$dbw->insert(
@@ -66,8 +67,6 @@ function wfOnMediaWikiServices() {
 				'wiki_inactive_exempt' => (int)0
 			]
 		);
-
-		$lbFactory->shutdown();
 	}
 }
 

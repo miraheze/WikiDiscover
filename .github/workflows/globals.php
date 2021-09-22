@@ -57,7 +57,7 @@ function wfOnMediaWikiServices() {
 				'wiki_inactive_exempt' => (int)0
 			]
 		);
-	} catch ( DBQueryError ) {
+	} catch ( Wikimedia\Rdbms\DBQueryError ) {
 		return;
 	}
 }

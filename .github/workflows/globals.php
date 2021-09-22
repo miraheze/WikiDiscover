@@ -1,6 +1,6 @@
 <?php
 
-define( MW_DB, 'wikidb' );
+define( 'MW_DB', 'wikidb' );
 
 require_once "$IP/extensions/CreateWiki/includes/WikiInitialise.php";
 $wi = new WikiInitialise();
@@ -14,6 +14,18 @@ $wi->setVariables(
 		'127.0.0.1' => ''
 	]
 );
+
+$wi->config->settings += [
+	'cwClosed' => [
+		'default' => false,
+	],
+	'cwInactive' => [
+		'default' => false,
+	],
+	'cwPrivate' => [
+		'default' => false,
+	],
+];
 
 $wgWikimediaJenkinsCI = true;
 
@@ -54,3 +66,7 @@ function wfOnMediaWikiServices() {
 		);
 	}
 }
+
+$wi->readCache();
+$wi->config->extractAllGlobals( $wi->dbname );
+$wgConf = $wi->config;

@@ -67,7 +67,7 @@ function wfOnMediaWikiServices() {
 			]
 		);
 
-		$lbFactory->shutdown( $lbFactory::SHUTDOWN_NO_CHRONPROT );
+		$lbFactory->shutdown();
 	}
 }
 

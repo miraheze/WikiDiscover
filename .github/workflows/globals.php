@@ -46,6 +46,8 @@ function wfOnMediaWikiServices() {
 	);
 
 	if ( !$check ) {
+		$lbFactory = MediaWiki\MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
+
 		$dbw = wfGetDB( DB_PRIMARY );
 		$dbw->insert(
 			'cw_wikis',
@@ -64,6 +66,8 @@ function wfOnMediaWikiServices() {
 				'wiki_inactive_exempt' => (int)0
 			]
 		);
+
+		$lbFactory->shutdown( $lbFactory::SHUTDOWN_NO_CHRONPROT );
 	}
 }
 

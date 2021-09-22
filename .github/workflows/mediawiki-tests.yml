@@ -316,8 +316,10 @@ jobs:
           fi
 
           cd src/includes
-          rm Setup.php
-          mv "$GITHUB_WORKSPACE"/.github/workflows/setup-fix.php Setup.php
+          if [ "${MEDIAWIKI_VERSION}" == 'REL1_36' ]; then
+            rm Setup.php
+            mv "$GITHUB_WORKSPACE"/.github/workflows/setup-fix.php Setup.php
+          fi
 
           echo 'require_once __DIR__ . "/../extensions/${{ github.event.repository.name }}/.github/workflows/globals.php";' >> DevelopmentSettings.php
           cd ../..

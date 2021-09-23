@@ -35,8 +35,9 @@ $wgCreateWikiCacheDirectory = "$IP/cache";
 
 $wgSpecialPages['RequestWikiQueue'] = DisabledSpecialPage::getCallback( 'RequestWikiQueue', 'Disabled' );
 
-$wgHooks['MediaWikiServices'][] = 'wfOnMediaWikiServices';
+// $wgHooks['MediaWikiServices'][] = 'wfOnMediaWikiServices';
 
+$wgExtensionFunctions[] = 'wfOnMediaWikiServices';
 function wfOnMediaWikiServices() {
 	try {
 		$dbw = wfGetDB( DB_PRIMARY );

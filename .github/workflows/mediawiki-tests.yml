@@ -231,6 +231,8 @@ jobs:
       QUIBBLE_DOCKER_IMAGE: quibble-buster-php${{ matrix.php-docker }}
       COVERAGE_DOCKER_IMAGE: quibble-buster-php${{ matrix.php-docker }}-coverage
       PHAN_DOCKER_IMAGE: mediawiki-phan-php${{ matrix.php-docker }}
+      MW_SCRIPT_PATH: '/'
+      MW_SERVER: "http://127.0.0.1:9412"
 
     steps:
       - uses: actions/checkout@v2

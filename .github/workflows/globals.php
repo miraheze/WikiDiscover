@@ -25,6 +25,12 @@ $wi->config->settings += [
 	'cwPrivate' => [
 		'default' => false,
 	],
+	'wgServer' => [
+		'default' => 'http://127.0.0.1:9412',
+	],
+	'wgScriptPath' => [
+		'default' => '/',
+	],
 ];
 
 $wgWikimediaJenkinsCI = true;

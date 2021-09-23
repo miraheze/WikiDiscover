@@ -27,8 +27,6 @@ $wi->config->settings += [
 	],
 ];
 
-$wgWikimediaJenkinsCI = true;
-
 $wgCreateWikiGlobalWiki = 'wikidb';
 $wgCreateWikiDatabase = 'wikidb';
 $wgCreateWikiCacheDirectory = "$IP/cache";

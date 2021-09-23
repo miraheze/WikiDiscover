@@ -110,6 +110,8 @@ class WikiDiscoverWikisPager extends TablePager {
 			case 'wiki_description':
 				$config = MediaWikiServices::getInstance()->getMainConfig();
 				$dbr = wfGetDB( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
+
+				// @phan-suppress-next-line SecurityCheck-LikelyFalsePositive
 				$selectSettings = $dbr->selectFieldValues( 'mw_settings', 's_settings', [ 's_dbname' => $wiki ] );
 
 				if ( array_key_exists( 'wgWikiDiscoverDescription', (array)json_decode( $selectSettings[0], true ) ) ) {

@@ -60,7 +60,15 @@ function wfOnMediaWikiServices( MediaWiki\MediaWikiServices $services ) {
 			]
 		);
 
-		$services->resetService( 'DBLoadBalancerFactory' );
+		$oldLoadBalancerFactory = $services->getDBLoadBalancerFactory();
+
+		$services->disableService( 'DBLoadBalancerFactory' );
+		$services->redefineService(
+			'DBLoadBalancerFactory',
+			static function ( MediaWiki\MediaWikiServices $services ) use ( $oldLoadBalancerFactory ) {
+				return $oldLoadBalancerFactory;
+			}
+		);
 	} catch ( Wikimedia\Rdbms\DBQueryError $e ) {
 		return;
 	}

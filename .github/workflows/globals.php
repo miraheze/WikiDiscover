@@ -8,10 +8,10 @@ $wi = new WikiInitialise();
 $wi->setVariables(
 	"$IP/cache",
 	[
-		'wiki'
+		''
 	],
 	[
-		'localhost:9412' => 'wiki'
+		'127.0.0.1' => ''
 	]
 );
 
@@ -26,7 +26,7 @@ $wi->config->settings += [
 		'default' => false,
 	],
 	'wgServer' => [
-		'default' => 'http://localhost:9412',
+		'default' => 'http://127.0.0.1:9412',
 	],
 	'wgScriptPath' => [
 		'default' => '/',

@@ -59,8 +59,6 @@ use MediaWiki\HeaderCallback;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use Psr\Log\LoggerInterface;
-use Wikimedia\Rdbms\ChronologyProtector;
-use Wikimedia\Rdbms\LBFactory;
 use Wikimedia\RequestTimeout\RequestTimeout;
 
 /**
@@ -403,13 +401,13 @@ if ( $wgUseInstantCommons ) {
 }
 foreach ( $wgForeignFileRepos as &$repo ) {
 	if ( !isset( $repo['directory'] ) && $repo['class'] === ForeignAPIRepo::class ) {
-		$repo['directory'] = $wgUploadDirectory; // b/c
+		$repo['directory'] = $wgUploadDirectory;
 	}
 	if ( !isset( $repo['backend'] ) ) {
 		$repo['backend'] = $repo['name'] . '-backend';
 	}
 }
-unset( $repo ); // no global pollution; destroy reference
+unset( $repo );
 
 $rcMaxAgeDays = $wgRCMaxAge / ( 3600 * 24 );
 // Ensure that default user options are not invalid, since that breaks Special:Preferences
@@ -442,7 +440,7 @@ if ( $wgEnableEmail ) {
 	// Disable all other email settings automatically if $wgEnableEmail
 	// is set to false. - T65678
 	$wgAllowHTMLEmail = false;
-	$wgEmailAuthentication = false; // do not require auth if you're not sending email anyway
+	$wgEmailAuthentication = false;
 	$wgEnableUserEmail = false;
 	$wgEnotifFromEditor = false;
 	$wgEnotifImpersonal = false;
@@ -477,18 +475,18 @@ if ( count( $wgDummyLanguageCodes ) !== 0 ) {
 $wgDummyLanguageCodes += [
 	// Internal language codes of the private-use area which get mapped to
 	// themselves.
-	'qqq' => 'qqq', // Used for message documentation
-	'qqx' => 'qqx', // Used for viewing message keys
+	'qqq' => 'qqq',
+	'qqx' => 'qqx',
 ] + $wgExtraLanguageCodes + LanguageCode::getDeprecatedCodeMapping();
 // Merge in (inverted) BCP 47 mappings
 foreach ( LanguageCode::getNonstandardLanguageCodeMapping() as $code => $bcp47 ) {
-	$bcp47 = strtolower( $bcp47 ); // force case-insensitivity
+	$bcp47 = strtolower( $bcp47 );
 	if ( !isset( $wgDummyLanguageCodes[$bcp47] ) ) {
 		$wgDummyLanguageCodes[$bcp47] = $wgDummyLanguageCodes[$code] ?? $code;
 	}
 }
-unset( $code ); // no global pollution; destroy reference
-unset( $bcp47 ); // no global pollution; destroy reference
+unset( $code );
+unset( $bcp47 );
 
 // Temporary backwards-compatibility reading of old replica lag settings as of MediaWiki 1.36,
 // to support sysadmins who fail to update their settings immediately:
@@ -687,7 +685,7 @@ if ( !$wgDBerrorLogTZ ) {
 }
 
 // Initialize the request object in $wgRequest
-$wgRequest = RequestContext::getMain()->getRequest(); // BackCompat
+$wgRequest = RequestContext::getMain()->getRequest();
 // Set user IP/agent information for agent session consistency purposes
 
 // Make sure that object caching does not undermine the ChronologyProtector improvements
@@ -799,7 +797,7 @@ if ( !defined( 'MW_NO_SESSION' ) && !$wgCommandLineMode ) {
  * @deprecated since 1.35, use an available context source when possible, or, as a backup,
  * RequestContext::getMain()
  */
-$wgUser = RequestContext::getMain()->getUser(); // BackCompat
+$wgUser = RequestContext::getMain()->getUser();
 
 /**
  * @var Language|StubUserLang $wgLang
@@ -809,7 +807,7 @@ $wgLang = new StubUserLang;
 /**
  * @var OutputPage $wgOut
  */
-$wgOut = RequestContext::getMain()->getOutput(); // BackCompat
+$wgOut = RequestContext::getMain()->getOutput();
 
 /**
  * @var Parser $wgParser
@@ -831,7 +829,7 @@ $wgTitle = null;
 foreach ( $wgExtensionFunctions as $func ) {
 	call_user_func( $func );
 }
-unset( $func ); // no global pollution; destroy reference
+unset( $func );
 
 // If the session user has a 0 id but a valid name, that means we need to
 // autocreate it.

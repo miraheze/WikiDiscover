@@ -35,9 +35,9 @@ $wgCreateWikiCacheDirectory = "$IP/cache";
 
 $wgSpecialPages['RequestWikiQueue'] = DisabledSpecialPage::getCallback( 'RequestWikiQueue', 'Disabled' );
 
-$wgHooks['LoadExtensionSchemaUpdates'][] = 'wfOnLoadExtensionSchemaUpdates';
+$wgHooks['MediaWikiServices'][] = 'wfOnMediaWikiServices';
 
-function wfOnLoadExtensionSchemaUpdates() {
+function wfOnMediaWikiServices( MediaWiki\MediaWikiServices $services ) {
 	try {
 		$dbw = wfGetDB( DB_PRIMARY );
 
@@ -60,6 +60,12 @@ function wfOnLoadExtensionSchemaUpdates() {
 			]
 		);
 	} catch ( Wikimedia\Rdbms\DBQueryError $e ) {
+		return;
+	}
+
+	try {
+		$services::resetGlobalInstance();
+	} catch ( MWException $e ) {
 		return;
 	}
 }

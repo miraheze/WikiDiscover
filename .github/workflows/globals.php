@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 define( 'MW_DB', 'wikidb' );
 

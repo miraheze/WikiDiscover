@@ -70,7 +70,7 @@ class SpecialWikiDiscover extends SpecialPage {
 		return 'wikimanage';
 	}
 
-	private static function dummyProcess( $formData ) {
+	public static function dummyProcess( $formData ) {
 		// Because we need a submission callback but we don't!
 		return false;
 	}

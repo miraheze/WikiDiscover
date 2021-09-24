@@ -110,7 +110,7 @@ class WikiDiscoverWikisPager extends TablePager {
 			case 'wiki_description':
 				$manageWikiSettings = new ManageWikiSettings( $wiki );
 
-				$value = $manageWikiSettings->list( 'wgWikiDiscoverDescription' );
+				$value = $manageWikiSettings->list()['wgWikiDiscoverDescription'] ?? '';
 
 				$formatted = $value ?? '';
 				break;

@@ -39,7 +39,7 @@ function wfOnMediaWikiServices( MediaWiki\MediaWikiServices $services ) {
 	$oldLoadBalancerFactory = $services->getDBLoadBalancerFactory();
 
 	try {
-		$dbw = wfGetDB( DB_PRIMARY );
+		$dbw = wfGetDB( DB_PRIMARY, [], 'wikidb' );
 
 		$dbw->insert(
 			'cw_wikis',

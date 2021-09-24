@@ -67,7 +67,7 @@ function wfOnMediaWikiServices( MediaWiki\MediaWikiServices $services ) {
 				'wiki_url' => 'http://127.0.0.1:9412'
 			]
 		);
-		$services->getDBLoadBalancerFactory()->shutdown();
+		$services->getDBLoadBalancerFactory()->destroy();
 		$services->getDBLoadBalancerFactory()->setRequestInfo( [
 			'IPAddress' => $_SERVER[ 'REMOTE_ADDR' ] ?? '',
 			'UserAgent' => $_SERVER['HTTP_USER_AGENT'] ?? '',

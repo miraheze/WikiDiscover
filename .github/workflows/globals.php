@@ -36,15 +36,6 @@ $wgSpecialPages['RequestWikiQueue'] = DisabledSpecialPage::getCallback( 'Request
 $wgHooks['MediaWikiServices'][] = 'wfOnMediaWikiServices';
 
 function wfOnMediaWikiServices( MediaWiki\MediaWikiServices $services ) {
-	$oldLoadBalancerFactory = $services->getDBLoadBalancerFactory();
-
-	$services->disableService( 'DBLoadBalancerFactory' );
-	$services->redefineService(
-		'DBLoadBalancerFactory',
-		static function ( MediaWiki\MediaWikiServices $services ) use ( $oldLoadBalancerFactory ) {
-			return $oldLoadBalancerFactory;
-		}
-	);
 
 	try {
 		$dbw = wfGetDB( DB_PRIMARY );
@@ -67,14 +58,21 @@ function wfOnMediaWikiServices( MediaWiki\MediaWikiServices $services ) {
 				'wiki_url' => 'http://127.0.0.1:9412'
 			]
 		);
+
+		$services->getDBLoadBalancerFactory()->disableChronologyProtection();
+
+		$services->getDBLoadBalancerFactory()->shutdown();
 		$services->getDBLoadBalancerFactory()->destroy();
-		$services->getDBLoadBalancerFactory()->setRequestInfo( [
-			'IPAddress' => $_SERVER[ 'REMOTE_ADDR' ] ?? '',
-			'UserAgent' => $_SERVER['HTTP_USER_AGENT'] ?? '',
-			'ChronologyProtection' => null,
-			'ChronologyPositionIndex' => null,
-			'ChronologyClientId' => null
-		] );
+
+		$oldLoadBalancerFactory = $services->getDBLoadBalancerFactory();
+
+		$services->disableService( 'DBLoadBalancerFactory' );
+		$services->redefineService(
+			'DBLoadBalancerFactory',
+			static function ( MediaWiki\MediaWikiServices $services ) use ( $oldLoadBalancerFactory ) {
+				return $oldLoadBalancerFactory;
+			}
+		);
 	} catch ( Wikimedia\Rdbms\DBQueryError $e ) {
 		return;
 	}

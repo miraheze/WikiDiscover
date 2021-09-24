@@ -58,15 +58,13 @@ function wfOnMediaWikiServices( MediaWiki\MediaWikiServices $services ) {
 			]
 		);
 
-		$oldLoadBalancerFactory = $services->getDBLoadBalancerFactory();
-
-		$services->disableService( 'DBLoadBalancerFactory' );
-		$services->redefineService(
-			'DBLoadBalancerFactory',
-			static function ( MediaWiki\MediaWikiServices $services ) use ( $oldLoadBalancerFactory ) {
-				return $oldLoadBalancerFactory;
-			}
-		);
+		$services->getDBLoadBalancerFactory()->setRequestInfo( [
+			'IPAddress' => $_SERVER[ 'REMOTE_ADDR' ] ?? '',
+			'UserAgent' => $_SERVER['HTTP_USER_AGENT'] ?? '',
+			'ChronologyProtection' => null,
+			'ChronologyPositionIndex' => null,
+			'ChronologyClientId' => null
+		] );
 	} catch ( Wikimedia\Rdbms\DBQueryError $e ) {
 		return;
 	}

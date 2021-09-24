@@ -323,8 +323,8 @@ jobs:
 
           # REPLACE SETUP.PHP FOR CREATEWIKI DEPENDANT EXTENSIONS ON REL1_36.
           # FIXES A BUG PRESENT ON REL1_36, WHEN DOING DATABASE STUFF BEFORE THIS WAS DONE, REQUEST INFO WAS ALREADY SET FOR DBLoadBalancerFactory,
-          # RESULTING IN "LogicException: ChronologyProtector already initialized". THIS HACK REMOVES THE
-          # MediaWikiServices::getInstance()->getDBLoadBalancerFactory()->setRequestInfo FROM THERE. THIS IS ALREADY FIXED FOR REL1_37 AND LATER.
+          # RESULTING IN "LogicException: ChronologyProtector already initialized". THIS HACK REMOVES
+          # MediaWikiServices::getInstance()->getDBLoadBalancerFactory()->setRequestInfo(). THIS IS ALREADY FIXED FOR REL1_37 AND LATER.
           # WITH https://github.com/wikimedia/mediawiki/commit/29827d
 
           if [ -d src/extensions/CreateWiki ] && [ "${MEDIAWIKI_VERSION}" == 'REL1_36' ]; then

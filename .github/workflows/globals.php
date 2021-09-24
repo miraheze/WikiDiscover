@@ -58,10 +58,11 @@ function wfOnMediaWikiServices( MediaWiki\MediaWikiServices $services ) {
 			]
 		);
 
+		$services->getDBLoadBalancerFactory()->waitForReplication();
+
 		$services->getDBLoadBalancerFactory()->disableChronologyProtection();
 
 		$services->getDBLoadBalancerFactory()->shutdown();
-		$services->getDBLoadBalancerFactory()->destroy();
 
 		$oldLoadBalancerFactory = $services->getDBLoadBalancerFactory();
 

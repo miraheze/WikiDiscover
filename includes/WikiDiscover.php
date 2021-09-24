@@ -214,16 +214,16 @@ class WikiDiscover {
 
 	/**
 	 * @param Parser $parser
-	 * @param ?string $wikiDatabase
+	 * @param ?string $database
 	 * @return string
 	 */
-	public static function wikiCreationDate( Parser $parser, string $wikiDatabase = null ) {
+	public static function wikiCreationDate( Parser $parser, string $database = null ) {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
 		$lang = RequestContext::getMain()->getLanguage();
 
 		$dbr = wfGetDB( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
 
-		$wikiDatabase = $wikiDatabase ?? $config->get( 'DBname' );
+		$wikiDatabase = $database ?? $config->get( 'DBname' );
 
 		$creationDate = $dbr->selectField( 'cw_wikis', 'wiki_creation', [ 'wiki_dbname' => $wikiDatabase ] );
 

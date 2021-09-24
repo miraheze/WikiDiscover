@@ -1,5 +1,7 @@
 <?php
 
+use Wikimedia\ParamValidator\ParamValidator;
+
 class ApiWikiDiscover extends ApiBase {
 	public function __construct( ApiMain $main, $modulename ) {
 		parent::__construct( $main, $modulename, 'wd' );
@@ -114,7 +116,7 @@ class ApiWikiDiscover extends ApiBase {
 					'public',
 					'deleted'
 				],
-				ApiBase::PARAM_DFLT => 'all',
+				ParamValidator::PARAM_DEFAULT => 'all',
 			],
 			'siteprop' => [
 				ApiBase::PARAM_ISMULTI => true,
@@ -124,17 +126,17 @@ class ApiWikiDiscover extends ApiBase {
 					'sitename',
 					'languagecode',
 				],
-				ApiBase::PARAM_DFLT => 'url|dbname|sitename|languagecode',
+				ParamValidator::PARAM_DEFAULT => 'url|dbname|sitename|languagecode',
 			],
 			'limit' => [
 				ApiBase::PARAM_TYPE => 'limit',
 				ApiBase::PARAM_MIN => 1,
 				ApiBase::PARAM_MAX => 5000,
 				ApiBase::PARAM_MAX2 => 5000,
-				ApiBase::PARAM_DFLT => 5000,
+				ParamValidator::PARAM_DEFAULT => 5000,
 			],
 			'wikislist' => [
-				ApiBase::PARAM_TYPE => 'string',
+				ParamValidator::PARAM_DEFAULT => 'string',
 			],
 		];
 	}

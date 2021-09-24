@@ -36,10 +36,8 @@ $wgSpecialPages['RequestWikiQueue'] = DisabledSpecialPage::getCallback( 'Request
 $wgHooks['MediaWikiServices'][] = 'wfOnMediaWikiServices';
 
 function wfOnMediaWikiServices( MediaWiki\MediaWikiServices $services ) {
-	$oldLoadBalancerFactory = $services->getDBLoadBalancerFactory();
-
 	try {
-		$dbw = wfGetDB( DB_PRIMARY, [], 'wikidb' );
+		$dbw = wfGetDB( DB_PRIMARY );
 
 		$dbw->insert(
 			'cw_wikis',
@@ -60,11 +58,7 @@ function wfOnMediaWikiServices( MediaWiki\MediaWikiServices $services ) {
 			]
 		);
 
-		$services->getDBLoadBalancerFactory()->waitForReplication();
-
-		$services->getDBLoadBalancerFactory()->disableChronologyProtection();
-
-		$services->getDBLoadBalancerFactory()->shutdown();
+		$oldLoadBalancerFactory = $services->getDBLoadBalancerFactory();
 
 		$services->disableService( 'DBLoadBalancerFactory' );
 		$services->redefineService(

@@ -36,7 +36,6 @@ $wgSpecialPages['RequestWikiQueue'] = DisabledSpecialPage::getCallback( 'Request
 $wgHooks['MediaWikiServices'][] = 'wfOnMediaWikiServices';
 
 function wfOnMediaWikiServices( MediaWiki\MediaWikiServices $services ) {
-
 	try {
 		$dbw = wfGetDB( DB_PRIMARY );
 

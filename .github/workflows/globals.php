@@ -31,6 +31,8 @@ $wgCreateWikiGlobalWiki = 'wikidb';
 $wgCreateWikiDatabase = 'wikidb';
 $wgCreateWikiCacheDirectory = "$IP/cache";
 
+$wgWikiDiscoverUseDescriptions = true;
+
 $wgSpecialPages['RequestWikiQueue'] = DisabledSpecialPage::getCallback( 'RequestWikiQueue', 'Disabled' );
 
 $wgHooks['MediaWikiServices'][] = 'wfOnMediaWikiServices';

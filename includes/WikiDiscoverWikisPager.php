@@ -18,7 +18,7 @@ class WikiDiscoverWikisPager extends TablePager {
 	/** @var WikiDiscover */
 	private $wikiDiscover;
 
-	public function __construct( $wikiDiscover, $language, $category, $state, $visibility ) {
+	public function __construct( $page, $language, $category, $state, $visibility ) {
 		$this->mDb = self::getCreateWikiDatabase();
 
 		$this->language = $language;
@@ -27,9 +27,9 @@ class WikiDiscoverWikisPager extends TablePager {
 		$this->state = $state;
 		$this->visibility = $visibility;
 
-		$this->wikiDiscover = $wikiDiscover;
+		$this->wikiDiscover = new WikiDiscover();
 
-		parent::__construct( $wikiDiscover->getContext(), $wikiDiscover->getLinkRenderer() );
+		parent::__construct( $page->getContext(), $page->getLinkRenderer() );
 	}
 
 	public static function getCreateWikiDatabase() {

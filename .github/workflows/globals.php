@@ -55,16 +55,6 @@ function wfOnMediaWikiServices( MediaWiki\MediaWikiServices $services ) {
 				'wiki_url' => 'http://127.0.0.1:9412'
 			]
 		);
-
-		$oldLoadBalancerFactory = $services->getDBLoadBalancerFactory();
-
-		$services->disableService( 'DBLoadBalancerFactory' );
-		$services->redefineService(
-			'DBLoadBalancerFactory',
-			static function ( MediaWiki\MediaWikiServices $services ) use ( $oldLoadBalancerFactory ) {
-				return $oldLoadBalancerFactory;
-			}
-		);
 	} catch ( Wikimedia\Rdbms\DBQueryError $e ) {
 		return;
 	}

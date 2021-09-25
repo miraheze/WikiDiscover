@@ -32,7 +32,7 @@ $wgCreateWikiDatabase = 'wikidb';
 $wgCreateWikiCacheDirectory = "$IP/cache";
 
 $wgSpecialPages['RequestWikiQueue'] = DisabledSpecialPage::getCallback( 'RequestWikiQueue', 'Disabled' );
-$wgSpecialPages['DeletedWikis'] = DisabledSpecialPage::getCallback( 'DeletedWikis', 'Disabled' );
+// $wgSpecialPages['DeletedWikis'] = DisabledSpecialPage::getCallback( 'DeletedWikis', 'Disabled' );
 
 $wgHooks['MediaWikiServices'][] = 'wfOnMediaWikiServices';
 
@@ -51,7 +51,7 @@ function wfOnMediaWikiServices( MediaWiki\MediaWikiServices $services ) {
 				'wiki_creation' => $dbw->timestamp(),
 				'wiki_category' => 'uncategorised',
 				'wiki_closed' => (int)0,
-				'wiki_deleted' => (int)0,
+				'wiki_deleted' => (int)1,
 				'wiki_locked' => (int)0,
 				'wiki_inactive' => (int)0,
 				'wiki_inactive_exempt' => (int)0,

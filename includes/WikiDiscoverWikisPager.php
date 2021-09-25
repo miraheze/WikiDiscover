@@ -18,7 +18,7 @@ class WikiDiscoverWikisPager extends TablePager {
 	/** @var WikiDiscover */
 	private $wikiDiscover;
 
-	public function __construct( $language, $category, $state, $visibility ) {
+	public function __construct( $wikiDiscover, $language, $category, $state, $visibility ) {
 		$this->mDb = self::getCreateWikiDatabase();
 
 		$this->language = $language;
@@ -27,9 +27,9 @@ class WikiDiscoverWikisPager extends TablePager {
 		$this->state = $state;
 		$this->visibility = $visibility;
 
-		$this->wikiDiscover = new WikiDiscover();
+		$this->wikiDiscover = $wikiDiscover;
 
-		parent::__construct( $this->getContext() );
+		parent::__construct( $wikiDiscover->getContext(), $wikiDiscover->getLinkRenderer() );
 	}
 
 	public static function getCreateWikiDatabase() {
@@ -67,40 +67,40 @@ class WikiDiscoverWikisPager extends TablePager {
 	public function formatValue( $name, $value ) {
 		$row = $this->mCurrentRow;
 
-		$wikidiscover = $this->wikiDiscover;
+		$wikiDiscover = $this->wikiDiscover;
 
 		$wiki = $row->wiki_dbname;
 
 		switch ( $name ) {
 			case 'wiki_dbname':
-				$url = $wikidiscover->getUrl( $wiki );
-				$name = $wikidiscover->getSitename( $wiki );
+				$url = $wikiDiscover->getUrl( $wiki );
+				$name = $wikiDiscover->getSitename( $wiki );
 				$formatted = "<a href=\"{$url}\">{$name}</a>";
 				break;
 			case 'wiki_language':
-				$formatted = $wikidiscover->getLanguage( $wiki );
+				$formatted = $wikiDiscover->getLanguage( $wiki );
 				break;
 			case 'wiki_closed':
-				if ( $wikidiscover->isDeleted( $wiki ) ) {
+				if ( $wikiDiscover->isDeleted( $wiki ) ) {
 					$formatted = 'Deleted';
-				} elseif ( $wikidiscover->isClosed( $wiki ) ) {
+				} elseif ( $wikiDiscover->isClosed( $wiki ) ) {
 					$formatted = 'Closed';
-				} elseif ( $wikidiscover->isInactive( $wiki ) ) {
+				} elseif ( $wikiDiscover->isInactive( $wiki ) ) {
 					$formatted = 'Inactive';
 				} else {
 					$formatted = 'Open';
 				}
 				break;
 			case 'wiki_private':
-				if ( $wikidiscover->isPrivate( $wiki ) === true ) {
+				if ( $wikiDiscover->isPrivate( $wiki ) === true ) {
 					$formatted = 'Private';
 				} else {
 					$formatted = 'Public';
 				}
 				break;
 			case 'wiki_category':
-				$wikicategories = array_flip( $this->getConfig()->get( 'CreateWikiCategories' ) );
-				$formatted = $wikicategories[$row->wiki_category] ?? 'Uncategorised';
+				$wikiCategories = array_flip( $this->getConfig()->get( 'CreateWikiCategories' ) );
+				$formatted = $wikiCategories[$row->wiki_category] ?? 'Uncategorised';
 				break;
 			case 'wiki_creation':
 				$lang = RequestContext::getMain()->getLanguage();

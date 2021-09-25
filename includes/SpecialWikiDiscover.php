@@ -66,7 +66,7 @@ class SpecialWikiDiscover extends SpecialPage {
 		$this->getOutput()->addParserOutputContent( $pager->getFullOutput() );
 	}
 
-	public static function dummyProcess( $formData ) {
+	public function dummyProcess( $formData ) {
 		// Because we need a submission callback but we don't!
 		return false;
 	}

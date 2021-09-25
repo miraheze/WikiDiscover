@@ -53,7 +53,7 @@
 		"WikiDiscoverUseDescriptions": {
 			"description": "Whether or not to enable wiki descriptions.",
 			"public": true,
-			"value": false
+			"value": true
 		}
 	},
 	"manifest_version": 2

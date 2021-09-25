@@ -65,7 +65,7 @@ class SpecialWikiDiscover extends SpecialPage {
 			->prepareForm()
 			->displayForm( false );
 
-		$pager = new WikiDiscoverWikisPager( $language, $category, $state, $visibility );
+		$pager = new WikiDiscoverWikisPager( $this, $language, $category, $state, $visibility );
 
 		$this->getOutput()->addParserOutputContent( $pager->getFullOutput() );
 	}

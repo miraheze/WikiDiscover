@@ -53,7 +53,7 @@ class WikiDiscoverWikisPager extends TablePager {
 			'wiki_creation' => 'wikidiscover-table-established',
 		];
 
-		if ( ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' ) && $this->getConfig()->get( 'WikiDiscoverUseDescriptions' ) ) {
+		if ( ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' ) /*&& $this->getConfig()->get( 'WikiDiscoverUseDescriptions' )*/ ) {
 			$headers['wiki_description'] = 'wikidiscover-table-description';
 		}
 

@@ -31,17 +31,15 @@ $wgCreateWikiGlobalWiki = 'wikidb';
 $wgCreateWikiDatabase = 'wikidb';
 $wgCreateWikiCacheDirectory = "$IP/cache";
 
-$wgSpecialPages['RequestWikiQueue'] = DisabledSpecialPage::getCallback( 'RequestWikiQueue', 'Disabled' );
-// $wgSpecialPages['DeletedWikis'] = DisabledSpecialPage::getCallback( 'DeletedWikis', 'Disabled' );
+if ( version_compare( MW_VERSION, '1.37.0', '<' ) ) {
+	$wgSpecialPages['DeletedWikis'] = DisabledSpecialPage::getCallback( 'DeletedWikis', 'Disabled' );
+	$wgSpecialPages['RequestWikiQueue'] = DisabledSpecialPage::getCallback( 'RequestWikiQueue', 'Disabled' );
+	$wgSpecialPages['WikiDiscover'] = DisabledSpecialPage::getCallback( 'DeletedWikis', 'Disabled' );
+}
 
 $wgHooks['MediaWikiServices'][] = 'wfOnMediaWikiServices';
 
 function wfOnMediaWikiServices( MediaWiki\MediaWikiServices $services ) {
-	$context = new RequestContext();
-	$out = new OutputPage( $context );
-	$out->setTitle( Title::newMainPage() );
-	$context->setOutput( $out );
-
 	try {
 		$dbw = wfGetDB( DB_PRIMARY );
 

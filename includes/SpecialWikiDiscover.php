@@ -56,14 +56,8 @@ class SpecialWikiDiscover extends SpecialPage {
 			],
 		];
 
-		$context = new DerivativeContext( $this->getContext() );
-		$context->setTitle( $this->getPageTitle() );
-
-		$htmlForm = HTMLForm::factory( 'ooui', $formDescriptor, $context );
-		$htmlForm
-			->setMethod( 'get' )
-			->prepareForm()
-			->displayForm( false );
+		$htmlForm = HTMLForm::factory( 'ooui', $formDescriptor, $this->getContext() );
+		$htmlForm->setMethod( 'get' )->prepareForm()->displayForm( false );
 
 		$pager = new WikiDiscoverWikisPager( $this, $language, $category, $state, $visibility );
 

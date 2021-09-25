@@ -1,3 +1,4 @@
+---
 CreateWiki:
   branch: add-ci
   repo: https://github.com/miraheze/CreateWiki

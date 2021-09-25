@@ -10,8 +10,6 @@ class SpecialWikiDiscover extends SpecialPage {
 		$this->setHeaders();
 		$this->outputHeader();
 
-		$out = $this->getOutput();
-
 		$language = $this->getRequest()->getText( 'language' );
 		$category = $this->getRequest()->getText( 'category' );
 		$state = $this->getRequest()->getText( 'state' );
@@ -59,19 +57,14 @@ class SpecialWikiDiscover extends SpecialPage {
 		];
 
 		$htmlForm = HTMLForm::factory( 'ooui', $formDescriptor, $this->getContext() );
-		$htmlForm->setSubmitCallback( [ $this, 'dummyProcess' ] )->setMethod( 'get' )->prepareForm()->show();
+		$htmlForm->setMethod( 'get' )->prepareForm()->displayForm( false );
 
-		$pager = new WikiDiscoverWikisPager( $language, $category, $state, $visibility );
+		$pager = new WikiDiscoverWikisPager( $this, $language, $category, $state, $visibility );
 
 		$this->getOutput()->addParserOutputContent( $pager->getFullOutput() );
 	}
 
 	protected function getGroupName() {
 		return 'wikimanage';
-	}
-
-	public function dummyProcess( $formData ) {
-		// Because we need a submission callback but we don't!
-		return false;
 	}
 }

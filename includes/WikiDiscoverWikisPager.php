@@ -108,9 +108,9 @@ class WikiDiscoverWikisPager extends TablePager {
 				$formatted = $lang->date( wfTimestamp( TS_MW, strtotime( $row->wiki_creation ) ) );
 				break;
 			case 'wiki_description':
-				$siteConfiguration = $this->getConfig()->get( 'ManageWikiConf' );
+				$manageWikiSettings = new ManageWikiSettings( $wiki );
 
-				$value = $siteConfiguration->get( 'wgWikiDiscoverDescription', $wiki );
+				$value = $manageWikiSettings->list( 'wgWikiDiscoverDescription' );
 
 				$formatted = $value ?? '';
 				break;

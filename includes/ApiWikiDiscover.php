@@ -136,7 +136,7 @@ class ApiWikiDiscover extends ApiBase {
 				ParamValidator::PARAM_DEFAULT => 5000,
 			],
 			'wikislist' => [
-				ParamValidator::PARAM_DEFAULT => 'string',
+				ApiBase::PARAM_TYPE => 'string',
 			],
 		];
 	}

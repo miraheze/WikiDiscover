@@ -131,7 +131,7 @@ class ApiWikiDiscover extends ApiBase {
 			],
 			'limit' => [
 				ParamValidator::PARAM_TYPE => 'limit',
-				ParamValidator::PARAM_MIN => 1,
+				IntegerDef::PARAM_MIN => 1,
 				IntegerDef::PARAM_MAX => 5000,
 				IntegerDef::PARAM_MAX2 => 5000,
 				ParamValidator::PARAM_DEFAULT => 5000,

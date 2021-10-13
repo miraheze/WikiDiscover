@@ -2,5 +2,5 @@ CreateWiki:
   branch: master
   repo: https://github.com/miraheze/CreateWiki
 ManageWiki:
-  branch: add-ci
+  branch: master
   repo: https://github.com/miraheze/ManageWiki

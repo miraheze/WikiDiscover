@@ -1,6 +1,7 @@
 <?php
 
 use Wikimedia\ParamValidator\ParamValidator;
+use Wikimedia\ParamValidator\TypeDef\IntegerDef;
 
 class ApiWikiDiscover extends ApiBase {
 	public function __construct( ApiMain $main, $modulename ) {
@@ -106,8 +107,8 @@ class ApiWikiDiscover extends ApiBase {
 	protected function getAllowedParams() {
 		return [
 			'state' => [
-				ApiBase::PARAM_ISMULTI => true,
-				ApiBase::PARAM_TYPE => [
+				ParamValidator::PARAM_ISMULTI => true,
+				ParamValidator::PARAM_TYPE => [
 					'all',
 					'closed',
 					'inactive',
@@ -119,8 +120,8 @@ class ApiWikiDiscover extends ApiBase {
 				ParamValidator::PARAM_DEFAULT => 'all',
 			],
 			'siteprop' => [
-				ApiBase::PARAM_ISMULTI => true,
-				ApiBase::PARAM_TYPE => [
+				ParamValidator::PARAM_ISMULTI => true,
+				ParamValidator::PARAM_TYPE => [
 					'url',
 					'dbname',
 					'sitename',
@@ -129,14 +130,14 @@ class ApiWikiDiscover extends ApiBase {
 				ParamValidator::PARAM_DEFAULT => 'url|dbname|sitename|languagecode',
 			],
 			'limit' => [
-				ApiBase::PARAM_TYPE => 'limit',
-				ApiBase::PARAM_MIN => 1,
-				ApiBase::PARAM_MAX => 5000,
-				ApiBase::PARAM_MAX2 => 5000,
+				ParamValidator::PARAM_TYPE => 'limit',
+				ParamValidator::PARAM_MIN => 1,
+				IntegerDef::PARAM_MAX => 5000,
+				IntegerDef::PARAM_MAX2 => 5000,
 				ParamValidator::PARAM_DEFAULT => 5000,
 			],
 			'wikislist' => [
-				ApiBase::PARAM_TYPE => 'string',
+				ParamValidator::PARAM_TYPE => 'string',
 			],
 		];
 	}

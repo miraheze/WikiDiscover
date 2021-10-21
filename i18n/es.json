@@ -8,7 +8,7 @@
 		]
 	},
 	"randomwiki": "Wiki al azar",
-	"randomwiki-header": "Selecciona más abajo una categoría y un idioma y te redirigiremos al azar a un wiki que cumpla con ambos criterios.",
+	"randomwiki-header": "Selecciona más abajo una categoría y un idioma y te redirigiremos al azar a una wiki que cumpla con ambos criterios.",
 	"wikidiscover": "WikiDiscover",
 	"wikidiscover-desc": "Permite [[Special:WikiDiscover|descubrir wikis]] de un servicio de alojamiento a través de [[Special:CreateWiki|CreateWiki]].",
 	"wikidiscover-table-category": "Categoría",
@@ -20,8 +20,8 @@
 	"wikidiscover-table-wiki": "Nombre del wiki",
 	"apihelp-wikidiscover-summary": "Obtenga una lista de wikis de una granja de wiki de CreateWiki.",
 	"apihelp-wikidiscover-param-state": "Filtrar por el estado definido de CreateWiki de una wiki.",
-	"apihelp-wikidiscover-param-siteprop": "Información que devolver acerca de un wiki definido.",
+	"apihelp-wikidiscover-param-siteprop": "Información que devolver acerca de una wiki definida.",
 	"apihelp-wikidiscover-param-limit": "Número máximo de resultados para mostrar.",
-	"apihelp-wikidiscover-param-wikislist": "Conseguir una lista de todos los wikis.",
-	"apihelp-wikidiscover-example": "Mostrar todos los wikis del formulario."
+	"apihelp-wikidiscover-param-wikislist": "Conseguir una lista de todas las wikis.",
+	"apihelp-wikidiscover-example": "Mostrar todas las wikis del formulario."
 }

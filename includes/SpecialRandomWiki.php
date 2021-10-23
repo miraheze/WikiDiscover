@@ -42,7 +42,7 @@ class SpecialRandomWiki extends SpecialPage {
 		return 'wikimanage';
 	}
 
-	private function redirectWiki( $formData ) {
+	public function redirectWiki( $formData ) {
 		$randomwiki = WikiDiscoverRandom::randomWiki( 0, $category = $formData['category'], $formData['language'] );
 
 		header( "Location: https://" . substr( $randomwiki->wiki_dbname, 0, -4 ) . ".{$this->config->get( 'CreateWikiSubdomain' )}/" );

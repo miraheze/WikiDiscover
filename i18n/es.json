@@ -17,7 +17,7 @@
 	"wikidiscover-table-language": "Idioma",
 	"wikidiscover-table-state": "Estado o provincia",
 	"wikidiscover-table-visibility": "Visibilidad",
-	"wikidiscover-table-wiki": "Nombre del wiki",
+	"wikidiscover-table-wiki": "Nombre de la wiki",
 	"apihelp-wikidiscover-summary": "Obtenga una lista de wikis de una granja de wiki de CreateWiki.",
 	"apihelp-wikidiscover-param-state": "Filtrar por el estado definido de CreateWiki de una wiki.",
 	"apihelp-wikidiscover-param-siteprop": "Información que devolver acerca de una wiki definida.",

@@ -4,7 +4,8 @@
 			"Ajeje Brazorf",
 			"Beta16",
 			"Executive",
-			"Lorem Ipsum"
+			"Lorem Ipsum",
+			"Ricordisamoa"
 		]
 	},
 	"randomwiki": "Wiki casuale",
@@ -18,7 +19,7 @@
 	"wikidiscover-table-state": "Stato",
 	"wikidiscover-table-visibility": "Visibilità",
 	"wikidiscover-table-wiki": "Nome Wiki",
-	"apihelp-wikidiscover-summary": "Ottieni una lista di Wikis con CreaWiki incubatore di wiki.",
+	"apihelp-wikidiscover-summary": "Ottieni una lista di wiki su una wikifarm CreateWiki.",
 	"apihelp-wikidiscover-param-state": "Filtra in base ad uno stato definito da CreaWiki di una Wiki.",
 	"apihelp-wikidiscover-param-siteprop": "Informazione da restituire su una Wiki definita.",
 	"apihelp-wikidiscover-param-limit": "Numero massimo di risultati da mostrare.",

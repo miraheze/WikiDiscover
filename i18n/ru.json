@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"DDPAT",
 			"Happy13241",
 			"Kareyac",
 			"Movses",
@@ -13,7 +14,7 @@
 		]
 	},
 	"randomwiki": "\nСлучайная Вики",
-	"randomwiki-header": "\nВыберите категорию и язык ниже, и при отправке вы будете перенаправлены случайным образом в вики, которая соответствует выбранным критериям!",
+	"randomwiki-header": "Выберите категорию и язык ниже, и при отправке вы будете перенаправлены случайным образом в вики, которая соответствует выбранным критериям!",
 	"wikidiscover": "WikiDiscover",
 	"wikidiscover-desc": "Позволяет [[Special:WikiDiscover|обнаруживать вики]] на вики-ферме вики с [[Special:CreateWiki|CreateWiki]].",
 	"wikidiscover-table-category": "Категория",

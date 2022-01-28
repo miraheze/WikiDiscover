@@ -166,7 +166,7 @@ class WikiDiscoverWikisPager extends TablePager {
 	}
 
 	public function getDefaultSort() {
-		return 'wiki_dbname';
+		return 'wiki_creation';
 	}
 
 	public function isFieldSortable( $name ) {

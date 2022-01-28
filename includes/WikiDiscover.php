@@ -223,8 +223,8 @@ class WikiDiscover {
 
 	/**
 	 * @param Parser $parser
-	 * @param mixed|null $setting
-	 * @param mixed|null $value
+	 * @param mixed $setting Default to null
+	 * @param mixed $value Default to null
 	 * @return string|int
 	 */
 	public static function numberOfWikisBySetting( Parser $parser, $setting = null, $value = null ) {

@@ -67,10 +67,17 @@ class WikiDiscover {
 		}
 	}
 
+	/**
+	 * @return int
+	 */
 	public function getCount() {
 		return count( $this->config->get( 'LocalDatabases' ) );
 	}
 
+	/**
+	 * @param string $dbname
+	 * @return array
+	 */
 	public function getWikis( $dbname ) {
 		$wikis = [];
 
@@ -86,6 +93,10 @@ class WikiDiscover {
 		return $wikis;
 	}
 
+	/**
+	 * @param string $dbname
+	 * @return string[]
+	 */
 	public function getWikiPrefixes( $dbname ) {
 		$wikiprefixes = [];
 
@@ -100,40 +111,76 @@ class WikiDiscover {
 		return $wikiprefixes;
 	}
 
+	/**
+	 * @param string $database
+	 * @return string
+	 */
 	public function getUrl( $database ) {
 		return $this->config->get( 'Conf' )->get( 'wgServer', $database );
 	}
 
+	/**
+	 * @param string $database
+	 * @return string
+	 */
 	public function getSitename( $database ) {
 		return $this->config->get( 'Conf' )->get( 'wgSitename', $database );
 	}
 
+	/**
+	 * @param string $database
+	 * @return string
+	 */
 	public function getLanguageCode( $database ) {
 		return $this->langCodes[$database];
 	}
 
+	/**
+	 * @param string $database
+	 * @return string Language name or empty
+	 */
 	public function getLanguage( $database ) {
 		$languagecode = $this->getLanguageCode( $database );
 
 		return MediaWikiServices::getInstance()->getLanguageNameUtils()->getLanguageName( $languagecode );
 	}
 
+	/**
+	 * @param string $database
+	 * @return bool
+	 */
 	public function isClosed( $database ) {
 		return in_array( $database, $this->closed );
 	}
 
+	/**
+	 * @param string $database
+	 * @return bool
+	 */
 	public function isInactive( $database ) {
 		return in_array( $database, $this->inactive );
 	}
 
+	/**
+	 * @param string $database
+	 * @return bool
+	 */
 	public function isPrivate( $database ) {
 		return in_array( $database, $this->private );
 	}
 
+	/**
+	 * @param string $database
+	 * @return bool
+	 */
 	public function isDeleted( $database ) {
 		return in_array( $database, $this->deleted );
 	}
 
+	/**
+	 * @param string $database
+	 * @return bool
+	 */
 	public function isLocked( $database ) {
 		return in_array( $database, $this->locked );
 	}
@@ -150,8 +197,8 @@ class WikiDiscover {
 
 	/**
 	 * @param Parser $parser
-	 * @param string $category|uncategorised
-	 * @return integer
+	 * @param string $category Default to 'uncategorised'
+	 * @return int
 	 */
 	public static function numberOfWikisInCategory( Parser $parser, string $category = 'uncategorised' ) {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
@@ -163,8 +210,8 @@ class WikiDiscover {
 
 	/**
 	 * @param Parser $parser
-	 * @param string $language|en
-	 * @return integer
+	 * @param string $language Default to 'en'
+	 * @return int
 	 */
 	public static function numberOfWikisInLanguage( Parser $parser, string $language = 'en' ) {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
@@ -176,9 +223,9 @@ class WikiDiscover {
 
 	/**
 	 * @param Parser $parser
-	 * @param mixed $setting|null
-	 * @param mixed $value|null
-	 * @return string|integer
+	 * @param mixed|null $setting
+	 * @param mixed|null $value
+	 * @return string|int
 	 */
 	public static function numberOfWikisBySetting( Parser $parser, $setting = null, $value = null ) {
 		if ( !$setting && !$value ) {
@@ -217,7 +264,7 @@ class WikiDiscover {
 	 * @param ?string $database
 	 * @return string
 	 */
-	public static function wikiCreationDate( Parser $parser, string $database = null ) {
+	public static function wikiCreationDate( Parser $parser, ?string $database = null ) {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
 		$lang = RequestContext::getMain()->getLanguage();
 

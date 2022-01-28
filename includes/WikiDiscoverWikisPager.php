@@ -18,6 +18,13 @@ class WikiDiscoverWikisPager extends TablePager {
 	/** @var WikiDiscover */
 	private $wikiDiscover;
 
+	/**
+	 * @param SpecialPage $page
+	 * @param string $language
+	 * @param string $category
+	 * @param string $state
+	 * @param string $visibility
+	 */
 	public function __construct( $page, $language, $category, $state, $visibility ) {
 		$this->mDb = self::getCreateWikiDatabase();
 
@@ -32,6 +39,9 @@ class WikiDiscoverWikisPager extends TablePager {
 		parent::__construct( $page->getContext(), $page->getLinkRenderer() );
 	}
 
+	/**
+	 * @return DBConnRef
+	 */
 	public static function getCreateWikiDatabase() {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
 
@@ -41,7 +51,8 @@ class WikiDiscoverWikisPager extends TablePager {
 		return $lb->getConnectionRef( DB_REPLICA, 'cw_wikis', $config->get( 'CreateWikiDatabase' ) );
 	}
 
-	public function getFieldNames() {
+	/** @inheritDoc */
+	protected function getFieldNames() {
 		static $headers = null;
 
 		$headers = [
@@ -64,6 +75,7 @@ class WikiDiscoverWikisPager extends TablePager {
 		return $headers;
 	}
 
+	/** @inheritDoc */
 	public function formatValue( $name, $value ) {
 		$row = $this->mCurrentRow;
 
@@ -122,6 +134,7 @@ class WikiDiscoverWikisPager extends TablePager {
 		return $formatted;
 	}
 
+	/** @inheritDoc */
 	public function getQueryInfo() {
 		$info = [
 			'tables' => [ 'cw_wikis' ],
@@ -165,11 +178,13 @@ class WikiDiscoverWikisPager extends TablePager {
 		return $info;
 	}
 
+	/** @inheritDoc */
 	public function getDefaultSort() {
 		return 'wiki_creation';
 	}
 
-	public function isFieldSortable( $name ) {
-		return $name !== 'wiki_description';
+	/** @inheritDoc */
+	protected function isFieldSortable( $field ) {
+		return $field !== 'wiki_description';
 	}
 }

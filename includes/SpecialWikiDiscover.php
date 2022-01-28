@@ -6,7 +6,8 @@ class SpecialWikiDiscover extends SpecialPage {
 		parent::__construct( 'WikiDiscover' );
 	}
 
-	public function execute( $par ) {
+	/** @inheritDoc */
+	public function execute( $subPage ) {
 		$this->setHeaders();
 		$this->outputHeader();
 
@@ -64,6 +65,7 @@ class SpecialWikiDiscover extends SpecialPage {
 		$this->getOutput()->addParserOutputContent( $pager->getFullOutput() );
 	}
 
+	/** @inheritDoc */
 	protected function getGroupName() {
 		return 'wikimanage';
 	}

@@ -4,10 +4,16 @@ use Wikimedia\ParamValidator\ParamValidator;
 use Wikimedia\ParamValidator\TypeDef\IntegerDef;
 
 class ApiWikiDiscover extends ApiBase {
-	public function __construct( ApiMain $main, $modulename ) {
-		parent::__construct( $main, $modulename, 'wd' );
+
+	/**
+	 * @param ApiMain $main
+	 * @param string $moduleName Name of this module
+	 */
+	public function __construct( ApiMain $main, $moduleName ) {
+		parent::__construct( $main, $moduleName, 'wd' );
 	}
 
+	/** @inheritDoc */
 	public function execute() {
 		$result = $this->getResult();
 
@@ -104,6 +110,7 @@ class ApiWikiDiscover extends ApiBase {
 		$result->addValue( null, "wikidiscover", array_slice( $wikis, 0, $limit ) );
 	}
 
+	/** @inheritDoc */
 	protected function getAllowedParams() {
 		return [
 			'state' => [
@@ -142,6 +149,7 @@ class ApiWikiDiscover extends ApiBase {
 		];
 	}
 
+	/** @inheritDoc */
 	protected function getExamplesMessages() {
 		return [
 			'action=wikidiscover' => 'apihelp-wikidiscover-example'

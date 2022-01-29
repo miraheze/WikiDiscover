@@ -3,6 +3,12 @@
 use MediaWiki\MediaWikiServices;
 
 class WikiDiscoverRandom {
+	/**
+	 * @param int|string $state
+	 * @param int|string $category
+	 * @param int|string $language
+	 * @return stdClass|bool
+	 */
 	public static function randomWiki( $state = 0, $category = 0, $language = 0 ) {
 		$conditions = [];
 
@@ -27,6 +33,10 @@ class WikiDiscoverRandom {
 		return self::randFromConds( $conditions );
 	}
 
+	/**
+	 * @param string|array $conds The condition array.
+	 * @return stdClass|bool
+	 */
 	protected static function randFromConds( $conds ) {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
 

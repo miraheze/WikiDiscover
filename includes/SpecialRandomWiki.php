@@ -10,7 +10,8 @@ class SpecialRandomWiki extends SpecialPage {
 		parent::__construct( 'RandomWiki' );
 	}
 
-	public function execute( $par ) {
+	/** @inheritDoc */
+	public function execute( $subPage ) {
 		$this->setHeaders();
 		$this->outputHeader();
 
@@ -38,10 +39,15 @@ class SpecialRandomWiki extends SpecialPage {
 		$htmlForm->setSubmitCallback( [ $this, 'redirectWiki' ] )->setMethod( 'post' )->prepareForm()->show();
 	}
 
+	/** @inheritDoc */
 	protected function getGroupName() {
 		return 'wikimanage';
 	}
 
+	/**
+	 * @param array $formData
+	 * @return bool
+	 */
 	public function redirectWiki( $formData ) {
 		$randomwiki = WikiDiscoverRandom::randomWiki( 0, $category = $formData['category'], $formData['language'] );
 

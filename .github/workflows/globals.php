@@ -33,6 +33,7 @@ $wgCreateWikiCacheDirectory = "$IP/cache";
 
 $wgHooks['MediaWikiServices'][] = 'wfOnMediaWikiServices';
 
+// phpcs:ignore MediaWiki.Commenting.FunctionComment.MissingDocumentationPublic
 function wfOnMediaWikiServices( MediaWiki\MediaWikiServices $services ) {
 	try {
 		$dbw = wfGetDB( DB_PRIMARY );

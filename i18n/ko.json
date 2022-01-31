@@ -1,13 +1,18 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ykhwong"
+			"Ykhwong",
+			"렌즈"
 		]
 	},
 	"randomwiki": "임의의 위키로",
+	"wikidiscover": "위키 발견",
 	"wikidiscover-table-category": "분류",
+	"wikidiscover-table-description": "설명",
+	"wikidiscover-table-established": "설립",
 	"wikidiscover-table-language": "언어",
-	"wikidiscover-table-state": "활동",
+	"wikidiscover-table-state": "상태",
+	"wikidiscover-table-visibility": "공개 설정",
 	"wikidiscover-table-wiki": "위키 이름",
 	"apihelp-wikidiscover-summary": "CreateWiki 위키팜에서 위키 목록을 가져옵니다.",
 	"apihelp-wikidiscover-param-siteprop": "정의된 위키에 관해 반환할 정보입니다.",

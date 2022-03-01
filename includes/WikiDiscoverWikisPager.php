@@ -1,6 +1,7 @@
 <?php
 
 use MediaWiki\MediaWikiServices;
+use Miraheze\ManageWiki\Helpers\ManageWikiSettings;
 
 class WikiDiscoverWikisPager extends TablePager {
 	/** @var string */

@@ -10,14 +10,16 @@
 	"wikidiscover": "WikiDiscover",
 	"wikidiscover-desc": "Gör det möjligt att [[Special:WikiDiscover|upptäcka wikier]] på en wikifarm med [[Special:CreateWiki|CreateWiki]].",
 	"wikidiscover-table-category": "Kategori",
+	"wikidiscover-table-description": "Beskrivning",
 	"wikidiscover-table-established": "Etablerad",
 	"wikidiscover-table-language": "Språk",
-	"wikidiscover-table-state": "Aktivitet",
+	"wikidiscover-table-state": "Tillstånd",
 	"wikidiscover-table-visibility": "Synlighet",
 	"wikidiscover-table-wiki": "Wikinamn",
 	"apihelp-wikidiscover-summary": "Hämta en lista över wikier på en CreateWiki-wikifarm.",
 	"apihelp-wikidiscover-param-state": "Filtrera efter en wikis CreateWiki-definierade tillstånd.",
 	"apihelp-wikidiscover-param-siteprop": "Information att returnera om en definierad wiki.",
 	"apihelp-wikidiscover-param-limit": "Maximalt antal resultat att visa.",
+	"apihelp-wikidiscover-param-wikislist": "Hämta en lista över alla wikier.",
 	"apihelp-wikidiscover-example": "Visa alla wikier i formuläret."
 }

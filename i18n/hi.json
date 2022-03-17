@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"AnupamM"
+		]
+	},
+	"wikidiscover-table-category": "श्रेणी",
+	"wikidiscover-table-description": "विवरण",
+	"wikidiscover-table-established": "स्थापित किया गया",
+	"wikidiscover-table-language": "भाषा",
+	"wikidiscover-table-state": "स्थिति",
+	"wikidiscover-table-visibility": "दृश्यता",
+	"apihelp-wikidiscover-param-limit": "अधिकतम परिणाम संख्या"
+}

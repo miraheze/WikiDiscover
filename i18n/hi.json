@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"AnupamM"
+			"AnupamM",
+			"Saurmandal"
 		]
 	},
 	"wikidiscover-table-category": "श्रेणी",
@@ -10,5 +11,11 @@
 	"wikidiscover-table-language": "भाषा",
 	"wikidiscover-table-state": "स्थिति",
 	"wikidiscover-table-visibility": "दृश्यता",
-	"apihelp-wikidiscover-param-limit": "अधिकतम परिणाम संख्या"
+	"wikidiscover-table-wiki": "विकि का नाम",
+	"apihelp-wikidiscover-summary": "किसी CreateWiki विकि-फ़ार्म पर विकियों की सूची पाएँ।",
+	"apihelp-wikidiscover-param-state": "CreateWiki और विकि की स्थिति के अनुसार छानें।",
+	"apihelp-wikidiscover-param-siteprop": "परिभाषित विकि के बारे में लौटाने के लिए जानकारी।",
+	"apihelp-wikidiscover-param-limit": "अधिकतम परिणाम संख्या।",
+	"apihelp-wikidiscover-param-wikislist": "सभी विकियों की सूची पाएँ।",
+	"apihelp-wikidiscover-example": "फ़ॉर्म पर सभी विकियाँ दिखाएँ।"
 }

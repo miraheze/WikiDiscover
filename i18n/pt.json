@@ -9,13 +9,16 @@
 	"wikidiscover": "WikiDescoberta",
 	"wikidiscover-desc": "Permite [[Special:WikiDiscover|descobrir wikis]] num sítio de alojamento de wikis com [[Special:CreateWiki|CriarWiki]].",
 	"wikidiscover-table-category": "Categoria",
+	"wikidiscover-table-description": "Descrição",
+	"wikidiscover-table-established": "Estabelecido",
 	"wikidiscover-table-language": "Língua",
-	"wikidiscover-table-state": "Atividade",
+	"wikidiscover-table-state": "Estado",
 	"wikidiscover-table-visibility": "Visibilidade",
 	"wikidiscover-table-wiki": "Nome da wiki",
 	"apihelp-wikidiscover-summary": "Obter uma lista das wikis num sítio de alojamento de wikis CriarWiki.",
 	"apihelp-wikidiscover-param-state": "Filtrar pelo estado de uma wiki definido por CriarWiki.",
 	"apihelp-wikidiscover-param-siteprop": "A informação a devolver sobre uma wiki definida.",
 	"apihelp-wikidiscover-param-limit": "O número máximo de resultados a serem mostrados.",
+	"apihelp-wikidiscover-param-wikislist": "Obter uma lista de todas as wikis.",
 	"apihelp-wikidiscover-example": "Mostrar todas as wikis no sítio."
 }

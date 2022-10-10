@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Citadell",
+			"EdoAug",
 			"Imre Eilertsen",
 			"Jon Harald Søby"
 		]
@@ -12,7 +13,7 @@
 	"wikidiscover-desc": "Gjør det mulig å [[Special:WikiDiscover|oppdage wikier]] på en wikifarm med [[Special:CreateWiki|CreateWiki]].",
 	"wikidiscover-table-category": "Kategori",
 	"wikidiscover-table-language": "Språk",
-	"wikidiscover-table-state": "Aktivitet",
+	"wikidiscover-table-state": "Status",
 	"wikidiscover-table-visibility": "Synlighet",
 	"wikidiscover-table-wiki": "Wikiens navn",
 	"apihelp-wikidiscover-summary": "Hent en liste over wikier på en CreateWiki-wikifarm.",

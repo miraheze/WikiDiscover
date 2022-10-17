@@ -8,10 +8,14 @@
 		]
 	},
 	"randomwiki": "ویکی تصادفی",
+	"randomwiki-header": "یک رده و یک زبان را در زیر انتخاب و پس از ثبت، به‌طور تصادفی به یک ویکی که با معیارهای منتخب شما مطابقت دارد، هدایت خواهید شد!",
+	"wikidiscover": "ویکی‌اکتشاف",
 	"wikidiscover-table-category": "رده",
 	"wikidiscover-table-description": "توضیحات",
 	"wikidiscover-table-language": "زبان",
 	"wikidiscover-table-state": "حالت",
 	"wikidiscover-table-wiki": "نام ویکی",
-	"apihelp-wikidiscover-param-limit": "بیشینهٔ شمار نتایج برای نمایش"
+	"apihelp-wikidiscover-param-limit": "بیشینهٔ شمار نتایج برای نمایش",
+	"apihelp-wikidiscover-param-wikislist": "فهرستی از تمام ویکی‌ها را دریافت کن.",
+	"apihelp-wikidiscover-example": "تمام ویکی‌ها را در فرم نمایش بده."
 }

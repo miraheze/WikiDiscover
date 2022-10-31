@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Meno25",
 			"ديفيد",
 			"محمد أحمد عبد الفتاح"
 		]
@@ -10,8 +11,10 @@
 	"wikidiscover": "اكتشاف الويكي",
 	"wikidiscover-desc": "يسمح [[Special:WikiDiscover|باكتشاف ويكيات]] في مزرعة ويكي مع [[Special:CreateWiki|إنشاء ويكي]].",
 	"wikidiscover-table-category": "التصنيف",
+	"wikidiscover-table-description": "الوصف",
+	"wikidiscover-table-established": "أنشئت",
 	"wikidiscover-table-language": "اللغة",
-	"wikidiscover-table-state": "النشاط",
+	"wikidiscover-table-state": "الحالة",
 	"wikidiscover-table-visibility": "الرؤية",
 	"wikidiscover-table-wiki": "اسم الويكي",
 	"apihelp-wikidiscover-summary": "الحصول على قائمة الويكيات في مزرعة الويكي إنشاء ويكي.",

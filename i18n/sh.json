@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vlad5250"
+		]
+	},
+	"randomwiki": "Nasumični wiki",
+	"randomwiki-header": "Odaberite kategoriju i jezik da biste nasumično odveli se na wiki koji zadovoljava odabrane kriterije.",
+	"wikidiscover-table-category": "Kategorija",
+	"wikidiscover-table-description": "Opis",
+	"wikidiscover-table-established": "Utvrđen",
+	"wikidiscover-table-language": "Jezik",
+	"wikidiscover-table-state": "Stanje",
+	"wikidiscover-table-visibility": "Vidljivost",
+	"wikidiscover-table-wiki": "Naziv wikija"
+}

@@ -12,5 +12,7 @@
 	"wikidiscover-table-language": "Jezik",
 	"wikidiscover-table-state": "Stanje",
 	"wikidiscover-table-visibility": "Vidljivost",
-	"wikidiscover-table-wiki": "Naziv wikija"
+	"wikidiscover-table-wiki": "Naziv wikija",
+	"apihelp-wikidiscover-param-siteprop": "Koje informacije o definiranom wikiju treba vratiti.",
+	"apihelp-wikidiscover-param-limit": "Maksimalni broj rezultata za prikaz."
 }

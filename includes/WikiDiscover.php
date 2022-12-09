@@ -26,9 +26,12 @@ class WikiDiscover {
 
 	public function __construct() {
 		$this->config = MediaWikiServices::getInstance()->getMainConfig();
+		$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
 
-		$dbw = wfGetDB( DB_PRIMARY, [], $this->config->get( 'CreateWikiDatabase' ) );
-		$res = $dbw->select(
+		$dbr = $lbFactory->getMainLB( $this->config->get( 'CreateWikiDatabase' ) )
+			->getMaintenanceConnectionRef( DB_REPLICA, [], $this->config->get( 'CreateWikiDatabase' ) );
+
+		$res = $dbr->select(
 			'cw_wikis', [
 				'wiki_dbname',
 				'wiki_language',
@@ -202,8 +205,10 @@ class WikiDiscover {
 	 */
 	public static function numberOfWikisInCategory( Parser $parser, string $category = 'uncategorised' ) {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
+		$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
 
-		$dbr = wfGetDB( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
+		$dbr = $lbFactory->getMainLB( $config->get( 'CreateWikiDatabase' ) )
+			->getMaintenanceConnectionRef( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
 
 		return $dbr->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_category' => strtolower( $category ) ] );
 	}
@@ -215,8 +220,10 @@ class WikiDiscover {
 	 */
 	public static function numberOfWikisInLanguage( Parser $parser, string $language = 'en' ) {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
+		$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
 
-		$dbr = wfGetDB( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
+		$dbr = $lbFactory->getMainLB( $config->get( 'CreateWikiDatabase' ) )
+			->getMaintenanceConnectionRef( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
 
 		return $dbr->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_language' => strtolower( $language ) ] );
 	}
@@ -233,7 +240,10 @@ class WikiDiscover {
 		}
 
 		$config = MediaWikiServices::getInstance()->getMainConfig();
-		$dbr = wfGetDB( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
+		$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
+
+		$dbr = $lbFactory->getMainLB( $config->get( 'CreateWikiDatabase' ) )
+			->getMaintenanceConnectionRef( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
 
 		$extList = array_keys( $config->get( 'ManageWikiExtensions' ) );
 
@@ -268,7 +278,10 @@ class WikiDiscover {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
 		$lang = RequestContext::getMain()->getLanguage();
 
-		$dbr = wfGetDB( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
+		$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
+
+		$dbr = $lbFactory->getMainLB( $config->get( 'CreateWikiDatabase' ) )
+			->getMaintenanceConnectionRef( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
 
 		$wikiDatabase = $database ?? $config->get( 'DBname' );
 
@@ -295,39 +308,75 @@ class WikiDiscover {
 				$ret = $cache[$magicWordId] = count( $config->get( 'LocalDatabases' ) );
 				break;
 			case 'numberofprivatewikis':
-				$dbr = wfGetDB( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
+				$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
+
+				$dbr = $lbFactory->getMainLB( $config->get( 'CreateWikiDatabase' ) )
+					->getMaintenanceConnectionRef( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
+
 				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_private' => 1 ] );
 				break;
 			case 'numberofpublicwikis':
-				$dbr = wfGetDB( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
+				$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
+
+				$dbr = $lbFactory->getMainLB( $config->get( 'CreateWikiDatabase' ) )
+					->getMaintenanceConnectionRef( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
+
 				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_private' => 0 ] );
 				break;
 			case 'numberofactivewikis':
-				$dbr = wfGetDB( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
+				$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
+
+				$dbr = $lbFactory->getMainLB( $config->get( 'CreateWikiDatabase' ) )
+					->getMaintenanceConnectionRef( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
+
 				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_wikis', '*', [ 'wiki_closed' => 0, 'wiki_deleted' => 0, 'wiki_inactive' => 0 ] );
 				break;
 			case 'numberofinactivewikis':
-				$dbr = wfGetDB( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
+				$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
+
+				$dbr = $lbFactory->getMainLB( $config->get( 'CreateWikiDatabase' ) )
+					->getMaintenanceConnectionRef( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
+
 				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_inactive' => 1 ] );
 				break;
 			case 'numberofclosedwikis':
-				$dbr = wfGetDB( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
+				$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
+
+				$dbr = $lbFactory->getMainLB( $config->get( 'CreateWikiDatabase' ) )
+					->getMaintenanceConnectionRef( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
+
 				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_closed' => 1 ] );
 				break;
 			case 'numberoflockedwikis':
-				$dbr = wfGetDB( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
+				$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
+
+				$dbr = $lbFactory->getMainLB( $config->get( 'CreateWikiDatabase' ) )
+					->getMaintenanceConnectionRef( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
+
 				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_locked' => 1 ] );
 				break;
 			case 'numberofdeletedwikis':
-				$dbr = wfGetDB( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
+				$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
+
+				$dbr = $lbFactory->getMainLB( $config->get( 'CreateWikiDatabase' ) )
+					->getMaintenanceConnectionRef( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
+
 				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 1 ] );
 				break;
 			case 'numberofinactivityexemptwikis':
-				$dbr = wfGetDB( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
+				$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
+
+				$dbr = $lbFactory->getMainLB( $config->get( 'CreateWikiDatabase' ) )
+					->getMaintenanceConnectionRef( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
+
 				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_inactive_exempt' => 1 ] );
 				break;
 			case 'numberofcustomdomains':
-				$dbr = wfGetDB( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
+				$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
+
+				$dbr = $lbFactory->getMainLB( $config->get( 'CreateWikiDatabase' ) )
+					->getMaintenanceConnectionRef( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
+
 				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_wikis', 'wiki_url', [ 'wiki_deleted' => 0 ] );
 				break;
 			case 'wikicreationdate':

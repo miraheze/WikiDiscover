@@ -39,8 +39,10 @@ class WikiDiscoverRandom {
 	 */
 	protected static function randFromConds( $conds ) {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
+		$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
 
-		$dbr = wfGetDB( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
+		$dbr = $lbFactory->getMainLB( $config->get( 'CreateWikiDatabase' ) )
+			->getMaintenanceConnectionRef( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
 
 		$possiblewikis = $dbr->selectFieldValues( 'cw_wikis', 'wiki_dbname', $conds, __METHOD__ );
 

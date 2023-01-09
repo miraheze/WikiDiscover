@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"randomwiki": "Wiki aleatori",
+	"randomwiki-header": "Selige un categoria e un lingua hic infra e al submission tu essera redirigite aleatorimente a un wiki que satisface le criterios seligite!",
+	"wikidiscover": "DiscoperiWiki",
+	"wikidiscover-desc": "Permitte [[Special:WikiDiscover|discoperir wikis]] sur un ferma de wikis con [[Special:CreateWiki|CreaWiki]].",
+	"wikidiscover-table-category": "Categoria",
+	"wikidiscover-table-description": "Description",
+	"wikidiscover-table-established": "Establite",
+	"wikidiscover-table-language": "Lingua",
+	"wikidiscover-table-state": "Stato",
+	"wikidiscover-table-visibility": "Visibilitate",
+	"wikidiscover-table-wiki": "Nomine del wiki",
+	"apihelp-wikidiscover-summary": "Obtener un lista de wikis sur un ferma de wikis CreaWiki.",
+	"apihelp-wikidiscover-param-state": "Filtrar per le stato CreaWiki definite de un wiki.",
+	"apihelp-wikidiscover-param-siteprop": "Information a restituer sur un wiki definite.",
+	"apihelp-wikidiscover-param-limit": "Numero maxime de resultatos a monstrar.",
+	"apihelp-wikidiscover-param-wikislist": "Obtener un lista de tote le wikis.",
+	"apihelp-wikidiscover-example": "Monstrar tote le wikis del formulario."
+}

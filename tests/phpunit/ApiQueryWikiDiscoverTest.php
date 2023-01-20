@@ -24,7 +24,6 @@ class ApiQueryWikiDiscoverTest extends ApiTestCase {
 		);
 
 		$this->assertArrayHasKey( 'query', $data );
-		$this->assertEquals( 'query', $data['query'] );
 		$this->assertArrayHasKey( 'wikidiscover', $data['query'] );
 		$this->assertGreaterThan( 0, count( $data['query']['wikidiscover'] ) );
 		foreach ( $data['query']['wikidiscover'] as $wiki ) {

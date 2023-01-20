@@ -136,7 +136,7 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 	/** @inheritDoc */
 	protected function getExamplesMessages() {
 		return [
-			'action=wikidiscover' => 'apihelp-wikidiscover-example'
+			'action=query&list=wikidiscover' => 'apihelp-query+wikidiscover-example'
 		];
 	}
 }

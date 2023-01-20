@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @group Wikidiscover
+ * @group WikiDiscover
  * @group Database
  * @group medium
  * @coversDefaultClass ApiQueryWikiDiscover

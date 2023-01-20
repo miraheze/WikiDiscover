@@ -18,8 +18,8 @@
 		"RandomWiki": "SpecialRandomWiki",
 		"WikiDiscover": "SpecialWikiDiscover"
 	},
-	"APIModules": {
-		"wikidiscover": "ApiWikiDiscover"
+	"APIListModules": {
+		"wikidiscover": "ApiQueryWikiDiscover"
 	},
 	"MessagesDirs": {
 		"WikiDiscover": [

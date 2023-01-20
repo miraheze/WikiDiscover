@@ -14,7 +14,7 @@ class ApiQueryWikiDiscoverTest extends ApiTestCase {
 	 * @covers ::run
 	 */
 	public function testQueryWikiDiscover() {
-		[ $data ]  = $this->doApiRequest(
+		[ $data ] = $this->doApiRequest(
 			[
 				'action' => 'query',
 				'list' => 'wikidiscover',

@@ -92,6 +92,34 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 		if ( $wikislist ) {
 			$this->addWhereFld( 'wiki_dbname', explode( ',', $wikislist ) );
 		}
+
+		$res = $this->select( __METHOD__ );
+
+		$data = [];
+		foreach ( $res as $row ) {
+			$wiki = [];
+
+			if ( in_array( 'url', $siteprop ) ) {
+				$wiki['url'] = $row->wiki_url;
+			}
+
+			if ( in_array( 'dbname', $siteprop ) ) {
+				$wiki['dbname'] = $row->wiki_dbname;
+			}
+
+			if ( in_array( 'sitename', $siteprop ) ) {
+				$wiki['sitename'] = $row->wiki_sitename;
+			}
+
+			if ( in_array( 'languagecode', $siteprop ) ) {
+				$wiki['languagecode'] = $row->wiki_language;
+			}
+
+			$data[] = $wiki;
+		}
+
+		$result = $this->getResult();
+		$result->addValue( [ 'query', $this->getModuleName() ], null, $data );
 	}
 
 	/** @inheritDoc */

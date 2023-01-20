@@ -36,7 +36,10 @@
 		"SpecialRandomWiki": "includes/SpecialRandomWiki.php",
 		"SpecialWikiDiscover": "includes/SpecialWikiDiscover.php",
 		"WikiDiscoverWikisPager": "includes/WikiDiscoverWikisPager.php",
-		"ApiWikiDiscover": "includes/ApiWikiDiscover.php"
+		"ApiQueryWikiDiscover": "includes/ApiQueryWikiDiscover.php"
+	},
+	"TestAutoloadClasses": {
+		"ApiQueryWikiDiscoverTest": "tests/phpunit/ApiQueryWikiDiscoverTest.php"
 	},
 	"Hooks": {
 		"ParserFirstCallInit": [

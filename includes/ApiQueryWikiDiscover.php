@@ -24,10 +24,8 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 		return 'public';
 	}
 
-	/**
-	 * @param ApiPageSet $resultPageSet
-	 */
-	public function executeGenerator( ApiPageSet $resultPageSet ) {
+	/** @inheritDoc */
+	public function executeGenerator( $resultPageSet ) {
 		$this->run( $resultPageSet );
 	}
 

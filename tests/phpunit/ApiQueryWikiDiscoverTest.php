@@ -14,7 +14,7 @@ class ApiQueryWikiDiscoverTest extends ApiTestCase {
 	 * @covers ::run
 	 */
 	public function testQueryWikiDiscover() {
-		$data = $this->doApiRequest(
+		[ $data ]  = $this->doApiRequest(
 			[
 				'action' => 'query',
 				'list' => 'wikidiscover',
@@ -23,10 +23,11 @@ class ApiQueryWikiDiscoverTest extends ApiTestCase {
 			]
 		);
 
-		$this->assertEquals( 'query', $data[0]['query'] );
-		$this->assertArrayHasKey( 'wikidiscover', $data[0]['query'] );
-		$this->assertGreaterThan( 0, count( $data[0]['query']['wikidiscover'] ) );
-		foreach ( $data[0]['query']['wikidiscover'] as $wiki ) {
+		$this->assertArrayHasKey( 'query', $data );
+		$this->assertEquals( 'query', $data['query'] );
+		$this->assertArrayHasKey( 'wikidiscover', $data['query'] );
+		$this->assertGreaterThan( 0, count( $data['query']['wikidiscover'] ) );
+		foreach ( $data['query']['wikidiscover'] as $wiki ) {
 			$this->assertArrayHasKey( 'url', $wiki );
 			$this->assertArrayHasKey( 'sitename', $wiki );
 		}

@@ -22,5 +22,5 @@ $magicWords['en'] = [
 ];
 
 $magicWords['ur'] = [
-	'numberofwikis' => [ 0, 'ویکیوں_کی_تعداد', 'numberofwikis', 'totalnumberofwikis' ],
+	'numberofwikis' => [ 0, 'ویکیوں_کی_تعداد', 'numberofwikis' ],
 ];

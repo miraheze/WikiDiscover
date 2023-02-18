@@ -307,6 +307,14 @@ class WikiDiscover {
 			case 'numberofwikis':
 				$ret = $cache[$magicWordId] = count( $config->get( 'LocalDatabases' ) );
 				break;
+			case 'numberoftotalwikis':
+				$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
+
+				$dbr = $lbFactory->getMainLB( $config->get( 'CreateWikiDatabase' ) )
+					->getMaintenanceConnectionRef( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
+
+				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_wikis', '*' );
+				break;
 			case 'numberofprivatewikis':
 				$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
 
@@ -390,6 +398,7 @@ class WikiDiscover {
 	 */
 	public static function onGetMagicVariableIDs( &$variableIDs ) {
 		$variableIDs[] = 'numberofwikis';
+		$variableIDs[] = 'numberoftotalwikis';
 		$variableIDs[] = 'numberofprivatewikis';
 		$variableIDs[] = 'numberofpublicwikis';
 		$variableIDs[] = 'numberofactivewikis';

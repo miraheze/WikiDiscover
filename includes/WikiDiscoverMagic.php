@@ -3,7 +3,8 @@
 $magicWords = [];
 
 $magicWords['en'] = [
-	'numberofwikis' => [ 0, 'numberofwikis', 'totalnumberofwikis' ],
+	'numberofwikis' => [ 0, 'numberofwikis' ],
+	'numberoftotalwikis' => [ 0, 'numberoftotalwikis', 'totalnumberofwikis' ],
 	'numberofprivatewikis' => [ 0, 'numberofprivatewikis' ],
 	'numberofpublicwikis' => [ 0, 'numberofpublicwikis' ],
 	'numberofactivewikis' => [ 0, 'numberofactivewikis' ],

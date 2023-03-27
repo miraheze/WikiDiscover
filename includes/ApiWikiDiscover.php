@@ -31,7 +31,7 @@ class ApiWikiDiscover extends ApiBase {
 			$wikislist = $params['wikislist'];
 		}
 
-		$wikiprefixes = array_slice( $wikidiscover->getWikiPrefixes( $wikislist ), 0, $limit )
+		$wikiprefixes = array_slice( $wikidiscover->getWikiPrefixes( $wikislist ), 0, $limit );
 
 		foreach ( $wikiprefixes as $wiki ) {
 			$dbName = $wiki . 'wiki';

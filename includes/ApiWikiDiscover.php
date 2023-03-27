@@ -31,7 +31,9 @@ class ApiWikiDiscover extends ApiBase {
 			$wikislist = $params['wikislist'];
 		}
 
-		foreach ( $wikidiscover->getWikiPrefixes( $wikislist ) as $wiki ) {
+		$wikiprefixes = array_slice( $wikidiscover->getWikiPrefixes( $wikislist ), 0, $limit );
+
+		foreach ( $wikiprefixes as $wiki ) {
 			$dbName = $wiki . 'wiki';
 
 			$data = [];
@@ -46,6 +48,9 @@ class ApiWikiDiscover extends ApiBase {
 			}
 			if ( isset( $siteprop['languagecode'] ) ) {
 				$data['languagecode'] = $wikidiscover->getLanguageCode( $dbName );
+			}
+			if ( isset( $siteprop['creation'] ) ) {
+				$data['creation'] = $wikidiscover->getCreationDate( $dbName );
 			}
 
 			$skip = true;
@@ -107,7 +112,7 @@ class ApiWikiDiscover extends ApiBase {
 			$wikis[] = $data;
 		}
 
-		$result->addValue( null, "wikidiscover", array_slice( $wikis, 0, $limit ) );
+		$result->addValue( null, "wikidiscover", $wikis );
 	}
 
 	/** @inheritDoc */
@@ -133,6 +138,7 @@ class ApiWikiDiscover extends ApiBase {
 					'dbname',
 					'sitename',
 					'languagecode',
+					'creation',
 				],
 				ParamValidator::PARAM_DEFAULT => 'url|dbname|sitename|languagecode',
 			],

@@ -24,6 +24,9 @@ class WikiDiscover {
 	/** @var array */
 	private $langCodes = [];
 
+	/** @var array */
+	private $creationDates = [];
+
 	public function __construct() {
 		$this->config = MediaWikiServices::getInstance()->getMainConfig();
 		$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
@@ -35,6 +38,7 @@ class WikiDiscover {
 			'cw_wikis', [
 				'wiki_dbname',
 				'wiki_language',
+				'wiki_creation',
 				'wiki_private',
 				'wiki_closed',
 				'wiki_inactive',
@@ -46,6 +50,8 @@ class WikiDiscover {
 		if ( $res ) {
 			foreach ( $res as $row ) {
 				$this->langCodes[$row->wiki_dbname] = $row->wiki_language;
+
+				$this->creationDates[$row->wiki_dbname] = $row->wiki_creation;
 
 				if ( $row->wiki_private ) {
 					$this->private[] = $row->wiki_dbname;
@@ -136,6 +142,14 @@ class WikiDiscover {
 	 */
 	public function getLanguageCode( $database ) {
 		return $this->langCodes[$database];
+	}
+
+	/**
+	 * @param string $database
+	 * @return string
+	 */
+	public function getCreationDate( $database ) {
+		return wfTimestamp( TS_ISO_8601, strtotime( $this->creationDates[$database] ) );
 	}
 
 	/**

@@ -50,6 +50,11 @@
 		]
 	},
 	"config": {
+		"WikiDiscoverListPrivateWikis": {
+			"description": "Whether or not to include showing private wikis on Special:WikiDiscover.",
+			"public": true,
+			"value": true
+		},
 		"WikiDiscoverUseDescriptions": {
 			"description": "Whether or not to enable wiki descriptions.",
 			"public": true,

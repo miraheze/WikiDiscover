@@ -14,7 +14,6 @@ class SpecialWikiDiscover extends SpecialPage {
 		$language = $this->getRequest()->getText( 'language' );
 		$category = $this->getRequest()->getText( 'category' );
 		$state = $this->getRequest()->getText( 'state' );
-		$visibility = $this->getRequest()->getText( 'visibility' );
 
 		$formDescriptor = [
 			'language' => [
@@ -44,7 +43,11 @@ class SpecialWikiDiscover extends SpecialPage {
 				],
 				'default' => $state ?: 'any',
 			],
-			'visibility' => [
+		];
+
+		if ( $this->getConfig()->get( 'WikiDiscoverListPrivateWikis' ) ) {
+			$visibility = $this->getRequest()->getText( 'visibility' );
+			$formDescriptor['visibility'] = [
 				'type' => 'select',
 				'name' => 'visibility',
 				'label-message' => 'wikidiscover-table-visibility',
@@ -54,8 +57,10 @@ class SpecialWikiDiscover extends SpecialPage {
 					'Private' => 'private'
 				],
 				'default' => $visibility ?: 'any',
-			],
-		];
+			];
+		} else {
+			$visibility = 'public';
+		}
 
 		$htmlForm = HTMLForm::factory( 'ooui', $formDescriptor, $this->getContext() );
 		$htmlForm->setMethod( 'get' )->prepareForm()->displayForm( false );

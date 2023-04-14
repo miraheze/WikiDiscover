@@ -54,13 +54,24 @@ class WikiDiscoverWikisPager extends TablePager {
 
 	/** @inheritDoc */
 	protected function getFieldNames() {
+		$config = MediaWikiServices::getInstance()->getMainConfig();
+
 		static $headers = null;
 
 		$headers = [
 			'wiki_dbname' => 'wikidiscover-table-wiki',
 			'wiki_language' => 'wikidiscover-table-language',
-			'wiki_closed' => 'wikidiscover-table-state',
-			'wiki_private' => 'wikidiscover-table-visibility',
+		];
+
+		if ( $config->get( 'CreateWikiUseClosedWikis' ) ) {
+			$headers['wiki_closed'] = 'wikidiscover-table-state';
+		}
+
+		if ( $config->get( 'CreateWikiUsePrivateWikis' ) ) {
+			$headers['wiki_private'] = 'wikidiscover-table-visibility';
+		}
+
+		$headers += [
 			'wiki_category' => 'wikidiscover-table-category',
 			'wiki_creation' => 'wikidiscover-table-established',
 		];

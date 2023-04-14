@@ -34,17 +34,27 @@ class WikiDiscover {
 		$dbr = $lbFactory->getMainLB( $this->config->get( 'CreateWikiDatabase' ) )
 			->getMaintenanceConnectionRef( DB_REPLICA, [], $this->config->get( 'CreateWikiDatabase' ) );
 
+		$fields = [];
+		if ( $this->config->get( 'CreateWikiUseClosedWikis' ) ) {
+			$fields[] = 'wiki_closed';
+		}
+
+		if ( $this->config->get( 'CreateWikiUseInactiveWikis' ) ) {
+			$fields[] = 'wiki_inactive';
+		}
+
+		if ( $this->config->get( 'CreateWikiUsePrivateWikis' ) ) {
+			$fields[] = 'wiki_private';
+		}
+
 		$res = $dbr->select(
 			'cw_wikis', [
 				'wiki_dbname',
 				'wiki_language',
 				'wiki_creation',
-				'wiki_private',
-				'wiki_closed',
-				'wiki_inactive',
 				'wiki_locked',
 				'wiki_deleted',
-			],
+			] + $fields,
 		);
 
 		if ( $res ) {
@@ -53,15 +63,15 @@ class WikiDiscover {
 
 				$this->creationDates[$row->wiki_dbname] = $row->wiki_creation;
 
-				if ( $row->wiki_private ) {
+				if ( $this->config->get( 'CreateWikiUsePrivateWikis' ) && $row->wiki_private ) {
 					$this->private[] = $row->wiki_dbname;
 				}
 
-				if ( $row->wiki_closed ) {
+				if ( $this->config->get( 'CreateWikiUseClosedWikis' ) && $row->wiki_closed ) {
 					$this->closed[] = $row->wiki_dbname;
 				}
 
-				if ( $row->wiki_inactive ) {
+				if ( $this->config->get( 'CreateWikiUseInactiveWikis' ) && $row->wiki_inactive ) {
 					$this->inactive[] = $row->wiki_dbname;
 				}
 
@@ -330,6 +340,10 @@ class WikiDiscover {
 				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_wikis', '*' );
 				break;
 			case 'numberofprivatewikis':
+				if ( !$this->config->get( 'CreateWikiUsePrivateWikis' ) ) {
+					break;
+				}
+
 				$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
 
 				$dbr = $lbFactory->getMainLB( $config->get( 'CreateWikiDatabase' ) )
@@ -338,6 +352,10 @@ class WikiDiscover {
 				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_private' => 1 ] );
 				break;
 			case 'numberofpublicwikis':
+				if ( !$this->config->get( 'CreateWikiUsePrivateWikis' ) ) {
+					break;
+				}
+
 				$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
 
 				$dbr = $lbFactory->getMainLB( $config->get( 'CreateWikiDatabase' ) )
@@ -346,6 +364,10 @@ class WikiDiscover {
 				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_private' => 0 ] );
 				break;
 			case 'numberofactivewikis':
+				if ( !$this->config->get( 'CreateWikiUseInactiveWikis' ) ) {
+					break;
+				}
+
 				$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
 
 				$dbr = $lbFactory->getMainLB( $config->get( 'CreateWikiDatabase' ) )
@@ -354,6 +376,10 @@ class WikiDiscover {
 				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_wikis', '*', [ 'wiki_closed' => 0, 'wiki_deleted' => 0, 'wiki_inactive' => 0 ] );
 				break;
 			case 'numberofinactivewikis':
+				if ( !$this->config->get( 'CreateWikiUseInactiveWikis' ) ) {
+					break;
+				}
+
 				$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
 
 				$dbr = $lbFactory->getMainLB( $config->get( 'CreateWikiDatabase' ) )
@@ -362,6 +388,10 @@ class WikiDiscover {
 				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_inactive' => 1 ] );
 				break;
 			case 'numberofclosedwikis':
+				if ( !$this->config->get( 'CreateWikiUseClosedWikis' ) ) {
+					break;
+				}
+
 				$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
 
 				$dbr = $lbFactory->getMainLB( $config->get( 'CreateWikiDatabase' ) )
@@ -386,6 +416,10 @@ class WikiDiscover {
 				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 1 ] );
 				break;
 			case 'numberofinactivityexemptwikis':
+				if ( !$this->config->get( 'CreateWikiUseInactiveWikis' ) ) {
+					break;
+				}
+
 				$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
 
 				$dbr = $lbFactory->getMainLB( $config->get( 'CreateWikiDatabase' ) )
@@ -413,15 +447,24 @@ class WikiDiscover {
 	public static function onGetMagicVariableIDs( &$variableIDs ) {
 		$variableIDs[] = 'numberofwikis';
 		$variableIDs[] = 'numberoftotalwikis';
-		$variableIDs[] = 'numberofprivatewikis';
-		$variableIDs[] = 'numberofpublicwikis';
-		$variableIDs[] = 'numberofactivewikis';
-		$variableIDs[] = 'numberofinactivewikis';
-		$variableIDs[] = 'numberofclosedwikis';
 		$variableIDs[] = 'numberoflockedwikis';
 		$variableIDs[] = 'numberofdeletedwikis';
-		$variableIDs[] = 'numberofinactivityexemptwikis';
 		$variableIDs[] = 'numberofcustomdomains';
 		$variableIDs[] = 'wikicreationdate';
+
+		if ( $this->config->get( 'CreateWikiUseClosedWikis' ) ) {
+			$variableIDs[] = 'numberofclosedwikis';
+		}
+
+		if ( $this->config->get( 'CreateWikiUseInactiveWikis' ) ) {
+			$variableIDs[] = 'numberofactivewikis';
+			$variableIDs[] = 'numberofinactivewikis';
+			$variableIDs[] = 'numberofinactivityexemptwikis';
+		}
+
+		if ( $this->config->get( 'CreateWikiUsePrivateWikis' ) ) {
+			$variableIDs[] = 'numberofprivatewikis';
+			$variableIDs[] = 'numberofpublicwikis';
+		}
 	}
 }

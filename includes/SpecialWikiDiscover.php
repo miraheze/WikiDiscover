@@ -56,7 +56,7 @@ class SpecialWikiDiscover extends SpecialPage {
 
 		if (
 			$this->getConfig()->get( 'CreateWikiUsePrivateWikis' ) &&
-		    	$this->getConfig()->get( 'WikiDiscoverListPrivateWikis' )
+			$this->getConfig()->get( 'WikiDiscoverListPrivateWikis' )
 		) {
 			$visibility = $this->getRequest()->getText( 'visibility' );
 			$formDescriptor['visibility'] = [

@@ -15,6 +15,21 @@ class SpecialWikiDiscover extends SpecialPage {
 		$category = $this->getRequest()->getText( 'category' );
 		$state = $this->getRequest()->getText( 'state' );
 
+		$stateOptions = [
+			'(any)' => 'any',
+			'Active' => 'active',
+		];
+
+		if ( $this->getConfig()->get( 'CreateWikiUseClosedWikis' ) ) {
+			$stateOptions['Closed'] = 'closed';
+		}
+
+		$stateOptions['Deleted'] = 'deleted';
+
+		if ( $this->getConfig()->get( 'CreateWikiUseInactiveWikis' ) ) {
+			$stateOptions['Inactive'] = 'inactive';
+		}
+
 		$formDescriptor = [
 			'language' => [
 				'type' => 'language',
@@ -34,18 +49,15 @@ class SpecialWikiDiscover extends SpecialPage {
 				'type' => 'select',
 				'name' => 'state',
 				'label-message' => 'wikidiscover-table-state',
-				'options' => [
-					'(any)' => 'any',
-					'Active' => 'active',
-					'Closed' => 'closed',
-					'Deleted' => 'deleted',
-					'Inactive' => 'inactive'
-				],
+				'options' => $stateOptions,
 				'default' => $state ?: 'any',
 			],
 		];
 
-		if ( $this->getConfig()->get( 'WikiDiscoverListPrivateWikis' ) ) {
+		if (
+			$this->getConfig()->get( 'CreateWikiUsePrivateWikis' ) &&
+		    	$this->getConfig()->get( 'WikiDiscoverListPrivateWikis' )
+		) {
 			$visibility = $this->getRequest()->getText( 'visibility' );
 			$formDescriptor['visibility'] = [
 				'type' => 'select',

@@ -65,6 +65,6 @@ class WikiDiscoverRandom {
 			$fields[] = 'wiki_private';
 		}
 
-		return $dbr->selectRow( 'cw_wikis', [ 'wiki_dbname', 'wiki_sitename', 'wiki_language', 'wiki_category' ] + $fields, [ 'wiki_dbname' => $randwiki ], __METHOD__ );
+		return $dbr->selectRow( 'cw_wikis', array_merge( [ 'wiki_dbname', 'wiki_sitename', 'wiki_language', 'wiki_category' ], $fields ), [ 'wiki_dbname' => $randwiki ], __METHOD__ );
 	}
 }

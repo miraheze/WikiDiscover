@@ -47,14 +47,14 @@ class WikiDiscover {
 			$fields[] = 'wiki_private';
 		}
 
-		$res = $dbr->select(
-			'cw_wikis', [
+		$res = $dbr->select( 'cw_wikis',
+			array_merge( [
 				'wiki_dbname',
 				'wiki_language',
 				'wiki_creation',
 				'wiki_locked',
 				'wiki_deleted',
-			] + $fields,
+			], $fields )
 		);
 
 		if ( $res ) {

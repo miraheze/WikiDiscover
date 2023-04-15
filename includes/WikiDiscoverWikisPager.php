@@ -54,13 +54,24 @@ class WikiDiscoverWikisPager extends TablePager {
 
 	/** @inheritDoc */
 	protected function getFieldNames() {
+		$config = MediaWikiServices::getInstance()->getMainConfig();
+
 		static $headers = null;
 
 		$headers = [
 			'wiki_dbname' => 'wikidiscover-table-wiki',
 			'wiki_language' => 'wikidiscover-table-language',
-			'wiki_closed' => 'wikidiscover-table-state',
-			'wiki_private' => 'wikidiscover-table-visibility',
+		];
+
+		if ( $config->get( 'CreateWikiUseClosedWikis' ) ) {
+			$headers['wiki_closed'] = 'wikidiscover-table-state';
+		}
+
+		if ( $config->get( 'CreateWikiUsePrivateWikis' ) ) {
+			$headers['wiki_private'] = 'wikidiscover-table-visibility';
+		}
+
+		$headers += [
 			'wiki_category' => 'wikidiscover-table-category',
 			'wiki_creation' => 'wikidiscover-table-established',
 		];
@@ -137,9 +148,24 @@ class WikiDiscoverWikisPager extends TablePager {
 
 	/** @inheritDoc */
 	public function getQueryInfo() {
+		$config = MediaWikiServices::getInstance()->getMainConfig();
+
+		$fields = [];
+		if ( $config->get( 'CreateWikiUseClosedWikis' ) ) {
+			$fields[] = 'wiki_closed';
+		}
+
+		if ( $config->get( 'CreateWikiUseInactiveWikis' ) ) {
+			$fields[] = 'wiki_inactive';
+		}
+
+		if ( $config->get( 'CreateWikiUsePrivateWikis' ) ) {
+			$fields[] = 'wiki_private';
+		}
+
 		$info = [
 			'tables' => [ 'cw_wikis' ],
-			'fields' => [ 'wiki_dbname', 'wiki_language', 'wiki_private', 'wiki_closed', 'wiki_inactive', 'wiki_deleted', 'wiki_category', 'wiki_creation' ],
+			'fields' => array_merge( [ 'wiki_dbname', 'wiki_language', 'wiki_deleted', 'wiki_category', 'wiki_creation' ], $fields ),
 			'conds' => [],
 			'joins_conds' => [],
 		];
@@ -155,20 +181,25 @@ class WikiDiscoverWikisPager extends TablePager {
 		if ( $this->state && $this->state !== 'any' ) {
 			if ( $this->state === 'deleted' ) {
 				$info['conds']['wiki_deleted'] = 1;
-			} elseif ( $this->state === 'closed' ) {
+			} elseif ( $config->get( 'CreateWikiUseClosedWikis' ) && $this->state === 'closed' ) {
 				$info['conds']['wiki_closed'] = 1;
 				$info['conds']['wiki_deleted'] = 0;
-			} elseif ( $this->state === 'inactive' ) {
+			} elseif ( $config->get( 'CreateWikiUseInactiveWikis' ) && $this->state === 'inactive' ) {
 				$info['conds']['wiki_deleted'] = 0;
 				$info['conds']['wiki_inactive'] = 1;
 			} elseif ( $this->state === 'active' ) {
-				$info['conds']['wiki_closed'] = 0;
 				$info['conds']['wiki_deleted'] = 0;
-				$info['conds']['wiki_inactive'] = 0;
+				if ( $config->get( 'CreateWikiUseClosedWikis' ) ) {
+					$info['conds']['wiki_closed'] = 0;
+				}
+
+				if ( $config->get( 'CreateWikiUseInactiveWikis' ) ) {
+					$info['conds']['wiki_inactive'] = 0;
+				}
 			}
 		}
 
-		if ( $this->visibility && $this->visibility !== 'any' ) {
+		if ( $config->get( 'CreateWikiUsePrivateWikis' ) && $this->visibility && $this->visibility !== 'any' ) {
 			if ( $this->visibility === 'public' ) {
 				$info['conds']['wiki_private'] = 0;
 			} elseif ( $this->visibility === 'private' ) {

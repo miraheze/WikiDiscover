@@ -10,6 +10,8 @@ class WikiDiscoverRandom {
 	 * @return stdClass|bool
 	 */
 	public static function randomWiki( $state = 0, $category = 0, $language = 0 ) {
+		$config = MediaWikiServices::getInstance()->getMainConfig();
+
 		$conditions = [];
 
 		if ( $category ) {
@@ -20,15 +22,17 @@ class WikiDiscoverRandom {
 			$conditions['wiki_language'] = $language;
 		}
 
-		if ( $state === "inactive" ) {
+		if ( $config->get( 'CreateWikiUseInactiveWikis' ) && $state === 'inactive' ) {
 			$conditions['wiki_inactive'] = 1;
-		} elseif ( $state === "closed" ) {
+		} elseif ( $config->get( 'CreateWikiUseClosedWikis' ) && $state === 'closed' ) {
 			$conditions['wiki_closed'] = 1;
-		} elseif ( $state === "open" ) {
+		} elseif ( $config->get( 'CreateWikiUseClosedWikis' ) && $state === 'open' ) {
 			$conditions['wiki_closed'] = 0;
 		}
 
-		$conditions['wiki_private'] = 0;
+		if ( $config->get( 'CreateWikiUsePrivateWikis' ) ) {
+			$conditions['wiki_private'] = 0;
+		}
 
 		return self::randFromConds( $conditions );
 	}
@@ -48,6 +52,19 @@ class WikiDiscoverRandom {
 
 		$randwiki = $possiblewikis[array_rand( $possiblewikis )];
 
-		return $dbr->selectRow( 'cw_wikis', [ 'wiki_dbname', 'wiki_sitename', 'wiki_language', 'wiki_private', 'wiki_closed', 'wiki_inactive', 'wiki_category' ], [ 'wiki_dbname' => $randwiki ], __METHOD__ );
+		$fields = [];
+		if ( $config->get( 'CreateWikiUseClosedWikis' ) ) {
+			$fields[] = 'wiki_closed';
+		}
+
+		if ( $config->get( 'CreateWikiUseInactiveWikis' ) ) {
+			$fields[] = 'wiki_inactive';
+		}
+
+		if ( $config->get( 'CreateWikiUsePrivateWikis' ) ) {
+			$fields[] = 'wiki_private';
+		}
+
+		return $dbr->selectRow( 'cw_wikis', array_merge( [ 'wiki_dbname', 'wiki_sitename', 'wiki_language', 'wiki_category' ], $fields ), [ 'wiki_dbname' => $randwiki ], __METHOD__ );
 	}
 }

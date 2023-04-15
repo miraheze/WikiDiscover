@@ -165,7 +165,7 @@ class WikiDiscoverWikisPager extends TablePager {
 
 		$info = [
 			'tables' => [ 'cw_wikis' ],
-			'fields' => [ 'wiki_dbname', 'wiki_language', 'wiki_deleted', 'wiki_category', 'wiki_creation' ] + $fields,
+			'fields' => array_merge( [ 'wiki_dbname', 'wiki_language', 'wiki_deleted', 'wiki_category', 'wiki_creation' ], $fields ),
 			'conds' => [],
 			'joins_conds' => [],
 		];

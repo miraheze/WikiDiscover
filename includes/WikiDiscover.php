@@ -1,6 +1,8 @@
 <?php
 
 use MediaWiki\MediaWikiServices;
+use Miraheze\CreateWiki\RemoteWiki;
+use Miraheze\ManageWiki\Helpers\ManageWikiSettings;
 
 class WikiDiscover {
 	/** @var Config */
@@ -467,6 +469,58 @@ class WikiDiscover {
 		if ( $config->get( 'CreateWikiUsePrivateWikis' ) ) {
 			$variableIDs[] = 'numberofprivatewikis';
 			$variableIDs[] = 'numberofpublicwikis';
+		}
+	}
+
+	/**
+	 * @param bool $ceMW
+	 * @param IContextSource $context
+	 * @param string $dbName
+	 * @param array &$formDescriptor
+	 */
+	public static function onManageWikiCoreAddFormFields( $ceMW, $context, $dbName, &$formDescriptor ) {
+		$config = MediaWikiServices::getInstance()->getMainConfig();
+		if ( !$config->get( 'WikiDiscoverUseDescriptions' ) ) {
+			return;
+		}
+
+		$mwSettings = new ManageWikiSettings( $dbName );
+		$setList = $mwSettings->list();
+
+		$formDescriptor['description'] = [
+			'label-message' => 'wikidiscover-label-managewiki-description',
+			'type' => 'text',
+			'default' => $setList['wgWikiDiscoverDescription'] ?? '',
+			'maxlength' => 512,
+			'disabled' => !$ceMW,
+			'section' => 'main'
+		];
+	}
+
+	/**
+	 * @param IContextSource $context
+	 * @param string $dbName
+	 * @param DBConnRef $dbw
+	 * @param array $formData
+	 * @param RemoteWiki &$wiki
+	 */
+	public static function onManageWikiCoreFormSubmission( $context, $dbName, $dbw, $formData, &$wiki ) {
+		$config = MediaWikiServices::getInstance()->getMainConfig();
+		if ( !$config->get( 'WikiDiscoverUseDescriptions' ) ) {
+			return;
+		}
+
+		$mwSettings = new ManageWikiSettings( $dbName );
+		$description = $mwSettings->list()['wgWikiDiscoverDescription'] ?? '';
+
+		if ( $formData['description'] != $description ) {
+			$mwSettings->modify( [ 'wgWikiDiscoverDescription' => $formData['description'] ] );
+			$mwSettings->commit();
+
+			$wiki->changes['description'] = [
+				'old' => $description,
+				'new' => $formData['description']
+			];
 		}
 	}
 }

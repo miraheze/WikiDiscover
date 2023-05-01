@@ -10,6 +10,7 @@
 	"randomwiki-header": "Select a category and a language below and on submission you will redirected randomly to a wiki which meets the criteria selected!",
 	"wikidiscover": "WikiDiscover",
 	"wikidiscover-desc": "Allows [[Special:WikiDiscover|discovering wikis]] on a wiki farm with [[Special:CreateWiki|CreateWiki]].",
+	"wikidiscover-label-managewiki-description": "Used as a label for 'description' in ManageWiki core, if using.",
 	"wikidiscover-table-category": "Label for 'Category'\n{{Identical|Category}}",
 	"wikidiscover-table-description": "Label for 'Description'\n{{Identical|Description}}",
 	"wikidiscover-table-established": "Label for 'Established'",

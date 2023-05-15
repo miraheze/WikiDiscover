@@ -5,6 +5,8 @@ use Wikimedia\ParamValidator\ParamValidator;
 use Wikimedia\ParamValidator\TypeDef\IntegerDef;
 
 class ApiWikiDiscover extends ApiBase {
+	/** @var Config */
+	private $config;
 
 	/**
 	 * @param ApiMain $main
@@ -16,7 +18,7 @@ class ApiWikiDiscover extends ApiBase {
 
 	/** @inheritDoc */
 	public function execute() {
-		$this->config = MediaWikiServices::getInstance()->getMainConfig();
+		$config = MediaWikiServices::getInstance()->getMainConfig();
 		$result = $this->getResult();
 
 		$wikidiscover = new WikiDiscover();
@@ -36,7 +38,7 @@ class ApiWikiDiscover extends ApiBase {
 		$wikiprefixes = array_slice( $wikidiscover->getWikiPrefixes( $wikislist ), 0, $limit );
 
 		foreach ( $wikiprefixes as $wiki ) {
-			$dbName = $wiki . $this->config->get( 'CreateWikiDatabaseSuffix' );
+			$dbName = $wiki . $config->get( 'CreateWikiDatabaseSuffix' );
 
 			$data = [];
 			if ( isset( $siteprop['url'] ) ) {

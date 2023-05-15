@@ -52,6 +52,9 @@ class ApiWikiDiscover extends ApiBase {
 			if ( isset( $siteprop['creation'] ) ) {
 				$data['creation'] = $wikidiscover->getCreationDate( $dbName );
 			}
+			if ( isset( $siteprop['closure'] ) ) {
+				$data['closure'] = $wikidiscover->getClosureDate( $dbName );
+			}
 
 			$skip = true;
 			if ( isset( $state['all'] ) ) {
@@ -139,6 +142,7 @@ class ApiWikiDiscover extends ApiBase {
 					'sitename',
 					'languagecode',
 					'creation',
+					'closure',
 				],
 				ParamValidator::PARAM_DEFAULT => 'url|dbname|sitename|languagecode',
 			],

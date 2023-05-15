@@ -39,7 +39,7 @@ class WikiDiscover {
 
 		$fields = [];
 		if ( $this->config->get( 'CreateWikiUseClosedWikis' ) ) {
-			$fields[] = 'wiki_closed';
+			$fields[] = 'wiki_closed', 'wiki_closed_timestamp';
 		}
 
 		if ( $this->config->get( 'CreateWikiUseInactiveWikis' ) ) {
@@ -73,10 +73,7 @@ class WikiDiscover {
 
 				if ( $this->config->get( 'CreateWikiUseClosedWikis' ) && $row->wiki_closed ) {
 					$this->closed[] = $row->wiki_dbname;
-
-					if ( $row->wiki_closed ) {
-						$this->closureDates[] => $row->wiki_dbname;
-					}
+					$this->closed_timestamp[] => $row->wiki_dbname;
 				}
 
 				if ( $this->config->get( 'CreateWikiUseInactiveWikis' ) && $row->wiki_inactive ) {
@@ -175,7 +172,7 @@ class WikiDiscover {
 	 * @return string
 	 */
 	public function getClosureDate( $database ) {
-		return wfTimestamp( TS_ISO_8601, strtotime( $this->closureDates[$database] ) );
+		return wfTimestamp( TS_ISO_8601, strtotime( $this->closed_timestamp[$database] ) );
 	}
 
 	/**

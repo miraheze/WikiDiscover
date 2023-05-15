@@ -1,14 +1,14 @@
 {
 	"@metadata": {
-		"authors": [ 
+		"authors": [
 			"John Lewis",
 			"Universal Omega",
 			"R4356th"
 		]
 	},
-	"randomwiki": "Random Wiki",
-	"randomwiki-header": "Select a category and a language below and on submission you will redirected randomly to a wiki which meets the criteria selected!",
-	"wikidiscover": "WikiDiscover",
+	"randomwiki": "Random wiki",
+	"randomwiki-header": "Select a category and language below and on submission, you will redirected to a random wiki which meets the criteria selected.",
+	"wikidiscover": "Discover wikis",
 	"wikidiscover-desc": "Allows [[Special:WikiDiscover|discovering wikis]] on a wiki farm with [[Special:CreateWiki|CreateWiki]].",
 	"wikidiscover-table-category": "Category",
 	"wikidiscover-table-description": "Description",
@@ -16,7 +16,7 @@
 	"wikidiscover-table-language": "Language",
 	"wikidiscover-table-state": "State",
 	"wikidiscover-table-visibility": "Visibility",
-	"wikidiscover-table-wiki": "Wiki Name",
+	"wikidiscover-table-wiki": "Wiki name",
 	"apihelp-wikidiscover-summary": "Get a list of wikis on a CreateWiki wikifarm.",
 	"apihelp-wikidiscover-param-state": "Filter by the CreateWiki defined state of a wiki.",
 	"apihelp-wikidiscover-param-siteprop": "Information to return about a defined wiki.",

@@ -63,25 +63,29 @@ class ApiWikiDiscover extends ApiBase {
 			}
 
 			if ( $wikidiscover->isPrivate( $dbName ) ) {
+				$data['private'] = 'true';
+
 				if ( isset( $state['private'] ) ) {
-					$data['private'] = 'true';
 					$skip = false;
 				}
 			} else {
+				$data['public'] = 'true';
+
 				if ( isset( $state['public'] ) ) {
-					$data['public'] = 'true';
 					$skip = false;
 				}
 			}
 
 			if ( $wikidiscover->isDeleted( $dbName ) ) {
+				$data['deleted'] = 'true';
+
 				if ( isset( $state['deleted'] ) ) {
-					$data['deleted'] = 'true';
 					$skip = false;
 				}
 			} elseif ( $wikidiscover->isClosed( $dbName ) ) {
+				$data['closed'] = 'true';
+
 				if ( isset( $state['closed'] ) ) {
-					$data['closed'] = 'true';
 					$skip = false;
 				}
 
@@ -89,13 +93,15 @@ class ApiWikiDiscover extends ApiBase {
 					$data['closure'] = $wikidiscover->getClosureDate( $dbName );
 				}
 			} elseif ( $wikidiscover->isInactive( $dbName ) ) {
+				$data['inactive'] = 'true';
+
 				if ( isset( $state['inactive'] ) ) {
-					$data['inactive'] = 'true';
 					$skip = false;
 				}
 			} else {
+				$data['active'] = 'true';
+
 				if ( isset( $state['active'] ) ) {
-					$data['active'] = 'true';
 					$skip = false;
 				}
 			}
@@ -118,7 +124,7 @@ class ApiWikiDiscover extends ApiBase {
 	}
 
 	/** @inheritDoc */
-	protected function getAllowedParams() {
+	protected function addValue() {
 		return [
 			'state' => [
 				ParamValidator::PARAM_ISMULTI => true,

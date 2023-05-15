@@ -173,7 +173,7 @@ class WikiDiscover {
 	 * @return string
 	 */
 	public function getClosureDate( $database ) {
-		return wfTimestamp( TS_ISO_8601, strtotime( $this->closed_timestamp[$database] ) );
+		return wfTimestamp( TS_ISO_8601, strtotime( $this->closureDates[$database] ) );
 	}
 
 	/**

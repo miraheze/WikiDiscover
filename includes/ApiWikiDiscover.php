@@ -67,9 +67,8 @@ class ApiWikiDiscover extends ApiBase {
 					$skip = false;
 				}
 			} else {
-				$data['public'] = 'true';
-
 				if ( isset( $state['public'] ) ) {
+					$data['public'] = 'true';
 					$skip = false;
 				}
 			}
@@ -97,9 +96,8 @@ class ApiWikiDiscover extends ApiBase {
 					$skip = false;
 				}
 			} else {
-				$data['active'] = 'true';
-
 				if ( isset( $state['active'] ) ) {
+					$data['active'] = 'true';
 					$skip = false;
 				}
 			}

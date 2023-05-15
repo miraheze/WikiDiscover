@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\MediaWikiServices;
 use Wikimedia\ParamValidator\ParamValidator;
 use Wikimedia\ParamValidator\TypeDef\IntegerDef;
 
@@ -15,6 +16,7 @@ class ApiWikiDiscover extends ApiBase {
 
 	/** @inheritDoc */
 	public function execute() {
+		$this->config = MediaWikiServices::getInstance()->getMainConfig();
 		$result = $this->getResult();
 
 		$wikidiscover = new WikiDiscover();
@@ -34,7 +36,7 @@ class ApiWikiDiscover extends ApiBase {
 		$wikiprefixes = array_slice( $wikidiscover->getWikiPrefixes( $wikislist ), 0, $limit );
 
 		foreach ( $wikiprefixes as $wiki ) {
-			$dbName = $wiki . 'wiki';
+			$dbName = $wiki . $this->config->get( 'CreateWikiDatabaseSuffix' );
 
 			$data = [];
 			if ( isset( $siteprop['url'] ) ) {
@@ -52,9 +54,6 @@ class ApiWikiDiscover extends ApiBase {
 			if ( isset( $siteprop['creation'] ) ) {
 				$data['creation'] = $wikidiscover->getCreationDate( $dbName );
 			}
-			if ( isset( $siteprop['closure'] ) ) {
-				$data['closure'] = $wikidiscover->getClosureDate( $dbName );
-			}
 
 			$skip = true;
 			if ( isset( $state['all'] ) ) {
@@ -62,13 +61,13 @@ class ApiWikiDiscover extends ApiBase {
 			}
 
 			if ( $wikidiscover->isPrivate( $dbName ) ) {
-				$data['private'] = true;
+				$data['private'] = 'true';
 
 				if ( isset( $state['private'] ) ) {
 					$skip = false;
 				}
 			} else {
-				$data['public'] = true;
+				$data['public'] = 'true';
 
 				if ( isset( $state['public'] ) ) {
 					$skip = false;
@@ -76,25 +75,29 @@ class ApiWikiDiscover extends ApiBase {
 			}
 
 			if ( $wikidiscover->isDeleted( $dbName ) ) {
-				$data['deleted'] = true;
+				$data['deleted'] = 'true';
 
 				if ( isset( $state['deleted'] ) ) {
 					$skip = false;
 				}
 			} elseif ( $wikidiscover->isClosed( $dbName ) ) {
-				$data['closed'] = true;
+				$data['closed'] = 'true';
 
 				if ( isset( $state['closed'] ) ) {
 					$skip = false;
 				}
+
+				if ( isset( $siteprop['closure'] ) ) {
+					$data['closure'] = $wikidiscover->getClosureDate( $dbName );
+				}
 			} elseif ( $wikidiscover->isInactive( $dbName ) ) {
-				$data['inactive'] = true;
+				$data['inactive'] = 'true';
 
 				if ( isset( $state['inactive'] ) ) {
 					$skip = false;
 				}
 			} else {
-				$data['active'] = true;
+				$data['active'] = 'true';
 
 				if ( isset( $state['active'] ) ) {
 					$skip = false;
@@ -102,7 +105,7 @@ class ApiWikiDiscover extends ApiBase {
 			}
 
 			if ( $wikidiscover->isLocked( $dbName ) ) {
-				$data['locked'] = true;
+				$data['locked'] = 'true';
 
 				// Always include a locked wiki state
 				$skip = false;

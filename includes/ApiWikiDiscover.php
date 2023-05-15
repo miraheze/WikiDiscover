@@ -124,7 +124,7 @@ class ApiWikiDiscover extends ApiBase {
 	}
 
 	/** @inheritDoc */
-	protected function addValue() {
+	protected function getAllowedParams() {
 		return [
 			'state' => [
 				ParamValidator::PARAM_ISMULTI => true,

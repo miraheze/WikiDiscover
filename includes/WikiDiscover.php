@@ -27,6 +27,9 @@ class WikiDiscover {
 	/** @var array */
 	private $creationDates = [];
 
+	/** @var array */
+	private $closureDates = [];
+
 	public function __construct() {
 		$this->config = MediaWikiServices::getInstance()->getMainConfig();
 		$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
@@ -37,6 +40,7 @@ class WikiDiscover {
 		$fields = [];
 		if ( $this->config->get( 'CreateWikiUseClosedWikis' ) ) {
 			$fields[] = 'wiki_closed';
+			$fields[] = 'wiki_closed_timestamp';
 		}
 
 		if ( $this->config->get( 'CreateWikiUseInactiveWikis' ) ) {
@@ -52,6 +56,7 @@ class WikiDiscover {
 				'wiki_dbname',
 				'wiki_language',
 				'wiki_creation',
+				'wiki_closed_timestamp',
 				'wiki_locked',
 				'wiki_deleted',
 			], $fields )
@@ -69,6 +74,7 @@ class WikiDiscover {
 
 				if ( $this->config->get( 'CreateWikiUseClosedWikis' ) && $row->wiki_closed ) {
 					$this->closed[] = $row->wiki_dbname;
+					$this->closureDates[$row->wiki_dbname] = $row->wiki_closed_timestamp;
 				}
 
 				if ( $this->config->get( 'CreateWikiUseInactiveWikis' ) && $row->wiki_inactive ) {
@@ -120,9 +126,10 @@ class WikiDiscover {
 		$wikiprefixes = [];
 
 		$wikiList = $dbname ? explode( ',', $dbname ) : $this->config->get( 'LocalDatabases' );
+		$wikiSuffix = $this->config->get( 'CreateWikiDatabaseSuffix' );
 
 		foreach ( $wikiList as $db ) {
-			if ( preg_match( "/(.*)wiki\$/", $db, $a ) ) {
+			if ( preg_match( "/(.*)$wikiSuffix\$/", $db, $a ) ) {
 				$wikiprefixes[] = $a[1];
 			}
 		}
@@ -160,6 +167,14 @@ class WikiDiscover {
 	 */
 	public function getCreationDate( $database ) {
 		return wfTimestamp( TS_ISO_8601, strtotime( $this->creationDates[$database] ) );
+	}
+
+	/**
+	 * @param string $database
+	 * @return string
+	 */
+	public function getClosureDate( $database ) {
+		return wfTimestamp( TS_ISO_8601, strtotime( $this->closureDates[$database] ) );
 	}
 
 	/**

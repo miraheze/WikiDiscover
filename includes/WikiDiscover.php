@@ -126,9 +126,10 @@ class WikiDiscover {
 		$wikiprefixes = [];
 
 		$wikiList = $dbname ? explode( ',', $dbname ) : $this->config->get( 'LocalDatabases' );
+		$wikiSuffix = $this->config->get( 'CreateWikiDatabaseSuffix' );
 
 		foreach ( $wikiList as $db ) {
-			if ( preg_match( "/(.*)wiki\$/", $db, $a ) ) {
+			if ( preg_match( "/(.*)$wikiSuffix\$/", $db, $a ) ) {
 				$wikiprefixes[] = $a[1];
 			}
 		}

@@ -63,9 +63,8 @@ class ApiWikiDiscover extends ApiBase {
 			}
 
 			if ( $wikidiscover->isPrivate( $dbName ) ) {
-				$data['private'] = 'true';
-
 				if ( isset( $state['private'] ) ) {
+					$data['private'] = 'true';
 					$skip = false;
 				}
 			} else {
@@ -76,15 +75,13 @@ class ApiWikiDiscover extends ApiBase {
 			}
 
 			if ( $wikidiscover->isDeleted( $dbName ) ) {
-				$data['deleted'] = 'true';
-
 				if ( isset( $state['deleted'] ) ) {
+					$data['deleted'] = 'true';
 					$skip = false;
 				}
 			} elseif ( $wikidiscover->isClosed( $dbName ) ) {
-				$data['closed'] = 'true';
-
 				if ( isset( $state['closed'] ) ) {
+					$data['closed'] = 'true';
 					$skip = false;
 				}
 
@@ -92,9 +89,8 @@ class ApiWikiDiscover extends ApiBase {
 					$data['closure'] = $wikidiscover->getClosureDate( $dbName );
 				}
 			} elseif ( $wikidiscover->isInactive( $dbName ) ) {
-				$data['inactive'] = 'true';
-
 				if ( isset( $state['inactive'] ) ) {
+					$data['inactive'] = 'true';
 					$skip = false;
 				}
 			} else {

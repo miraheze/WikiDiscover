@@ -39,7 +39,8 @@ class WikiDiscover {
 
 		$fields = [];
 		if ( $this->config->get( 'CreateWikiUseClosedWikis' ) ) {
-			$fields[] = 'wiki_closed', 'wiki_closed_timestamp';
+			$fields[] = 'wiki_closed';
+			$fields[] = 'wiki_closed_timestamp';
 		}
 
 		if ( $this->config->get( 'CreateWikiUseInactiveWikis' ) ) {

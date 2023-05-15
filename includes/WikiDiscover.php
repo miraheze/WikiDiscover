@@ -73,7 +73,7 @@ class WikiDiscover {
 
 				if ( $this->config->get( 'CreateWikiUseClosedWikis' ) && $row->wiki_closed ) {
 					$this->closed[] = $row->wiki_dbname;
-					$this->closed_timestamp[] => $row->wiki_dbname;
+					$this->closed_timestamp[] = $row->wiki_dbname;
 				}
 
 				if ( $this->config->get( 'CreateWikiUseInactiveWikis' ) && $row->wiki_inactive ) {

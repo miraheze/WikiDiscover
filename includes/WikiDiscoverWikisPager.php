@@ -86,6 +86,15 @@ class WikiDiscoverWikisPager extends TablePager {
 
 		return $headers;
 	}
+	
+	/** @inheritDoc */
+	public function formatRow( $row ) {
+		if ( $this->getConfig()->get( 'Conf' )->get( 'wgWikiDiscoverExclude', $row->wiki_dbname ) ) {
+			return '';
+		}
+
+		return parent::formatRow( $row );
+	}
 
 	/** @inheritDoc */
 	public function formatValue( $name, $value ) {

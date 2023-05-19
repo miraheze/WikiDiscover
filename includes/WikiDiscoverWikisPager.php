@@ -89,8 +89,11 @@ class WikiDiscoverWikisPager extends TablePager {
 	
 	/** @inheritDoc */
 	public function formatRow( $row ) {
-		if ( $this->getConfig()->get( 'Conf' )->get( 'wgWikiDiscoverExclude', $row->wiki_dbname ) ) {
-			return '';
+		if ( ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' ) ) {
+			$manageWikiSettings = new ManageWikiSettings( $row->wiki_dbname );
+			if ( $manageWikiSettings->list( 'wgWikiDiscoverExclude' ) ) {
+				return '';
+			}
 		}
 
 		return parent::formatRow( $row );

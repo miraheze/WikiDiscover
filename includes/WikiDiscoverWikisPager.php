@@ -86,7 +86,7 @@ class WikiDiscoverWikisPager extends TablePager {
 
 		return $headers;
 	}
-	
+
 	/** @inheritDoc */
 	public function formatRow( $row ) {
 		if ( ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' ) ) {

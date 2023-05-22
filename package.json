@@ -5,6 +5,6 @@
 		"lint:i18n": "banana-checker --requireLowerCase=0 i18n/"
 	},
 	"devDependencies": {
-		"grunt-banana-checker": "0.10.0"
+		"grunt-banana-checker": "0.11.0"
 	}
 }

@@ -5,8 +5,8 @@
 		]
 	},
 	"randomwiki": "Naključni viki",
-	"randomwiki-header": "Spodaj izberite kategorijo in jezik in ob predložitvi boste naključno preusmerjeni v viki, ki izpolnjuje izbrana merila!",
-	"wikidiscover": "WikiDiscover",
+	"randomwiki-header": "Spodaj izberite kategorijo in jezik in ob predložitvi boste preusmerjeni na naključen viki, ki izpolnjuje izbrana merila.",
+	"wikidiscover": "Odkrijte vikije",
 	"wikidiscover-desc": "Omogoča [[Special:WikiDiscover|odkrivanje vikijev]] v vikifarmi z možnostjo [[Special:CreateWiki|CreateWiki]].",
 	"wikidiscover-table-category": "Kategorija",
 	"wikidiscover-table-description": "Opis",

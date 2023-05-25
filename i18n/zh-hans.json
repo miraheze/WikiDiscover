@@ -17,7 +17,7 @@
 	"wikidiscover-table-language": "语言",
 	"wikidiscover-table-state": "状态",
 	"wikidiscover-table-visibility": "可见性",
-	"wikidiscover-table-wiki": "wiki名称",
+	"wikidiscover-table-wiki": "Wiki名称",
 	"apihelp-wikidiscover-summary": "获取基于CreateWiki的维基农场的wiki列表。",
 	"apihelp-wikidiscover-param-state": "按CreateWiki定义的wiki状态过滤。",
 	"apihelp-wikidiscover-param-siteprop": "要返回有关定义wiki的信息。",

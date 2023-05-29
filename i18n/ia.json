@@ -5,8 +5,8 @@
 		]
 	},
 	"randomwiki": "Wiki aleatori",
-	"randomwiki-header": "Selige un categoria e un lingua hic infra e al submission tu essera redirigite aleatorimente a un wiki que satisface le criterios seligite!",
-	"wikidiscover": "DiscoperiWiki",
+	"randomwiki-header": "Selige un categoria e un lingua hic infra e, post invio, tu essera redirigite a un wiki aleatori que satisface le criterios seligite.",
+	"wikidiscover": "Discoperir wikis",
 	"wikidiscover-desc": "Permitte [[Special:WikiDiscover|discoperir wikis]] sur un ferma de wikis con [[Special:CreateWiki|CreaWiki]].",
 	"wikidiscover-table-category": "Categoria",
 	"wikidiscover-table-description": "Description",

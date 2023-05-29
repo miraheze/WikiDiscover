@@ -11,8 +11,8 @@
 		]
 	},
 	"randomwiki": "Wiki aléatoire",
-	"randomwiki-header": "Sélectionnez une catégorie et une langue ci-dessous,  lorsque vous les soumettrez vous serez redirigé aléatoirement vers un wiki qui correspond aux critères sélectionnés !",
-	"wikidiscover": "WikiDiscover",
+	"randomwiki-header": "Sélectionnez une catégorie et une langue ci-dessous et, lorsque vous les soumettrez, vous serez redirigé{{GENDER:||e}} aléatoirement vers un wiki qui correspond aux critères sélectionnés.",
+	"wikidiscover": "Découvrir les wikis",
 	"wikidiscover-desc": "Permet de [[Special:WikiDiscover|découvrir des wikis]] dans une ferme de wikis proposant à leurs utilisateurs la fonctionnalité [[Special:CreateWiki|Créer un wiki]].",
 	"wikidiscover-table-category": "Catégorie",
 	"wikidiscover-table-description": "Description",

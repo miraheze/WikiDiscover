@@ -6,8 +6,8 @@
 		]
 	},
 	"randomwiki": "隨機 wiki",
-	"randomwiki-header": "選擇下方一個分類與語言並提交後，您將被會重新導向到符合條件標準的 wiki！",
-	"wikidiscover": "WikiDiscover",
+	"randomwiki-header": "選擇下方一個分類與語言並提交後，您將會重新導向到符合條件標準的隨機 wiki！",
+	"wikidiscover": "探索 wiki",
 	"wikidiscover-desc": "允許在具有 [[Special:CreateWiki|CreateWiki]] 的 wiki 農場裡[[Special:WikiDiscover|探索 wiki]]。",
 	"wikidiscover-table-category": "分類",
 	"wikidiscover-table-description": "描述",

@@ -1,13 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
+			"Buehl",
 			"Kkairri",
 			"MathXplore",
 			"Shirayuki",
 			"しぃ"
 		]
 	},
-	"randomwiki": "ランダムウィキ",
+	"randomwiki": "ランダムなウィキ",
 	"randomwiki-header": "以下のカテゴリと言語を選択して送信すると、選択した条件を満たすウィキにランダムにリダイレクトされます。",
 	"wikidiscover": "ウィキを見つける",
 	"wikidiscover-desc": "[[Special:CreateWiki|CreateWiki]]を使って[[Special:WikiDiscover|ウィキファーム上のウィキ]]を発見できます。",

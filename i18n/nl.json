@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"HanV",
 			"Mainframe98",
 			"McDutchie",
 			"SPQRobin"
@@ -8,7 +9,7 @@
 	},
 	"randomwiki": "Willekeurige Wiki",
 	"randomwiki-header": "Kies hieronder een categorie en een taal. Met een druk op de knop wordt u dan willekeurig doorgestuurd naar een wiki die voldoet aan de gekozen criteria.",
-	"wikidiscover": "Wiki-ontdekking",
+	"wikidiscover": "Wiki's ontdekken",
 	"wikidiscover-desc": "Maakt het mogelijk [[Special:WikiDiscover|wiki's te ontdekken]] op een wikifarm met [[Special:CreateWiki|CreateWiki]].",
 	"wikidiscover-table-category": "Categorie",
 	"wikidiscover-table-description": "Beschrijving",

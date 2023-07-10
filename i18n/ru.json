@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"BerryAVGN",
 			"DDPAT",
 			"Happy13241",
 			"Ice bulldog",
@@ -16,14 +17,14 @@
 		]
 	},
 	"randomwiki": "Cлучайный вики-проект",
-	"randomwiki-header": "Выберите категорию и язык ниже, и при отправке вы будете перенаправлены случайным образом в вики, которая соответствует выбранным критериям!",
+	"randomwiki-header": "Выберите категорию и язык ниже, и при отправке вы будете перенаправлены случайным образом в вики, которая соответствует выбранным критериям.",
 	"wikidiscover": "Откройте для себя вики",
 	"wikidiscover-desc": "Позволяет [[Special:WikiDiscover|обнаруживать вики]] на вики-ферме вики с [[Special:CreateWiki|CreateWiki]].",
 	"wikidiscover-table-category": "Категория",
 	"wikidiscover-table-description": "Описание",
 	"wikidiscover-table-established": "Установлено",
 	"wikidiscover-table-language": "Язык",
-	"wikidiscover-table-state": "Статус",
+	"wikidiscover-table-state": "Состояние",
 	"wikidiscover-table-visibility": "Видимость",
 	"wikidiscover-table-wiki": "Название вики",
 	"apihelp-wikidiscover-summary": "Получить список вики на вики-ферме CreateWiki.",

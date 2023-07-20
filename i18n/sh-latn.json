@@ -1,0 +1,25 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vlad5250",
+			"Winston Sung"
+		]
+	},
+	"randomwiki": "Nasumični viki",
+	"randomwiki-header": "Odaberite kategoriju i jezik da biste nasumično odveli se na viki koji zadovoljava odabrane kriterije.",
+	"wikidiscover": "Otkrij vikije",
+	"wikidiscover-desc": "Omogućuje [[Special:WikiDiscover|otkrivanje vikija]] na farmi s [[Special:CreateWiki|Napravi viki]].",
+	"wikidiscover-table-category": "Kategorija",
+	"wikidiscover-table-description": "Opis",
+	"wikidiscover-table-established": "Utvrđen",
+	"wikidiscover-table-language": "Jezik",
+	"wikidiscover-table-state": "Stanje",
+	"wikidiscover-table-visibility": "Vidljivost",
+	"wikidiscover-table-wiki": "Naziv vikija",
+	"apihelp-wikidiscover-summary": "Daj spisak vikija u farmi za \"Napravi viki\".",
+	"apihelp-wikidiscover-param-state": "Filtriraj prema stanju vikija za \"Napravi viki\"",
+	"apihelp-wikidiscover-param-siteprop": "Koje informacije o definiranom wikiju treba vratiti.",
+	"apihelp-wikidiscover-param-limit": "Maksimalni broj rezultata za prikaz.",
+	"apihelp-wikidiscover-param-wikislist": "Daj spisak svih vikija.",
+	"apihelp-wikidiscover-example": "Prikaži sve vikije na farmi."
+}

@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vlad5250"
+		]
+	},
+	"randomwiki": "Насумични вики",
+	"randomwiki-header": "Изаберите категорију и језик да бисте се одведени на насумични вики који испуњава изабране критерије.",
+	"wikidiscover": "Откриј викије",
+	"wikidiscover-desc": "Дозвољава [[Special:WikiDiscover|откривање викија]] на фарми с [[Special:CreateWiki|Направи вики]].",
+	"wikidiscover-table-category": "Категорија",
+	"wikidiscover-table-description": "Опис",
+	"wikidiscover-table-established": "Успостављен",
+	"wikidiscover-table-language": "Језик",
+	"wikidiscover-table-state": "Стање",
+	"wikidiscover-table-visibility": "Видљивост",
+	"wikidiscover-table-wiki": "Име викија",
+	"apihelp-wikidiscover-summary": "Дај списак викија у фарми за „Направи вики“.",
+	"apihelp-wikidiscover-param-state": "Филтрирај према стању викија за „Направи вики“",
+	"apihelp-wikidiscover-param-siteprop": "Које информације о дефинисаном викију треба вратити.",
+	"apihelp-wikidiscover-param-limit": "Максималан број резултата за приказ.",
+	"apihelp-wikidiscover-param-wikislist": "Дај списак свих викија.",
+	"apihelp-wikidiscover-example": "Прикажи све викије на фарми."
+}

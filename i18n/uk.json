@@ -4,11 +4,12 @@
 			"Avatar6",
 			"DDPAT",
 			"Ice bulldog",
-			"Piramidion"
+			"Piramidion",
+			"Vlad5250"
 		]
 	},
 	"randomwiki": "Випадкова вікі",
-	"randomwiki-header": "Виберіть нижче категорію й мову, і після підтвердження Вас буде перенаправлено на випадкову вікі, яка відповідає вибраним критеріям!",
+	"randomwiki-header": "Виберіть нижче категорію й мову, і після підтвердження Вас буде перенаправлено на випадкову вікі, яка відповідає вибраним критеріям.",
 	"wikidiscover": "WikiDiscover",
 	"wikidiscover-desc": "Дозволяє [[Special:WikiDiscover|виявляти вікі]] на вікі-фермі, яка має можливість [[Special:CreateWiki|створення вікі]].",
 	"wikidiscover-table-category": "Категорія",

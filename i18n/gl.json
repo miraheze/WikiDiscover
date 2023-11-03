@@ -3,18 +3,19 @@
 		"authors": [
 			"Banjo",
 			"Elisardojm",
-			"Iváns"
+			"Iváns",
+			"Toliño"
 		]
 	},
-	"randomwiki": "Wiki aleatoria",
-	"randomwiki-header": "Seleccione máis abaixo unha categoría e unha lingua e redirixirémolo ó chou a un wiki que cumpra cos criterios seleccionadosǃ",
-	"wikidiscover": "WikiDescuberta",
+	"randomwiki": "Wiki aleatorio",
+	"randomwiki-header": "Seleccione máis abaixo unha categoría e unha lingua e irá a un wiki ó chou que cumpra cos criterios seleccionados.",
+	"wikidiscover": "Descubrir wikis",
 	"wikidiscover-desc": "Permite [[Special:WikiDiscover|descubrir wikis]] nun sitio de aloxamento de wikis con [[Special:CreateWiki|CrearWiki]].",
 	"wikidiscover-table-category": "Categoría",
 	"wikidiscover-table-language": "Lingua",
-	"wikidiscover-table-state": "Actividade",
+	"wikidiscover-table-state": "Estado",
 	"wikidiscover-table-visibility": "Visibilidade",
-	"wikidiscover-table-wiki": "Nome da wiki",
+	"wikidiscover-table-wiki": "Nome do wiki",
 	"apihelp-wikidiscover-summary": "Obter unha lista das wikis nun sitio de aloxamento de wikis CrearWiki.",
 	"apihelp-wikidiscover-param-state": "Filtrar polo estado dunha wiki definida por CrearWiki.",
 	"apihelp-wikidiscover-param-siteprop": "A información a devolver sobre unha wiki definida.",

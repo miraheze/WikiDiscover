@@ -50,6 +50,11 @@
 		]
 	},
 	"config": {
+		"WikiDiscoverDescriptionMaxLength": {
+			"description": "Int. The maxmimum length of a wiki description.",
+			"public": true,
+			"value": false
+		},
 		"WikiDiscoverListPrivateWikis": {
 			"description": "Whether or not to include showing private wikis on Special:WikiDiscover.",
 			"public": true,

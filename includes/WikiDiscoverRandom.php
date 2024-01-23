@@ -50,16 +50,15 @@ class WikiDiscoverRandom {
 		$dbr = $lbFactory->getMainLB( $config->get( 'CreateWikiDatabase' ) )
 			->getMaintenanceConnectionRef( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
 
-		$possiblewikis = $dbr->selectFieldValues( 'cw_wikis', 'wiki_dbname', $conds, __METHOD__ );
+		/* MySQL is ever the outlier */
+		$random_function = $config->get( 'DBtype' ) === 'mysql' ? 'RAND()' : 'random()';
 
-		$randwiki = $possiblewikis[array_rand( $possiblewikis )];
+		return $dbr->selectRow(
+			'cw_wikis',
+			[ 'wiki_dbname', 'wiki_url' ],
+			__METHOD__,
+			[ 'ORDER BY' => $random_function, 'LIMIT' => 1]
+		);
 
-		$fields = [];
-
-		if ( $config->get( 'CreateWikiUseInactiveWikis' ) ) {
-			$fields[] = 'wiki_inactive';
-		}
-
-		return $dbr->selectRow( 'cw_wikis', array_merge( [ 'wiki_dbname', 'wiki_sitename', 'wiki_language', 'wiki_category' ], $fields ), [ 'wiki_dbname' => $randwiki ], __METHOD__ );
 	}
 }

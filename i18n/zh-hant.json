@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Kly",
+			"Winston Sung",
 			"铁桶"
 		]
 	},
@@ -15,7 +16,7 @@
 	"wikidiscover-table-language": "語言",
 	"wikidiscover-table-state": "狀態",
 	"wikidiscover-table-visibility": "能見度",
-	"wikidiscover-table-wiki": "Wiki 名稱",
+	"wikidiscover-table-wiki": "wiki 名稱",
 	"apihelp-wikidiscover-summary": "取得在 CreateWiki 維基農場的 wiki 清單。",
 	"apihelp-wikidiscover-param-state": "依 CreateWiki 所定義的 wiki 狀態篩選。",
 	"apihelp-wikidiscover-param-siteprop": "回有有關定義 wiki 的訊息。",

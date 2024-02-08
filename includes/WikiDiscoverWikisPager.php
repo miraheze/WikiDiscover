@@ -141,7 +141,7 @@ class WikiDiscoverWikisPager extends TablePager {
 			case 'wiki_creation':
 				$lang = RequestContext::getMain()->getLanguage();
 
-				$formatted = $lang->date( wfTimestamp( TS_MW, strtotime( $row->wiki_creation ) ) );
+				$formatted = htmlspecialchars( $lang->date( wfTimestamp( TS_MW, strtotime( $row->wiki_creation ) ) ) );
 				break;
 			case 'wiki_description':
 				$manageWikiSettings = new ManageWikiSettings( $wiki );

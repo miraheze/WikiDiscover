@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Nguyễn Mạnh An",
+			"Pisceskaze"
+		]
+	},
+	"randomwiki": "Wiki ngẫu nhiên",
+	"wikidiscover": "Khám phá wiki",
+	"wikidiscover-desc": "Cho phép [[Special:WikiDiscover|khám phá]] trên trang trại wiki với [[Special:CreateWiki|CreateWiki]].",
+	"wikidiscover-table-category": "Danh mục",
+	"wikidiscover-table-description": "Mô tả",
+	"wikidiscover-table-established": "Thành lập vào",
+	"wikidiscover-table-language": "Ngôn ngữ",
+	"wikidiscover-table-state": "Trạng thái",
+	"wikidiscover-table-visibility": "Hiển thị",
+	"wikidiscover-table-wiki": "Tên wiki",
+	"apihelp-wikidiscover-summary": "Nhận danh sách các wiki trên một trang trại wiki với CreateWiki.",
+	"apihelp-wikidiscover-param-wikislist": "Lấy danh sách tất cả các wiki.",
+	"apihelp-wikidiscover-example": "Hiển thị tất cả wiki trên biểu mẫu."
+}

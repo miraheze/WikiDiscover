@@ -31,6 +31,10 @@ class SpecialWikiDiscover extends SpecialPage {
 		}
 
 		$formDescriptor = [
+			'intro' => [
+				'type' => 'info',
+				'default' => $this->msg( 'wikidiscover-header-info' )->text(),
+			],
 			'language' => [
 				'type' => 'language',
 				'options' => [ '(any)' => 'any' ],
@@ -75,7 +79,12 @@ class SpecialWikiDiscover extends SpecialPage {
 		}
 
 		$htmlForm = HTMLForm::factory( 'ooui', $formDescriptor, $this->getContext() );
-		$htmlForm->setMethod( 'get' )->prepareForm()->displayForm( false );
+		$htmlForm
+			->setMethod( 'get' )
+			->setWrapperLegendMsg( 'wikidiscover-header' )
+			->setSubmitTextMsg( 'search' )
+			->prepareForm()
+			->displayForm( false );
 
 		$pager = new WikiDiscoverWikisPager( $this, $language, $category, $state, $visibility );
 

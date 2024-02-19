@@ -2,14 +2,15 @@
 	"name": "WikiDiscover",
 	"author": [
 		"John Lewis",
-		"Universal Omega"
+		"Universal Omega",
+		"Agent Isai"
 	],
 	"descriptionmsg": "wikidiscover-desc",
 	"url": "https://github.com/miraheze/WikiDiscover",
 	"license-name": "GPL-3.0-or-later",
 	"type": "specialpage",
 	"requires": {
-		"MediaWiki": ">= 1.36.0",
+		"MediaWiki": ">= 1.40.0",
 		"extensions": {
 			"CreateWiki": "*"
 		}

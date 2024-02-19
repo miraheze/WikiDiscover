@@ -20,6 +20,10 @@ class SpecialRandomWiki extends SpecialPage {
 		$out->addWikiMsg( 'randomwiki-header' );
 
 		$formDescriptor = [
+			'intro' => [
+				'type' => 'info',
+				'default' => $this->msg( 'randomwiki-header' )->text(),
+			],
 			'language' => [
 				'type' => 'language',
 				'name' => 'language',
@@ -36,7 +40,13 @@ class SpecialRandomWiki extends SpecialPage {
 		];
 
 		$htmlForm = HTMLForm::factory( 'ooui', $formDescriptor, $this->getContext() );
-		$htmlForm->setSubmitCallback( [ $this, 'redirectWiki' ] )->setMethod( 'post' )->prepareForm()->show();
+		$htmlForm
+			->setSubmitCallback( [ $this, 'redirectWiki' ] )
+			->setMethod( 'post' )
+			->setWrapperLegendMsg( 'randomwiki-parameters' )
+			->setSubmitTextMsg( 'search' )
+			->prepareForm()
+			->show();
 	}
 
 	/** @inheritDoc */

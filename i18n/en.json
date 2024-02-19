@@ -6,10 +6,13 @@
 			"R4356th"
 		]
 	},
-	"randomwiki": "Random wiki",
-	"randomwiki-header": "Select a category and language below and on submission, you will redirected to a random wiki which meets the criteria selected.",
+	"randomwiki": "Redirect to a random wiki",
+	"randomwiki-header": "Choose a category and language below and on submission, you will redirected to a random wiki which meets the criteria selected.",
+	"randomwiki-parameters": "Select parameters",
 	"wikidiscover": "Discover wikis",
 	"wikidiscover-desc": "Allows [[Special:WikiDiscover|discovering wikis]] on a wiki farm with [[Special:CreateWiki|CreateWiki]].",
+	"wikidiscover-header": "Choose parameters for your search",
+	"wikidiscover-header-info": "You may search for wikis across this farm by selecting parameters such as language and more.",
 	"wikidiscover-table-category": "Category",
 	"wikidiscover-table-description": "Description",
 	"wikidiscover-table-established": "Established", 

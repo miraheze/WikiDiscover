@@ -17,8 +17,6 @@ class SpecialRandomWiki extends SpecialPage {
 
 		$out = $this->getOutput();
 
-		$out->addWikiMsg( 'randomwiki-header' );
-
 		$formDescriptor = [
 			'intro' => [
 				'type' => 'info',

@@ -6,10 +6,13 @@
 			"铁桶"
 		]
 	},
-	"randomwiki": "隨機 wiki",
-	"randomwiki-header": "選擇下方一個分類與語言並提交後，您將會重新導向到符合條件標準的隨機 wiki！",
+	"randomwiki": "重新導向到隨機 wiki",
+	"randomwiki-header": "挑選下方一個分類與語言並提交後，您將會重新導向到符合條件標準的隨機 wiki！",
+	"randomwiki-parameters": "選擇參數",
 	"wikidiscover": "探索 wiki",
 	"wikidiscover-desc": "允許在具有 [[Special:CreateWiki|CreateWiki]] 的 wiki 農場裡[[Special:WikiDiscover|探索 wiki]]。",
+	"wikidiscover-header": "挑選您的搜尋參數",
+	"wikidiscover-header-info": "您可以透過選擇語言與其他參數，來搜尋整個農場中的 wiki。",
 	"wikidiscover-table-category": "分類",
 	"wikidiscover-table-description": "描述",
 	"wikidiscover-table-established": "建立時間",

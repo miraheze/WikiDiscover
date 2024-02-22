@@ -4,10 +4,13 @@
 			"Bjankuloski06"
 		]
 	},
-	"randomwiki": "Случајно вики",
+	"randomwiki": "Пренасочи кон случајно вики",
 	"randomwiki-header": "Изберете категорија и јазик за да бидете одведени на случајно вики кое одговара на одбраните услови.",
+	"randomwiki-parameters": "Изберете параметри",
 	"wikidiscover": "Откривање на викија",
 	"wikidiscover-desc": "Овозможува [[Special:WikiDiscover|откривање на викија]] на фармата со [[Special:CreateWiki|Создај вики]].",
+	"wikidiscover-header": "Изберете параметри за пребарување",
+	"wikidiscover-header-info": "Можете да пребарувате викија во оваа фарма избирајќи параметри како јазик и други.",
 	"wikidiscover-table-category": "Категорија",
 	"wikidiscover-table-description": "Опис",
 	"wikidiscover-table-established": "Воспоставено",

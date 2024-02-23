@@ -28,10 +28,11 @@ class WikiDiscoverRandom {
 			$conditions['wiki_inactive'] = 0;
 		}
 
-		/* Never randomly offer closed or private wikis */
+		// Never randomly offer closed or private wikis
 		if ( $config->get( 'CreateWikiUseClosedWikis' ) ) {
 			$conditions['wiki_closed'] = 0;
 		}
+
 		if ( $config->get( 'CreateWikiUsePrivateWikis' ) ) {
 			$conditions['wiki_private'] = 0;
 		}
@@ -50,7 +51,7 @@ class WikiDiscoverRandom {
 		$dbr = $lbFactory->getMainLB( $config->get( 'CreateWikiDatabase' ) )
 			->getMaintenanceConnectionRef( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
 
-		/* MySQL is ever the outlier */
+		// MySQL is ever the outlier
 		$random_function = $dbr->getType() === 'mysql' ? 'RAND()' : 'random()';
 
 		return $dbr->selectRow(

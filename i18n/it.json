@@ -8,8 +8,8 @@
 			"Ricordisamoa"
 		]
 	},
-	"randomwiki": "Wiki casuale",
-	"randomwiki-header": "Seleziona una categoria e una lingua di seguito e, dopo l'invio, verrai reindirizzato a un wiki casuale che soddisfa i criteri selezionati.",
+	"randomwiki": "Reindirizzamento a un wiki casuale",
+	"randomwiki-header": "Scegli una categoria e una lingua di seguito e, dopo l'invio, verrai reindirizzato a un wiki casuale che soddisfa i criteri selezionati.",
 	"wikidiscover": "Scopri i wiki",
 	"wikidiscover-desc": "Consenti [[Special:WikiDiscover|scoprire wikis]] in un incubatore di Wiki con [[Special:CreateWiki|CreaWiki]].",
 	"wikidiscover-table-category": "Categoria",

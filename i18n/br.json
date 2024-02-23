@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Adriendelucca"
+		]
+	},
+	"randomwiki": "Wiki dre zegouezh",
+	"wikidiscover-table-category": "Rummad",
+	"wikidiscover-table-description": "Deskrivadur",
+	"wikidiscover-table-language": "Yezh",
+	"wikidiscover-table-visibility": "Gwelusted",
+	"wikidiscover-table-wiki": "Anv ar wiki",
+	"apihelp-wikidiscover-param-wikislist": "Tapout roll an holl wikioù."
+}

@@ -93,13 +93,6 @@ class WikiDiscover {
 	}
 
 	/**
-	 * @return int
-	 */
-	public function getCount() {
-		return count( $this->config->get( 'LocalDatabases' ) );
-	}
-
-	/**
 	 * @param string $dbname
 	 * @return array
 	 */
@@ -344,7 +337,12 @@ class WikiDiscover {
 
 		switch ( $magicWordId ) {
 			case 'numberofwikis':
-				$ret = $cache[$magicWordId] = count( $config->get( 'LocalDatabases' ) );
+				$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
+
+				$dbr = $lbFactory->getMainLB( $config->get( 'CreateWikiDatabase' ) )
+					->getMaintenanceConnectionRef( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
+
+				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0 ] );
 				break;
 			case 'numberoftotalwikis':
 				$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();

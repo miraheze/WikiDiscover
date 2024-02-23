@@ -59,7 +59,7 @@ class SpecialRandomWiki extends SpecialPage {
 	 * @return bool
 	 */
 	public function redirectWiki( $formData ) {
-		$randomwiki = WikiDiscoverRandom::randomWiki(  $formData['inactive'], $formData['category'], $formData['language'] );
+		$randomwiki = WikiDiscoverRandom::randomWiki( $formData['inactive'], $formData['category'], $formData['language'] );
 
 		if ( $randomwiki->wiki_url ) {
 			header( "Location: https://" . $randomwiki->wiki_url . "/" );

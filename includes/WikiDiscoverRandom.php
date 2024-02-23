@@ -51,7 +51,7 @@ class WikiDiscoverRandom {
 			->getMaintenanceConnectionRef( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
 
 		/* MySQL is ever the outlier */
-		$random_function = $config->get( 'DBtype' ) === 'mysql' ? 'RAND()' : 'random()';
+		$random_function = $dbr->getType() === 'mysql' ? 'RAND()' : 'random()';
 
 		return $dbr->selectRow(
 			'cw_wikis',

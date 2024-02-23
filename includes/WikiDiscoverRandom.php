@@ -59,6 +59,5 @@ class WikiDiscoverRandom {
 			__METHOD__,
 			[ 'ORDER BY' => $random_function, 'LIMIT' => 1 ]
 		);
-
 	}
 }

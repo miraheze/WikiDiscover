@@ -24,12 +24,14 @@ class WikiDiscoverRandom {
 
 		if ( $config->get( 'CreateWikiUseInactiveWikis' ) && $state === 'inactive' ) {
 			$conditions['wiki_inactive'] = 1;
-		} elseif ( $config->get( 'CreateWikiUseClosedWikis' ) && $state === 'closed' ) {
-			$conditions['wiki_closed'] = 1;
-		} elseif ( $config->get( 'CreateWikiUseClosedWikis' ) && $state === 'open' ) {
-			$conditions['wiki_closed'] = 0;
+		} elseif ( $config->get( 'CreateWikiUseInactiveWikis' ) && $state === 'active' ) {
+			$conditions['wiki_inactive'] = 0;
 		}
 
+		/* Never randomly offer closed or private wikis */
+		if ( $config->get( 'CreateWikiUseClosedWikis' ) ) {
+			$conditions['wiki_closed'] = 0;
+		}
 		if ( $config->get( 'CreateWikiUsePrivateWikis' ) ) {
 			$conditions['wiki_private'] = 0;
 		}
@@ -48,23 +50,15 @@ class WikiDiscoverRandom {
 		$dbr = $lbFactory->getMainLB( $config->get( 'CreateWikiDatabase' ) )
 			->getMaintenanceConnectionRef( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
 
-		$possiblewikis = $dbr->selectFieldValues( 'cw_wikis', 'wiki_dbname', $conds, __METHOD__ );
+		/* MySQL is ever the outlier */
+		$random_function = $dbr->getType() === 'mysql' ? 'RAND()' : 'random()';
 
-		$randwiki = $possiblewikis[array_rand( $possiblewikis )];
+		return $dbr->selectRow(
+			'cw_wikis',
+			[ 'wiki_dbname', 'wiki_url' ],
+			__METHOD__,
+			[ 'ORDER BY' => $random_function, 'LIMIT' => 1 ]
+		);
 
-		$fields = [];
-		if ( $config->get( 'CreateWikiUseClosedWikis' ) ) {
-			$fields[] = 'wiki_closed';
-		}
-
-		if ( $config->get( 'CreateWikiUseInactiveWikis' ) ) {
-			$fields[] = 'wiki_inactive';
-		}
-
-		if ( $config->get( 'CreateWikiUsePrivateWikis' ) ) {
-			$fields[] = 'wiki_private';
-		}
-
-		return $dbr->selectRow( 'cw_wikis', array_merge( [ 'wiki_dbname', 'wiki_sitename', 'wiki_language', 'wiki_category' ], $fields ), [ 'wiki_dbname' => $randwiki ], __METHOD__ );
 	}
 }

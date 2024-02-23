@@ -37,12 +37,16 @@ class SpecialRandomWiki extends SpecialPage {
 			],
 		];
 
-        if ( $this->config->get( 'CreateWikiUseInactiveWikis' ) ) {
-            $formDescriptor['inactive'] = [
+		if ( $this->config->get( 'CreateWikiUseInactiveWikis' ) ) {
+			$formDescriptor['inactive'] = [
 				'type' => 'select',
 				'name' => 'inactive',
 				'label-message' => 'wikidiscover-table-state',
-				'options' => [ '(any)' => 'any', 'active' => 'active', 'inactive' => 'inactive' ],
+				'options' => [
+					'(any)' => 'any',
+					'active' => 'active',
+					'inactive' => 'inactive',
+				],
 				'default' => 'any',
 			];
 		}

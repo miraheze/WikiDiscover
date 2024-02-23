@@ -57,7 +57,7 @@ class WikiDiscoverRandom {
 			'cw_wikis',
 			[ 'wiki_dbname', 'wiki_url' ],
 			__METHOD__,
-			[ 'ORDER BY' => $random_function, 'LIMIT' => 1]
+			[ 'ORDER BY' => $random_function, 'LIMIT' => 1 ]
 		);
 
 	}

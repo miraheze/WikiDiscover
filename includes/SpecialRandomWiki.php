@@ -76,7 +76,7 @@ class SpecialRandomWiki extends SpecialPage {
 		if ( $randomwiki->wiki_url ) {
 			header( "Location: https://" . $randomwiki->wiki_url . "/" );
 		} else {
-			header( "Location: https://" . substr( $randomwiki->wiki_dbname, 0, -4 ) . ".{$this->config->get( 'CreateWikiSubdomain' )}/" );
+			header( "Location: https://" . substr( $randomwiki->wiki_dbname, 0, -strlen( $this->config->get( 'CreateWikiDatabaseSuffix' ) ) ) . ".{$this->config->get( 'CreateWikiSubdomain' )}/" );
 		}
 
 		return true;

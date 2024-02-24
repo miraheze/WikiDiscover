@@ -1,6 +1,7 @@
 <?php
 
 class SpecialRandomWiki extends SpecialPage {
+
 	/** @var Config */
 	private $config;
 
@@ -74,9 +75,9 @@ class SpecialRandomWiki extends SpecialPage {
 		$randomwiki = WikiDiscoverRandom::randomWiki( $formData['inactive'], $formData['category'], $formData['language'] );
 
 		if ( $randomwiki->wiki_url ) {
-			header( "Location: https://" . $randomwiki->wiki_url . "/" );
+			header( 'Location: ' . $randomwiki->wiki_url . '/' );
 		} else {
-			header( "Location: https://" . substr( $randomwiki->wiki_dbname, 0, -strlen( $this->config->get( 'CreateWikiDatabaseSuffix' ) ) ) . ".{$this->config->get( 'CreateWikiSubdomain' )}/" );
+			header( 'Location: https://' . substr( $randomwiki->wiki_dbname, 0, -strlen( $this->config->get( 'CreateWikiDatabaseSuffix' ) ) ) . ".{$this->config->get( 'CreateWikiSubdomain' )}/" );
 		}
 
 		return true;

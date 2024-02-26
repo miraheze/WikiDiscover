@@ -2,6 +2,7 @@
 
 use MediaWiki\MediaWikiServices;
 use Miraheze\ManageWiki\Helpers\ManageWikiSettings;
+use Wikimedia\Rdbms\IReadableDatabase;
 
 class WikiDiscoverWikisPager extends TablePager {
 	/** @var string */
@@ -41,7 +42,7 @@ class WikiDiscoverWikisPager extends TablePager {
 	}
 
 	/**
-	 * @return DBConnRef
+	 * @return IReadableDatabase
 	 */
 	public static function getCreateWikiDatabase() {
 		$config = MediaWikiServices::getInstance()->getMainConfig();

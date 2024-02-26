@@ -6,10 +6,13 @@
 			"לואיקה"
 		]
 	},
-	"randomwiki": "אתר ויקי אקראי",
+	"randomwiki": "הפניה לאתר ויקי אקראי",
 	"randomwiki-header": "יש לבחור קטגוריה ושפה. לאחר השליחה, יוצג לך אתר ויקי אקראי שעונה על הקריטריונים שבחרת.",
+	"randomwiki-parameters": "נא לבחור פרמטרים",
 	"wikidiscover": "גילוי אתרי ויקי",
 	"wikidiscover-desc": "[[Special:WikiDiscover|גילוי אתרי ויקי]] בחוות־ויקי באמצעות הדף המיוחד [[Special:CreateWiki|CreateWiki]].",
+	"wikidiscover-header": "נא לבחור פרמטרים לחיפוש שלך",
+	"wikidiscover-header-info": "אפשר לחפש אתרי ויקי ברחבי החווה הזאת על־ידי בחירת פרמטרים כגון שפה ועוד.",
 	"wikidiscover-table-category": "קטגוריה",
 	"wikidiscover-table-description": "תיאור",
 	"wikidiscover-table-established": "נוצר",

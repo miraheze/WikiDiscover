@@ -7,9 +7,11 @@
 			"Jeeputer"
 		]
 	},
-	"randomwiki": "ویکی تصادفی",
+	"randomwiki": "تغییرمسیر به یک ویکی تصادفی",
 	"randomwiki-header": "یک رده و یک زبان را در زیر انتخاب و پس از ثبت، به‌طور تصادفی به یک ویکی که با معیارهای منتخب شما مطابقت دارد، هدایت خواهید شد!",
+	"randomwiki-parameters": "پارامترها را انتخاب کنید",
 	"wikidiscover": "ویکی‌اکتشاف",
+	"wikidiscover-header": "پارامترهای جستجوی خود را انتخاب کنید",
 	"wikidiscover-table-category": "رده",
 	"wikidiscover-table-description": "توضیحات",
 	"wikidiscover-table-language": "زبان",

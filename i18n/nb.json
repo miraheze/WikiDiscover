@@ -8,7 +8,7 @@
 		]
 	},
 	"randomwiki": "Tilfeldig wiki",
-	"randomwiki-header": "Velg en kategori og et språk nedenfor, så blir du automatisk omdirigert til en wiki som imøtekommer de valgte kriteriene!",
+	"randomwiki-header": "Velg en kategori og et språk nedenfor, så blir du automatisk omdirigert til en tilfeldig wiki som imøtekommer de valgte kriteriene.",
 	"wikidiscover": "Wikioppdager",
 	"wikidiscover-desc": "Gjør det mulig å [[Special:WikiDiscover|oppdage wikier]] på en wikifarm med [[Special:CreateWiki|CreateWiki]].",
 	"wikidiscover-header-info": "Du kan søke etter wikier på tvers av denne farmen ved å velge parametre som språk og mer.",

@@ -5,10 +5,13 @@
 			"Pisceskaze"
 		]
 	},
-	"randomwiki": "Wiki ngẫu nhiên",
-	"randomwiki-header": "Chọn một danh mục và ngôn ngữ bên dưới và khi gửi, bạn sẽ được chuyển hướng đến một wiki ngẫu nhiên đáp ứng các tiêu chí đã chọn.",
+	"randomwiki": "Chuyển hướng đến wiki ngẫu nhiên",
+	"randomwiki-header": "Chọn một thể loại và ngôn ngữ bên dưới và khi gửi, bạn sẽ được chuyển hướng đến một wiki ngẫu nhiên đáp ứng các tiêu chí đã chọn.",
+	"randomwiki-parameters": "Chọn các tham số",
 	"wikidiscover": "Khám phá wiki",
 	"wikidiscover-desc": "Cho phép [[Special:WikiDiscover|khám phá]] trên trang trại wiki với [[Special:CreateWiki|CreateWiki]].",
+	"wikidiscover-header": "Chọn các tham số cho tìm kiếm của bạn",
+	"wikidiscover-header-info": "Bạn có thể tìm kiếm wiki trên trang trại này bằng cách chọn các tham số như ngôn ngữ và nhiều hơn nữa.",
 	"wikidiscover-table-category": "Danh mục",
 	"wikidiscover-table-description": "Mô tả",
 	"wikidiscover-table-established": "Thành lập vào",

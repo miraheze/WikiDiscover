@@ -13,7 +13,7 @@
 		}
 	],
 	"support": {
-		"issues": "https://phabricator.miraheze.org/tag/wikidiscover/",
+		"issues": "https://issue-tracker.miraheze.org/tag/wikidiscover/",
 		"wiki": "https://www.mediawiki.org/wiki/Extension:WikiDiscover"
 	},
 	"require": {

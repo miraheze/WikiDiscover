@@ -4,10 +4,11 @@
 			"HanV",
 			"Mainframe98",
 			"McDutchie",
-			"SPQRobin"
+			"SPQRobin",
+			"Siebrand"
 		]
 	},
-	"randomwiki": "Willekeurige Wiki",
+	"randomwiki": "Doorverwijzen naar een willekeurige wiki",
 	"randomwiki-header": "Kies hieronder een categorie en een taal. Met een druk op de knop wordt u dan doorgestuurd naar een willekeurige wiki die voldoet aan de gekozen criteria.",
 	"wikidiscover": "Wiki's ontdekken",
 	"wikidiscover-desc": "Maakt het mogelijk [[Special:WikiDiscover|wiki's te ontdekken]] op een wikifarm met [[Special:CreateWiki|CreateWiki]].",

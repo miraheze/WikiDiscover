@@ -6,6 +6,7 @@
 			"Kkairri",
 			"Marine-Blue",
 			"MathXplore",
+			"Salvare",
 			"Shirayuki",
 			"しぃ"
 		]
@@ -14,6 +15,8 @@
 	"randomwiki-header": "以下のカテゴリと言語を選択して送信すると、選択した条件を満たすウィキにランダムにリダイレクトされます。",
 	"wikidiscover": "ウィキを見つける",
 	"wikidiscover-desc": "[[Special:CreateWiki|CreateWiki]]を使って[[Special:WikiDiscover|ウィキファーム上のウィキ]]を発見できます。",
+	"wikidiscover-header": "検索のパラメータを選択してください",
+	"wikidiscover-header-info": "言語などのパラメーターを選択して、このウィキファームによってホストされているウィキを検索できます。",
 	"wikidiscover-table-category": "カテゴリ",
 	"wikidiscover-table-description": "説明",
 	"wikidiscover-table-established": "設立",

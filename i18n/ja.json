@@ -8,11 +8,13 @@
 			"MathXplore",
 			"Salvare",
 			"Shirayuki",
+			"Waki285",
 			"しぃ"
 		]
 	},
 	"randomwiki": "ウィキをランダムに選んでリダイレクト",
 	"randomwiki-header": "以下のカテゴリと言語を選択して送信すると、選択した条件を満たすウィキにランダムにリダイレクトされます。",
+	"randomwiki-parameters": "パラメーターを選択",
 	"wikidiscover": "ウィキを見つける",
 	"wikidiscover-desc": "[[Special:CreateWiki|CreateWiki]]を使って[[Special:WikiDiscover|ウィキファーム上のウィキ]]を発見できます。",
 	"wikidiscover-header": "検索のパラメータを選択してください",

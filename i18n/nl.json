@@ -15,6 +15,7 @@
 	"wikidiscover": "Wiki's ontdekken",
 	"wikidiscover-desc": "Maakt het mogelijk [[Special:WikiDiscover|wiki's te ontdekken]] op een wikifarm met [[Special:CreateWiki|CreateWiki]].",
 	"wikidiscover-header": "Kies parameters voor je zoekopdracht",
+	"wikidiscover-header-info": "U kunt wiki’s op deze wikifarm zoeken door parameters te selecteren, o.a. de taal.",
 	"wikidiscover-table-category": "Categorie",
 	"wikidiscover-table-description": "Beschrijving",
 	"wikidiscover-table-established": "Opgericht",

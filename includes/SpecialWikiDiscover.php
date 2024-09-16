@@ -18,6 +18,7 @@ class SpecialWikiDiscover extends SpecialPage {
 		$stateOptions = [
 			'(any)' => 'any',
 			'Active' => 'active',
+			'Locked' => 'locked',
 		];
 
 		if ( $this->getConfig()->get( 'CreateWikiUseClosedWikis' ) ) {

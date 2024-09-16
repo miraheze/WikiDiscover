@@ -120,6 +120,8 @@ class WikiDiscoverWikisPager extends TablePager {
 			case 'wiki_closed':
 				if ( $wikiDiscover->isDeleted( $wiki ) ) {
 					$formatted = 'Deleted';
+				} elseif ( $wikiDiscover->isLocked( $wiki ) ) {
+					$formatted = 'Locked';
 				} elseif ( $wikiDiscover->isClosed( $wiki ) ) {
 					$formatted = 'Closed';
 				} elseif ( $wikiDiscover->isInactive( $wiki ) ) {
@@ -178,7 +180,7 @@ class WikiDiscoverWikisPager extends TablePager {
 
 		$info = [
 			'tables' => [ 'cw_wikis' ],
-			'fields' => array_merge( [ 'wiki_dbname', 'wiki_language', 'wiki_deleted', 'wiki_category', 'wiki_creation' ], $fields ),
+			'fields' => array_merge( [ 'wiki_dbname', 'wiki_language', 'wiki_deleted', 'wiki_locked', 'wiki_category', 'wiki_creation' ], $fields ),
 			'conds' => [],
 			'joins_conds' => [],
 		];
@@ -194,6 +196,8 @@ class WikiDiscoverWikisPager extends TablePager {
 		if ( $this->state && $this->state !== 'any' ) {
 			if ( $this->state === 'deleted' ) {
 				$info['conds']['wiki_deleted'] = 1;
+			} elseif ( $this->state === 'locked' ) {
+				$info['conds']['wiki_locked'] = 1;
 			} elseif ( $config->get( 'CreateWikiUseClosedWikis' ) && $this->state === 'closed' ) {
 				$info['conds']['wiki_closed'] = 1;
 				$info['conds']['wiki_deleted'] = 0;

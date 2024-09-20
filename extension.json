@@ -16,6 +16,7 @@
 		}
 	},
 	"SpecialPages": {
+		"MyWikis": "MyWikis",
 		"RandomWiki": "SpecialRandomWiki",
 		"WikiDiscover": "SpecialWikiDiscover"
 	},
@@ -34,6 +35,7 @@
 	"AutoloadClasses": {
 		"WikiDiscover": "includes/WikiDiscover.php",
 		"WikiDiscoverRandom": "includes/WikiDiscoverRandom.php",
+		"SpecialMyWikis": "includes/SpecialMyWikis.php",
 		"SpecialRandomWiki": "includes/SpecialRandomWiki.php",
 		"SpecialWikiDiscover": "includes/SpecialWikiDiscover.php",
 		"WikiDiscoverWikisPager": "includes/WikiDiscoverWikisPager.php",

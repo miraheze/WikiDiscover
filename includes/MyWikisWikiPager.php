@@ -134,7 +134,9 @@ class MyWikisWikisPager extends TablePager {
 
 		$fields = [];
 
-		$userID = $this->userFactory->newFromName( $userName )->getId();
+		$userFactory = MediaWikiServices::getInstance()->getUserFactory();
+
+		$userID = $userFactory->newFromName( $userName )->getId();
 
 		$info = [
 			'tables' => [ 'cw_requests' ],

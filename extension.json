@@ -16,7 +16,7 @@
 		}
 	},
 	"SpecialPages": {
-		"MyWikis": "MyWikis",
+		"MyWikis": "SpecialMyWikis",
 		"RandomWiki": "SpecialRandomWiki",
 		"WikiDiscover": "SpecialWikiDiscover"
 	},

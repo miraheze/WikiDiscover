@@ -1,7 +1,6 @@
 <?php
 
 use MediaWiki\MediaWikiServices;
-use MediaWiki\User\UserFactory;
 use Miraheze\ManageWiki\Helpers\ManageWikiSettings;
 use Wikimedia\Rdbms\IReadableDatabase;
 
@@ -135,14 +134,14 @@ class MyWikisWikisPager extends TablePager {
 
 		$fields = [];
 
-        $userID = $this->userFactory->newFromName( $userName )->getId();
+		$userID = $this->userFactory->newFromName( $userName )->getId();
 
 		$info = [
 			'tables' => [ 'cw_requests' ],
 			'fields' => array_merge( [ 'cw_dbname', 'cw_language', 'cw_category', 'cw_timestamp' ], $fields ),
 			'conds' => [
-                'cw_user' => $userID
-            ],
+				'cw_user' => $userID
+			],
 			'joins_conds' => [],
 		];
 

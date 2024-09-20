@@ -136,6 +136,8 @@ class MyWikisWikisPager extends TablePager {
 
 		$userFactory = MediaWikiServices::getInstance()->getUserFactory();
 
+		$userName = $this->getUser();
+
 		$userID = $userFactory->newFromName( $userName )->getId();
 
 		$info = [

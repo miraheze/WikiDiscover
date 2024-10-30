@@ -448,6 +448,14 @@ class WikiDiscover {
 
 				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_wikis', 'wiki_url', [ 'wiki_deleted' => 0 ] );
 				break;
+			case 'numberofopenrequests':
+				$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
+
+				$dbr = $lbFactory->getMainLB( $config->get( '<>' ) )
+					->getMaintenanceConnectionRef( DB_REPLICA, [], $config->get( '<>' ) );
+
+				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_requests', 'cw_status', [ 'cw_status' => 'inreview' ] );
+				break;
 			case 'wikicreationdate':
 				$ret = $cache[$magicWordId] = self::wikiCreationDate( $parser );
 				break;
@@ -465,6 +473,7 @@ class WikiDiscover {
 		$variableIDs[] = 'numberoflockedwikis';
 		$variableIDs[] = 'numberofdeletedwikis';
 		$variableIDs[] = 'numberofcustomdomains';
+		$variableIDs[] = 'numberofopenrequests';
 		$variableIDs[] = 'wikicreationdate';
 
 		if ( $config->get( 'CreateWikiUseClosedWikis' ) ) {

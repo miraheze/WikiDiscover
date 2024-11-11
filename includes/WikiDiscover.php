@@ -3,6 +3,7 @@
 namespace Miraheze\WikiDiscover;
 
 use MediaWiki\Config\Config;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Parser\Parser;
 

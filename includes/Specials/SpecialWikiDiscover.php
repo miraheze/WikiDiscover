@@ -1,5 +1,10 @@
 <?php
 
+namespace Miraheze\WikiDiscover\Specials;
+
+use MediaWiki\SpecialPage\SpecialPage;
+use Miraheze\WikiDiscover\WikiDiscoverWikisPager;
+
 class SpecialWikiDiscover extends SpecialPage {
 
 	public function __construct() {

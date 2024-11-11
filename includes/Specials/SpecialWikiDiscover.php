@@ -2,6 +2,7 @@
 
 namespace Miraheze\WikiDiscover\Specials;
 
+use MediaWiki\HTMLForm\HTMLForm;
 use MediaWiki\SpecialPage\SpecialPage;
 use Miraheze\WikiDiscover\WikiDiscoverWikisPager;
 

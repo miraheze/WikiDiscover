@@ -16,7 +16,7 @@
 		}
 	},
 	"SpecialPages": {
-		"DeletedWikis": "Miraheze\\WikiDiscover\\Specials\\SpecialDeletedWikis",
+		"DeletedWikisWD": "Miraheze\\WikiDiscover\\Specials\\SpecialDeletedWikis",
 		"RandomWiki": "Miraheze\\WikiDiscover\\Specials\\SpecialRandomWiki",
 		"WikiDiscover": "Miraheze\\WikiDiscover\\Specials\\SpecialWikiDiscover"
 	},

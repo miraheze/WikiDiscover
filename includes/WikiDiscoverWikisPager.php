@@ -7,6 +7,7 @@ use MediaWiki\Context\RequestContext;
 use MediaWiki\Html\Html;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Pager\TablePager;
+use MediaWiki\SpecialPage\SpecialPage;
 use Miraheze\ManageWiki\Helpers\ManageWikiSettings;
 use Wikimedia\Rdbms\IReadableDatabase;
 

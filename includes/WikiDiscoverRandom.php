@@ -1,6 +1,9 @@
 <?php
 
+namespace Miraheze\WikiDiscover;
+
 use MediaWiki\MediaWikiServices;
+use stdClass;
 
 class WikiDiscoverRandom {
 	/**

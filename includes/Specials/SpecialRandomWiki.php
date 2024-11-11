@@ -1,5 +1,11 @@
 <?php
 
+namespace Miraheze\WikiDiscover\Specials;
+
+use MediaWiki\Config\Config;
+use MediaWiki\SpecialPage\SpecialPage;
+use Miraheze\WikiDiscover\WikiDiscoverRandom;
+
 class SpecialRandomWiki extends SpecialPage {
 
 	/** @var Config */

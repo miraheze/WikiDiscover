@@ -54,7 +54,7 @@ class DeletedWikisPager extends TablePager {
 				break;
 			case 'wiki_deleted':
 				$formatted = Linker::makeExternalLink(
-					SpecialPage::getTitleValueFor( 'ManageWiki', 'core/' . $row->wiki_dbname )->getFullURL(),
+					SpecialPage::getTitleFor( 'ManageWiki', 'core/' . $row->wiki_dbname )->getFullURL(),
 					$this->msg( 'managewiki-label-goto' )->text()
 				);
 				break;

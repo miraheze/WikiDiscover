@@ -3,6 +3,7 @@
 namespace Miraheze\WikiDiscover\Api;
 
 use ApiMain;
+use MediaWiki\Config\Config;
 use MediaWiki\MediaWikiServices;
 use Miraheze\WikiDiscover\WikiDiscover;
 use Wikimedia\ParamValidator\ParamValidator;

@@ -1,6 +1,12 @@
 <?php
 
+namespace Miraheze\WikiDiscover\Api;
+
+use ApiBase;
+use ApiMain;
+use MediaWiki\Config\Config;
 use MediaWiki\MediaWikiServices;
+use Miraheze\WikiDiscover\WikiDiscover;
 use Wikimedia\ParamValidator\ParamValidator;
 use Wikimedia\ParamValidator\TypeDef\IntegerDef;
 

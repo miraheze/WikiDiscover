@@ -10,17 +10,17 @@
 	"license-name": "GPL-3.0-or-later",
 	"type": "specialpage",
 	"requires": {
-		"MediaWiki": ">= 1.40.0",
+		"MediaWiki": ">= 1.42.0",
 		"extensions": {
 			"CreateWiki": "*"
 		}
 	},
 	"SpecialPages": {
-		"RandomWiki": "SpecialRandomWiki",
-		"WikiDiscover": "SpecialWikiDiscover"
+		"RandomWiki": "Miraheze\\WikiDiscover\\Specials\\SpecialRandomWiki",
+		"WikiDiscover": "Miraheze\\WikiDiscover\\Specials\\SpecialWikiDiscover"
 	},
 	"APIModules": {
-		"wikidiscover": "ApiWikiDiscover"
+		"wikidiscover": "Miraheze\\WikiDiscover\\Api\\ApiWikiDiscover"
 	},
 	"MessagesDirs": {
 		"WikiDiscover": [
@@ -28,26 +28,21 @@
 		]
 	},
 	"ExtensionMessagesFiles": {
-		"WikiDiscoverMagic": "includes/WikiDiscoverMagic.php",
-		"WikiDiscoverAliases": "includes/WikiDiscoverAliases.php"
+		"WikiDiscoverAliases": "WikiDiscoverAliases.php",
+		"WikiDiscoverMagic": "WikiDiscoverMagic.php"
 	},
-	"AutoloadClasses": {
-		"WikiDiscover": "includes/WikiDiscover.php",
-		"WikiDiscoverRandom": "includes/WikiDiscoverRandom.php",
-		"SpecialRandomWiki": "includes/SpecialRandomWiki.php",
-		"SpecialWikiDiscover": "includes/SpecialWikiDiscover.php",
-		"WikiDiscoverWikisPager": "includes/WikiDiscoverWikisPager.php",
-		"ApiWikiDiscover": "includes/ApiWikiDiscover.php"
+	"AutoloadNamespaces": {
+		"Miraheze\\WikiDiscover\\": "includes/"
 	},
 	"Hooks": {
 		"ParserFirstCallInit": [
-			"WikiDiscover::onParserFirstCallInit"
+			"Miraheze\\WikiDiscover\\WikiDiscover::onParserFirstCallInit"
 		],
 		"ParserGetVariableValueSwitch": [
-			"WikiDiscover::onParserGetVariableValueSwitch"
+			"Miraheze\\WikiDiscover\\WikiDiscover::onParserGetVariableValueSwitch"
 		],
 		"GetMagicVariableIDs": [
-			"WikiDiscover::onGetMagicVariableIDs"
+			"Miraheze\\WikiDiscover\\WikiDiscover::onGetMagicVariableIDs"
 		]
 	},
 	"config": {

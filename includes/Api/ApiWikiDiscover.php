@@ -2,6 +2,7 @@
 
 namespace Miraheze\WikiDiscover\Api;
 
+use ApiBase;
 use ApiMain;
 use MediaWiki\Config\Config;
 use MediaWiki\MediaWikiServices;

@@ -13,7 +13,7 @@ use MediaWiki\SpecialPage\SpecialPage;
 class DeletedWikisPager extends TablePager {
 
 	public function __construct(
-		IContextSource $context, 
+		IContextSource $context,
 		LinkRenderer $linkRenderer
 	) {
 		parent::__construct( $context, $linkRenderer );
@@ -21,7 +21,7 @@ class DeletedWikisPager extends TablePager {
 		$this->mDb = MediaWikiServices::getInstance()->getDBLoadBalancerFactory()
 			->getMainLB( $config->get( 'CreateWikiDatabase' ) )
 			->getMaintenanceConnectionRef( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
-		
+
 		$config = MediaWikiServices::getInstance()->getMainConfig();
 	}
 

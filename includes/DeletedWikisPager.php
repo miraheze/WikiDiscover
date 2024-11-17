@@ -3,26 +3,27 @@
 namespace Miraheze\WikiDiscover;
 
 use ExtensionRegistry;
+use MediaWiki\Config\Config;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Linker\Linker;
 use MediaWiki\Linker\LinkRenderer;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Pager\TablePager;
 use MediaWiki\SpecialPage\SpecialPage;
+use Wikimedia\Rdbms\IConnectionProvider;
 
 class DeletedWikisPager extends TablePager {
 
 	public function __construct(
+		Config $config,
 		IContextSource $context,
+		IConnectionProvider $connectionProvider,
 		LinkRenderer $linkRenderer
 	) {
 		parent::__construct( $context, $linkRenderer );
 
-		$this->mDb = MediaWikiServices::getInstance()->getDBLoadBalancerFactory()
-			->getMainLB( $config->get( 'CreateWikiDatabase' ) )
-			->getMaintenanceConnectionRef( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
-
-		$config = MediaWikiServices::getInstance()->getMainConfig();
+		$this->mDb = $connectionProvider->getReplicaDatabase(
+			$config->get( 'CreateWikiDatabase' )
+		);
 	}
 
 	/** @inheritDoc */

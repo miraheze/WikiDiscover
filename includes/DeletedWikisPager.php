@@ -7,10 +7,11 @@ use MediaWiki\Linker\Linker;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Pager\TablePager;
 use MediaWiki\SpecialPage\SpecialPage;
+use Miraheze\WikiDiscover\Specials\SpecialDeletedWikis;
 
 class DeletedWikisPager extends TablePager {
 
-	public function __construct( $page ) {
+	public function __construct( SpecialDeletedWikis $page ) {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
 		$this->mDb = MediaWikiServices::getInstance()->getDBLoadBalancerFactory()
 			->getMainLB( $config->get( 'CreateWikiDatabase' ) )

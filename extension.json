@@ -16,7 +16,12 @@
 		}
 	},
 	"SpecialPages": {
-		"DeletedWikisWD": "Miraheze\\WikiDiscover\\Specials\\SpecialDeletedWikis",
+		"DeletedWikisWD": {
+			"class": "Miraheze\\WikiDiscover\\Specials\\SpecialDeletedWikis",
+			"services": [
+				"ConnectionProvider"
+			]
+		},
 		"RandomWiki": "Miraheze\\WikiDiscover\\Specials\\SpecialRandomWiki",
 		"WikiDiscover": "Miraheze\\WikiDiscover\\Specials\\SpecialWikiDiscover"
 	},

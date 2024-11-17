@@ -18,7 +18,10 @@ class SpecialDeletedWikis extends SpecialPage {
 		$this->setHeaders();
 		$this->outputHeader();
 
-		$pager = new DeletedWikisPager( $this );
+		$pager = new DeletedWikisPager(
+			$this->getContext(),
+			$this->getLinkRenderer()
+		);
 
 		$this->getOutput()->addParserOutputContent( $pager->getFullOutput() );
 	}

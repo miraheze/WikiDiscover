@@ -1,10 +1,16 @@
 <?php
 
+namespace Miraheze\WikiDiscover;
+
+use ExtensionRegistry;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\SpecialPage\SpecialPage;
 use Miraheze\ManageWiki\Helpers\ManageWikiSettings;
 use Wikimedia\Rdbms\IReadableDatabase;
 
 class MyWikisWikisPager extends TablePager {
+
 	/** @var string */
 	private $language;
 

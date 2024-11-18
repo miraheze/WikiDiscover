@@ -6,9 +6,9 @@
 			"محمد أحمد عبد الفتاح"
 		]
 	},
-	"randomwiki": "ويكي عشوائي",
-	"randomwiki-header": "اختر تصنيفا ولغة في الأسفل وعند التقديم ستتم إعادة توجيهك بشكل عشوائي إلى الويكي الذي يلبي المعايير المحددة!",
-	"wikidiscover": "اكتشاف الويكي",
+	"randomwiki": "إعادة التوجيه إلى ويكي عشوائي",
+	"randomwiki-header": "اختر الفئة واللغة أدناه وعند الإرسال، سيتم إعادة توجيهك إلى ويكي عشوائي يلبي المعايير المحددة.",
+	"wikidiscover": "اكتشف الويكيات",
 	"wikidiscover-desc": "يسمح [[Special:WikiDiscover|باكتشاف ويكيات]] في مزرعة ويكي مع [[Special:CreateWiki|إنشاء ويكي]].",
 	"wikidiscover-table-category": "التصنيف",
 	"wikidiscover-table-description": "الوصف",

@@ -37,10 +37,9 @@ class WikiDiscover {
 
 	public function __construct() {
 		$this->config = MediaWikiServices::getInstance()->getMainConfig();
-		$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
 
-		$dbr = $lbFactory->getMainLB( $this->config->get( 'CreateWikiDatabase' ) )
-			->getMaintenanceConnectionRef( DB_REPLICA, [], $this->config->get( 'CreateWikiDatabase' ) );
+		$connectionProvider = MediaWikiServices::getInstance()->getConnectionProvider();
+		$dbr = $connectionProvider->getReplicaDatabase( 'virtual-createwiki' );
 
 		$fields = [];
 		if ( $this->config->get( 'CreateWikiUseClosedWikis' ) ) {
@@ -241,11 +240,8 @@ class WikiDiscover {
 	 * @return int
 	 */
 	public static function numberOfWikisInCategory( Parser $parser, string $category = 'uncategorised' ) {
-		$config = MediaWikiServices::getInstance()->getMainConfig();
-		$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
-
-		$dbr = $lbFactory->getMainLB( $config->get( 'CreateWikiDatabase' ) )
-			->getMaintenanceConnectionRef( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
+		$connectionProvider = MediaWikiServices::getInstance()->getConnectionProvider();
+		$dbr = $connectionProvider->getReplicaDatabase( 'virtual-createwiki' );
 
 		return $dbr->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_category' => strtolower( $category ) ] );
 	}
@@ -256,11 +252,8 @@ class WikiDiscover {
 	 * @return int
 	 */
 	public static function numberOfWikisInLanguage( Parser $parser, string $language = 'en' ) {
-		$config = MediaWikiServices::getInstance()->getMainConfig();
-		$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
-
-		$dbr = $lbFactory->getMainLB( $config->get( 'CreateWikiDatabase' ) )
-			->getMaintenanceConnectionRef( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
+		$connectionProvider = MediaWikiServices::getInstance()->getConnectionProvider();
+		$dbr = $connectionProvider->getReplicaDatabase( 'virtual-createwiki' );
 
 		return $dbr->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_language' => strtolower( $language ) ] );
 	}
@@ -276,12 +269,10 @@ class WikiDiscover {
 			return 'Error: no input specified.';
 		}
 
+		$connectionProvider = MediaWikiServices::getInstance()->getConnectionProvider();
+		$dbr = $connectionProvider->getReplicaDatabase( 'virtual-createwiki' );
+
 		$config = MediaWikiServices::getInstance()->getMainConfig();
-		$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
-
-		$dbr = $lbFactory->getMainLB( $config->get( 'CreateWikiDatabase' ) )
-			->getMaintenanceConnectionRef( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
-
 		$extList = array_keys( $config->get( 'ManageWikiExtensions' ) );
 
 		if ( !$value && !in_array( $setting, $extList ) ) {
@@ -315,10 +306,8 @@ class WikiDiscover {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
 		$lang = RequestContext::getMain()->getLanguage();
 
-		$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
-
-		$dbr = $lbFactory->getMainLB( $config->get( 'CreateWikiDatabase' ) )
-			->getMaintenanceConnectionRef( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
+		$connectionProvider = MediaWikiServices::getInstance()->getConnectionProvider();
+		$dbr = $connectionProvider->getReplicaDatabase( 'virtual-createwiki' );
 
 		$wikiDatabase = $database ?? $config->get( 'DBname' );
 
@@ -342,18 +331,14 @@ class WikiDiscover {
 
 		switch ( $magicWordId ) {
 			case 'numberofwikis':
-				$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
-
-				$dbr = $lbFactory->getMainLB( $config->get( 'CreateWikiDatabase' ) )
-					->getMaintenanceConnectionRef( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
+				$connectionProvider = MediaWikiServices::getInstance()->getConnectionProvider();
+				$dbr = $connectionProvider->getReplicaDatabase( 'virtual-createwiki' );
 
 				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0 ] );
 				break;
 			case 'numberoftotalwikis':
-				$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
-
-				$dbr = $lbFactory->getMainLB( $config->get( 'CreateWikiDatabase' ) )
-					->getMaintenanceConnectionRef( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
+				$connectionProvider = MediaWikiServices::getInstance()->getConnectionProvider();
+				$dbr = $connectionProvider->getReplicaDatabase( 'virtual-createwiki' );
 
 				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_wikis', '*' );
 				break;
@@ -362,10 +347,8 @@ class WikiDiscover {
 					break;
 				}
 
-				$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
-
-				$dbr = $lbFactory->getMainLB( $config->get( 'CreateWikiDatabase' ) )
-					->getMaintenanceConnectionRef( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
+				$connectionProvider = MediaWikiServices::getInstance()->getConnectionProvider();
+				$dbr = $connectionProvider->getReplicaDatabase( 'virtual-createwiki' );
 
 				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_private' => 1 ] );
 				break;
@@ -374,10 +357,8 @@ class WikiDiscover {
 					break;
 				}
 
-				$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
-
-				$dbr = $lbFactory->getMainLB( $config->get( 'CreateWikiDatabase' ) )
-					->getMaintenanceConnectionRef( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
+				$connectionProvider = MediaWikiServices::getInstance()->getConnectionProvider();
+				$dbr = $connectionProvider->getReplicaDatabase( 'virtual-createwiki' );
 
 				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_private' => 0 ] );
 				break;
@@ -386,10 +367,8 @@ class WikiDiscover {
 					break;
 				}
 
-				$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
-
-				$dbr = $lbFactory->getMainLB( $config->get( 'CreateWikiDatabase' ) )
-					->getMaintenanceConnectionRef( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
+				$connectionProvider = MediaWikiServices::getInstance()->getConnectionProvider();
+				$dbr = $connectionProvider->getReplicaDatabase( 'virtual-createwiki' );
 
 				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_wikis', '*', [ 'wiki_closed' => 0, 'wiki_deleted' => 0, 'wiki_inactive' => 0 ] );
 				break;
@@ -398,10 +377,8 @@ class WikiDiscover {
 					break;
 				}
 
-				$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
-
-				$dbr = $lbFactory->getMainLB( $config->get( 'CreateWikiDatabase' ) )
-					->getMaintenanceConnectionRef( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
+				$connectionProvider = MediaWikiServices::getInstance()->getConnectionProvider();
+				$dbr = $connectionProvider->getReplicaDatabase( 'virtual-createwiki' );
 
 				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_inactive' => 1 ] );
 				break;
@@ -410,26 +387,20 @@ class WikiDiscover {
 					break;
 				}
 
-				$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
-
-				$dbr = $lbFactory->getMainLB( $config->get( 'CreateWikiDatabase' ) )
-					->getMaintenanceConnectionRef( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
+				$connectionProvider = MediaWikiServices::getInstance()->getConnectionProvider();
+				$dbr = $connectionProvider->getReplicaDatabase( 'virtual-createwiki' );
 
 				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_closed' => 1 ] );
 				break;
 			case 'numberoflockedwikis':
-				$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
-
-				$dbr = $lbFactory->getMainLB( $config->get( 'CreateWikiDatabase' ) )
-					->getMaintenanceConnectionRef( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
+				$connectionProvider = MediaWikiServices::getInstance()->getConnectionProvider();
+				$dbr = $connectionProvider->getReplicaDatabase( 'virtual-createwiki' );
 
 				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_locked' => 1 ] );
 				break;
 			case 'numberofdeletedwikis':
-				$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
-
-				$dbr = $lbFactory->getMainLB( $config->get( 'CreateWikiDatabase' ) )
-					->getMaintenanceConnectionRef( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
+				$connectionProvider = MediaWikiServices::getInstance()->getConnectionProvider();
+				$dbr = $connectionProvider->getReplicaDatabase( 'virtual-createwiki' );
 
 				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 1 ] );
 				break;
@@ -438,18 +409,14 @@ class WikiDiscover {
 					break;
 				}
 
-				$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
-
-				$dbr = $lbFactory->getMainLB( $config->get( 'CreateWikiDatabase' ) )
-					->getMaintenanceConnectionRef( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
+				$connectionProvider = MediaWikiServices::getInstance()->getConnectionProvider();
+				$dbr = $connectionProvider->getReplicaDatabase( 'virtual-createwiki' );
 
 				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_inactive_exempt' => 1 ] );
 				break;
 			case 'numberofcustomdomains':
-				$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
-
-				$dbr = $lbFactory->getMainLB( $config->get( 'CreateWikiDatabase' ) )
-					->getMaintenanceConnectionRef( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
+				$connectionProvider = MediaWikiServices::getInstance()->getConnectionProvider();
+				$dbr = $connectionProvider->getReplicaDatabase( 'virtual-createwiki' );
 
 				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_wikis', 'wiki_url', [ 'wiki_deleted' => 0 ] );
 				break;

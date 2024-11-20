@@ -47,12 +47,8 @@ class MyWikisWikisPager extends TablePager {
 	 * @return IReadableDatabase
 	 */
 	public static function getCreateWikiDatabase() {
-		$config = MediaWikiServices::getInstance()->getMainConfig();
-
-		$factory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
-		$lb = $factory->getMainLB( $config->get( 'CreateWikiDatabase' ) );
-
-		return $lb->getMaintenanceConnectionRef( DB_REPLICA, 'cw_requests', $config->get( 'CreateWikiDatabase' ) );
+		$connectionProvider = MediaWikiServices::getInstance()->getConnectionProvider();
+		return $connectionProvider->getReplicaDatabase( 'virtual-createwiki', 'cw_wikis' );
 	}
 
 	/** @inheritDoc */

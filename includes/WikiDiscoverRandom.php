@@ -48,11 +48,8 @@ class WikiDiscoverRandom {
 	 * @return stdClass|bool
 	 */
 	protected static function randFromConds( $conds ) {
-		$config = MediaWikiServices::getInstance()->getMainConfig();
-		$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
-
-		$dbr = $lbFactory->getMainLB( $config->get( 'CreateWikiDatabase' ) )
-			->getMaintenanceConnectionRef( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
+		$connectionProvider = MediaWikiServices::getInstance()->getConnectionProvider();
+		$dbr = $connectionProvider->getReplicaDatabase( 'virtual-createwiki' );
 
 		// MySQL is ever the outlier
 		$random_function = $dbr->getType() === 'mysql' ? 'RAND()' : 'random()';

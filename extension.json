@@ -16,6 +16,7 @@
 		}
 	},
 	"SpecialPages": {
+		"MyWikis": "Miraheze\\WikiDiscover\\Specials\\SpecialMyWikis",
 		"RandomWiki": "Miraheze\\WikiDiscover\\Specials\\SpecialRandomWiki",
 		"WikiDiscover": "Miraheze\\WikiDiscover\\Specials\\SpecialWikiDiscover"
 	},

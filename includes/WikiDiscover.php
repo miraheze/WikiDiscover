@@ -334,13 +334,13 @@ class WikiDiscover {
 				$connectionProvider = MediaWikiServices::getInstance()->getConnectionProvider();
 				$dbr = $connectionProvider->getReplicaDatabase( 'virtual-createwiki' );
 
-				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0 ] );
+				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_wikis', 'wiki_dbname', [ 'wiki_deleted' => 0 ] );
 				break;
 			case 'numberoftotalwikis':
 				$connectionProvider = MediaWikiServices::getInstance()->getConnectionProvider();
 				$dbr = $connectionProvider->getReplicaDatabase( 'virtual-createwiki' );
 
-				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_wikis', '*' );
+				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_wikis', 'wiki_dbname' );
 				break;
 			case 'numberofprivatewikis':
 				if ( !$config->get( 'CreateWikiUsePrivateWikis' ) ) {
@@ -350,7 +350,7 @@ class WikiDiscover {
 				$connectionProvider = MediaWikiServices::getInstance()->getConnectionProvider();
 				$dbr = $connectionProvider->getReplicaDatabase( 'virtual-createwiki' );
 
-				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_private' => 1 ] );
+				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_wikis', 'wiki_dbname', [ 'wiki_deleted' => 0, 'wiki_private' => 1 ] );
 				break;
 			case 'numberofpublicwikis':
 				if ( !$config->get( 'CreateWikiUsePrivateWikis' ) ) {
@@ -360,7 +360,7 @@ class WikiDiscover {
 				$connectionProvider = MediaWikiServices::getInstance()->getConnectionProvider();
 				$dbr = $connectionProvider->getReplicaDatabase( 'virtual-createwiki' );
 
-				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_private' => 0 ] );
+				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_wikis', 'wiki_dbname', [ 'wiki_deleted' => 0, 'wiki_private' => 0 ] );
 				break;
 			case 'numberofactivewikis':
 				if ( !$config->get( 'CreateWikiUseInactiveWikis' ) ) {
@@ -370,7 +370,7 @@ class WikiDiscover {
 				$connectionProvider = MediaWikiServices::getInstance()->getConnectionProvider();
 				$dbr = $connectionProvider->getReplicaDatabase( 'virtual-createwiki' );
 
-				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_wikis', '*', [ 'wiki_closed' => 0, 'wiki_deleted' => 0, 'wiki_inactive' => 0 ] );
+				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_wikis', 'wiki_dbname', [ 'wiki_closed' => 0, 'wiki_deleted' => 0, 'wiki_inactive' => 0 ] );
 				break;
 			case 'numberofinactivewikis':
 				if ( !$config->get( 'CreateWikiUseInactiveWikis' ) ) {
@@ -380,7 +380,7 @@ class WikiDiscover {
 				$connectionProvider = MediaWikiServices::getInstance()->getConnectionProvider();
 				$dbr = $connectionProvider->getReplicaDatabase( 'virtual-createwiki' );
 
-				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_inactive' => 1 ] );
+				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_wikis', 'wiki_dbname', [ 'wiki_deleted' => 0, 'wiki_inactive' => 1 ] );
 				break;
 			case 'numberofclosedwikis':
 				if ( !$config->get( 'CreateWikiUseClosedWikis' ) ) {
@@ -390,19 +390,19 @@ class WikiDiscover {
 				$connectionProvider = MediaWikiServices::getInstance()->getConnectionProvider();
 				$dbr = $connectionProvider->getReplicaDatabase( 'virtual-createwiki' );
 
-				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_closed' => 1 ] );
+				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_wikis', 'wiki_dbname', [ 'wiki_deleted' => 0, 'wiki_closed' => 1 ] );
 				break;
 			case 'numberoflockedwikis':
 				$connectionProvider = MediaWikiServices::getInstance()->getConnectionProvider();
 				$dbr = $connectionProvider->getReplicaDatabase( 'virtual-createwiki' );
 
-				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_locked' => 1 ] );
+				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_wikis', 'wiki_dbname', [ 'wiki_deleted' => 0, 'wiki_locked' => 1 ] );
 				break;
 			case 'numberofdeletedwikis':
 				$connectionProvider = MediaWikiServices::getInstance()->getConnectionProvider();
 				$dbr = $connectionProvider->getReplicaDatabase( 'virtual-createwiki' );
 
-				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 1 ] );
+				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_wikis', 'wiki_dbname', [ 'wiki_deleted' => 1 ] );
 				break;
 			case 'numberofinactivityexemptwikis':
 				if ( !$config->get( 'CreateWikiUseInactiveWikis' ) ) {
@@ -412,7 +412,7 @@ class WikiDiscover {
 				$connectionProvider = MediaWikiServices::getInstance()->getConnectionProvider();
 				$dbr = $connectionProvider->getReplicaDatabase( 'virtual-createwiki' );
 
-				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_inactive_exempt' => 1 ] );
+				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_wikis', 'wiki_dbname', [ 'wiki_deleted' => 0, 'wiki_inactive_exempt' => 1 ] );
 				break;
 			case 'numberofcustomdomains':
 				$connectionProvider = MediaWikiServices::getInstance()->getConnectionProvider();

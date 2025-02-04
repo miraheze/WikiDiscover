@@ -64,6 +64,7 @@ class WikiDiscover {
 				'wiki_locked',
 				'wiki_deleted',
 			], $fields ),
+			'',
 			__METHOD__
 		);
 
@@ -281,12 +282,12 @@ class WikiDiscover {
 		}
 
 		if ( in_array( $setting, $extList ) ) {
-			$selectExtensions = implode( ',', $dbr->selectFieldValues( 'mw_settings', 's_extensions' ), __METHOD__ );
+			$selectExtensions = implode( ',', $dbr->selectFieldValues( 'mw_settings', 's_extensions', '', __METHOD__ ) );
 
 			return substr_count( $selectExtensions, '"' . $setting . '"' );
 		}
 
-		$selectSettings = $dbr->selectFieldValues( 'mw_settings', 's_settings', __METHOD__ );
+		$selectSettings = $dbr->selectFieldValues( 'mw_settings', 's_settings', '', __METHOD__ );
 		$settingUsageCount = 0;
 
 		foreach ( $selectSettings as $key ) {
@@ -341,7 +342,7 @@ class WikiDiscover {
 				$connectionProvider = MediaWikiServices::getInstance()->getConnectionProvider();
 				$dbr = $connectionProvider->getReplicaDatabase( 'virtual-createwiki' );
 
-				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_wikis', '*', __METHOD__ );
+				$ret = $cache[$magicWordId] = $dbr->selectRowCount( 'cw_wikis', '*', '', __METHOD__ );
 				break;
 			case 'numberofprivatewikis':
 				if ( !$config->get( 'CreateWikiUsePrivateWikis' ) ) {

@@ -1,13 +1,17 @@
 {
 	"@metadata": {
 		"authors": [
+			"TreeIsLife",
 			"Yardom78"
 		]
 	},
-	"randomwiki": "Náhodná wiki",
-	"randomwiki-header": "Vyberte kategóriu a jazyk a pri odoslaní budete odkázaní na náhodnú wiki, ktorá bude spĺňať vybrané kritéria!",
-	"wikidiscover": "Wikiobjav",
+	"randomwiki": "Presmerovanie na náhodnú wiki",
+	"randomwiki-header": "Nižšie vyberte kategóriu a jazyk a po odoslaní budete presmerovaní na náhodnú wiki, ktorá spĺňa vybrané kritériá.",
+	"randomwiki-parameters": "Vyberte parametre",
+	"wikidiscover": "Objavte wiki stránky",
 	"wikidiscover-desc": "Umožňuje [[Special:WikiDiscover|objavovať wiki]] na wiki farme s [[Special:CreateWiki|Vytvoriť wiki]].",
+	"wikidiscover-header": "Vyberte parametre pre vyhľadávanie",
+	"wikidiscover-header-info": "Môžete vyhľadávať wiki na tejto farme výberom parametrov, ako sú jazyk a ďalšie.",
 	"wikidiscover-table-category": "Kategória",
 	"wikidiscover-table-description": "Popis",
 	"wikidiscover-table-established": "Ustanovená",

@@ -123,8 +123,7 @@ class WikiDiscoverWikisPager extends TablePager {
 					);
 					$url = 'https://' . $subdomain . '.' . $domain;
 				}
-				$url = $this->escape( $url );
-				$name = $this->escape( $row->wiki_sitename );
+				$name = $row->wiki_sitename;
 				$formatted = Html::element( 'a', [ 'href' => $url ], $name );
 				break;
 			case 'wiki_language':

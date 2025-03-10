@@ -112,10 +112,6 @@ class WikiDiscoverWikisPager extends TablePager {
 	public function formatValue( $name, $value ) {
 		$row = $this->mCurrentRow;
 
-		$wikiDiscover = $this->wikiDiscover;
-
-		$wiki = $row->wiki_dbname;
-
 		switch ( $name ) {
 			case 'wiki_dbname':
 				$url = $row->wiki_url;

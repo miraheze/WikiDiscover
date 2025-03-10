@@ -121,7 +121,7 @@ class WikiDiscoverWikisPager extends TablePager {
 						$row->wiki_dbname, 0,
 						-strlen( $this->getConfig()->get( 'CreateWikiDatabaseSuffix' ) )
 					);
-					$url = 'https://' . $subdomain . '.' . $domain;
+					$url = "https://$subdomain.$domain";
 				}
 				$name = $row->wiki_sitename;
 				$formatted = Html::element( 'a', [ 'href' => $url ], $name );

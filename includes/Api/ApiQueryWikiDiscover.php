@@ -1,5 +1,10 @@
 <?php
 
+namespace Miraheze\WikiDiscover\Api;
+
+use MediaWiki\Api\ApiPageSet;
+use MediaWiki\Api\ApiQuery;
+use MediaWiki\Api\ApiQueryGeneratorBase;
 use MediaWiki\MediaWikiServices;
 use Wikimedia\ParamValidator\ParamValidator;
 use Wikimedia\ParamValidator\TypeDef\IntegerDef;
@@ -36,11 +41,8 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 	 * @return IDatabase
 	 */
 	protected function getDB() {
-		$config = MediaWikiServices::getInstance()->getMainConfig();
-		$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
-
-		return $lbFactory->getMainLB( $config->get( 'CreateWikiDatabase' ) )
-			->getMaintenanceConnectionRef( DB_REPLICA, [], $config->get( 'CreateWikiDatabase' ) );
+		$connectionProvider = MediaWikiServices::getInstance()->getConnectionProvider();
+		return $connectionProvider->getReplicaDatabase( 'virtual-createwiki' );
 	}
 
 	/**

@@ -1,13 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
+			"Dogogos123",
 			"NikosLikomitros",
 			"Nikosgranturismogt"
 		]
 	},
-	"randomwiki": "Τυχαίο βίκι",
-	"randomwiki-header": "Επιλέξτε μια κατηγορία και γλώσσα παρακάτω και στην υποβολή θα ανακατευθυνθείτε τυχαίως σε ένα βίκι που πληρεί τα επιλεγμένα κριτήρια!",
-	"wikidiscover": "WikiDiscover",
+	"randomwiki": "Τυχαίο wiki",
+	"randomwiki-header": "Επιλέξτε μια κατηγορία και γλώσσα παρακάτω και στην υποβολή θα ανακατευθυνθείτε τυχαίως σε ένα wiki που πληρεί τα επιλεγμένα κριτήρια!",
+	"wikidiscover": "Ανακαλύψτε τα wiki",
 	"wikidiscover-desc": "Επιτρέπει την [[Special:WikiDiscover|ανακάλυψη βίκι]] σε μια φάρμα βίκι με το [[Special:CreateWiki|CreateWiki]].",
 	"wikidiscover-table-category": "Κατηγορία",
 	"wikidiscover-table-language": "Γλώσσα",

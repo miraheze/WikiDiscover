@@ -2,10 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Kranix",
-			"Saederup92"
+			"Saederup92",
+			"Zakawer2"
 		]
 	},
-	"randomwiki": "Tilfældig Wiki",
+	"randomwiki": "Omdiriger til en tilfældig wiki",
 	"wikidiscover-table-category": "Kategori",
 	"wikidiscover-table-language": "Sprog",
 	"wikidiscover-table-state": "Status",

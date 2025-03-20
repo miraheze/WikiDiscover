@@ -1,0 +1,92 @@
+<?php
+
+namespace Miraheze\WikiDiscover\Specials;
+
+use MediaWiki\Config\Config;
+use MediaWiki\HTMLForm\HTMLForm;
+use MediaWiki\SpecialPage\SpecialPage;
+use Miraheze\WikiDiscover\WikiDiscoverRandom;
+
+class SpecialRandomWiki extends SpecialPage {
+
+	/** @var Config */
+	private $config;
+
+	public function __construct() {
+		$this->config = $this->getConfig();
+
+		parent::__construct( 'RandomWiki' );
+	}
+
+	/** @inheritDoc */
+	public function execute( $subPage ) {
+		$this->setHeaders();
+		$this->outputHeader();
+
+		$out = $this->getOutput();
+
+		$formDescriptor = [
+			'intro' => [
+				'type' => 'info',
+				'default' => $this->msg( 'randomwiki-header' )->text(),
+			],
+			'language' => [
+				'type' => 'language',
+				'name' => 'language',
+				'label-message' => 'wikidiscover-table-language',
+				'default' => 'en',
+			],
+			'category' => [
+				'type' => 'select',
+				'name' => 'category',
+				'label-message' => 'wikidiscover-table-category',
+				'options' => $this->config->get( 'CreateWikiCategories' ),
+				'default' => 'uncategorised',
+			],
+		];
+
+		if ( $this->config->get( 'CreateWikiUseInactiveWikis' ) ) {
+			$formDescriptor['inactive'] = [
+				'type' => 'select',
+				'name' => 'inactive',
+				'label-message' => 'wikidiscover-table-state',
+				'options' => [
+					'(any)' => 'any',
+					'active' => 'active',
+					'inactive' => 'inactive',
+				],
+				'default' => 'any',
+			];
+		}
+
+		$htmlForm = HTMLForm::factory( 'ooui', $formDescriptor, $this->getContext() );
+		$htmlForm
+			->setSubmitCallback( [ $this, 'redirectWiki' ] )
+			->setMethod( 'post' )
+			->setWrapperLegendMsg( 'randomwiki-parameters' )
+			->setSubmitTextMsg( 'search' )
+			->prepareForm()
+			->show();
+	}
+
+	/** @inheritDoc */
+	protected function getGroupName() {
+		return 'wikimanage';
+	}
+
+	/**
+	 * @param array $formData
+	 * @return bool
+	 */
+	public function redirectWiki( $formData ) {
+		$randomwiki = WikiDiscoverRandom::randomWiki( $formData['inactive'], $formData['category'], $formData['language'] );
+
+		if ( $randomwiki->wiki_url ) {
+			header( 'Location: ' . $randomwiki->wiki_url . '/' );
+		} else {
+			header( 'Location: https://' . substr( $randomwiki->wiki_dbname, 0, -strlen( $this->config->get( 'CreateWikiDatabaseSuffix' ) ) ) . ".{$this->config->get( 'CreateWikiSubdomain' )}/" );
+		}
+
+		return true;
+	}
+}

@@ -2,13 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"Aftabuzzaman",
+			"Aishik Rehman",
 			"আফতাবুজ্জামান"
 		]
 	},
-	"randomwiki": "অজানা কোন উইকি",
+	"randomwiki": "অজানা কোনো উইকি",
 	"wikidiscover-table-category": "বিষয়শ্রেণী",
 	"wikidiscover-table-language": "ভাষা",
-	"wikidiscover-table-state": "কর্মকাণ্ড",
+	"wikidiscover-table-state": "স্থিতি",
 	"wikidiscover-table-visibility": "প্রদর্শনযোগ্যতা",
 	"wikidiscover-table-wiki": "উইকি নাম"
 }

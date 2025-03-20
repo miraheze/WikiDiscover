@@ -1,26 +1,35 @@
 {
 	"@metadata": {
 		"authors": [
+			"Buehl",
+			"Chqaz",
 			"Kkairri",
+			"Marine-Blue",
 			"MathXplore",
+			"Salvare",
+			"Shirayuki",
+			"Waki285",
 			"しぃ"
 		]
 	},
-	"randomwiki": "ランダムWiki",
-	"randomwiki-header": "以下のカテゴリーと言語を選択して送信すると、選択した条件を満たすWikiにランダムにリダイレクトされます。",
-	"wikidiscover": "Wikiを見つける",
-	"wikidiscover-desc": "[[Special:CreateWiki|CreateWiki]]を使って[[Special:WikiDiscover|Wikiファーム上のWiki]] を発見することができます。",
+	"randomwiki": "ウィキをランダムに選んでリダイレクト",
+	"randomwiki-header": "以下のカテゴリと言語を選択して送信すると、選択した条件を満たすウィキにランダムにリダイレクトされます。",
+	"randomwiki-parameters": "パラメーターを選択",
+	"wikidiscover": "ウィキを見つける",
+	"wikidiscover-desc": "[[Special:CreateWiki|CreateWiki]]を使って[[Special:WikiDiscover|ウィキファーム上のウィキ]]を発見できます。",
+	"wikidiscover-header": "検索のパラメータを選択してください",
+	"wikidiscover-header-info": "言語などのパラメーターを選択して、このウィキファームによってホストされているウィキを検索できます。",
 	"wikidiscover-table-category": "カテゴリ",
 	"wikidiscover-table-description": "説明",
 	"wikidiscover-table-established": "設立",
 	"wikidiscover-table-language": "言語",
 	"wikidiscover-table-state": "状態",
 	"wikidiscover-table-visibility": "閲覧レベル",
-	"wikidiscover-table-wiki": "Wikiの名前",
-	"apihelp-wikidiscover-summary": "CreateWikiのwikifarmに登録されているWikiのリストを取得します。",
-	"apihelp-wikidiscover-param-state": "CreateWikiで定義されたWikiの状態でフィルタリングします。",
-	"apihelp-wikidiscover-param-siteprop": "定義されたWikiに関する情報を返します。",
+	"wikidiscover-table-wiki": "ウィキの名前",
+	"apihelp-wikidiscover-summary": "CreateWikiのウィキファームに登録されているウィキのリストを取得します。",
+	"apihelp-wikidiscover-param-state": "CreateWikiで定義されたウィキの状態でフィルタリングします。",
+	"apihelp-wikidiscover-param-siteprop": "定義されたウィキに関する情報を返します。",
 	"apihelp-wikidiscover-param-limit": "表示する結果の最大数",
-	"apihelp-wikidiscover-param-wikislist": "全てのWikiのリストを取得します。",
-	"apihelp-wikidiscover-example": "フォームに表示されているすべてのWikiを表示します。"
+	"apihelp-wikidiscover-param-wikislist": "すべてのウィキのリストを取得します。",
+	"apihelp-wikidiscover-example": "フォームに表示されているすべてのウィキを表示します。"
 }

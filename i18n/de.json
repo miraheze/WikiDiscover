@@ -1,13 +1,18 @@
 {
 	"@metadata": {
 		"authors": [
-			"Metalhead64"
+			"Justman10000",
+			"Metalhead64",
+			"TomatoCake"
 		]
 	},
-	"randomwiki": "Zufälliges Wiki",
-	"randomwiki-header": "Wähle unten eine Kategorie und eine Sprache aus und nach dem Absenden wirst du auf ein zufälliges Wiki weitergeleitet, das die ausgewählten Kriterien erfüllt!",
-	"wikidiscover": "Wikientdeckung",
-	"wikidiscover-desc": "Ermöglicht die [[Special:WikiDiscover|Entdeckung von Wikis]] auf einer Wikifarm mit [[Special:CreateWiki|CreateWiki]].",
+	"randomwiki": "Weiterleitung zu einem zufälligen Wiki",
+	"randomwiki-header": "Wähle unten eine Kategorie und eine Sprache aus. Nach der Anmeldung wirst du zu einem zufälligen Wiki weitergeleitet, das die ausgewählten Kriterien erfüllt.",
+	"randomwiki-parameters": "Parameter auswählen",
+	"wikidiscover": "Entdecke Wikis",
+	"wikidiscover-desc": "Ermöglicht das [[Special:WikiDiscover|Erkunden von Wikis]] auf einer Wikifarm mit [[Special:CreateWiki|Wikis erstellen]].",
+	"wikidiscover-header": "Wähle Parameter für deine Suche",
+	"wikidiscover-header-info": "Du kannst in dieser Farm nach Wikis suchen, indem du Parameter wie Sprache und mehr auswählst.",
 	"wikidiscover-table-category": "Kategorie",
 	"wikidiscover-table-description": "Beschreibung",
 	"wikidiscover-table-established": "Gegründet",

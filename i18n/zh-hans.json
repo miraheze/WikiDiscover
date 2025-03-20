@@ -1,16 +1,21 @@
 {
 	"@metadata": {
 		"authors": [
+			"CrownedWharf566",
 			"GuoPC",
 			"Liuxinyu970226",
 			"SolidBlock",
+			"沈澄心",
 			"铁桶"
 		]
 	},
-	"randomwiki": "随机wiki",
-	"randomwiki-header": "在下方选择分类和语言，并在提交后您将随机重定向到符合选择标准的wiki！",
-	"wikidiscover": "WikiDiscover",
-	"wikidiscover-desc": "允许在有[[Special:CreateWiki|CreateWiki]]的维基农场[[Special:WikiDiscover|探索wiki]]。",
+	"randomwiki": "重定向至随机wiki",
+	"randomwiki-header": "在下方选择分类和语言并提交后，您将重定向至符合所选标准的随机wiki。",
+	"randomwiki-parameters": "选择参数",
+	"wikidiscover": "探索wiki",
+	"wikidiscover-desc": "允许在使用[[Special:CreateWiki|CreateWiki]]的wiki农场上[[Special:WikiDiscover|探索wiki]]。",
+	"wikidiscover-header": "选择您的搜索参数",
+	"wikidiscover-header-info": "您可以通过选择例如语言等参数来搜索此农场中的wiki。",
 	"wikidiscover-table-category": "分类",
 	"wikidiscover-table-description": "描述",
 	"wikidiscover-table-established": "创建时间",
@@ -18,10 +23,10 @@
 	"wikidiscover-table-state": "状态",
 	"wikidiscover-table-visibility": "可见性",
 	"wikidiscover-table-wiki": "wiki名称",
-	"apihelp-wikidiscover-summary": "获取基于CreateWiki的维基农场的wiki列表。",
-	"apihelp-wikidiscover-param-state": "按CreateWiki定义的wiki状态过滤。",
-	"apihelp-wikidiscover-param-siteprop": "要返回有关定义wiki的信息。",
-	"apihelp-wikidiscover-param-limit": "显示的最大数量。",
-	"apihelp-wikidiscover-param-wikislist": "获得所有wiki的列表。",
-	"apihelp-wikidiscover-example": "显示表单上的所有wiki。"
+	"apihelp-wikidiscover-summary": "获取使用CreateWiki的wiki农场上的wiki列表。",
+	"apihelp-wikidiscover-param-state": "根据CreateWiki所定义的wiki状态进行筛选。",
+	"apihelp-wikidiscover-param-siteprop": "返回关于定义wiki的信息。",
+	"apihelp-wikidiscover-param-limit": "显示结果的最大数量。",
+	"apihelp-wikidiscover-param-wikislist": "获取所有wiki的列表。",
+	"apihelp-wikidiscover-example": "显示在表单上的所有wiki。"
 }

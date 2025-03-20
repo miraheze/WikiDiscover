@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Patsagorn Y."
+		]
+	},
+	"randomwiki": "สุ่มวิกิ",
+	"randomwiki-header": "เลือกหมวดหมู่และภาษาด้านล่าง และเมื่อส่ง คุณจะถูกนำไปยังวิกิแบบสุ่มซึ่งตรงตามเกณฑ์ที่เลือก",
+	"wikidiscover": "สำรวจวิกิ",
+	"wikidiscover-desc": "อนุญาตให้[[Special:WikiDiscover|ค้นพบวิกิ]] บนฟาร์มวิกิที่มี [[Special:CreateWiki|CreateWiki]]",
+	"wikidiscover-table-category": "หมวดหมู่",
+	"wikidiscover-table-description": "คำอธิบาย",
+	"wikidiscover-table-established": "ก่อตั้งเมื่อ",
+	"wikidiscover-table-language": "ภาษา",
+	"wikidiscover-table-state": "สถานะ",
+	"wikidiscover-table-visibility": "การมองเห็น",
+	"wikidiscover-table-wiki": "ชื่อวิกิ",
+	"apihelp-wikidiscover-summary": "ดูรายชื่อวิกิบนวิกิฟาร์มที่มี CreateWiki",
+	"apihelp-wikidiscover-param-state": "กรองตามสถานะของวิกิที่กำหนดโดย CreateWiki",
+	"apihelp-wikidiscover-param-siteprop": "ข้อมูลที่ส่งคืนเกี่ยวกับวิกิที่กำหนด",
+	"apihelp-wikidiscover-param-limit": "จำนวนการตอบกลับสูงสุดที่จะแสดง",
+	"apihelp-wikidiscover-param-wikislist": "ดูรายชื่อวิกิทั้งหมด",
+	"apihelp-wikidiscover-example": "แสดงวิกิทั้งหมดบนฟาร์ม"
+}

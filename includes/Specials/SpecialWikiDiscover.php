@@ -1,5 +1,11 @@
 <?php
 
+namespace Miraheze\WikiDiscover\Specials;
+
+use MediaWiki\HTMLForm\HTMLForm;
+use MediaWiki\SpecialPage\SpecialPage;
+use Miraheze\WikiDiscover\WikiDiscoverWikisPager;
+
 class SpecialWikiDiscover extends SpecialPage {
 
 	public function __construct() {
@@ -14,9 +20,28 @@ class SpecialWikiDiscover extends SpecialPage {
 		$language = $this->getRequest()->getText( 'language' );
 		$category = $this->getRequest()->getText( 'category' );
 		$state = $this->getRequest()->getText( 'state' );
-		$visibility = $this->getRequest()->getText( 'visibility' );
+
+		$stateOptions = [
+			'(any)' => 'any',
+			'Active' => 'active',
+			'Locked' => 'locked',
+		];
+
+		if ( $this->getConfig()->get( 'CreateWikiUseClosedWikis' ) ) {
+			$stateOptions['Closed'] = 'closed';
+		}
+
+		$stateOptions['Deleted'] = 'deleted';
+
+		if ( $this->getConfig()->get( 'CreateWikiUseInactiveWikis' ) ) {
+			$stateOptions['Inactive'] = 'inactive';
+		}
 
 		$formDescriptor = [
+			'intro' => [
+				'type' => 'info',
+				'default' => $this->msg( 'wikidiscover-header-info' )->text(),
+			],
 			'language' => [
 				'type' => 'language',
 				'options' => [ '(any)' => 'any' ],
@@ -35,16 +60,17 @@ class SpecialWikiDiscover extends SpecialPage {
 				'type' => 'select',
 				'name' => 'state',
 				'label-message' => 'wikidiscover-table-state',
-				'options' => [
-					'(any)' => 'any',
-					'Active' => 'active',
-					'Closed' => 'closed',
-					'Deleted' => 'deleted',
-					'Inactive' => 'inactive'
-				],
+				'options' => $stateOptions,
 				'default' => $state ?: 'any',
 			],
-			'visibility' => [
+		];
+
+		if (
+			$this->getConfig()->get( 'CreateWikiUsePrivateWikis' ) &&
+			$this->getConfig()->get( 'WikiDiscoverListPrivateWikis' )
+		) {
+			$visibility = $this->getRequest()->getText( 'visibility' );
+			$formDescriptor['visibility'] = [
 				'type' => 'select',
 				'name' => 'visibility',
 				'label-message' => 'wikidiscover-table-visibility',
@@ -54,11 +80,18 @@ class SpecialWikiDiscover extends SpecialPage {
 					'Private' => 'private'
 				],
 				'default' => $visibility ?: 'any',
-			],
-		];
+			];
+		} else {
+			$visibility = 'public';
+		}
 
 		$htmlForm = HTMLForm::factory( 'ooui', $formDescriptor, $this->getContext() );
-		$htmlForm->setMethod( 'get' )->prepareForm()->displayForm( false );
+		$htmlForm
+			->setMethod( 'get' )
+			->setWrapperLegendMsg( 'wikidiscover-header' )
+			->setSubmitTextMsg( 'search' )
+			->prepareForm()
+			->displayForm( false );
 
 		$pager = new WikiDiscoverWikisPager( $this, $language, $category, $state, $visibility );
 

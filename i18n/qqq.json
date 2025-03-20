@@ -6,10 +6,13 @@
 			"Universal Omega"
 		]
 	},
-	"randomwiki": "Random Wiki",
-	"randomwiki-header": "Select a category and a language below and on submission you will redirected randomly to a wiki which meets the criteria selected!",
+	"randomwiki": "Page title for Special:RandomWiki",
+	"randomwiki-header": "Information text under legend header informing users what the page does.",
+	"randomwiki-parameters": "Legend header in Special:RandomWiki asking users to insert parameters for their search.",
 	"wikidiscover": "WikiDiscover",
 	"wikidiscover-desc": "Allows [[Special:WikiDiscover|discovering wikis]] on a wiki farm with [[Special:CreateWiki|CreateWiki]].",
+	"wikidiscover-header": "Legend header in Special:WikiDiscover",
+	"wikidiscover-header-info": "Information text under legend header explaining what users can refine their search by.",
 	"wikidiscover-table-category": "Label for 'Category'\n{{Identical|Category}}",
 	"wikidiscover-table-description": "Label for 'Description'\n{{Identical|Description}}",
 	"wikidiscover-table-established": "Label for 'Established'",

@@ -2,15 +2,19 @@
 	"@metadata": {
 		"authors": [
 			"Agent",
+			"EmicraftNoob",
 			"Fitoschido",
 			"Jackiezelaya",
 			"Jakeukalane"
 		]
 	},
-	"randomwiki": "Wiki al azar",
-	"randomwiki-header": "Selecciona más abajo una categoría y un idioma y te redirigiremos al azar a una wiki que cumpla con ambos criterios.",
-	"wikidiscover": "WikiDiscover",
+	"randomwiki": "Redirigir a una wiki al azar",
+	"randomwiki-header": "Elija una categoría y un idioma a continuación y, al enviarlo, se le redirigirá a un wiki aleatorio que cumpla los criterios seleccionados.",
+	"randomwiki-parameters": "Seleccionar parámetros",
+	"wikidiscover": "Descubrir wikis",
 	"wikidiscover-desc": "Permite [[Special:WikiDiscover|descubrir wikis]] de un servicio de alojamiento a través de [[Special:CreateWiki|CreateWiki]].",
+	"wikidiscover-header": "Seleccione parámetros para tu busqueda",
+	"wikidiscover-header-info": "Puede buscar wikis en esta wikigranja seleccionando parámetros como el idioma y otros.",
 	"wikidiscover-table-category": "Categoría",
 	"wikidiscover-table-description": "Descripción",
 	"wikidiscover-table-established": "Establecido",

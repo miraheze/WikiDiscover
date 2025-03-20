@@ -2,12 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"Eduardo Addad de Oliveira",
-			"Eduardoaddad"
+			"Eduardoaddad",
+			"YuriNikolai"
 		]
 	},
-	"randomwiki": "Wiki aleatória",
+	"randomwiki": "Redirecionar a uma wiki aleatória",
 	"randomwiki-header": "Selecione uma categoria e um idioma abaixo e ao enviar será redirecionado para uma wiki aleatória que preenche os critérios selecionados!",
-	"wikidiscover": "WikiDescoberta",
+	"wikidiscover": "Descubra wikis",
 	"wikidiscover-desc": "Permite [[Special:WikiDiscover|descobrir wikis]] num site de alojamento de wikis com [[Special:CreateWiki|CriarWiki]].",
 	"wikidiscover-table-category": "Categoria",
 	"wikidiscover-table-description": "Descrição",

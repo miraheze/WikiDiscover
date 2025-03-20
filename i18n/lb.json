@@ -1,12 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Robby"
+			"Robby",
+			"Volvox"
 		]
 	},
-	"randomwiki": "Zoufälleg Wiki",
-	"wikidiscover": "WikiDiscover",
+	"randomwiki": "Op eng zoufälleg Wiki viruleeden",
+	"wikidiscover": "Wikien entdecken",
 	"wikidiscover-table-category": "Kategorie",
+	"wikidiscover-table-description": "Beschreiwung",
 	"wikidiscover-table-language": "Sprooch",
 	"wikidiscover-table-state": "Status",
 	"wikidiscover-table-visibility": "Visibilitéit",

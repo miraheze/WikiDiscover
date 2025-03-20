@@ -2,24 +2,28 @@
 	"@metadata": {
 		"authors": [
 			"Kly",
+			"Winston Sung",
 			"铁桶"
 		]
 	},
-	"randomwiki": "隨機 wiki",
-	"randomwiki-header": "選擇下方一個分類與語言並提交後，您將被會重新導向到符合條件標準的 wiki！",
-	"wikidiscover": "WikiDiscover",
-	"wikidiscover-desc": "允許在具有 [[Special:CreateWiki|CreateWiki]] 的 wiki 農場裡[[Special:WikiDiscover|探索 wiki]]。",
+	"randomwiki": "重新導向至隨機 wiki",
+	"randomwiki-header": "在下方選擇分類與語言並提交後，您將重新導向至符合所選標準的隨機 wiki。",
+	"randomwiki-parameters": "選擇參數",
+	"wikidiscover": "探索 wiki",
+	"wikidiscover-desc": "允許在使用 [[Special:CreateWiki|CreateWiki]] 的 wiki 農場上[[Special:WikiDiscover|探索 wiki]]。",
+	"wikidiscover-header": "選擇您的搜尋參數",
+	"wikidiscover-header-info": "您可以透過選擇例如語言等參數來搜尋此農場中的 wiki。",
 	"wikidiscover-table-category": "分類",
 	"wikidiscover-table-description": "描述",
 	"wikidiscover-table-established": "建立時間",
 	"wikidiscover-table-language": "語言",
 	"wikidiscover-table-state": "狀態",
-	"wikidiscover-table-visibility": "能見度",
-	"wikidiscover-table-wiki": "Wiki 名稱",
-	"apihelp-wikidiscover-summary": "取得在 CreateWiki 維基農場的 wiki 清單。",
-	"apihelp-wikidiscover-param-state": "依 CreateWiki 所定義的 wiki 狀態篩選。",
-	"apihelp-wikidiscover-param-siteprop": "回有有關定義 wiki 的訊息。",
-	"apihelp-wikidiscover-param-limit": "結果顯示的數量上限。",
+	"wikidiscover-table-visibility": "可見性",
+	"wikidiscover-table-wiki": "wiki 名稱",
+	"apihelp-wikidiscover-summary": "取得使用 CreateWiki 的 wiki 農場上的 wiki 清單。",
+	"apihelp-wikidiscover-param-state": "根據 CreateWiki 所定義的 wiki 狀態進行篩選。",
+	"apihelp-wikidiscover-param-siteprop": "回送關於定義 wiki 的資訊。",
+	"apihelp-wikidiscover-param-limit": "顯示結果的最大數量。",
 	"apihelp-wikidiscover-param-wikislist": "取得所有 wiki 的清單。",
-	"apihelp-wikidiscover-example": "顯示在表單裡的所有 wiki。"
+	"apihelp-wikidiscover-example": "顯示在表單上的所有 wiki。"
 }

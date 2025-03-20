@@ -2,18 +2,24 @@
 	"@metadata": {
 		"authors": [
 			"Ajeje Brazorf",
+			"Alien333",
 			"Florian COLLIN",
 			"Gomoko",
+			"Graineahumus",
+			"SleaY",
 			"Tektasc",
 			"Thibaut120094",
 			"Verdy p",
 			"Wladek92"
 		]
 	},
-	"randomwiki": "Wiki aléatoire",
-	"randomwiki-header": "Sélectionnez une catégorie et une langue ci-dessous,  lorsque vous les soumettrez vous serez redirigé aléatoirement vers un wiki qui correspond aux critères sélectionnés !",
-	"wikidiscover": "WikiDiscover",
+	"randomwiki": "Redirection vers un wiki aléatoire",
+	"randomwiki-header": "Choisissez une catégorie et une langue ci-dessous et, lorsque vous les soumettrez, vous serez redirigé{{GENDER:||e}} aléatoirement vers un wiki qui correspond aux critères sélectionnés.",
+	"randomwiki-parameters": "Sélectionnez les paramètres",
+	"wikidiscover": "Découvrir les wikis",
 	"wikidiscover-desc": "Permet de [[Special:WikiDiscover|découvrir des wikis]] dans une ferme de wikis proposant à leurs utilisateurs la fonctionnalité [[Special:CreateWiki|Créer un wiki]].",
+	"wikidiscover-header": "Choisissez les paramètres de votre recherche",
+	"wikidiscover-header-info": "Vous pouvez rechercher des wikis dans cette ferme en sélectionnant des paramètres tels que la langue et autres.",
 	"wikidiscover-table-category": "Catégorie",
 	"wikidiscover-table-description": "Description",
 	"wikidiscover-table-established": "Établie",

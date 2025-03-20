@@ -2,24 +2,25 @@
 	"name": "WikiDiscover",
 	"author": [
 		"John Lewis",
-		"Universal Omega"
+		"Universal Omega",
+		"Agent Isai"
 	],
 	"descriptionmsg": "wikidiscover-desc",
 	"url": "https://github.com/miraheze/WikiDiscover",
 	"license-name": "GPL-3.0-or-later",
 	"type": "specialpage",
 	"requires": {
-		"MediaWiki": ">= 1.36.0",
+		"MediaWiki": ">= 1.43.0",
 		"extensions": {
 			"CreateWiki": "*"
 		}
 	},
 	"SpecialPages": {
-		"RandomWiki": "SpecialRandomWiki",
-		"WikiDiscover": "SpecialWikiDiscover"
+		"RandomWiki": "Miraheze\\WikiDiscover\\Specials\\SpecialRandomWiki",
+		"WikiDiscover": "Miraheze\\WikiDiscover\\Specials\\SpecialWikiDiscover"
 	},
 	"APIListModules": {
-		"wikidiscover": "ApiQueryWikiDiscover"
+		"wikidiscover": "Miraheze\\WikiDiscover\\Api\\ApiQueryWikiDiscover"
 	},
 	"MessagesDirs": {
 		"WikiDiscover": [
@@ -27,32 +28,37 @@
 		]
 	},
 	"ExtensionMessagesFiles": {
-		"WikiDiscoverMagic": "includes/WikiDiscoverMagic.php",
-		"WikiDiscoverAliases": "includes/WikiDiscoverAliases.php"
+		"WikiDiscoverAliases": "WikiDiscoverAliases.php",
+		"WikiDiscoverMagic": "WikiDiscoverMagic.php"
 	},
-	"AutoloadClasses": {
-		"WikiDiscover": "includes/WikiDiscover.php",
-		"WikiDiscoverRandom": "includes/WikiDiscoverRandom.php",
-		"SpecialRandomWiki": "includes/SpecialRandomWiki.php",
-		"SpecialWikiDiscover": "includes/SpecialWikiDiscover.php",
-		"WikiDiscoverWikisPager": "includes/WikiDiscoverWikisPager.php",
-		"ApiQueryWikiDiscover": "includes/ApiQueryWikiDiscover.php"
+	"AutoloadNamespaces": {
+		"Miraheze\\WikiDiscover\\": "includes/"
 	},
-	"TestAutoloadClasses": {
-		"ApiQueryWikiDiscoverTest": "tests/phpunit/ApiQueryWikiDiscoverTest.php"
+	"TestAutoloadNamespaces": {
+		"Miraheze\\WikiDiscover\\Tests\\": "tests/phpunit/"
 	},
 	"Hooks": {
 		"ParserFirstCallInit": [
-			"WikiDiscover::onParserFirstCallInit"
+			"Miraheze\\WikiDiscover\\WikiDiscover::onParserFirstCallInit"
 		],
 		"ParserGetVariableValueSwitch": [
-			"WikiDiscover::onParserGetVariableValueSwitch"
+			"Miraheze\\WikiDiscover\\WikiDiscover::onParserGetVariableValueSwitch"
 		],
 		"GetMagicVariableIDs": [
-			"WikiDiscover::onGetMagicVariableIDs"
+			"Miraheze\\WikiDiscover\\WikiDiscover::onGetMagicVariableIDs"
 		]
 	},
 	"config": {
+		"WikiDiscoverDescriptionMaxLength": {
+			"description": "Int. The maxmimum length of a wiki description.",
+			"public": true,
+			"value": false
+		},
+		"WikiDiscoverListPrivateWikis": {
+			"description": "Whether or not to include showing private wikis on Special:WikiDiscover.",
+			"public": true,
+			"value": true
+		},
 		"WikiDiscoverUseDescriptions": {
 			"description": "Whether or not to enable wiki descriptions.",
 			"public": true,

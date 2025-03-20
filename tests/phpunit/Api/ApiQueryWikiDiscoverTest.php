@@ -1,10 +1,14 @@
 <?php
 
+namespace Miraheze\WikiDiscover\Tests\Api;
+
+use MediaWiki\Tests\Api\ApiTestCase;
+
 /**
  * @group WikiDiscover
  * @group Database
  * @group medium
- * @coversDefaultClass ApiQueryWikiDiscover
+ * @coversDefaultClass \Miraheze\WikiDiscover\Api\ApiQueryWikiDiscover
  */
 class ApiQueryWikiDiscoverTest extends ApiTestCase {
 

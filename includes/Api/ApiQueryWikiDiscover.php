@@ -75,6 +75,16 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 		$this->addFieldsIf( 'wiki_dbname', in_array( 'dbname', $siteprop ) );
 		$this->addFieldsIf( 'wiki_sitename', in_array( 'sitename', $siteprop ) );
 		$this->addFieldsIf( 'wiki_language', in_array( 'languagecode', $siteprop ) );
+		$this->addFieldsIf( 'wiki_creation', in_array( 'creation', $siteprop ) );
+		$this->addFieldsIf(
+			[
+				'wiki_closed',
+				'wiki_deleted',
+				'wiki_inactive',
+				'wiki_private',
+			],
+			in_array( 'states', $siteprop )
+		);
 
 		$this->addOption( 'LIMIT', $limit );
 
@@ -102,6 +112,22 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 
 			if ( in_array( 'languagecode', $siteprop ) ) {
 				$wiki['languagecode'] = $row->wiki_language;
+			}
+
+			if ( in_array( 'creation', $siteprop ) ) {
+				$wiki['creation'] = $row->wiki_creation;
+			}
+
+			if ( in_array( 'state', $siteprop ) ) {
+				$wiki['active'] = !(bool)$row->wiki_inactive &&
+					!(bool)$row->wiki_closed &&
+					!(bool)$row->wiki_deleted;
+
+				$wiki['closed'] = (bool)$row->wiki_closed;
+				$wiki['deleted'] = (bool)$row->wiki_deleted;
+				$wiki['inactive'] = (bool)$row->wiki_inactive;
+				$wiki['private'] = (bool)$row->wiki_private;
+				$wiki['public'] = !(bool)$row->wiki_private;
 			}
 
 			$data[] = $wiki;
@@ -134,6 +160,8 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 					'dbname',
 					'sitename',
 					'languagecode',
+					'creation',
+					'states',
 				],
 				ParamValidator::PARAM_DEFAULT => 'url|dbname|sitename|languagecode',
 			],

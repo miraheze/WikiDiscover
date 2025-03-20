@@ -109,7 +109,7 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 				$wiki['creation'] = $row->wiki_creation;
 			}
 
-			$data[] = $wiki;
+			$data[$wiki['dbname']] = $wiki;
 		}
 
 		$result = $this->getResult();

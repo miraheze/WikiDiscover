@@ -12,43 +12,30 @@ use Wikimedia\Rdbms\IReadableDatabase;
 
 class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 
-	/**
-	 * @param ApiQuery $query
-	 * @param string $moduleName Name of this module
-	 */
-	public function __construct( $query, $moduleName ) {
+	public function __construct( ApiQuery $query, string $moduleName ) {
 		parent::__construct( $query, $moduleName, 'wd' );
 	}
 
-	public function execute() {
-		$this->run();
+	public function execute(): void {
+		$this->run( null );
 	}
 
 	/** @inheritDoc */
-	public function getCacheMode( $params ) {
+	public function getCacheMode( $params ): string {
 		return 'public';
 	}
 
 	/** @inheritDoc */
-	public function executeGenerator( $resultPageSet ) {
+	public function executeGenerator( $resultPageSet ): void {
 		$this->run( $resultPageSet );
 	}
 
-	/**
-	 * Get the Query database connection (read-only)
-	 *
-	 * @see ApiQueryBase::getDB
-	 * @return IReadableDatabase
-	 */
-	protected function getDB() {
+	protected function getDB(): IReadableDatabase {
 		$connectionProvider = MediaWikiServices::getInstance()->getConnectionProvider();
 		return $connectionProvider->getReplicaDatabase( 'virtual-createwiki' );
 	}
 
-	/**
-	 * @param ApiPageSet|null $resultPageSet
-	 */
-	private function run( ?ApiPageSet $resultPageSet = null ) {
+	private function run( ?ApiPageSet $resultPageSet ): void {
 		$params = $this->extractRequestParams();
 
 		$state = $params['state'];
@@ -125,7 +112,7 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 	}
 
 	/** @inheritDoc */
-	protected function getAllowedParams() {
+	protected function getAllowedParams(): array {
 		return [
 			'state' => [
 				ParamValidator::PARAM_ISMULTI => true,
@@ -164,7 +151,7 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 	}
 
 	/** @inheritDoc */
-	protected function getExamplesMessages() {
+	protected function getExamplesMessages(): array {
 		return [
 			'action=query&list=wikidiscover' => 'apihelp-query+wikidiscover-example'
 		];

@@ -8,7 +8,7 @@ use MediaWiki\Api\ApiQueryGeneratorBase;
 use MediaWiki\MediaWikiServices;
 use Wikimedia\ParamValidator\ParamValidator;
 use Wikimedia\ParamValidator\TypeDef\IntegerDef;
-use Wikimedia\Rdbms\IDatabase;
+use Wikimedia\Rdbms\IReadableDatabase;
 
 class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 
@@ -38,7 +38,7 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 	 * Get the Query database connection (read-only)
 	 *
 	 * @see ApiQueryBase::getDB
-	 * @return IDatabase
+	 * @return IReadableDatabase
 	 */
 	protected function getDB() {
 		$connectionProvider = MediaWikiServices::getInstance()->getConnectionProvider();

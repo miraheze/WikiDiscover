@@ -118,7 +118,7 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 				$wiki['creation'] = $row->wiki_creation;
 			}
 
-			if ( in_array( 'state', $siteprop ) ) {
+			if ( in_array( 'states', $siteprop ) ) {
 				$wiki['active'] = !(bool)$row->wiki_inactive &&
 					!(bool)$row->wiki_closed &&
 					!(bool)$row->wiki_deleted;

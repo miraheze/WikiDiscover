@@ -23,7 +23,7 @@ class ApiQueryWikiDiscoverTest extends ApiTestCase {
 				'action' => 'query',
 				'list' => 'wikidiscover',
 				'wdstate' => 'active',
-				'wdsiteprop' => 'url|sitename'
+				'wdsiteprop' => 'dbname|sitename'
 			]
 		);
 
@@ -31,7 +31,7 @@ class ApiQueryWikiDiscoverTest extends ApiTestCase {
 		$this->assertArrayHasKey( 'wikidiscover', $data['query'] );
 		$this->assertGreaterThan( 0, count( $data['query']['wikidiscover'] ) );
 		foreach ( $data['query']['wikidiscover'] as $wiki ) {
-			$this->assertArrayHasKey( 'url', $wiki );
+			$this->assertArrayHasKey( 'dbname', $wiki );
 			$this->assertArrayHasKey( 'sitename', $wiki );
 		}
 	}

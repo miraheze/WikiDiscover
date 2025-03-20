@@ -46,7 +46,7 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 	/**
 	 * @param ApiPageSet|null $resultPageSet
 	 */
-	private function run( ApiPageSet $resultPageSet = null ) {
+	private function run( ?ApiPageSet $resultPageSet = null ) {
 		$params = $this->extractRequestParams();
 
 		$state = $params['state'];

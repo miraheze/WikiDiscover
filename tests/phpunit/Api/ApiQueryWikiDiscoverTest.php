@@ -22,8 +22,8 @@ class ApiQueryWikiDiscoverTest extends ApiTestCase {
 			[
 				'action' => 'query',
 				'list' => 'wikidiscover',
-				'state' => 'active',
-				'siteprop' => 'url|sitename'
+				'wdstate' => 'active',
+				'wdsiteprop' => 'url|sitename'
 			]
 		);
 

@@ -2,6 +2,7 @@
 
 namespace Miraheze\WikiDiscover\Api;
 
+use MediaWiki\Api\ApiBase;
 use MediaWiki\Api\ApiPageSet;
 use MediaWiki\Api\ApiQuery;
 use MediaWiki\Api\ApiQueryGeneratorBase;
@@ -37,10 +38,12 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 
 	private function run( ?ApiPageSet $resultPageSet ): void {
 		$params = $this->extractRequestParams();
+		$result = $this->getResult();
 
-		$state = $params['state'];
 		$siteprop = $params['siteprop'];
+		$state = $params['state'];
 		$limit = $params['limit'];
+		$offset = $params['offset'];
 		$wikislist = $params['wikislist'];
 
 		$this->addTables( 'cw_wikis' );
@@ -89,6 +92,7 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 		] );
 
 		$this->addOption( 'LIMIT', $limit );
+		$this->addOption( 'OFFSET', $offset );
 
 		if ( $wikislist ) {
 			$this->addWhereFld( 'wiki_dbname', explode( ',', $wikislist ) );
@@ -96,8 +100,14 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 
 		$res = $this->select( __METHOD__ );
 
+		$count = 0;
 		$data = [];
 		foreach ( $res as $row ) {
+			if ( ++$count > $limit ) {
+				$this->setContinueEnumParameter( 'offset', $offset + $limit );
+				break;
+			}
+
 			$wiki = [];
 
 			if ( in_array( 'url', $siteprop ) ) {
@@ -161,17 +171,20 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 				$wiki['locked'] = true;
 			}
 
-			$data[] = $wiki;
+			$fit = $result->addValue( [ 'query', $this->getModuleName() ], null, $wiki );
+			if ( !$fit ) {
+				$this->setContinueEnumParameter( 'offset', $offset + $count - 1 );
+				break;
+			}
 		}
 
-		$result = $this->getResult();
-		$result->addValue( [ 'query', $this->getModuleName() ], null, $data );
 	}
 
 	/** @inheritDoc */
 	protected function getAllowedParams(): array {
 		return [
 			'state' => [
+				ParamValidator::PARAM_DEFAULT => 'all',
 				ParamValidator::PARAM_ISMULTI => true,
 				ParamValidator::PARAM_TYPE => [
 					'all',
@@ -182,9 +195,9 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 					'public',
 					'deleted',
 				],
-				ParamValidator::PARAM_DEFAULT => 'all',
 			],
 			'siteprop' => [
+				ParamValidator::PARAM_DEFAULT => 'url|dbname|sitename|languagecode',
 				ParamValidator::PARAM_ISMULTI => true,
 				ParamValidator::PARAM_TYPE => [
 					'url',
@@ -194,14 +207,17 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 					'creation',
 					'closure',
 				],
-				ParamValidator::PARAM_DEFAULT => 'url|dbname|sitename|languagecode',
 			],
 			'limit' => [
-				ParamValidator::PARAM_TYPE => 'limit',
 				IntegerDef::PARAM_MIN => 1,
-				IntegerDef::PARAM_MAX => 5000,
-				IntegerDef::PARAM_MAX2 => 5000,
-				ParamValidator::PARAM_DEFAULT => 5000,
+				IntegerDef::PARAM_MAX => self::LIMIT_BIG1,
+				IntegerDef::PARAM_MAX2 => self::LIMIT_BIG2,
+				ParamValidator::PARAM_DEFAULT => self::LIMIT_BIG1,
+				ParamValidator::PARAM_TYPE => 'limit',
+			],
+			'offset' => [
+				ApiBase::PARAM_HELP_MSG => 'api-help-param-continue',
+				ParamValidator::PARAM_DEFAULT => 0,
 			],
 			'wikislist' => [
 				ParamValidator::PARAM_TYPE => 'string',

@@ -6,7 +6,7 @@ use MediaWiki\Context\RequestContext;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Parser\Parser;
 
-class WikiDiscover {
+class Hooks {
 
 	/**
 	 * @param Parser $parser

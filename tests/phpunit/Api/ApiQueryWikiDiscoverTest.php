@@ -18,14 +18,12 @@ class ApiQueryWikiDiscoverTest extends ApiTestCase {
 	 * @covers ::run
 	 */
 	public function testQueryWikiDiscover() {
-		[ $data ] = $this->doApiRequest(
-			[
-				'action' => 'query',
-				'list' => 'wikidiscover',
-				'wdstate' => 'active',
-				'wdsiteprop' => 'dbname|sitename'
-			]
-		);
+		[ $data ] = $this->doApiRequest( [
+			'action' => 'query',
+			'list' => 'wikidiscover',
+			'wdstate' => 'active',
+			'wdsiteprop' => 'dbname|sitename'
+		] );
 
 		var_dump( $data );
 

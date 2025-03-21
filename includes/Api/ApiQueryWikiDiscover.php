@@ -6,14 +6,18 @@ use MediaWiki\Api\ApiBase;
 use MediaWiki\Api\ApiPageSet;
 use MediaWiki\Api\ApiQuery;
 use MediaWiki\Api\ApiQueryGeneratorBase;
-use MediaWiki\MediaWikiServices;
+use Miraheze\CreateWiki\Services\CreateWikiDatabaseUtils;
 use Wikimedia\ParamValidator\ParamValidator;
 use Wikimedia\ParamValidator\TypeDef\IntegerDef;
 use Wikimedia\Rdbms\IReadableDatabase;
 
 class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 
-	public function __construct( ApiQuery $query, string $moduleName ) {
+	public function __construct(
+		ApiQuery $query,
+		string $moduleName,
+		private readonly CreateWikiDatabaseUtils $databaseUtils
+	) {
 		parent::__construct( $query, $moduleName, 'wd' );
 	}
 
@@ -32,8 +36,7 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 	}
 
 	protected function getDB(): IReadableDatabase {
-		$connectionProvider = MediaWikiServices::getInstance()->getConnectionProvider();
-		return $connectionProvider->getReplicaDatabase( 'virtual-createwiki' );
+		return $this->databaseUtils->getGlobalReplicaDB();
 	}
 
 	private function run( ?ApiPageSet $resultPageSet ): void {

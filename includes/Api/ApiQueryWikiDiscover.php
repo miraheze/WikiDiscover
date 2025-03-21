@@ -110,7 +110,7 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 				$wiki['creation'] = wfTimestamp( TS_ISO_8601, $row->wiki_creation );
 			}
 
-			if ( in_array( 'closure', $siteprop ) ) {
+			if ( in_array( 'closure', $siteprop ) && $row->wiki_closed_timestamp ) {
 				$wiki['closure'] = wfTimestamp( TS_ISO_8601, $row->wiki_closed_timestamp );
 			}
 

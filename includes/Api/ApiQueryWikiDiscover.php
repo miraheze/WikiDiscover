@@ -239,7 +239,7 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 				],
 			],
 			'siteprop' => [
-				ParamValidator::PARAM_DEFAULT => 'category|dbname|languagecode|sitename|url',
+				ParamValidator::PARAM_DEFAULT => 'category|languagecode|sitename|url',
 				ParamValidator::PARAM_ISMULTI => true,
 				ParamValidator::PARAM_TYPE => [
 					'category',

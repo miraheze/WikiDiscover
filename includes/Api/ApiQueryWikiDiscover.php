@@ -98,7 +98,6 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 
 		$this->addFieldsIf( 'wiki_category', in_array( 'category', $siteprop ) );
 		$this->addFieldsIf( 'wiki_creation', in_array( 'creation', $siteprop ) );
-		$this->addFieldsIf( 'wiki_dbname', in_array( 'dbname', $siteprop ) );
 		$this->addFieldsIf( 'wiki_language', in_array( 'languagecode', $siteprop ) );
 		$this->addFieldsIf( 'wiki_sitename', in_array( 'sitename', $siteprop ) );
 		$this->addFieldsIf( 'wiki_url', in_array( 'url', $siteprop ) );
@@ -108,6 +107,7 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 
 		$this->addFields( [
 			'wiki_closed',
+			'wiki_dbname',
 			'wiki_deleted',
 			'wiki_inactive',
 			'wiki_locked',
@@ -207,7 +207,7 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 				$wiki['locked'] = true;
 			}
 
-			$fit = $result->addValue( [ 'query', $this->getModuleName() ], null, $wiki );
+			$fit = $result->addValue( [ 'query', $this->getModuleName(), $row->wiki_dbname ], null, $wiki );
 			if ( !$fit ) {
 				$this->setContinueEnumParameter( 'offset', $offset + $count - 1 );
 				break;
@@ -247,7 +247,6 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 					'category',
 					'closure',
 					'creation',
-					'dbname',
 					'description',
 					'deletion',
 					'languagecode',

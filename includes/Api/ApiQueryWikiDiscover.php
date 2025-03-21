@@ -6,7 +6,9 @@ use MediaWiki\Api\ApiBase;
 use MediaWiki\Api\ApiPageSet;
 use MediaWiki\Api\ApiQuery;
 use MediaWiki\Api\ApiQueryGeneratorBase;
+use MediaWiki\Registration\ExtensionRegistry;
 use Miraheze\CreateWiki\Services\CreateWikiDatabaseUtils;
+use Miraheze\ManageWiki\Helpers\ManageWikiSettings;
 use Wikimedia\ParamValidator\ParamValidator;
 use Wikimedia\ParamValidator\TypeDef\IntegerDef;
 use Wikimedia\Rdbms\IReadableDatabase;
@@ -16,7 +18,8 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 	public function __construct(
 		ApiQuery $query,
 		string $moduleName,
-		private readonly CreateWikiDatabaseUtils $databaseUtils
+		private readonly CreateWikiDatabaseUtils $databaseUtils,
+		private readonly ExtensionRegistry $extensionRegistry
 	) {
 		parent::__construct( $query, $moduleName, 'wd' );
 	}
@@ -74,6 +77,10 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 				$this->addWhere(
 					'wiki_closed = 0 AND wiki_deleted = 0 AND wiki_inactive = 0'
 				);
+			}
+
+			if ( in_array( 'locked', $state ) ) {
+				$this->addWhereFld( 'wiki_locked', 1 );
 			}
 
 			if ( in_array( 'private', $state ) ) {
@@ -142,6 +149,12 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 
 			if ( in_array( 'dbname', $siteprop ) ) {
 				$wiki['dbname'] = $row->wiki_dbname;
+				if ( in_array( 'description', $siteprop ) ) {
+					if ( $this->extensionRegistry->isLoaded( 'ManageWiki' ) ) {
+						$manageWikiSettings = new ManageWikiSettings( $wiki['dbname'] );
+						$wiki['description'] = $manageWikiSettings->list( 'wgWikiDiscoverDescription' );
+					}
+				}
 			}
 
 			if ( in_array( 'sitename', $siteprop ) ) {
@@ -218,12 +231,13 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 				ParamValidator::PARAM_ISMULTI => true,
 				ParamValidator::PARAM_TYPE => [
 					'all',
-					'closed',
-					'inactive',
 					'active',
+					'closed',
+					'deleted',
+					'inactive',
+					'locked',
 					'private',
 					'public',
-					'deleted',
 				],
 			],
 			'siteprop' => [
@@ -234,6 +248,7 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 					'closure',
 					'creation',
 					'dbname',
+					'description',
 					'deletion',
 					'languagecode',
 					'sitename',
@@ -242,7 +257,7 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 			],
 			'limit' => [
 				IntegerDef::PARAM_MIN => 1,
-				IntegerDef::PARAM_MAX => self::LIMIT_BIG2,
+				IntegerDef::PARAM_MAX => self::LIMIT_BIG1,
 				IntegerDef::PARAM_MAX2 => self::LIMIT_BIG2,
 				ParamValidator::PARAM_DEFAULT => self::LIMIT_BIG1,
 				ParamValidator::PARAM_TYPE => 'limit',

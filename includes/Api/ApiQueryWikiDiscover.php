@@ -55,7 +55,9 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 			}
 
 			if ( in_array( 'active', $state ) ) {
-				$this->addWhere( 'wiki_closed = 0 AND wiki_inactive = 0' );
+				$this->addWhere(
+					'wiki_closed = 0 AND wiki_deleted = 0 AND wiki_inactive = 0'
+				);
 			}
 
 			if ( in_array( 'private', $state ) ) {
@@ -76,10 +78,17 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 		$this->addFieldsIf( 'wiki_sitename', in_array( 'sitename', $siteprop ) );
 		$this->addFieldsIf( 'wiki_language', in_array( 'languagecode', $siteprop ) );
 		$this->addFieldsIf( 'wiki_creation', in_array( 'creation', $siteprop ) );
-		$this->addFieldsIf( [
-			'wiki_closed',
-			'wiki_closed_timestamp',
-		], in_array( 'closure', $siteprop ) );
+		$this->addFieldsIf( 'wiki_closed_timestamp', in_array( 'closure', $siteprop ) );
+
+		$this->addFields(
+			[
+				'wiki_closed',
+				'wiki_deleted',
+				'wiki_inactive',
+				'wiki_locked',
+				'wiki_private',
+			]
+		);
 
 		$this->addOption( 'LIMIT', $limit );
 
@@ -123,8 +132,35 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 				$wiki['creation'] = wfTimestamp( TS_ISO_8601, $row->wiki_creation );
 			}
 
-			if ( in_array( 'closure', $siteprop ) && $row->wiki_closed ) {
-				$wiki['closure'] = wfTimestamp( TS_ISO_8601, $row->wiki_closed_timestamp );
+			$wikiState = match ( true ) {
+				$row->wiki_private => 'private',
+				default	=> 'public',
+			};
+
+			$wiki[$wikiState] = true;
+
+			switch ( true ) {
+				case $row->wiki_deleted:
+					$wiki['deleted'] = true;
+					break;
+
+				case $row->wiki_closed:
+					$wiki['closed'] = true;
+					if ( in_array( 'closure', $siteprop ) ) {
+						$wiki['closure'] = wfTimestamp( TS_ISO_8601, $row->wiki_closed_timestamp );
+					}
+					break;
+
+				case $row->wiki_inactive:
+					$wiki['inactive'] = true;
+					break;
+
+				default:
+					$wiki['active'] = true;
+			}
+
+			if ( $row->wiki_locked ) {
+				$wiki['locked'] = true;
 			}
 
 			$data[] = $wiki;
@@ -146,7 +182,7 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 					'active',
 					'private',
 					'public',
-					'deleted'
+					'deleted',
 				],
 				ParamValidator::PARAM_DEFAULT => 'all',
 			],

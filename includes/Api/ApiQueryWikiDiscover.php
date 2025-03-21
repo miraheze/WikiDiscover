@@ -94,7 +94,17 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 			$wiki = [];
 
 			if ( in_array( 'url', $siteprop ) ) {
-				$wiki['url'] = $row->wiki_url;
+				$url = $row->wiki_url;
+				if ( !$url ) {
+					$domain = $this->getConfig()->get( 'CreateWikiSubdomain' );
+					$subdomain = substr(
+						$row->wiki_dbname, 0,
+						-strlen( $this->getConfig()->get( 'CreateWikiDatabaseSuffix' ) )
+					);
+					$url = "https://$subdomain.$domain";
+				}
+
+				$wiki['url'] = $url;
 			}
 
 			if ( in_array( 'dbname', $siteprop ) ) {

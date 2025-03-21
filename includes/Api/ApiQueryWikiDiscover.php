@@ -140,16 +140,16 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 				$wiki['url'] = $url;
 			}
 
-			if ( in_array( 'category', $siteprop ) ) {
-				$wiki['dbname'] = $row->wiki_category;
-			}
-
 			if ( in_array( 'dbname', $siteprop ) ) {
 				$wiki['dbname'] = $row->wiki_dbname;
 			}
 
 			if ( in_array( 'sitename', $siteprop ) ) {
 				$wiki['sitename'] = $row->wiki_sitename;
+			}
+
+			if ( in_array( 'category', $siteprop ) ) {
+				$wiki['category'] = $row->wiki_category;
 			}
 
 			if ( in_array( 'languagecode', $siteprop ) ) {

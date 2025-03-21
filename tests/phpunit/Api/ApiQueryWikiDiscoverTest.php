@@ -2,7 +2,6 @@
 
 namespace Miraheze\WikiDiscover\Tests\Api;
 
-use MediaWiki\MainConfigNames;
 use MediaWiki\Tests\Api\ApiTestCase;
 use MediaWiki\WikiMap\WikiMap;
 

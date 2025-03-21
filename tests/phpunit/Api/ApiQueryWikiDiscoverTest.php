@@ -29,7 +29,10 @@ class ApiQueryWikiDiscoverTest extends ApiTestCase {
 			'list' => 'wikidiscover',
 		] );
 
-		var_dump( $data );
+		var_dump(
+			$this->getServiceContainer()->get( 'CreateWikiDatabaseUtils' )
+				->getGlobalReplicaDB()->getDomainID()
+		);
 
 		$this->assertArrayHasKey( 'query', $data );
 		$this->assertArrayHasKey( 'wikidiscover', $data['query'] );

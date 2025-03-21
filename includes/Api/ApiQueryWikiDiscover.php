@@ -209,7 +209,7 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 			],
 			'limit' => [
 				IntegerDef::PARAM_MIN => 1,
-				IntegerDef::PARAM_MAX => self::LIMIT_BIG1,
+				IntegerDef::PARAM_MAX => self::LIMIT_BIG2,
 				IntegerDef::PARAM_MAX2 => self::LIMIT_BIG2,
 				ParamValidator::PARAM_DEFAULT => self::LIMIT_BIG1,
 				ParamValidator::PARAM_TYPE => 'limit',

@@ -80,15 +80,13 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 		$this->addFieldsIf( 'wiki_creation', in_array( 'creation', $siteprop ) );
 		$this->addFieldsIf( 'wiki_closed_timestamp', in_array( 'closure', $siteprop ) );
 
-		$this->addFields(
-			[
-				'wiki_closed',
-				'wiki_deleted',
-				'wiki_inactive',
-				'wiki_locked',
-				'wiki_private',
-			]
-		);
+		$this->addFields( [
+			'wiki_closed',
+			'wiki_deleted',
+			'wiki_inactive',
+			'wiki_locked',
+			'wiki_private',
+		] );
 
 		$this->addOption( 'LIMIT', $limit );
 

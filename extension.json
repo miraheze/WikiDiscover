@@ -15,7 +15,7 @@
 			"CreateWiki": "*"
 		},
 		"platform": {
-			"php": ">= 8.0"
+			"php": ">= 8.1"
 		}
 	},
 	"SpecialPages": {
@@ -23,7 +23,12 @@
 		"WikiDiscover": "Miraheze\\WikiDiscover\\Specials\\SpecialWikiDiscover"
 	},
 	"APIListModules": {
-		"wikidiscover": "Miraheze\\WikiDiscover\\Api\\ApiQueryWikiDiscover"
+		"wikidiscover": {
+			"class": "Miraheze\\WikiDiscover\\Api\\ApiQueryWikiDiscover",
+			"services": [
+				"CreateWikiDatabaseUtils"
+			]
+		}
 	},
 	"MessagesDirs": {
 		"WikiDiscover": [

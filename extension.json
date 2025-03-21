@@ -47,13 +47,13 @@
 	},
 	"Hooks": {
 		"ParserFirstCallInit": [
-			"Miraheze\\WikiDiscover\\WikiDiscover::onParserFirstCallInit"
+			"Miraheze\\WikiDiscover\\Hooks::onParserFirstCallInit"
 		],
 		"ParserGetVariableValueSwitch": [
-			"Miraheze\\WikiDiscover\\WikiDiscover::onParserGetVariableValueSwitch"
+			"Miraheze\\WikiDiscover\\Hooks::onParserGetVariableValueSwitch"
 		],
 		"GetMagicVariableIDs": [
-			"Miraheze\\WikiDiscover\\WikiDiscover::onGetMagicVariableIDs"
+			"Miraheze\\WikiDiscover\\Hooks::onGetMagicVariableIDs"
 		]
 	},
 	"config": {

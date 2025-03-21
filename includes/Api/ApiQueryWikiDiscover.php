@@ -66,7 +66,7 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 			$isLanguageInvalid = count(
 				array_filter(
 					$language,
-					fn ( string $code ): bool => !$this->languageNameUtils->isValidCode( $code )
+					fn ( string $code ): bool => !$this->languageNameUtils->isSupportedLanguage( $code )
 				)
 			) > 0;
 

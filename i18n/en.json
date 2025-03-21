@@ -21,6 +21,8 @@
 	"wikidiscover-table-visibility": "Visibility",
 	"wikidiscover-table-wiki": "Wiki name",
 	"apihelp-query+wikidiscover-summary": "Get a list of wikis on a CreateWiki wikifarm.",
+	"apihelp-query+wikidiscover-param-category": "Filter by the CreateWiki defined category of a wiki.",
+	"apihelp-query+wikidiscover-param-language": "Filter by the CreateWiki defined language code of a wiki.",
 	"apihelp-query+wikidiscover-param-state": "Filter by the CreateWiki defined state of a wiki.",
 	"apihelp-query+wikidiscover-param-siteprop": "Information to return about a defined wiki.",
 	"apihelp-query+wikidiscover-param-limit": "Maximum number of results to show.",

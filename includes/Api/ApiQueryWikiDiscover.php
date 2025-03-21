@@ -147,13 +147,11 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 				$wiki['url'] = $url;
 			}
 
-			if ( in_array( 'dbname', $siteprop ) ) {
-				$wiki['dbname'] = $row->wiki_dbname;
-				if ( in_array( 'description', $siteprop ) ) {
-					if ( $this->extensionRegistry->isLoaded( 'ManageWiki' ) ) {
-						$manageWikiSettings = new ManageWikiSettings( $wiki['dbname'] );
-						$wiki['description'] = $manageWikiSettings->list( 'wgWikiDiscoverDescription' );
-					}
+			$wiki['dbname'] = $row->wiki_dbname;
+			if ( in_array( 'description', $siteprop ) ) {
+				if ( $this->extensionRegistry->isLoaded( 'ManageWiki' ) ) {
+					$manageWikiSettings = new ManageWikiSettings( $wiki['dbname'] );
+					$wiki['description'] = $manageWikiSettings->list( 'wgWikiDiscoverDescription' );
 				}
 			}
 

@@ -43,13 +43,23 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 		$params = $this->extractRequestParams();
 		$result = $this->getResult();
 
+		$category = $params['category'];
+		$language = $params['language'];
 		$siteprop = $params['siteprop'];
 		$state = $params['state'];
 		$limit = $params['limit'];
 		$offset = $params['offset'];
-		$wikislist = $params['wikislist'];
+		$wikis = $params['wikis'];
 
 		$this->addTables( 'cw_wikis' );
+		
+		if ( $category ) {
+			$this->addWhereFld( 'wiki_category', $category );
+		}
+
+		if ( $language ) {
+			$this->addWhereFld( 'wiki_language', $language );
+		}
 
 		if ( $state !== 'all' ) {
 			if ( in_array( 'closed', $state ) ) {
@@ -79,12 +89,15 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 			}
 		}
 
-		$this->addFieldsIf( 'wiki_url', in_array( 'url', $siteprop ) );
-		$this->addFieldsIf( 'wiki_dbname', in_array( 'dbname', $siteprop ) );
-		$this->addFieldsIf( 'wiki_sitename', in_array( 'sitename', $siteprop ) );
-		$this->addFieldsIf( 'wiki_language', in_array( 'languagecode', $siteprop ) );
+		$this->addFieldsIf( 'wiki_category', in_array( 'category', $siteprop ) );
 		$this->addFieldsIf( 'wiki_creation', in_array( 'creation', $siteprop ) );
+		$this->addFieldsIf( 'wiki_dbname', in_array( 'dbname', $siteprop ) );
+		$this->addFieldsIf( 'wiki_language', in_array( 'languagecode', $siteprop ) );
+		$this->addFieldsIf( 'wiki_sitename', in_array( 'sitename', $siteprop ) );
+		$this->addFieldsIf( 'wiki_url', in_array( 'url', $siteprop ) );
+
 		$this->addFieldsIf( 'wiki_closed_timestamp', in_array( 'closure', $siteprop ) );
+		$this->addFieldsIf( 'wiki_deleted_timestamp', in_array( 'deletion', $siteprop ) );
 
 		$this->addFields( [
 			'wiki_closed',
@@ -97,8 +110,8 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 		$this->addOption( 'LIMIT', $limit );
 		$this->addOption( 'OFFSET', $offset );
 
-		if ( $wikislist ) {
-			$this->addWhereFld( 'wiki_dbname', explode( ',', $wikislist ) );
+		if ( $wikis ) {
+			$this->addWhereFld( 'wiki_dbname', $wikis );
 		}
 
 		$res = $this->select( __METHOD__ );
@@ -127,6 +140,10 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 				$wiki['url'] = $url;
 			}
 
+			if ( in_array( 'category', $siteprop ) ) {
+				$wiki['dbname'] = $row->wiki_category;
+			}
+
 			if ( in_array( 'dbname', $siteprop ) ) {
 				$wiki['dbname'] = $row->wiki_dbname;
 			}
@@ -153,6 +170,9 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 			switch ( true ) {
 				case $row->wiki_deleted:
 					$wiki['deleted'] = true;
+					if ( in_array( 'deletion', $siteprop ) ) {
+						$wiki['deletion'] = wfTimestamp( TS_ISO_8601, $row->wiki_deleted_timestamp );
+					}
 					break;
 
 				case $row->wiki_closed:
@@ -185,6 +205,14 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 	/** @inheritDoc */
 	protected function getAllowedParams(): array {
 		return [
+			'category' => [
+				ParamValidator::PARAM_ISMULTI => true,
+				ParamValidator::PARAM_TYPE => $this->getConfig()->get( 'CreateWikiCategories' ),
+			],
+			'languagecode' => [
+				ParamValidator::PARAM_ISMULTI => true,
+				ParamValidator::PARAM_TYPE => 'string',
+			],
 			'state' => [
 				ParamValidator::PARAM_DEFAULT => 'all',
 				ParamValidator::PARAM_ISMULTI => true,
@@ -202,12 +230,14 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 				ParamValidator::PARAM_DEFAULT => 'url|dbname|sitename|languagecode',
 				ParamValidator::PARAM_ISMULTI => true,
 				ParamValidator::PARAM_TYPE => [
-					'url',
-					'dbname',
-					'sitename',
-					'languagecode',
-					'creation',
+					'category',
 					'closure',
+					'creation',
+					'dbname',
+					'deletion',
+					'languagecode',
+					'sitename',
+					'url',
 				],
 			],
 			'limit' => [
@@ -221,7 +251,8 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 				ApiBase::PARAM_HELP_MSG => 'api-help-param-continue',
 				ParamValidator::PARAM_DEFAULT => 0,
 			],
-			'wikislist' => [
+			'wikis' => [
+				ParamValidator::PARAM_ISMULTI => true,
 				ParamValidator::PARAM_TYPE => 'string',
 			],
 		];

@@ -35,7 +35,7 @@ class ApiQueryWikiDiscoverTest extends ApiTestCase {
 	}
 
 	private function insertWiki(): void {
-		$databaseUtils = $this->getServiceContainer()->get( 'CreateWikiDatabaseUtils' )
+		$databaseUtils = $this->getServiceContainer()->get( 'CreateWikiDatabaseUtils' );
 		$dbw = $databaseUtils->getGlobalPrimaryDB();
 		$dbw->newInsertQueryBuilder()
 			->insertInto( 'cw_wikis' )

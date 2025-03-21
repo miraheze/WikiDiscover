@@ -6,6 +6,7 @@ use MediaWiki\Api\ApiBase;
 use MediaWiki\Api\ApiPageSet;
 use MediaWiki\Api\ApiQuery;
 use MediaWiki\Api\ApiQueryGeneratorBase;
+use MediaWiki\Languages\LanguageNameUtils;
 use MediaWiki\Registration\ExtensionRegistry;
 use Miraheze\CreateWiki\Services\CreateWikiDatabaseUtils;
 use Miraheze\ManageWiki\Helpers\ManageWikiSettings;
@@ -19,7 +20,8 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 		ApiQuery $query,
 		string $moduleName,
 		private readonly CreateWikiDatabaseUtils $databaseUtils,
-		private readonly ExtensionRegistry $extensionRegistry
+		private readonly ExtensionRegistry $extensionRegistry,
+		private readonly LanguageNameUtils $languageNameUtils
 	) {
 		parent::__construct( $query, $moduleName, 'wd' );
 	}
@@ -61,6 +63,14 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 		}
 
 		if ( $language ) {
+			if ( !$this->languageNameUtils->isValidCode( $language ) ) {
+				$encodedLanguage = $this->encodeParamName( 'language' );
+				$this->dieWithError(
+					[ 'apierror-invalidlang', $encodedLanguage ],
+					'invalidlanguage'
+				);
+			}
+
 			$this->addWhereFld( 'wiki_language', $language );
 		}
 

@@ -52,7 +52,7 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 		$wikis = $params['wikis'];
 
 		$this->addTables( 'cw_wikis' );
-		
+
 		if ( $category ) {
 			$this->addWhereFld( 'wiki_category', $category );
 		}

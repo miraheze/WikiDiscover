@@ -26,7 +26,8 @@
 		"wikidiscover": {
 			"class": "Miraheze\\WikiDiscover\\Api\\ApiQueryWikiDiscover",
 			"services": [
-				"CreateWikiDatabaseUtils"
+				"CreateWikiDatabaseUtils",
+				"ExtensionRegistry"
 			]
 		}
 	},

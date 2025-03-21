@@ -76,6 +76,7 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 		$this->addFieldsIf( 'wiki_sitename', in_array( 'sitename', $siteprop ) );
 		$this->addFieldsIf( 'wiki_language', in_array( 'languagecode', $siteprop ) );
 		$this->addFieldsIf( 'wiki_creation', in_array( 'creation', $siteprop ) );
+		$this->addFieldsIf( 'wiki_closed_timestamp', in_array( 'closure', $siteprop ) );
 
 		$this->addOption( 'LIMIT', $limit );
 
@@ -106,7 +107,11 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 			}
 
 			if ( in_array( 'creation', $siteprop ) ) {
-				$wiki['creation'] = $row->wiki_creation;
+				$wiki['creation'] = wfTimestamp( TS_ISO_8601, $row->wiki_creation );
+			}
+
+			if ( in_array( 'closure', $siteprop ) ) {
+				$wiki['closure'] = wfTimestamp( TS_ISO_8601, $row->wiki_closed_timestamp );
 			}
 
 			$data[] = $wiki;
@@ -140,6 +145,7 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 					'sitename',
 					'languagecode',
 					'creation',
+					'closure',
 				],
 				ParamValidator::PARAM_DEFAULT => 'url|dbname|sitename|languagecode',
 			],

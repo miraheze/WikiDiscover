@@ -21,7 +21,7 @@ class ApiQueryWikiDiscoverTest extends ApiTestCase {
 	 */
 	public function testQueryWikiDiscover() {
 		$this->overrideConfigValue( MainConfigNames::VirtualDomainsMapping, [
-			'virtual-createwiki' => [ 'db' => WikiMap::getCurrentWikiId() ],
+			'virtual-createwiki' => [ 'db' => 'wikidb' ],
 		] );
 
 		[ $data ] = $this->doApiRequest( [

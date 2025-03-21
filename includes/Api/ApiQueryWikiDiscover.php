@@ -209,7 +209,7 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 				ParamValidator::PARAM_ISMULTI => true,
 				ParamValidator::PARAM_TYPE => $this->getConfig()->get( 'CreateWikiCategories' ),
 			],
-			'languagecode' => [
+			'language' => [
 				ParamValidator::PARAM_ISMULTI => true,
 				ParamValidator::PARAM_TYPE => 'string',
 			],

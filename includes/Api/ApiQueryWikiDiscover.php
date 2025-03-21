@@ -177,7 +177,6 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 				break;
 			}
 		}
-
 	}
 
 	/** @inheritDoc */

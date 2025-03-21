@@ -29,10 +29,10 @@ class ApiQueryWikiDiscoverTest extends ApiTestCase {
 
 		$this->assertArrayHasKey( 'query', $data );
 		$this->assertArrayHasKey( 'wikidiscover', $data['query'] );
-		$this->assertGreaterThan( 0, count( $data['query']['wikidiscover'] ) );
+		$this->assertNotCount( 0, $data['query']['wikidiscover'], 'wikidiscover API response should not be empty' );
 		foreach ( $data['query']['wikidiscover'] as $wiki ) {
-			$this->assertArrayHasKey( 'dbname', $wiki );
-			$this->assertArrayHasKey( 'sitename', $wiki );
+			$this->assertArrayHasKey( 'dbname', $wiki[0] );
+			$this->assertArrayHasKey( 'sitename', $wiki[0] );
 		}
 	}
 }

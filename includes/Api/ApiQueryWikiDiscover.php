@@ -63,7 +63,14 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 		}
 
 		if ( $language ) {
-			if ( !$this->languageNameUtils->isValidCode( $language ) ) {
+			$isLanguageInvalid = count(
+				array_filter(
+					$language,
+					fn ( string $code ): bool => !$this->languageNameUtils->isValidCode( $code )
+				)
+			) > 0;
+
+			if ( $isLanguageInvalid ) {
 				$encodedLanguage = $this->encodeParamName( 'language' );
 				$this->dieWithError(
 					[ 'apierror-invalidlang', $encodedLanguage ],

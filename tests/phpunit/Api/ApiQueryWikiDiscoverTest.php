@@ -4,6 +4,7 @@ namespace Miraheze\WikiDiscover\Tests\Api;
 
 use MediaWiki\MainConfigNames;
 use MediaWiki\Tests\Api\ApiTestCase;
+use MediaWiki\WikiMap\WikiMap;
 
 /**
  * @group WikiDiscover
@@ -18,20 +19,12 @@ class ApiQueryWikiDiscoverTest extends ApiTestCase {
 	 * @covers ::execute
 	 * @covers ::run
 	 */
-	public function testQueryWikiDiscover() {
-		$this->overrideConfigValue( MainConfigNames::VirtualDomainsMapping, [
-			'virtual-createwiki' => [ 'db' => 'wikidb' ],
-		] );
-
+	public function testQueryWikiDiscover(): void {
+		$this->insertWiki();
 		[ $data ] = $this->doApiRequest( [
 			'action' => 'query',
 			'list' => 'wikidiscover',
 		] );
-
-		var_dump(
-			$this->getServiceContainer()->get( 'CreateWikiDatabaseUtils' )
-				->getGlobalReplicaDB()->getDomainID()
-		);
 
 		$this->assertArrayHasKey( 'query', $data );
 		$this->assertArrayHasKey( 'wikidiscover', $data['query'] );
@@ -40,5 +33,23 @@ class ApiQueryWikiDiscoverTest extends ApiTestCase {
 			$this->assertArrayHasKey( 'dbname', $wiki );
 			$this->assertArrayHasKey( 'sitename', $wiki );
 		}
+	}
+
+	private function insertWiki(): void {
+		$databaseUtils = $this->getServiceContainer()->get( 'CreateWikiDatabaseUtils' )
+		$dbw = $databaseUtils->getGlobalPrimaryDB();
+		$dbw->newInsertQueryBuilder()
+			->insertInto( 'cw_wikis' )
+			->row( [
+				'wiki_dbname' => WikiMap::getCurrentWikiId(),
+				'wiki_dbcluster' => 'c1',
+				'wiki_sitename' => 'Central Wiki',
+				'wiki_language' => 'en',
+				'wiki_private' => 0,
+				'wiki_creation' => $dbw->timestamp(),
+				'wiki_category' => 'uncategorised',
+			] )
+			->caller( __METHOD__ )
+			->execute();
 	}
 }

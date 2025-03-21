@@ -132,14 +132,14 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 				$wiki['creation'] = wfTimestamp( TS_ISO_8601, $row->wiki_creation );
 			}
 
-			$wikiState = match ( true ) {
+			$wikiState = match ( 1 ) {
 				$row->wiki_private => 'private',
 				default	=> 'public',
 			};
 
 			$wiki[$wikiState] = true;
 
-			switch ( true ) {
+			switch ( 1 ) {
 				case $row->wiki_deleted:
 					$wiki['deleted'] = true;
 					break;

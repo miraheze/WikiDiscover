@@ -16,7 +16,6 @@ class ApiQueryWikiDiscoverTest extends ApiTestCase {
 	/**
 	 * @covers ::__construct
 	 * @covers ::execute
-	 * @covers ::run
 	 */
 	public function testQueryWikiDiscover(): void {
 		$this->insertWiki();

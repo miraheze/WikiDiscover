@@ -92,8 +92,16 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 				);
 			}
 
+			if ( in_array( 'open', $state ) ) {
+				$this->addWhere( 'wiki_closed = 0 AND wiki_deleted = 0' );
+			}
+
 			if ( in_array( 'locked', $state ) ) {
 				$this->addWhereFld( 'wiki_locked', 1 );
+			}
+
+			if ( in_array( 'unlocked', $state ) ) {
+				$this->addWhereFld( 'wiki_locked', 0 );
 			}
 
 			if ( in_array( 'private', $state ) ) {
@@ -252,8 +260,10 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 					'deleted',
 					'inactive',
 					'locked',
+					'open',
 					'private',
 					'public',
+					'unlocked',
 				],
 			],
 			'siteprop' => [

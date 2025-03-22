@@ -53,7 +53,7 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 
 		$category = $params['category'];
 		$language = $params['language'];
-		$siteprop = $params['siteprop'];
+		$prop = $params['prop'];
 		$state = $params['state'];
 		$limit = $params['limit'];
 		$offset = $params['offset'];
@@ -133,16 +133,16 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 			$params['customurl']
 		);
 
-		$this->addFieldsIf( 'wiki_category', in_array( 'category', $siteprop ) );
-		$this->addFieldsIf( 'wiki_creation', in_array( 'creation', $siteprop ) );
-		$this->addFieldsIf( 'wiki_language', in_array( 'languagecode', $siteprop ) );
-		$this->addFieldsIf( 'wiki_sitename', in_array( 'sitename', $siteprop ) );
-		$this->addFieldsIf( 'wiki_url', in_array( 'url', $siteprop ) );
+		$this->addFieldsIf( 'wiki_category', in_array( 'category', $prop ) );
+		$this->addFieldsIf( 'wiki_creation', in_array( 'creation', $prop ) );
+		$this->addFieldsIf( 'wiki_language', in_array( 'languagecode', $prop ) );
+		$this->addFieldsIf( 'wiki_sitename', in_array( 'sitename', $prop ) );
+		$this->addFieldsIf( 'wiki_url', in_array( 'url', $prop ) );
 
-		$this->addFieldsIf( 'wiki_closed_timestamp', in_array( 'closure', $siteprop ) );
-		$this->addFieldsIf( 'wiki_deleted_timestamp', in_array( 'deletion', $siteprop ) );
+		$this->addFieldsIf( 'wiki_closed_timestamp', in_array( 'closure', $prop ) );
+		$this->addFieldsIf( 'wiki_deleted_timestamp', in_array( 'deletion', $prop ) );
 
-		$this->addFieldsIf( 'wiki_inactive_exempt_reason', in_array( 'exemptreason', $siteprop ) );
+		$this->addFieldsIf( 'wiki_inactive_exempt_reason', in_array( 'exemptreason', $prop ) );
 
 		$this->addFields( [
 			'wiki_closed',
@@ -173,32 +173,32 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 
 			$wiki = [];
 
-			if ( in_array( 'url', $siteprop ) ) {
+			if ( in_array( 'url', $prop ) ) {
 				$wiki['url'] = $row->wiki_url ?:
 					$this->validator->getValidUrl( $row->wiki_dbname );
 			}
 
 			$wiki['dbname'] = $row->wiki_dbname;
-			if ( in_array( 'description', $siteprop ) ) {
+			if ( in_array( 'description', $prop ) ) {
 				if ( $this->extensionRegistry->isLoaded( 'ManageWiki' ) ) {
 					$manageWikiSettings = new ManageWikiSettings( $wiki['dbname'] );
 					$wiki['description'] = $manageWikiSettings->list( 'wgWikiDiscoverDescription' );
 				}
 			}
 
-			if ( in_array( 'sitename', $siteprop ) ) {
+			if ( in_array( 'sitename', $prop ) ) {
 				$wiki['sitename'] = $row->wiki_sitename;
 			}
 
-			if ( in_array( 'category', $siteprop ) ) {
+			if ( in_array( 'category', $prop ) ) {
 				$wiki['category'] = $row->wiki_category;
 			}
 
-			if ( in_array( 'languagecode', $siteprop ) ) {
+			if ( in_array( 'languagecode', $prop ) ) {
 				$wiki['languagecode'] = $row->wiki_language;
 			}
 
-			if ( in_array( 'creation', $siteprop ) ) {
+			if ( in_array( 'creation', $prop ) ) {
 				$wiki['creation'] = wfTimestamp( TS_ISO_8601, $row->wiki_creation );
 			}
 
@@ -212,14 +212,14 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 			switch ( true ) {
 				case $row->wiki_deleted:
 					$wiki['deleted'] = true;
-					if ( in_array( 'deletion', $siteprop ) ) {
+					if ( in_array( 'deletion', $prop ) ) {
 						$wiki['deletion'] = wfTimestamp( TS_ISO_8601, $row->wiki_deleted_timestamp );
 					}
 					break;
 
 				case $row->wiki_closed:
 					$wiki['closed'] = true;
-					if ( in_array( 'closure', $siteprop ) ) {
+					if ( in_array( 'closure', $prop ) ) {
 						$wiki['closure'] = wfTimestamp( TS_ISO_8601, $row->wiki_closed_timestamp );
 					}
 					break;
@@ -230,7 +230,7 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 
 				case $row->wiki_inactive_exempt:
 					$wiki['inactive'] = 'exempt';
-					if ( in_array( 'exemptreason', $siteprop ) ) {
+					if ( in_array( 'exemptreason', $prop ) ) {
 						$reason = $row->wiki_inactive_exempt_reason;
 						if ( $this->extensionRegistry->isLoaded( 'ManageWiki' ) ) {
 							$options = $this->getConfig()->get( 'ManageWikiInactiveExemptReasonOptions' );
@@ -276,6 +276,32 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 				ParamValidator::PARAM_ISMULTI => true,
 				ParamValidator::PARAM_TYPE => 'string',
 			],
+			'limit' => [
+				IntegerDef::PARAM_MIN => 1,
+				IntegerDef::PARAM_MAX => self::LIMIT_BIG1,
+				IntegerDef::PARAM_MAX2 => self::LIMIT_BIG2,
+				ParamValidator::PARAM_DEFAULT => self::LIMIT_BIG1,
+				ParamValidator::PARAM_TYPE => 'limit',
+			],
+			'offset' => [
+				ApiBase::PARAM_HELP_MSG => 'api-help-param-continue',
+				ParamValidator::PARAM_DEFAULT => 0,
+			],
+			'prop' => [
+				ParamValidator::PARAM_DEFAULT => 'category|languagecode|sitename|url',
+				ParamValidator::PARAM_ISMULTI => true,
+				ParamValidator::PARAM_TYPE => [
+					'category',
+					'closure',
+					'creation',
+					'description',
+					'deletion',
+					'exemptreason',
+					'languagecode',
+					'sitename',
+					'url',
+				],
+			],
 			'state' => [
 				ParamValidator::PARAM_DEFAULT => 'all',
 				ParamValidator::PARAM_ISMULTI => true,
@@ -292,32 +318,6 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 					'public',
 					'unlocked',
 				],
-			],
-			'siteprop' => [
-				ParamValidator::PARAM_DEFAULT => 'category|languagecode|sitename|url',
-				ParamValidator::PARAM_ISMULTI => true,
-				ParamValidator::PARAM_TYPE => [
-					'category',
-					'closure',
-					'creation',
-					'description',
-					'deletion',
-					'exemptreason',
-					'languagecode',
-					'sitename',
-					'url',
-				],
-			],
-			'limit' => [
-				IntegerDef::PARAM_MIN => 1,
-				IntegerDef::PARAM_MAX => self::LIMIT_BIG1,
-				IntegerDef::PARAM_MAX2 => self::LIMIT_BIG2,
-				ParamValidator::PARAM_DEFAULT => self::LIMIT_BIG1,
-				ParamValidator::PARAM_TYPE => 'limit',
-			],
-			'offset' => [
-				ApiBase::PARAM_HELP_MSG => 'api-help-param-continue',
-				ParamValidator::PARAM_DEFAULT => 0,
 			],
 			'wikis' => [
 				ParamValidator::PARAM_ISMULTI => true,

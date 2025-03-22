@@ -173,18 +173,11 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 			}
 
 			$wiki = [];
+			$wiki['dbname'] = $row->wiki_dbname;
 
 			if ( in_array( 'url', $prop ) ) {
 				$wiki['url'] = $row->wiki_url ?:
 					$this->validator->getValidUrl( $row->wiki_dbname );
-			}
-
-			$wiki['dbname'] = $row->wiki_dbname;
-			if ( in_array( 'description', $prop ) ) {
-				if ( $this->extensionRegistry->isLoaded( 'ManageWiki' ) ) {
-					$manageWikiSettings = new ManageWikiSettings( $wiki['dbname'] );
-					$wiki['description'] = $manageWikiSettings->list( 'wgWikiDiscoverDescription' );
-				}
 			}
 
 			if ( in_array( 'sitename', $prop ) ) {
@@ -197,6 +190,13 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 
 			if ( in_array( 'languagecode', $prop ) ) {
 				$wiki['languagecode'] = $row->wiki_language;
+			}
+
+			if ( in_array( 'description', $prop ) ) {
+				if ( $this->extensionRegistry->isLoaded( 'ManageWiki' ) ) {
+					$manageWikiSettings = new ManageWikiSettings( $wiki['dbname'] );
+					$wiki['description'] = $manageWikiSettings->list( 'wgWikiDiscoverDescription' );
+				}
 			}
 
 			if ( in_array( 'creationdate', $prop ) ) {

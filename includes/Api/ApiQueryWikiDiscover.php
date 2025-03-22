@@ -86,6 +86,10 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 				$this->addWhereFld( 'wiki_inactive', 1 );
 			}
 
+			if ( in_array( 'exempt', $state ) ) {
+				$this->addWhereFld( 'wiki_inactive_exempt', 1 );
+			}
+
 			if ( in_array( 'active', $state ) ) {
 				$this->addWhere(
 					'wiki_closed = 0 AND wiki_deleted = 0 AND wiki_inactive = 0'
@@ -126,11 +130,14 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 		$this->addFieldsIf( 'wiki_closed_timestamp', in_array( 'closure', $siteprop ) );
 		$this->addFieldsIf( 'wiki_deleted_timestamp', in_array( 'deletion', $siteprop ) );
 
+		$this->addFieldsIf( 'wiki_inactive_exempt_reason', in_array( 'exemptreason', $siteprop ) );
+
 		$this->addFields( [
 			'wiki_closed',
 			'wiki_dbname',
 			'wiki_deleted',
 			'wiki_inactive',
+			'wiki_inactive_exempt',
 			'wiki_locked',
 			'wiki_private',
 		] );
@@ -218,6 +225,13 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 					$wiki['inactive'] = true;
 					break;
 
+				case $row->wiki_inactive_exempt:
+					$wiki['inactive'] = 'exempt';
+					if ( in_array( 'exemptreason', $siteprop ) ) {
+						$wiki['exempt-reason'] = $row->wiki_inactive_exempt_reason;
+					}
+					break;
+
 				default:
 					$wiki['active'] = true;
 			}
@@ -258,6 +272,7 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 					'active',
 					'closed',
 					'deleted',
+					'exempt',
 					'inactive',
 					'locked',
 					'open',
@@ -275,6 +290,7 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 					'creation',
 					'description',
 					'deletion',
+					'exemptreason',
 					'languagecode',
 					'sitename',
 					'url',

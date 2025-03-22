@@ -93,13 +93,18 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 			}
 
 			if ( in_array( 'active', $state ) ) {
-				$this->addWhere(
-					'wiki_closed = 0 AND wiki_deleted = 0 AND wiki_inactive = 0'
-				);
+				$this->addWhere( [
+					'wiki_closed' => 0,
+					'wiki_deleted' => 0,
+					'wiki_inactive' => 0,
+				] );
 			}
 
 			if ( in_array( 'open', $state ) ) {
-				$this->addWhere( 'wiki_closed = 0 AND wiki_deleted = 0' );
+				$this->addWhere( [
+					'wiki_closed' => 0,
+					'wiki_deleted' => 0,
+				] );
 			}
 
 			if ( in_array( 'locked', $state ) ) {
@@ -122,6 +127,11 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 				$this->addWhereFld( 'wiki_deleted', 1 );
 			}
 		}
+
+		$this->addWhereIf(
+			$this->getDB()->expr( 'wiki_url', '!=', null ),
+			$params['customurl']
+		);
 
 		$this->addFieldsIf( 'wiki_category', in_array( 'category', $siteprop ) );
 		$this->addFieldsIf( 'wiki_creation', in_array( 'creation', $siteprop ) );
@@ -257,6 +267,10 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 			'category' => [
 				ParamValidator::PARAM_ISMULTI => true,
 				ParamValidator::PARAM_TYPE => $this->getConfig()->get( 'CreateWikiCategories' ),
+			],
+			'customurl' => [
+				ParamValidator::PARAM_DEFAULT => false,
+				ParamValidator::PARAM_TYPE => 'boolean',
 			],
 			'language' => [
 				ParamValidator::PARAM_ISMULTI => true,

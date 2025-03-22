@@ -130,17 +130,18 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 
 		$this->addWhereIf(
 			$this->getDB()->expr( 'wiki_url', '!=', null ),
-			$params['customurl'] === true
+			$params['customurl']
 		);
 
 		$this->addFieldsIf( 'wiki_category', in_array( 'category', $prop ) );
-		$this->addFieldsIf( 'wiki_creation', in_array( 'creation', $prop ) );
+		$this->addFieldsIf( 'wiki_creation', in_array( 'creationdate', $prop ) );
 		$this->addFieldsIf( 'wiki_language', in_array( 'languagecode', $prop ) );
 		$this->addFieldsIf( 'wiki_sitename', in_array( 'sitename', $prop ) );
 		$this->addFieldsIf( 'wiki_url', in_array( 'url', $prop ) );
 
-		$this->addFieldsIf( 'wiki_closed_timestamp', in_array( 'closure', $prop ) );
-		$this->addFieldsIf( 'wiki_deleted_timestamp', in_array( 'deletion', $prop ) );
+		$this->addFieldsIf( 'wiki_closed_timestamp', in_array( 'closuredate', $prop ) );
+		$this->addFieldsIf( 'wiki_deleted_timestamp', in_array( 'deletiondate', $prop ) );
+		$this->addFieldsIf( 'wiki_inactive_timestamp', in_array( 'inactivedate', $prop ) );
 
 		$this->addFieldsIf( 'wiki_inactive_exempt_reason', in_array( 'exemptreason', $prop ) );
 
@@ -198,8 +199,8 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 				$wiki['languagecode'] = $row->wiki_language;
 			}
 
-			if ( in_array( 'creation', $prop ) ) {
-				$wiki['creation'] = wfTimestamp( TS_ISO_8601, $row->wiki_creation );
+			if ( in_array( 'creationdate', $prop ) ) {
+				$wiki['creationdate'] = wfTimestamp( TS_ISO_8601, $row->wiki_creation );
 			}
 
 			$wikiState = match ( true ) {
@@ -212,20 +213,23 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 			switch ( true ) {
 				case $row->wiki_deleted:
 					$wiki['deleted'] = true;
-					if ( in_array( 'deletion', $prop ) ) {
-						$wiki['deletion'] = wfTimestamp( TS_ISO_8601, $row->wiki_deleted_timestamp );
+					if ( in_array( 'deletiondate', $prop ) ) {
+						$wiki['deletiondate'] = wfTimestamp( TS_ISO_8601, $row->wiki_deleted_timestamp );
 					}
 					break;
 
 				case $row->wiki_closed:
 					$wiki['closed'] = true;
-					if ( in_array( 'closure', $prop ) ) {
-						$wiki['closure'] = wfTimestamp( TS_ISO_8601, $row->wiki_closed_timestamp );
+					if ( in_array( 'closuredate', $prop ) ) {
+						$wiki['closuredate'] = wfTimestamp( TS_ISO_8601, $row->wiki_closed_timestamp );
 					}
 					break;
 
 				case $row->wiki_inactive:
 					$wiki['inactive'] = true;
+					if ( in_array( 'inactivedate', $prop ) ) {
+						$wiki['inactivedate'] = wfTimestamp( TS_ISO_8601, $row->wiki_inactive_timestamp );
+					}
 					break;
 
 				case $row->wiki_inactive_exempt:
@@ -236,7 +240,7 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 							$options = $this->getConfig()->get( 'ManageWikiInactiveExemptReasonOptions' );
 							$reason = array_flip( $options )[$reason] ?? $reason;
 						}
-						$wiki['exempt-reason'] = $reason;
+						$wiki['exemptreason'] = $reason;
 					}
 					break;
 
@@ -292,11 +296,12 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 				ParamValidator::PARAM_ISMULTI => true,
 				ParamValidator::PARAM_TYPE => [
 					'category',
-					'closure',
-					'creation',
+					'closuredate',
+					'creationdate',
 					'description',
-					'deletion',
+					'deletiondate',
 					'exemptreason',
+					'inactivedate',
 					'languagecode',
 					'sitename',
 					'url',

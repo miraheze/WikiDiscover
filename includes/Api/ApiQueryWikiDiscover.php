@@ -130,7 +130,7 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 
 		$this->addWhereIf(
 			$this->getDB()->expr( 'wiki_url', '!=', null ),
-			$params['customurl']
+			$params['customurl'] === true
 		);
 
 		$this->addFieldsIf( 'wiki_category', in_array( 'category', $prop ) );

@@ -231,7 +231,7 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 						$reason = $row->wiki_inactive_exempt_reason;
 						if ( $this->extensionRegistry->isLoaded( 'ManageWiki' ) ) {
 							$options = $this->getConfig()->get( 'ManageWikiInactiveExemptReasonOptions' );
-							$reason = $options[$reason] ?? $reason;
+							$reason = array_flip( $options )[$reason] ?? $reason;
 						}
 						$wiki['exempt-reason'] = $reason;
 					}

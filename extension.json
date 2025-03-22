@@ -27,6 +27,7 @@
 			"class": "Miraheze\\WikiDiscover\\Api\\ApiQueryWikiDiscover",
 			"services": [
 				"CreateWikiDatabaseUtils",
+				"CreateWikiValidator",
 				"ExtensionRegistry",
 				"LanguageNameUtils"
 			]

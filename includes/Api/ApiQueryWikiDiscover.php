@@ -6,6 +6,7 @@ use MediaWiki\Api\ApiBase;
 use MediaWiki\Api\ApiPageSet;
 use MediaWiki\Api\ApiQuery;
 use MediaWiki\Api\ApiQueryGeneratorBase;
+use MediaWiki\Api\ApiResult;
 use MediaWiki\Languages\LanguageNameUtils;
 use MediaWiki\Registration\ExtensionRegistry;
 use Miraheze\CreateWiki\Services\CreateWikiDatabaseUtils;
@@ -217,12 +218,17 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 				$wiki['locked'] = true;
 			}
 
-			$fit = $result->addValue( [ 'query', $this->getModuleName() ], $row->wiki_dbname, $wiki );
+			$fit = $result->addValue( [ 'query', $this->getModuleName(), 'wikis' ], $row->wiki_dbname, $wiki );
 			if ( !$fit ) {
 				$this->setContinueEnumParameter( 'offset', $offset + $count - 1 );
 				break;
 			}
 		}
+
+		$result->addValue(
+			[ 'query', $this->getModuleName() ], 'count', $count,
+			ApiResult::ADD_ON_TOP | ApiResult::NO_SIZE_CHECK
+		);
 	}
 
 	/** @inheritDoc */

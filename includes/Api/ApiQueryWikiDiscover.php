@@ -10,6 +10,7 @@ use MediaWiki\Api\ApiResult;
 use MediaWiki\Languages\LanguageNameUtils;
 use MediaWiki\Registration\ExtensionRegistry;
 use Miraheze\CreateWiki\Services\CreateWikiDatabaseUtils;
+use Miraheze\CreateWiki\Services\CreateWikiValidator;
 use Miraheze\ManageWiki\Helpers\ManageWikiSettings;
 use Wikimedia\ParamValidator\ParamValidator;
 use Wikimedia\ParamValidator\TypeDef\IntegerDef;
@@ -21,6 +22,7 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 		ApiQuery $query,
 		string $moduleName,
 		private readonly CreateWikiDatabaseUtils $databaseUtils,
+		private readonly CreateWikiValidator $validator,
 		private readonly ExtensionRegistry $extensionRegistry,
 		private readonly LanguageNameUtils $languageNameUtils
 	) {
@@ -162,17 +164,8 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 			$wiki = [];
 
 			if ( in_array( 'url', $siteprop ) ) {
-				$url = $row->wiki_url;
-				if ( !$url ) {
-					$domain = $this->getConfig()->get( 'CreateWikiSubdomain' );
-					$subdomain = substr(
-						$row->wiki_dbname, 0,
-						-strlen( $this->getConfig()->get( 'CreateWikiDatabaseSuffix' ) )
-					);
-					$url = "https://$subdomain.$domain";
-				}
-
-				$wiki['url'] = $url;
+				$wiki['url'] = $row->wiki_url ?:
+					$this->validator->getValidUrl( $row->wiki_dbname );
 			}
 
 			$wiki['dbname'] = $row->wiki_dbname;

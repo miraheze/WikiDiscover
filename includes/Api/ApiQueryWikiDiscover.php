@@ -217,7 +217,7 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 				$wiki['locked'] = true;
 			}
 
-			$fit = $result->addValue( [ 'query', $this->getModuleName(), $row->wiki_dbname ], null, $wiki );
+			$fit = $result->addValue( [ 'query', $this->getModuleName() ], $row->wiki_dbname, $wiki );
 			if ( !$fit ) {
 				$this->setContinueEnumParameter( 'offset', $offset + $count - 1 );
 				break;

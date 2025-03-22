@@ -3,9 +3,8 @@
 namespace Miraheze\WikiDiscover\Api;
 
 use MediaWiki\Api\ApiBase;
-use MediaWiki\Api\ApiPageSet;
 use MediaWiki\Api\ApiQuery;
-use MediaWiki\Api\ApiQueryGeneratorBase;
+use MediaWiki\Api\ApiQueryBase;
 use MediaWiki\Api\ApiResult;
 use MediaWiki\Languages\LanguageNameUtils;
 use MediaWiki\Registration\ExtensionRegistry;
@@ -17,7 +16,7 @@ use Wikimedia\ParamValidator\ParamValidator;
 use Wikimedia\ParamValidator\TypeDef\IntegerDef;
 use Wikimedia\Rdbms\IReadableDatabase;
 
-class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
+class ApiQueryWikiDiscover extends ApiQueryBase {
 
 	public function __construct(
 		ApiQuery $query,
@@ -31,24 +30,6 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 	}
 
 	public function execute(): void {
-		$this->run( null );
-	}
-
-	/** @inheritDoc */
-	public function getCacheMode( $params ): string {
-		return 'public';
-	}
-
-	/** @inheritDoc */
-	public function executeGenerator( $resultPageSet ): void {
-		$this->run( $resultPageSet );
-	}
-
-	protected function getDB(): IReadableDatabase {
-		return $this->databaseUtils->getGlobalReplicaDB();
-	}
-
-	private function run( ?ApiPageSet $resultPageSet ): void {
 		$params = $this->extractRequestParams();
 		$result = $this->getResult();
 
@@ -272,6 +253,15 @@ class ApiQueryWikiDiscover extends ApiQueryGeneratorBase {
 			[ 'query', $this->getModuleName() ], 'count', $count,
 			ApiResult::ADD_ON_TOP | ApiResult::NO_SIZE_CHECK
 		);
+	}
+	
+	/** @inheritDoc */
+	public function getCacheMode( $params ): string {
+		return 'public';
+	}
+
+	protected function getDB(): IReadableDatabase {
+		return $this->databaseUtils->getGlobalReplicaDB();
 	}
 
 	/** @inheritDoc */

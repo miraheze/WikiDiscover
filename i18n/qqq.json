@@ -6,6 +6,15 @@
 			"Universal Omega"
 		]
 	},
+	"apihelp-query+wikidiscover-example": "Show all wikis on the form.",
+	"apihelp-query+wikidiscover-param-category": "Filter by the CreateWiki defined category of a wiki.",
+	"apihelp-query+wikidiscover-param-customurl": "Filter by if the wiki has a CreateWiki defined custom URL.",
+	"apihelp-query+wikidiscover-param-language": "Filter by the CreateWiki defined language code of a wiki.",
+	"apihelp-query+wikidiscover-param-limit": "Maximum number of results to show.",
+	"apihelp-query+wikidiscover-param-prop": "Information to return about a defined wiki.",
+	"apihelp-query+wikidiscover-param-state": "Filter by the CreateWiki defined state of a wiki.",
+	"apihelp-query+wikidiscover-param-wikis": "Get a list of specific wikis.",
+	"apihelp-query+wikidiscover-summary": "Get a list of wikis on a CreateWiki wikifarm.",
 	"randomwiki": "Page title for Special:RandomWiki",
 	"randomwiki-header": "Information text under legend header informing users what the page does.",
 	"randomwiki-parameters": "Legend header in Special:RandomWiki asking users to insert parameters for their search.",
@@ -19,11 +28,5 @@
 	"wikidiscover-table-language": "Label for 'Language'\n{{Identical|Language}}",
 	"wikidiscover-table-state": "Label for 'State'\n{{Identical|State}}",
 	"wikidiscover-table-visibility": "Label for 'Visibility'",
-	"wikidiscover-table-wiki": "Label for 'Wiki Name'",
-	"apihelp-wikidiscover-summary": "Get a list of wikis on a CreateWiki wikifarm.",
-	"apihelp-wikidiscover-param-state": "Filter by the CreateWiki defined state of a wiki.",
-	"apihelp-wikidiscover-param-siteprop": "Information to return about a defined wiki.",
-	"apihelp-wikidiscover-param-limit": "Maximum number of results to show.",
-	"apihelp-wikidiscover-param-wikislist": "Get a list of all wikis.",
-	"apihelp-wikidiscover-example": "Show all wikis on the form."
+	"wikidiscover-table-wiki": "Label for 'Wiki Name'"
 }

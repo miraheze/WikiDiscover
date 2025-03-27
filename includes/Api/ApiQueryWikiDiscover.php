@@ -8,7 +8,6 @@ use MediaWiki\Api\ApiQueryBase;
 use MediaWiki\Api\ApiResult;
 use MediaWiki\Languages\LanguageNameUtils;
 use MediaWiki\Registration\ExtensionRegistry;
-use MediaWiki\SiteStats\SiteStatsInit;
 use Miraheze\CreateWiki\Services\CreateWikiDatabaseUtils;
 use Miraheze\CreateWiki\Services\CreateWikiValidator;
 use Miraheze\ManageWiki\Helpers\ManageWikiSettings;
@@ -234,14 +233,6 @@ class ApiQueryWikiDiscover extends ApiQueryBase {
 				$wiki['locked'] = true;
 			}
 
-			// This can be expensive so only allow showing up to 100 at a time.
-			if ( $limit <= 100 && in_array( 'editcount', $prop ) ) {
-				$dbr = $this->databaseUtils->getRemoteWikiReplicaDB( $wiki['dbname'] );
-				$counter = new SiteStatsInit( $dbr );
-
-				$wiki['editcount'] = $counter->edits();
-			}
-
 			$fit = $result->addValue( [ 'query', $this->getModuleName(), 'wikis' ], $row->wiki_dbname, $wiki );
 			if ( !$fit ) {
 				$this->setContinueEnumParameter( 'offset', $offset + $count - 1 );
@@ -299,7 +290,6 @@ class ApiQueryWikiDiscover extends ApiQueryBase {
 					'creationdate',
 					'description',
 					'deletiondate',
-					'editcount',
 					'exemptreason',
 					'inactivedate',
 					'languagecode',

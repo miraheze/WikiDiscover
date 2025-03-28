@@ -114,15 +114,8 @@ class WikiDiscoverWikisPager extends TablePager {
 
 		switch ( $name ) {
 			case 'wiki_dbname':
-				$url = $row->wiki_url;
-				if ( !$url ) {
-					$domain = $this->getConfig()->get( 'CreateWikiSubdomain' );
-					$subdomain = substr(
-						$row->wiki_dbname, 0,
-						-strlen( $this->getConfig()->get( 'CreateWikiDatabaseSuffix' ) )
-					);
-					$url = "https://$subdomain.$domain";
-				}
+				$validator = MediaWikiServices::getInstance()->get( 'CreateWikiValidator' );
+				$url = $row->wiki_url ?: $validator->getValidUrl( $row->wiki_dbname );
 				$name = $row->wiki_sitename;
 				$formatted = Html::element( 'a', [ 'href' => $url ], $name );
 				break;

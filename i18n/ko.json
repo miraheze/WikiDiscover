@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
+			"Tensama0415",
 			"Ykhwong",
 			"렌즈"
 		]
 	},
-	"randomwiki": "임의의 위키로",
+	"randomwiki": "임의의 위키로 넘겨주기",
 	"wikidiscover": "위키 발견",
 	"wikidiscover-table-category": "분류",
 	"wikidiscover-table-description": "설명",

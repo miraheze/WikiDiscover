@@ -10,8 +10,8 @@ use Miraheze\WikiDiscover\DeletedWikisPager;
 class SpecialDeletedWikis extends SpecialPage {
 
 	public function __construct(
-		private readonly ExtensionRegistry $extensionRegistry,
-		private readonly CreateWikiDatabaseUtils $databaseUtils
+		private readonly CreateWikiDatabaseUtils $databaseUtils,
+		private readonly ExtensionRegistry $extensionRegistry
 	) {
 		parent::__construct( 'DeletedWikis' );
 	}

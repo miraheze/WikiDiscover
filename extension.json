@@ -22,7 +22,8 @@
 		"DeletedWikisWD": {
 			"class": "Miraheze\\WikiDiscover\\Specials\\SpecialDeletedWikis",
 			"services": [
-				"ConnectionProvider"
+				"CreateWikiDatabaseUtils",
+				"ExtensionRegistry"
 			]
 		},
 		"RandomWiki": {

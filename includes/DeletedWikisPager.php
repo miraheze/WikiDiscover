@@ -2,24 +2,23 @@
 
 namespace Miraheze\WikiDiscover;
 
-use ExtensionRegistry;
 use MediaWiki\Context\IContextSource;
-use MediaWiki\Linker\Linker;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Pager\TablePager;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\SpecialPage\SpecialPage;
-use Wikimedia\Rdbms\IConnectionProvider;
+use Miraheze\CreateWiki\Services\CreateWikiDatabaseUtils;
 
 class DeletedWikisPager extends TablePager {
 
 	public function __construct(
+		private readonly ExtensionRegistry $extensionRegistry,
+		CreateWikiDatabaseUtils $databaseUtils,
 		IContextSource $context,
-		IConnectionProvider $connectionProvider,
 		LinkRenderer $linkRenderer
 	) {
 		parent::__construct( $context, $linkRenderer );
-
-		$this->mDb = $connectionProvider->getReplicaDatabase( 'virtual-createwiki' );
+		$this->mDb = $databaseUtils->getGlobalReplicaDB();
 	}
 
 	/** @inheritDoc */
@@ -30,7 +29,7 @@ class DeletedWikisPager extends TablePager {
 			'wiki_deleted_timestamp' => $this->msg( 'wikidiscover-label-deletiondate' )->text(),
 		];
 
-		if ( ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' ) ) {
+		if ( $this->extensionRegistry->isLoaded( 'ManageWiki' ) ) {
 			$headers['wiki_deleted'] = $this->msg( 'wikidiscover-label-undeletewiki' )->text();
 		}
 
@@ -56,9 +55,10 @@ class DeletedWikisPager extends TablePager {
 				) );
 				break;
 			case 'wiki_deleted':
-				$formatted = Linker::makeExternalLink(
+				$formatted = $this->getLinkRenderer()->makeExternalLink(
 					SpecialPage::getTitleFor( 'ManageWiki', 'core/' . $row->wiki_dbname )->getFullURL(),
-					$this->msg( 'wikidiscover-label-goto-managewiki' )->text()
+					$this->msg( 'wikidiscover-label-goto-managewiki' )->text(),
+					SpecialPage::getTitleFor( 'ManageWiki', 'core' )
 				);
 				break;
 			default:

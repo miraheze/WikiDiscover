@@ -2,28 +2,23 @@
 
 namespace Miraheze\WikiDiscover\Specials;
 
-use MediaWiki\Config\Config;
 use MediaWiki\HTMLForm\HTMLForm;
 use MediaWiki\SpecialPage\SpecialPage;
+use Miraheze\CreateWiki\Services\CreateWikiValidator;
 use Miraheze\WikiDiscover\WikiDiscoverRandom;
 
 class SpecialRandomWiki extends SpecialPage {
 
-	/** @var Config */
-	private $config;
-
-	public function __construct() {
-		$this->config = $this->getConfig();
-
+	public function __construct(
+		private readonly CreateWikiValidator $validator
+	) {
 		parent::__construct( 'RandomWiki' );
 	}
 
 	/** @inheritDoc */
-	public function execute( $subPage ) {
+	public function execute( $par ): void {
 		$this->setHeaders();
 		$this->outputHeader();
-
-		$out = $this->getOutput();
 
 		$formDescriptor = [
 			'intro' => [
@@ -40,13 +35,13 @@ class SpecialRandomWiki extends SpecialPage {
 				'type' => 'select',
 				'name' => 'category',
 				'label-message' => 'wikidiscover-table-category',
-				'options' => $this->config->get( 'CreateWikiCategories' ),
+				'options' => $this->getConfig()->get( 'CreateWikiCategories' ),
 				'default' => 'uncategorised',
 			],
 		];
 
-		if ( $this->config->get( 'CreateWikiUseInactiveWikis' ) ) {
-			$formDescriptor['inactive'] = [
+		if ( $this->getConfig()->get( 'CreateWikiUseInactiveWikis' ) ) {
+			$formDescriptor['state'] = [
 				'type' => 'select',
 				'name' => 'inactive',
 				'label-message' => 'wikidiscover-table-state',
@@ -69,24 +64,20 @@ class SpecialRandomWiki extends SpecialPage {
 			->show();
 	}
 
-	/** @inheritDoc */
-	protected function getGroupName() {
-		return 'wikimanage';
+	public function redirectWiki( array $formData ): void {
+		$randomWiki = WikiDiscoverRandom::randomWiki(
+			$formData['state'] ?? '',
+			$formData['category'],
+			$formData['language']
+		);
+
+		$url = $randomWiki->wiki_url ?:
+			$this->validator->getValidUrl( $randomWiki->wiki_dbname );
+		$this->getOutput()->redirect( $url );
 	}
 
-	/**
-	 * @param array $formData
-	 * @return bool
-	 */
-	public function redirectWiki( $formData ) {
-		$randomwiki = WikiDiscoverRandom::randomWiki( $formData['inactive'], $formData['category'], $formData['language'] );
-
-		if ( $randomwiki->wiki_url ) {
-			header( 'Location: ' . $randomwiki->wiki_url . '/' );
-		} else {
-			header( 'Location: https://' . substr( $randomwiki->wiki_dbname, 0, -strlen( $this->config->get( 'CreateWikiDatabaseSuffix' ) ) ) . ".{$this->config->get( 'CreateWikiSubdomain' )}/" );
-		}
-
-		return true;
+	/** @inheritDoc */
+	protected function getGroupName(): string {
+		return 'wikimanage';
 	}
 }

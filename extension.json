@@ -19,7 +19,12 @@
 		}
 	},
 	"SpecialPages": {
-		"RandomWiki": "Miraheze\\WikiDiscover\\Specials\\SpecialRandomWiki",
+		"RandomWiki": {
+			"class": "Miraheze\\WikiDiscover\\Specials\\SpecialRandomWiki",
+			"services": [
+				"CreateWikiValidator"
+			]
+		},
 		"WikiDiscover": "Miraheze\\WikiDiscover\\Specials\\SpecialWikiDiscover"
 	},
 	"APIListModules": {

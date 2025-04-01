@@ -11,7 +11,7 @@ use stdClass;
 class SpecialRandomWiki extends SpecialPage {
 
 	public function __construct(
-		private readonly CreateWikiDatabaseUtils $databaseUtils, 
+		private readonly CreateWikiDatabaseUtils $databaseUtils,
 		private readonly CreateWikiValidator $validator
 	) {
 		parent::__construct( 'RandomWiki' );

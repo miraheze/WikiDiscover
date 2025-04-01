@@ -2,18 +2,18 @@
 
 namespace Miraheze\WikiDiscover\Specials;
 
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\SpecialPage\SpecialPage;
+use Miraheze\CreateWiki\Services\CreateWikiDatabaseUtils;
 use Miraheze\WikiDiscover\DeletedWikisPager;
-use Wikimedia\Rdbms\IConnectionProvider;
 
 class SpecialDeletedWikis extends SpecialPage {
 
-	private IConnectionProvider $connectionProvider;
-
-	public function __construct( IConnectionProvider $connectionProvider ) {
+	public function __construct(
+		private readonly ExtensionRegistry $extensionRegistry,
+		private readonly CreateWikiDatabaseUtils $databaseUtils
+	) {
 		parent::__construct( 'DeletedWikis' );
-
-		$this->connectionProvider = $connectionProvider;
 	}
 
 	/**
@@ -24,8 +24,9 @@ class SpecialDeletedWikis extends SpecialPage {
 		$this->outputHeader();
 
 		$pager = new DeletedWikisPager(
+			$this->extensionRegistry,
+			$this->databaseUtils,
 			$this->getContext(),
-			$this->connectionProvider,
 			$this->getLinkRenderer()
 		);
 

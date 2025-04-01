@@ -2,11 +2,11 @@
 
 namespace Miraheze\WikiDiscover;
 
-use ExtensionRegistry;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Html\Html;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Pager\TablePager;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\SpecialPage\SpecialPage;
 use Miraheze\ManageWiki\Helpers\ManageWikiSettings;
 use Wikimedia\Rdbms\IReadableDatabase;
@@ -24,9 +24,6 @@ class WikiDiscoverWikisPager extends TablePager {
 	/** @var string */
 	private $visibility;
 
-	/** @var WikiDiscover */
-	private $wikiDiscover;
-
 	/**
 	 * @param SpecialPage $page
 	 * @param string $language
@@ -42,8 +39,6 @@ class WikiDiscoverWikisPager extends TablePager {
 
 		$this->state = $state;
 		$this->visibility = $visibility;
-
-		$this->wikiDiscover = new WikiDiscover();
 
 		parent::__construct( $page->getContext(), $page->getLinkRenderer() );
 	}
@@ -117,34 +112,35 @@ class WikiDiscoverWikisPager extends TablePager {
 	public function formatValue( $name, $value ) {
 		$row = $this->mCurrentRow;
 
-		$wikiDiscover = $this->wikiDiscover;
-
-		$wiki = $row->wiki_dbname;
-
 		switch ( $name ) {
 			case 'wiki_dbname':
-				$url = $wikiDiscover->getUrl( $wiki );
-				$name = $wikiDiscover->getSitename( $wiki );
+				$validator = MediaWikiServices::getInstance()->get( 'CreateWikiValidator' );
+				$url = $row->wiki_url ?: $validator->getValidUrl( $row->wiki_dbname );
+				$name = $row->wiki_sitename;
 				$formatted = Html::element( 'a', [ 'href' => $url ], $name );
 				break;
 			case 'wiki_language':
-				$formatted = $this->escape( $wikiDiscover->getLanguage( $wiki ) );
+				$formatted = $this->escape(
+					MediaWikiServices::getInstance()->getLanguageNameUtils()->getLanguageName(
+						$row->wiki_language
+					)
+				);
 				break;
 			case 'wiki_closed':
-				if ( $wikiDiscover->isDeleted( $wiki ) ) {
+				if ( $row->wiki_deleted ) {
 					$formatted = 'Deleted';
-				} elseif ( $wikiDiscover->isLocked( $wiki ) ) {
+				} elseif ( $row->wiki_locked ) {
 					$formatted = 'Locked';
-				} elseif ( $wikiDiscover->isClosed( $wiki ) ) {
+				} elseif ( $row->wiki_closed ) {
 					$formatted = 'Closed';
-				} elseif ( $wikiDiscover->isInactive( $wiki ) ) {
+				} elseif ( $row->wiki_inactive ) {
 					$formatted = 'Inactive';
 				} else {
 					$formatted = 'Open';
 				}
 				break;
 			case 'wiki_private':
-				if ( $wikiDiscover->isPrivate( $wiki ) === true ) {
+				if ( $row->wiki_private ) {
 					$formatted = 'Private';
 				} else {
 					$formatted = 'Public';
@@ -160,7 +156,7 @@ class WikiDiscoverWikisPager extends TablePager {
 				$formatted = $this->escape( $lang->date( wfTimestamp( TS_MW, strtotime( $row->wiki_creation ) ) ) );
 				break;
 			case 'wiki_description':
-				$manageWikiSettings = new ManageWikiSettings( $wiki );
+				$manageWikiSettings = new ManageWikiSettings( $row->wiki_dbname );
 
 				$value = $manageWikiSettings->list( 'wgWikiDiscoverDescription' );
 
@@ -193,7 +189,7 @@ class WikiDiscoverWikisPager extends TablePager {
 
 		$info = [
 			'tables' => [ 'cw_wikis' ],
-			'fields' => array_merge( [ 'wiki_dbname', 'wiki_language', 'wiki_deleted', 'wiki_locked', 'wiki_category', 'wiki_creation' ], $fields ),
+			'fields' => array_merge( [ 'wiki_dbname', 'wiki_language', 'wiki_deleted', 'wiki_locked', 'wiki_category', 'wiki_creation', 'wiki_sitename', 'wiki_url' ], $fields ),
 			'conds' => [],
 			'joins_conds' => [],
 		];

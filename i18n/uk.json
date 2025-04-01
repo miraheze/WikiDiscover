@@ -5,12 +5,13 @@
 			"DDPAT",
 			"Ice bulldog",
 			"Piramidion",
-			"Vlad5250"
+			"Vlad5250",
+			"Ата"
 		]
 	},
-	"randomwiki": "Випадкова вікі",
-	"randomwiki-header": "Виберіть нижче категорію й мову, і після підтвердження Вас буде перенаправлено на випадкову вікі, яка відповідає вибраним критеріям.",
-	"wikidiscover": "WikiDiscover",
+	"randomwiki": "Переспрямувати на випадкову вікі",
+	"randomwiki-header": "Оберіть нижче категорію й мову, і після підтвердження вас буде перенаправлено на випадкову вікі, яка відповідає вибраним критеріям.",
+	"wikidiscover": "Відкрийте для себе вікі",
 	"wikidiscover-desc": "Дозволяє [[Special:WikiDiscover|виявляти вікі]] на вікі-фермі, яка має можливість [[Special:CreateWiki|створення вікі]].",
 	"wikidiscover-table-category": "Категорія",
 	"wikidiscover-table-description": "Опис",

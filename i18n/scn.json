@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ajeje Brazorf"
+			"Ajeje Brazorf",
+			"GianAntonucci"
 		]
 	},
 	"randomwiki": "Wiki a muzzu",
@@ -9,5 +10,5 @@
 	"wikidiscover-table-language": "Lingua",
 	"wikidiscover-table-state": "Statu",
 	"wikidiscover-table-wiki": "Nomu dû wiki",
-	"apihelp-wikidiscover-param-wikislist": "Utteni n'elencu di tutti li wiki."
+	"apihelp-wikidiscover-param-wikislist": "Utteni na lista di tutti li wiki."
 }

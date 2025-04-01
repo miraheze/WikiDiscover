@@ -4,12 +4,14 @@ namespace Miraheze\WikiDiscover\Specials;
 
 use MediaWiki\HTMLForm\HTMLForm;
 use MediaWiki\SpecialPage\SpecialPage;
+use Miraheze\CreateWiki\Services\CreateWikiDatabaseUtils;
 use Miraheze\CreateWiki\Services\CreateWikiValidator;
-use Miraheze\WikiDiscover\WikiDiscoverRandom;
+use stdClass;
 
 class SpecialRandomWiki extends SpecialPage {
 
 	public function __construct(
+		private readonly CreateWikiDatabaseUtils $databaseUtils,
 		private readonly CreateWikiValidator $validator
 	) {
 		parent::__construct( 'RandomWiki' );
@@ -65,7 +67,7 @@ class SpecialRandomWiki extends SpecialPage {
 	}
 
 	public function redirectWiki( array $formData ): void {
-		$randomWiki = WikiDiscoverRandom::randomWiki(
+		$randomWiki = $this->getRandomWiki(
 			$formData['state'] ?? '',
 			$formData['category'],
 			$formData['language']
@@ -74,6 +76,59 @@ class SpecialRandomWiki extends SpecialPage {
 		$url = $randomWiki->wiki_url ?:
 			$this->validator->getValidUrl( $randomWiki->wiki_dbname );
 		$this->getOutput()->redirect( $url );
+	}
+
+	private function getRandomWiki(
+		string $state,
+		string $category,
+		string $language
+	): stdClass|bool {
+		$conditions = [];
+
+		if ( $category ) {
+			$conditions['wiki_category'] = $category;
+		}
+
+		if ( $language ) {
+			$conditions['wiki_language'] = $language;
+		}
+
+		if ( $this->getConfig()->get( 'CreateWikiUseInactiveWikis' ) ) {
+			if ( $state === 'inactive' ) {
+				$conditions['wiki_inactive'] = 1;
+			} elseif ( $state === 'active' ) {
+				$conditions['wiki_inactive'] = 0;
+			}
+		}
+
+		// Never randomly offer closed or private wikis
+		if ( $this->getConfig()->get( 'CreateWikiUseClosedWikis' ) ) {
+			$conditions['wiki_closed'] = 0;
+		}
+
+		if ( $this->getConfig()->get( 'CreateWikiUsePrivateWikis' ) ) {
+			$conditions['wiki_private'] = 0;
+		}
+
+		$conditions['wiki_deleted'] = 0;
+
+		return $this->randFromConds( $conditions );
+	}
+
+	private function randFromConds( array $conds ): stdClass|bool {
+		$dbr = $this->databaseUtils->getGlobalReplicaDB();
+
+		// MySQL is ever the outlier
+		$random_function = $dbr->getType() === 'mysql' ? 'RAND()' : 'random()';
+
+		return $dbr->newSelectQueryBuilder()
+			->table( 'cw_wikis' )
+			->fields( [ 'wiki_dbname', 'wiki_url' ] )
+			->conds( $conds )
+			->limit( 1 )
+			->caller( __METHOD__ )
+			->orderBy( $random_function )
+			->fetchRow();
 	}
 
 	/** @inheritDoc */

@@ -13,6 +13,9 @@
 		"MediaWiki": ">= 1.43.0",
 		"extensions": {
 			"CreateWiki": "*"
+		},
+		"platform": {
+			"php": ">= 8.1"
 		}
 	},
 	"SpecialPages": {
@@ -24,8 +27,16 @@
 		},
 		"WikiDiscover": "Miraheze\\WikiDiscover\\Specials\\SpecialWikiDiscover"
 	},
-	"APIModules": {
-		"wikidiscover": "Miraheze\\WikiDiscover\\Api\\ApiWikiDiscover"
+	"APIListModules": {
+		"wikidiscover": {
+			"class": "Miraheze\\WikiDiscover\\Api\\ApiQueryWikiDiscover",
+			"services": [
+				"CreateWikiDatabaseUtils",
+				"CreateWikiValidator",
+				"ExtensionRegistry",
+				"LanguageNameUtils"
+			]
+		}
 	},
 	"MessagesDirs": {
 		"WikiDiscover": [
@@ -39,15 +50,18 @@
 	"AutoloadNamespaces": {
 		"Miraheze\\WikiDiscover\\": "includes/"
 	},
+	"TestAutoloadNamespaces": {
+		"Miraheze\\WikiDiscover\\Tests\\": "tests/phpunit/"
+	},
 	"Hooks": {
 		"ParserFirstCallInit": [
-			"Miraheze\\WikiDiscover\\WikiDiscover::onParserFirstCallInit"
+			"Miraheze\\WikiDiscover\\Hooks::onParserFirstCallInit"
 		],
 		"ParserGetVariableValueSwitch": [
-			"Miraheze\\WikiDiscover\\WikiDiscover::onParserGetVariableValueSwitch"
+			"Miraheze\\WikiDiscover\\Hooks::onParserGetVariableValueSwitch"
 		],
 		"GetMagicVariableIDs": [
-			"Miraheze\\WikiDiscover\\WikiDiscover::onGetMagicVariableIDs"
+			"Miraheze\\WikiDiscover\\Hooks::onGetMagicVariableIDs"
 		]
 	},
 	"config": {

@@ -3,8 +3,8 @@
 namespace Miraheze\WikiDiscover;
 
 use MediaWiki\Context\IContextSource;
-use MediaWiki\Languages\LanguageNameUtils;
 use MediaWiki\Html\Html;
+use MediaWiki\Languages\LanguageNameUtils;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Pager\TablePager;
 use MediaWiki\Registration\ExtensionRegistry;

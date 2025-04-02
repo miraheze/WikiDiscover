@@ -3,22 +3,31 @@
 namespace Miraheze\WikiDiscover\Specials;
 
 use MediaWiki\HTMLForm\HTMLForm;
+use MediaWiki\Languages\LanguageNameUtils;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\SpecialPage\SpecialPage;
+use Miraheze\CreateWiki\Services\CreateWikiDatabaseUtils;
+use Miraheze\CreateWiki\Services\CreateWikiValidator;
 use Miraheze\WikiDiscover\WikiDiscoverWikisPager;
 
 class SpecialWikiDiscover extends SpecialPage {
 
-	public function __construct() {
+	public function __construct(
+		private readonly CreateWikiDatabaseUtils $databaseUtils,
+		private readonly CreateWikiValidator $validator,
+		private readonly ExtensionRegistry $extensionRegistry,
+		private readonly LanguageNameUtils $languageNameUtils
+	) {
 		parent::__construct( 'WikiDiscover' );
 	}
 
 	/** @inheritDoc */
-	public function execute( $subPage ) {
+	public function execute( $par ): void {
 		$this->setHeaders();
 		$this->outputHeader();
 
-		$language = $this->getRequest()->getText( 'language' );
 		$category = $this->getRequest()->getText( 'category' );
+		$language = $this->getRequest()->getText( 'language' );
 		$state = $this->getRequest()->getText( 'state' );
 
 		$stateOptions = [
@@ -77,7 +86,7 @@ class SpecialWikiDiscover extends SpecialPage {
 				'options' => [
 					'(any)' => 'any',
 					'Public' => 'public',
-					'Private' => 'private'
+					'Private' => 'private',
 				],
 				'default' => $visibility ?: 'any',
 			];
@@ -93,13 +102,24 @@ class SpecialWikiDiscover extends SpecialPage {
 			->prepareForm()
 			->displayForm( false );
 
-		$pager = new WikiDiscoverWikisPager( $this, $language, $category, $state, $visibility );
+		$pager = new WikiDiscoverWikisPager(
+			$this->getContext(),
+			$this->databaseUtils,
+			$this->getLinkRenderer(),
+			$this->validator,
+			$this->extensionRegistry,
+			$this->languageNameUtils,
+			$category,
+			$language,
+			$state,
+			$visibility
+		);
 
 		$this->getOutput()->addParserOutputContent( $pager->getFullOutput() );
 	}
 
 	/** @inheritDoc */
-	protected function getGroupName() {
+	protected function getGroupName(): string {
 		return 'wikimanage';
 	}
 }

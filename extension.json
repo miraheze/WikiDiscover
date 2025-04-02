@@ -65,7 +65,6 @@
 			"handler": "Main"
 		}
 	},
-	
 	"HookHandlers": {
 		"Main": {
 			"class": "Miraheze\\WikiDiscover\\HookHandlers\\Main",

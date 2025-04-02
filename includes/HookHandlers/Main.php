@@ -67,11 +67,20 @@ class Main implements
 		switch ( $magicWordId ) {
 			case 'numberofwikis':
 				$dbr = $this->databaseUtils->getGlobalReplicaDB();
-				$ret = $dbr->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0 ], __METHOD__ );
+				$ret = $dbr->newSelectQueryBuilder()
+					->select( '*' )
+					->from( 'cw_wikis' )
+					->where( [ 'wiki_deleted' => 0 ] )
+					->caller( __METHOD__ )
+					->fetchRowCount();
 				break;
 			case 'numberoftotalwikis':
 				$dbr = $this->databaseUtils->getGlobalReplicaDB();
-				$ret = $dbr->selectRowCount( 'cw_wikis', '*', '', __METHOD__ );
+				$ret = $dbr->newSelectQueryBuilder()
+					->select( '*' )
+					->from( 'cw_wikis' )
+					->caller( __METHOD__ )
+					->fetchRowCount();
 				break;
 			case 'numberofprivatewikis':
 				if ( !$this->config->get( 'CreateWikiUsePrivateWikis' ) ) {
@@ -79,7 +88,15 @@ class Main implements
 				}
 
 				$dbr = $this->databaseUtils->getGlobalReplicaDB();
-				$ret = $dbr->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_private' => 1 ], __METHOD__ );
+				$ret = $dbr->newSelectQueryBuilder()
+					->select( '*' )
+					->from( 'cw_wikis' )
+					->where( [
+						'wiki_deleted' => 0,
+						'wiki_private' => 1,
+					] )
+					->caller( __METHOD__ )
+					->fetchRowCount();
 				break;
 			case 'numberofpublicwikis':
 				if ( !$this->config->get( 'CreateWikiUsePrivateWikis' ) ) {
@@ -87,7 +104,15 @@ class Main implements
 				}
 
 				$dbr = $this->databaseUtils->getGlobalReplicaDB();
-				$ret = $dbr->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_private' => 0 ], __METHOD__ );
+				$ret = $dbr->newSelectQueryBuilder()
+					->select( '*' )
+					->from( 'cw_wikis' )
+					->where( [
+						'wiki_deleted' => 0,
+						'wiki_private' => 0,
+					] )
+					->caller( __METHOD__ )
+					->fetchRowCount();
 				break;
 			case 'numberofactivewikis':
 				if ( !$this->config->get( 'CreateWikiUseInactiveWikis' ) ) {
@@ -95,7 +120,16 @@ class Main implements
 				}
 
 				$dbr = $this->databaseUtils->getGlobalReplicaDB();
-				$ret = $dbr->selectRowCount( 'cw_wikis', '*', [ 'wiki_closed' => 0, 'wiki_deleted' => 0, 'wiki_inactive' => 0 ], __METHOD__ );
+				$ret = $dbr->newSelectQueryBuilder()
+					->select( '*' )
+					->from( 'cw_wikis' )
+					->where( [
+						'wiki_closed' => 0,
+						'wiki_deleted' => 0,
+						'wiki_inactive' => 0,
+					] )
+					->caller( __METHOD__ )
+					->fetchRowCount();
 				break;
 			case 'numberofinactivewikis':
 				if ( !$this->config->get( 'CreateWikiUseInactiveWikis' ) ) {
@@ -103,7 +137,15 @@ class Main implements
 				}
 
 				$dbr = $this->databaseUtils->getGlobalReplicaDB();
-				$ret = $dbr->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_inactive' => 1 ], __METHOD__ );
+				$ret = $dbr->newSelectQueryBuilder()
+					->select( '*' )
+					->from( 'cw_wikis' )
+					->where( [
+						'wiki_deleted' => 0,
+						'wiki_inactive' => 1,
+					] )
+					->caller( __METHOD__ )
+					->fetchRowCount();
 				break;
 			case 'numberofclosedwikis':
 				if ( !$this->config->get( 'CreateWikiUseClosedWikis' ) ) {
@@ -111,15 +153,36 @@ class Main implements
 				}
 
 				$dbr = $this->databaseUtils->getGlobalReplicaDB();
-				$ret = $dbr->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_closed' => 1 ], __METHOD__ );
+				$ret = $dbr->newSelectQueryBuilder()
+					->select( '*' )
+					->from( 'cw_wikis' )
+					->where( [
+						'wiki_closed' => 1,
+						'wiki_deleted' => 0,
+					] )
+					->caller( __METHOD__ )
+					->fetchRowCount();
 				break;
 			case 'numberoflockedwikis':
 				$dbr = $this->databaseUtils->getGlobalReplicaDB();
-				$ret = $dbr->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_locked' => 1 ], __METHOD__ );
+				$ret = $dbr->newSelectQueryBuilder()
+					->select( '*' )
+					->from( 'cw_wikis' )
+					->where( [
+						'wiki_deleted' => 0,
+						'wiki_locked' => 1,
+					] )
+					->caller( __METHOD__ )
+					->fetchRowCount();
 				break;
 			case 'numberofdeletedwikis':
 				$dbr = $this->databaseUtils->getGlobalReplicaDB();
-				$ret = $dbr->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 1 ], __METHOD__ );
+				$ret = $dbr->newSelectQueryBuilder()
+					->select( '*' )
+					->from( 'cw_wikis' )
+					->where( [ 'wiki_deleted' => 1 ] )
+					->caller( __METHOD__ )
+					->fetchRowCount();
 				break;
 			case 'numberofinactivityexemptwikis':
 				if ( !$this->config->get( 'CreateWikiUseInactiveWikis' ) ) {
@@ -127,11 +190,24 @@ class Main implements
 				}
 
 				$dbr = $this->databaseUtils->getGlobalReplicaDB();
-				$ret = $dbr->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_inactive_exempt' => 1 ], __METHOD__ );
+				$ret = $dbr->newSelectQueryBuilder()
+					->select( '*' )
+					->from( 'cw_wikis' )
+					->where( [
+						'wiki_deleted' => 0,
+						'wiki_inactive_exempt' => 1,
+					] )
+					->caller( __METHOD__ )
+					->fetchRowCount();
 				break;
 			case 'numberofcustomdomains':
 				$dbr = $this->databaseUtils->getGlobalReplicaDB();
-				$ret = $dbr->selectRowCount( 'cw_wikis', 'wiki_url', [ 'wiki_deleted' => 0 ], __METHOD__ );
+				$ret = $dbr->newSelectQueryBuilder()
+					->select( 'wiki_url' )
+					->from( 'cw_wikis' )
+					->where( [ 'wiki_deleted' => 0 ] )
+					->caller( __METHOD__ )
+					->fetchRowCount();
 				break;
 			case 'wikicreationdate':
 				$ret = $this->getWikiCreationDate( $parser );
@@ -144,7 +220,15 @@ class Main implements
 		string $category = 'uncategorised'
 	): int {
 		$dbr = $this->databaseUtils->getGlobalReplicaDB();
-		return $dbr->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_category' => strtolower( $category ) ], __METHOD__ );
+		return $dbr->newSelectQueryBuilder()
+			->select( '*' )
+			->from( 'cw_wikis' )
+			->where( [
+				'wiki_category' => strtolower( $category ),
+				'wiki_deleted' => 0,
+			] )
+			->caller( __METHOD__ )
+			->fetchRowCount();
 	}
 
 	public function getNumberOfWikisInLanguage(
@@ -152,7 +236,15 @@ class Main implements
 		string $language = 'en'
 	): int {
 		$dbr = $this->databaseUtils->getGlobalReplicaDB();
-		return $dbr->selectRowCount( 'cw_wikis', '*', [ 'wiki_deleted' => 0, 'wiki_language' => strtolower( $language ) ], __METHOD__ );
+		return $dbr->newSelectQueryBuilder()
+			->select( '*' )
+			->from( 'cw_wikis' )
+			->where( [
+				'wiki_deleted' => 0,
+				'wiki_language' => strtolower( $language ),
+			] )
+			->caller( __METHOD__ )
+			->fetchRowCount();
 	}
 
 	public function getNumberOfWikisBySetting(
@@ -172,12 +264,22 @@ class Main implements
 		}
 
 		if ( in_array( $setting, $extList ) ) {
-			$selectExtensions = implode( ',', $dbr->selectFieldValues( 'mw_settings', 's_extensions', '', __METHOD__ ) );
+			$fieldValues = $dbr->newSelectQueryBuilder()
+				->select( 's_extensions' )
+				->from( 'mw_settings' )
+				->caller( __METHOD__ )
+				->fetchFieldValues();
+
+			$selectExtensions = implode( ',', $fieldValues );
 			return substr_count( $selectExtensions, '"' . $setting . '"' );
 		}
 
-		$selectSettings = $dbr->selectFieldValues( 'mw_settings', 's_settings', '', __METHOD__ );
 		$settingUsageCount = 0;
+		$selectSettings = $dbr->newSelectQueryBuilder()
+			->select( 's_settings' )
+			->from( 'mw_settings' )
+			->caller( __METHOD__ )
+			->fetchFieldValues();
 
 		foreach ( $selectSettings as $key ) {
 			if ( !is_bool( array_search( $value, (array)( json_decode( $key, true )[$setting] ?? [] ) ) ) ) {
@@ -196,7 +298,12 @@ class Main implements
 		$dbr = $this->databaseUtils->getGlobalReplicaDB();
 
 		$wikiDatabase = $database ?? $this->config->get( MainConfigNames::DBname );
-		$creationDate = $dbr->selectField( 'cw_wikis', 'wiki_creation', [ 'wiki_dbname' => $wikiDatabase ], __METHOD__ );
+		$creationDate = $dbr->newSelectQueryBuilder()
+			->select( 'wiki_creation' )
+			->from( 'cw_wikis' )
+			->where( [ 'wiki_dbname' => $wikiDatabase ] )
+			->caller( __METHOD__ )
+			->fetchField();
 
 		return $lang->date( wfTimestamp( TS_MW, strtotime( $creationDate ) ) );
 	}

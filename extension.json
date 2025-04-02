@@ -26,7 +26,15 @@
 				"CreateWikiValidator"
 			]
 		},
-		"WikiDiscover": "Miraheze\\WikiDiscover\\Specials\\SpecialWikiDiscover"
+		"WikiDiscover": {
+			"class": "Miraheze\\WikiDiscover\\Specials\\SpecialWikiDiscover",
+			"services": [
+				"CreateWikiDatabaseUtils",
+				"CreateWikiValidator",
+				"ExtensionRegistry",
+				"LanguageNameUtils"
+			]
+		}
 	},
 	"APIListModules": {
 		"wikidiscover": {

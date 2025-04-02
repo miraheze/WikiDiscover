@@ -71,7 +71,7 @@ class DeletedWikisPager extends TablePager {
 	/**
 	 * Safely HTML-escape $value
 	 */
-	private static function escape( string $value ): string {
+	private function escape( string $value ): string {
 		return htmlspecialchars( $value, ENT_QUOTES, 'UTF-8', false );
 	}
 

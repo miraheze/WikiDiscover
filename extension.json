@@ -27,7 +27,15 @@
 				"CreateWikiValidator"
 			]
 		},
-		"WikiDiscover": "Miraheze\\WikiDiscover\\Specials\\SpecialWikiDiscover"
+		"WikiDiscover": {
+			"class": "Miraheze\\WikiDiscover\\Specials\\SpecialWikiDiscover",
+			"services": [
+				"CreateWikiDatabaseUtils",
+				"CreateWikiValidator",
+				"ExtensionRegistry",
+				"LanguageNameUtils"
+			]
+		}
 	},
 	"APIListModules": {
 		"wikidiscover": {
@@ -56,30 +64,36 @@
 		"Miraheze\\WikiDiscover\\Tests\\": "tests/phpunit/"
 	},
 	"Hooks": {
-		"ParserFirstCallInit": [
-			"Miraheze\\WikiDiscover\\Hooks::onParserFirstCallInit"
-		],
-		"ParserGetVariableValueSwitch": [
-			"Miraheze\\WikiDiscover\\Hooks::onParserGetVariableValueSwitch"
-		],
-		"GetMagicVariableIDs": [
-			"Miraheze\\WikiDiscover\\Hooks::onGetMagicVariableIDs"
-		]
+		"GetMagicVariableIDs": {
+			"handler": "Main"
+		},
+		"ParserFirstCallInit": {
+			"handler": "Main"
+		},
+		"ParserGetVariableValueSwitch": {
+			"handler": "Main"
+		}
+	},
+	"HookHandlers": {
+		"Main": {
+			"class": "Miraheze\\WikiDiscover\\HookHandlers\\Main",
+			"services": [
+				"CreateWikiDatabaseUtils",
+				"MainConfig"
+			]
+		}
 	},
 	"config": {
 		"WikiDiscoverDescriptionMaxLength": {
-			"description": "Int. The maxmimum length of a wiki description.",
-			"public": true,
+			"description": "Integer. The maxmimum length of a wiki description.",
 			"value": false
 		},
 		"WikiDiscoverListPrivateWikis": {
-			"description": "Whether or not to include showing private wikis on Special:WikiDiscover.",
-			"public": true,
+			"description": "Boolean. Whether to show private wikis on Special:WikiDiscover.",
 			"value": true
 		},
 		"WikiDiscoverUseDescriptions": {
-			"description": "Whether or not to enable wiki descriptions.",
-			"public": true,
+			"description": "Boolean. Whether to enable wiki descriptions.",
 			"value": false
 		}
 	},

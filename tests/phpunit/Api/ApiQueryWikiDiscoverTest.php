@@ -25,7 +25,11 @@ class ApiQueryWikiDiscoverTest extends ApiTestCase {
 		] );
 
 		$this->assertArrayHasKey( 'count', $response['query']['wikidiscover'] );
-		$this->assertNotCount( 0, $response['query']['wikidiscover']['wikis'], 'wikidiscover API response should not be empty' );
+		$this->assertNotCount(
+			0,
+			$response['query']['wikidiscover']['wikis'],
+			'wikidiscover API response should not be empty'
+		);
 
 		foreach ( $response['query']['wikidiscover']['wikis'] as $wiki => $data ) {
 			$this->assertArrayHasKey( 'dbname', $data );

@@ -2,93 +2,67 @@
 
 namespace Miraheze\WikiDiscover;
 
-use MediaWiki\Context\RequestContext;
+use MediaWiki\Context\IContextSource;
 use MediaWiki\Html\Html;
-use MediaWiki\MediaWikiServices;
+use MediaWiki\Languages\LanguageNameUtils;
+use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Pager\TablePager;
 use MediaWiki\Registration\ExtensionRegistry;
-use MediaWiki\SpecialPage\SpecialPage;
+use Miraheze\CreateWiki\Services\CreateWikiDatabaseUtils;
+use Miraheze\CreateWiki\Services\CreateWikiValidator;
 use Miraheze\ManageWiki\Helpers\ManageWikiSettings;
-use Wikimedia\Rdbms\IReadableDatabase;
 
 class WikiDiscoverWikisPager extends TablePager {
-	/** @var string */
-	private $language;
 
-	/** @var string */
-	private $category;
-
-	/** @var string */
-	private $state;
-
-	/** @var string */
-	private $visibility;
-
-	/**
-	 * @param SpecialPage $page
-	 * @param string $language
-	 * @param string $category
-	 * @param string $state
-	 * @param string $visibility
-	 */
-	public function __construct( $page, $language, $category, $state, $visibility ) {
-		$this->mDb = self::getCreateWikiDatabase();
-
-		$this->language = $language;
-		$this->category = $category;
-
-		$this->state = $state;
-		$this->visibility = $visibility;
-
-		parent::__construct( $page->getContext(), $page->getLinkRenderer() );
-	}
-
-	/**
-	 * @return IReadableDatabase
-	 */
-	public static function getCreateWikiDatabase() {
-		$connectionProvider = MediaWikiServices::getInstance()->getConnectionProvider();
-		return $connectionProvider->getReplicaDatabase( 'virtual-createwiki', 'cw_wikis' );
+	public function __construct(
+		IContextSource $context,
+		CreateWikiDatabaseUtils $databaseUtils,
+		LinkRenderer $linkRenderer,
+		private readonly CreateWikiValidator $validator,
+		private readonly ExtensionRegistry $extensionRegistry,
+		private readonly LanguageNameUtils $languageNameUtils,
+		private readonly string $category,
+		private readonly string $language,
+		private readonly string $state,
+		private readonly string $visibility
+	) {
+		$this->mDb = $databaseUtils->getGlobalReplicaDB();
+		parent::__construct( $context, $linkRenderer );
 	}
 
 	/** @inheritDoc */
-	protected function getFieldNames() {
-		$config = MediaWikiServices::getInstance()->getMainConfig();
-
-		static $headers = null;
-
+	protected function getFieldNames(): array {
 		$headers = [
-			'wiki_dbname' => 'wikidiscover-table-wiki',
-			'wiki_language' => 'wikidiscover-table-language',
+			'wiki_dbname' => $this->msg( 'wikidiscover-table-wiki' )->text(),
+			'wiki_language' => $this->msg( 'wikidiscover-table-language' )->text(),
 		];
 
-		if ( $config->get( 'CreateWikiUseClosedWikis' ) ) {
-			$headers['wiki_closed'] = 'wikidiscover-table-state';
+		if ( $this->getConfig()->get( 'CreateWikiUseClosedWikis' ) ) {
+			$headers['wiki_closed'] = $this->msg( 'wikidiscover-table-state' )->text();
 		}
 
-		if ( $config->get( 'CreateWikiUsePrivateWikis' ) ) {
-			$headers['wiki_private'] = 'wikidiscover-table-visibility';
+		if ( $this->getConfig()->get( 'CreateWikiUsePrivateWikis' ) ) {
+			$headers['wiki_private'] = $this->msg( 'wikidiscover-table-visibility' )->text();
 		}
 
 		$headers += [
-			'wiki_category' => 'wikidiscover-table-category',
-			'wiki_creation' => 'wikidiscover-table-established',
+			'wiki_category' => $this->msg( 'wikidiscover-table-category' )->text(),
+			'wiki_creation' => $this->msg( 'wikidiscover-table-established' )->text(),
 		];
 
-		if ( ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' ) && $this->getConfig()->get( 'WikiDiscoverUseDescriptions' ) ) {
-			$headers['wiki_description'] = 'wikidiscover-table-description';
-		}
-
-		foreach ( $headers as &$msg ) {
-			$msg = $this->msg( $msg )->text();
+		if (
+			$this->extensionRegistry->isLoaded( 'ManageWiki' ) &&
+			$this->getConfig()->get( 'WikiDiscoverUseDescriptions' )
+		) {
+			$headers['wiki_description'] = $this->msg( 'wikidiscover-table-description' )->text();
 		}
 
 		return $headers;
 	}
 
 	/** @inheritDoc */
-	public function formatRow( $row ) {
-		if ( ExtensionRegistry::getInstance()->isLoaded( 'ManageWiki' ) ) {
+	public function formatRow( $row ): string {
+		if ( $this->extensionRegistry->isLoaded( 'ManageWiki' ) ) {
 			$manageWikiSettings = new ManageWikiSettings( $row->wiki_dbname );
 			if ( $manageWikiSettings->list( 'wgWikiDiscoverExclude' ) ) {
 				return '';
@@ -98,32 +72,20 @@ class WikiDiscoverWikisPager extends TablePager {
 		return parent::formatRow( $row );
 	}
 
-	/**
-	 * Safely HTML-escapes $value
-	 *
-	 * @param string $value
-	 * @return string
-	 */
-	private static function escape( $value ) {
-		return htmlspecialchars( $value, ENT_QUOTES );
-	}
-
 	/** @inheritDoc */
-	public function formatValue( $name, $value ) {
-		$row = $this->mCurrentRow;
+	public function formatValue( $name, $value ): string {
+		$row = $this->getCurrentRow();
 
 		switch ( $name ) {
 			case 'wiki_dbname':
-				$validator = MediaWikiServices::getInstance()->get( 'CreateWikiValidator' );
-				$url = $row->wiki_url ?: $validator->getValidUrl( $row->wiki_dbname );
+				$url = $row->wiki_url ?: $this->validator->getValidUrl( $row->wiki_dbname );
 				$name = $row->wiki_sitename;
 				$formatted = Html::element( 'a', [ 'href' => $url ], $name );
 				break;
 			case 'wiki_language':
-				$formatted = $this->escape(
-					MediaWikiServices::getInstance()->getLanguageNameUtils()->getLanguageName(
-						$row->wiki_language
-					)
+				$formatted = $this->languageNameUtils->getLanguageName(
+					$row->wiki_language,
+					$this->getLanguage()->getCode()
 				);
 				break;
 			case 'wiki_closed':
@@ -151,15 +113,13 @@ class WikiDiscoverWikisPager extends TablePager {
 				$formatted = $this->escape( $wikiCategories[$row->wiki_category] ?? 'Uncategorised' );
 				break;
 			case 'wiki_creation':
-				$lang = RequestContext::getMain()->getLanguage();
-
-				$formatted = $this->escape( $lang->date( wfTimestamp( TS_MW, strtotime( $row->wiki_creation ) ) ) );
+				$formatted = $this->escape( $this->getLanguage()->userTimeAndDate(
+					$row->wiki_creation, $this->getUser()
+				) );
 				break;
 			case 'wiki_description':
 				$manageWikiSettings = new ManageWikiSettings( $row->wiki_dbname );
-
 				$value = $manageWikiSettings->list( 'wgWikiDiscoverDescription' );
-
 				$formatted = $this->escape( $value ?? '' );
 				break;
 			default:
@@ -170,26 +130,40 @@ class WikiDiscoverWikisPager extends TablePager {
 		return $formatted;
 	}
 
-	/** @inheritDoc */
-	public function getQueryInfo() {
-		$config = MediaWikiServices::getInstance()->getMainConfig();
+	/**
+	 * Safely HTML-escapes $value
+	 */
+	private function escape( string $value ): string {
+		return htmlspecialchars( $value, ENT_QUOTES, 'UTF-8', false );
+	}
 
+	/** @inheritDoc */
+	public function getQueryInfo(): array {
 		$fields = [];
-		if ( $config->get( 'CreateWikiUseClosedWikis' ) ) {
+		if ( $this->getConfig()->get( 'CreateWikiUseClosedWikis' ) ) {
 			$fields[] = 'wiki_closed';
 		}
 
-		if ( $config->get( 'CreateWikiUseInactiveWikis' ) ) {
+		if ( $this->getConfig()->get( 'CreateWikiUseInactiveWikis' ) ) {
 			$fields[] = 'wiki_inactive';
 		}
 
-		if ( $config->get( 'CreateWikiUsePrivateWikis' ) ) {
+		if ( $this->getConfig()->get( 'CreateWikiUsePrivateWikis' ) ) {
 			$fields[] = 'wiki_private';
 		}
 
 		$info = [
 			'tables' => [ 'cw_wikis' ],
-			'fields' => array_merge( [ 'wiki_dbname', 'wiki_language', 'wiki_deleted', 'wiki_locked', 'wiki_category', 'wiki_creation', 'wiki_sitename', 'wiki_url' ], $fields ),
+			'fields' => array_merge( [
+				'wiki_dbname',
+				'wiki_language',
+				'wiki_deleted',
+				'wiki_locked',
+				'wiki_category',
+				'wiki_creation',
+				'wiki_sitename',
+				'wiki_url',
+			], $fields ),
 			'conds' => [],
 			'joins_conds' => [],
 		];
@@ -207,25 +181,35 @@ class WikiDiscoverWikisPager extends TablePager {
 				$info['conds']['wiki_deleted'] = 1;
 			} elseif ( $this->state === 'locked' ) {
 				$info['conds']['wiki_locked'] = 1;
-			} elseif ( $config->get( 'CreateWikiUseClosedWikis' ) && $this->state === 'closed' ) {
+			} elseif (
+				$this->getConfig()->get( 'CreateWikiUseClosedWikis' ) &&
+				$this->state === 'closed'
+			) {
 				$info['conds']['wiki_closed'] = 1;
 				$info['conds']['wiki_deleted'] = 0;
-			} elseif ( $config->get( 'CreateWikiUseInactiveWikis' ) && $this->state === 'inactive' ) {
+			} elseif (
+				$this->getConfig()->get( 'CreateWikiUseInactiveWikis' ) &&
+				$this->state === 'inactive'
+			) {
 				$info['conds']['wiki_deleted'] = 0;
 				$info['conds']['wiki_inactive'] = 1;
 			} elseif ( $this->state === 'active' ) {
 				$info['conds']['wiki_deleted'] = 0;
-				if ( $config->get( 'CreateWikiUseClosedWikis' ) ) {
+				if ( $this->getConfig()->get( 'CreateWikiUseClosedWikis' ) ) {
 					$info['conds']['wiki_closed'] = 0;
 				}
 
-				if ( $config->get( 'CreateWikiUseInactiveWikis' ) ) {
+				if ( $this->getConfig()->get( 'CreateWikiUseInactiveWikis' ) ) {
 					$info['conds']['wiki_inactive'] = 0;
 				}
 			}
 		}
 
-		if ( $config->get( 'CreateWikiUsePrivateWikis' ) && $this->visibility && $this->visibility !== 'any' ) {
+		if (
+			$this->getConfig()->get( 'CreateWikiUsePrivateWikis' ) &&
+			$this->visibility &&
+			$this->visibility !== 'any'
+		) {
 			if ( $this->visibility === 'public' ) {
 				$info['conds']['wiki_private'] = 0;
 			} elseif ( $this->visibility === 'private' ) {
@@ -237,12 +221,12 @@ class WikiDiscoverWikisPager extends TablePager {
 	}
 
 	/** @inheritDoc */
-	public function getDefaultSort() {
+	public function getDefaultSort(): string {
 		return 'wiki_creation';
 	}
 
 	/** @inheritDoc */
-	protected function isFieldSortable( $field ) {
+	protected function isFieldSortable( $field ): bool {
 		return $field !== 'wiki_description';
 	}
 }

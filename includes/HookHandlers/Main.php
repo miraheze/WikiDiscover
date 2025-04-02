@@ -50,10 +50,29 @@ class Main implements
 
 	/** @inheritDoc */
 	public function onParserFirstCallInit( $parser ) {
-		$parser->setFunctionHook( 'numberofwikisincategory', [ $this, 'getNumberOfWikisInCategory' ], Parser::SFH_NO_HASH );
-		$parser->setFunctionHook( 'numberofwikisinlanguage', [ $this, 'getNumberOfWikisInLanguage' ], Parser::SFH_NO_HASH );
-		$parser->setFunctionHook( 'numberofwikisbysetting', [ $this, 'getNumberOfWikisBySetting' ], Parser::SFH_NO_HASH );
-		$parser->setFunctionHook( 'wikicreationdate', [ $this, 'getWikiCreationDate' ], Parser::SFH_NO_HASH );
+		$parser->setFunctionHook(
+			'numberofwikisincategory',
+			[ $this, 'getNumberOfWikisInCategory' ],
+			Parser::SFH_NO_HASH
+		);
+
+		$parser->setFunctionHook(
+			'numberofwikisinlanguage',
+			[ $this, 'getNumberOfWikisInLanguage' ],
+			Parser::SFH_NO_HASH
+		);
+
+		$parser->setFunctionHook(
+			'numberofwikisbysetting',
+			[ $this, 'getNumberOfWikisBySetting' ],
+			Parser::SFH_NO_HASH
+		);
+
+		$parser->setFunctionHook(
+			'wikicreationdate',
+			[ $this, 'getWikiCreationDate' ],
+			Parser::SFH_NO_HASH
+		);
 	}
 
 	/** @inheritDoc */

@@ -164,15 +164,15 @@ class WikiDiscoverWikisPager extends TablePager {
 			'joins_conds' => [],
 		];
 
-		if ( $this->language && $this->language !== 'any' ) {
+		if ( $this->language && $this->language !== '*' ) {
 			$info['conds']['wiki_language'] = $this->language;
 		}
 
-		if ( $this->category && $this->category !== 'any' ) {
+		if ( $this->category && $this->category !== '*' ) {
 			$info['conds']['wiki_category'] = $this->category;
 		}
 
-		if ( $this->state && $this->state !== 'any' ) {
+		if ( $this->state && $this->state !== '*' ) {
 			if ( $this->state === 'deleted' ) {
 				$info['conds']['wiki_deleted'] = 1;
 			} elseif ( $this->state === 'locked' ) {
@@ -204,7 +204,7 @@ class WikiDiscoverWikisPager extends TablePager {
 		if (
 			$this->getConfig()->get( 'CreateWikiUsePrivateWikis' ) &&
 			$this->visibility &&
-			$this->visibility !== 'any'
+			$this->visibility !== '*'
 		) {
 			if ( $this->visibility === 'public' ) {
 				$info['conds']['wiki_private'] = 0;

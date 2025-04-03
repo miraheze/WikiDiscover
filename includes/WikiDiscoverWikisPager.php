@@ -89,17 +89,13 @@ class WikiDiscoverWikisPager extends TablePager {
 				);
 				break;
 			case 'wiki_closed':
-				if ( $row->wiki_deleted ) {
-					$formatted = 'Deleted';
-				} elseif ( $row->wiki_locked ) {
-					$formatted = 'Locked';
-				} elseif ( $row->wiki_closed ) {
-					$formatted = 'Closed';
-				} elseif ( $row->wiki_inactive ) {
-					$formatted = 'Inactive';
-				} else {
-					$formatted = 'Open';
-				}
+				$formatted = match ( true ) {
+					(bool)$row->wiki_deleted => 'Deleted',
+					(bool)$row->wiki_locked => 'Locked',
+					(bool)$row->wiki_closed => 'Closed',
+					(bool)$row->wiki_inactive => 'Inactive',
+					default => 'Open',
+				};
 				break;
 			case 'wiki_private':
 				if ( $row->wiki_private ) {

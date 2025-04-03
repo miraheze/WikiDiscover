@@ -9,6 +9,11 @@
 			"SaldırganSincap"
 		]
 	},
+	"apihelp-query+wikidiscover-example": "Tüm vikileri formda göster.",
+	"apihelp-query+wikidiscover-param-limit": "Gösterilecek maksimum sonuç sayısı.",
+	"apihelp-query+wikidiscover-param-prop": "Tanımlanmış bir viki hakkındaki bilgiye dönüş yapın.",
+	"apihelp-query+wikidiscover-param-state": "Bir vikinin CreateWiki tanımlı durumuna göre filtreleyin.",
+	"apihelp-query+wikidiscover-summary": "CreateWiki viki çiftliğindeki vikilerin bir listesini alın.",
 	"randomwiki": "Rastgele bir vikiye yönlendir",
 	"randomwiki-header": "Aşağıdan bir kategori ve bir dil seçin ve gönderdiğinizde, seçilen ölçütleri karşılayan rastgele bir vikiye yönlendireceksiniz.",
 	"randomwiki-parameters": "Değişkenleri seçin",
@@ -22,11 +27,5 @@
 	"wikidiscover-table-language": "Dil",
 	"wikidiscover-table-state": "Durum",
 	"wikidiscover-table-visibility": "Görünürlük",
-	"wikidiscover-table-wiki": "Viki adı",
-	"apihelp-wikidiscover-summary": "CreateWiki viki çiftliğindeki vikilerin bir listesini alın.",
-	"apihelp-wikidiscover-param-state": "Bir vikinin CreateWiki tanımlı durumuna göre filtreleyin.",
-	"apihelp-wikidiscover-param-siteprop": "Tanımlanmış bir viki hakkındaki bilgiye dönüş yapın.",
-	"apihelp-wikidiscover-param-limit": "Gösterilecek maksimum sonuç sayısı.",
-	"apihelp-wikidiscover-param-wikislist": "Tüm wiki'lerin bir listesini alın.",
-	"apihelp-wikidiscover-example": "Tüm vikileri formda göster."
+	"wikidiscover-table-wiki": "Viki adı"
 }

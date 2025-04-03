@@ -5,6 +5,11 @@
 			"WikiPhoenix"
 		]
 	},
+	"apihelp-query+wikidiscover-example": "Visa alla wikier i formuläret.",
+	"apihelp-query+wikidiscover-param-limit": "Maximalt antal resultat att visa.",
+	"apihelp-query+wikidiscover-param-prop": "Information att returnera om en definierad wiki.",
+	"apihelp-query+wikidiscover-param-state": "Filtrera efter en wikis CreateWiki-definierade tillstånd.",
+	"apihelp-query+wikidiscover-summary": "Hämta en lista över wikier på en CreateWiki-wikifarm.",
 	"randomwiki": "Slumpwiki",
 	"randomwiki-header": "Välj en kategori och ett språk nedan och vid föreläggande kommer du omdirigeras slumpmässigt till en wiki som möter kriterierna du valt!",
 	"wikidiscover": "WikiDiscover",
@@ -15,11 +20,5 @@
 	"wikidiscover-table-language": "Språk",
 	"wikidiscover-table-state": "Tillstånd",
 	"wikidiscover-table-visibility": "Synlighet",
-	"wikidiscover-table-wiki": "Wikinamn",
-	"apihelp-wikidiscover-summary": "Hämta en lista över wikier på en CreateWiki-wikifarm.",
-	"apihelp-wikidiscover-param-state": "Filtrera efter en wikis CreateWiki-definierade tillstånd.",
-	"apihelp-wikidiscover-param-siteprop": "Information att returnera om en definierad wiki.",
-	"apihelp-wikidiscover-param-limit": "Maximalt antal resultat att visa.",
-	"apihelp-wikidiscover-param-wikislist": "Hämta en lista över alla wikier.",
-	"apihelp-wikidiscover-example": "Visa alla wikier i formuläret."
+	"wikidiscover-table-wiki": "Wikinamn"
 }

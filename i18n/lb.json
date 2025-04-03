@@ -5,6 +5,8 @@
 			"Volvox"
 		]
 	},
+	"apihelp-query+wikidiscover-example": "All Wikien am Formulaire weisen.",
+	"apihelp-query+wikidiscover-param-limit": "Maximal Zuel vun de Resultater déi gewise ginn",
 	"randomwiki": "Op eng zoufälleg Wiki viruleeden",
 	"wikidiscover": "Wikien entdecken",
 	"wikidiscover-table-category": "Kategorie",
@@ -12,8 +14,5 @@
 	"wikidiscover-table-language": "Sprooch",
 	"wikidiscover-table-state": "Status",
 	"wikidiscover-table-visibility": "Visibilitéit",
-	"wikidiscover-table-wiki": "Numm vun der Wiki",
-	"apihelp-wikidiscover-param-limit": "Maximal Zuel vun de Resultater déi gewise ginn",
-	"apihelp-wikidiscover-param-wikislist": "Eng Lëscht vun alle Wikië kréien.",
-	"apihelp-wikidiscover-example": "All Wikien am Formulaire weisen."
+	"wikidiscover-table-wiki": "Numm vun der Wiki"
 }

@@ -9,6 +9,11 @@
 			"Siebrand"
 		]
 	},
+	"apihelp-query+wikidiscover-example": "Toont alle wiki's op het formulier.",
+	"apihelp-query+wikidiscover-param-limit": "Het maximale aantal weer te geven resultaten.",
+	"apihelp-query+wikidiscover-param-prop": "Informatie om terug te geven over een aangegeven wiki.",
+	"apihelp-query+wikidiscover-param-state": "Filteren op de door CreateWiki gedefinieerde staat van een wiki.",
+	"apihelp-query+wikidiscover-summary": "Roept een lijst op van de wiki's op een CreateWiki-wikifarm.",
 	"randomwiki": "Doorverwijzen naar een willekeurige wiki",
 	"randomwiki-header": "Kies hieronder een categorie en een taal. Met een druk op de knop wordt u dan doorgestuurd naar een willekeurige wiki die voldoet aan de gekozen criteria.",
 	"randomwiki-parameters": "Selecteer parameters",
@@ -22,11 +27,5 @@
 	"wikidiscover-table-language": "Taal",
 	"wikidiscover-table-state": "Staat",
 	"wikidiscover-table-visibility": "Zichtbaarheid",
-	"wikidiscover-table-wiki": "Wikinaam",
-	"apihelp-wikidiscover-summary": "Roept een lijst op van de wiki's op een CreateWiki-wikifarm.",
-	"apihelp-wikidiscover-param-state": "Filteren op de door CreateWiki gedefinieerde staat van een wiki.",
-	"apihelp-wikidiscover-param-siteprop": "Informatie om terug te geven over een aangegeven wiki.",
-	"apihelp-wikidiscover-param-limit": "Het maximale aantal weer te geven resultaten.",
-	"apihelp-wikidiscover-param-wikislist": "Roept een lijst op van alle wiki's.",
-	"apihelp-wikidiscover-example": "Toont alle wiki's op het formulier."
+	"wikidiscover-table-wiki": "Wikinaam"
 }

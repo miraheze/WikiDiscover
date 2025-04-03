@@ -56,7 +56,7 @@ class SpecialWikiDiscover extends SpecialPage {
 				'type' => 'check',
 				'name' => 'mywikis',
 				'label-message' => 'wikidiscover-table-mywikis',
-				'default' => $myWikis ?: false,
+				'default' => $myWikis,
 			],
 			'language' => [
 				'type' => 'language',

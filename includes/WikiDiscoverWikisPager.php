@@ -90,23 +90,23 @@ class WikiDiscoverWikisPager extends TablePager {
 				break;
 			case 'wiki_closed':
 				$formatted = match ( true ) {
-					(bool)$row->wiki_deleted => 'Deleted',
-					(bool)$row->wiki_locked => 'Locked',
-					(bool)$row->wiki_closed => 'Closed',
-					(bool)$row->wiki_inactive => 'Inactive',
-					default => 'Open',
+					(bool)$row->wiki_deleted => $this->msg( 'wikidiscover-label-deleted' )->escaped(),
+					(bool)$row->wiki_locked => $this->msg( 'wikidiscover-label-locked' )->escaped(),
+					(bool)$row->wiki_closed => $this->msg( 'wikidiscover-label-closed' )->escaped(),
+					(bool)$row->wiki_inactive => $this->msg( 'wikidiscover-label-inactive' )->escaped(),
+					default => $this->msg( 'wikidiscover-label-open' )->escaped(),
 				};
 				break;
 			case 'wiki_private':
 				if ( $row->wiki_private ) {
-					$formatted = 'Private';
+					$formatted = $this->msg( 'wikidiscover-label-private' )->escaped();
 				} else {
-					$formatted = 'Public';
+					$formatted = $this->msg( 'wikidiscover-label-public' )->escaped();
 				}
 				break;
 			case 'wiki_category':
 				$wikiCategories = array_flip( $this->getConfig()->get( 'CreateWikiCategories' ) );
-				$formatted = $this->escape( $wikiCategories[$row->wiki_category] ?? 'Uncategorised' );
+				$formatted = $this->escape( $wikiCategories[$row->wiki_category] ?? 'uncategorised' );
 				break;
 			case 'wiki_creation':
 				$formatted = $this->escape( $this->getLanguage()->userTimeAndDate(

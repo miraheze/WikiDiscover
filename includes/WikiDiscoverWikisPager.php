@@ -16,8 +16,8 @@ class WikiDiscoverWikisPager extends TablePager {
 
 	public function __construct(
 		IContextSource $context,
-		CreateWikiDatabaseUtils $databaseUtils,
 		LinkRenderer $linkRenderer,
+		private readonly CreateWikiDatabaseUtils $databaseUtils,
 		private readonly CreateWikiValidator $validator,
 		private readonly ExtensionRegistry $extensionRegistry,
 		private readonly LanguageNameUtils $languageNameUtils,

@@ -4,6 +4,11 @@
 			"Vlad5250"
 		]
 	},
+	"apihelp-query+wikidiscover-example": "Прикажи све викије на фарми.",
+	"apihelp-query+wikidiscover-param-limit": "Максималан број резултата за приказ.",
+	"apihelp-query+wikidiscover-param-prop": "Које информације о дефинисаном викију треба вратити.",
+	"apihelp-query+wikidiscover-param-state": "Филтрирај према стању викија за „Направи вики“",
+	"apihelp-query+wikidiscover-summary": "Дај списак викија у фарми за „Направи вики“.",
 	"randomwiki": "Насумични вики",
 	"randomwiki-header": "Изаберите категорију и језик да бисте се одведени на насумични вики који испуњава изабране критерије.",
 	"wikidiscover": "Откриј викије",
@@ -14,11 +19,5 @@
 	"wikidiscover-table-language": "Језик",
 	"wikidiscover-table-state": "Стање",
 	"wikidiscover-table-visibility": "Видљивост",
-	"wikidiscover-table-wiki": "Име викија",
-	"apihelp-wikidiscover-summary": "Дај списак викија у фарми за „Направи вики“.",
-	"apihelp-wikidiscover-param-state": "Филтрирај према стању викија за „Направи вики“",
-	"apihelp-wikidiscover-param-siteprop": "Које информације о дефинисаном викију треба вратити.",
-	"apihelp-wikidiscover-param-limit": "Максималан број резултата за приказ.",
-	"apihelp-wikidiscover-param-wikislist": "Дај списак свих викија.",
-	"apihelp-wikidiscover-example": "Прикажи све викије на фарми."
+	"wikidiscover-table-wiki": "Име викија"
 }

@@ -6,6 +6,11 @@
 			"TomatoCake"
 		]
 	},
+	"apihelp-query+wikidiscover-example": "Zeigt alle Wikis auf der Farm an.",
+	"apihelp-query+wikidiscover-param-limit": "Maximale Anzahl der anzuzeigenden Ergebnisse.",
+	"apihelp-query+wikidiscover-param-prop": "Zurückzugebende Informationen über ein angegebenes Wiki.",
+	"apihelp-query+wikidiscover-param-state": "Filtert nach dem CreateWiki-definierten Status eines Wikis.",
+	"apihelp-query+wikidiscover-summary": "Ruft eine Liste der Wikis auf einer CreateWiki-Wikifarm ab.",
 	"randomwiki": "Weiterleitung zu einem zufälligen Wiki",
 	"randomwiki-header": "Wähle unten eine Kategorie und eine Sprache aus. Nach der Anmeldung wirst du zu einem zufälligen Wiki weitergeleitet, das die ausgewählten Kriterien erfüllt.",
 	"randomwiki-parameters": "Parameter auswählen",
@@ -19,11 +24,5 @@
 	"wikidiscover-table-language": "Sprache",
 	"wikidiscover-table-state": "Status",
 	"wikidiscover-table-visibility": "Sichtbarkeit",
-	"wikidiscover-table-wiki": "Name des Wikis",
-	"apihelp-wikidiscover-summary": "Ruft eine Liste der Wikis auf einer CreateWiki-Wikifarm ab.",
-	"apihelp-wikidiscover-param-state": "Filtert nach dem CreateWiki-definierten Status eines Wikis.",
-	"apihelp-wikidiscover-param-siteprop": "Zurückzugebende Informationen über ein angegebenes Wiki.",
-	"apihelp-wikidiscover-param-limit": "Maximale Anzahl der anzuzeigenden Ergebnisse.",
-	"apihelp-wikidiscover-param-wikislist": "Zeigt eine Liste aller Wikis.",
-	"apihelp-wikidiscover-example": "Zeigt alle Wikis auf der Farm an."
+	"wikidiscover-table-wiki": "Name des Wikis"
 }

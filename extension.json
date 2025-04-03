@@ -5,8 +5,9 @@
 		"Universal Omega",
 		"Agent Isai"
 	],
-	"descriptionmsg": "wikidiscover-desc",
 	"url": "https://github.com/miraheze/WikiDiscover",
+	"descriptionmsg": "wikidiscover-desc",
+	"namemsg": "wikidiscover-extensionname",
 	"license-name": "GPL-3.0-or-later",
 	"type": "specialpage",
 	"requires": {

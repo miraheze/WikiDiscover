@@ -47,10 +47,10 @@ class SpecialRandomWiki extends SpecialPage {
 				'type' => 'select',
 				'name' => 'inactive',
 				'label-message' => 'wikidiscover-table-state',
-				'options' => [
-					'(any)' => 'any',
-					'active' => 'active',
-					'inactive' => 'inactive',
+				'options-messages' => [
+					'wikidiscover-label-any' => 'any',
+					'wikidiscover-label-active' => 'active',
+					'wikidiscover-label-inactive' => 'inactive',
 				],
 				'default' => 'any',
 			];

@@ -121,7 +121,8 @@ class SpecialWikiDiscover extends SpecialPage {
 			$visibility
 		);
 
-		$this->getOutput()->addParserOutputContent( $pager->getFullOutput() );
+		$table = $pager->getFullOutput();
+		$this->getOutput()->addParserOutputContent( $table );
 	}
 
 	/** @inheritDoc */

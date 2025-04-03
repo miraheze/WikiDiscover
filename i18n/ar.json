@@ -6,6 +6,11 @@
 			"محمد أحمد عبد الفتاح"
 		]
 	},
+	"apihelp-query+wikidiscover-example": "عرض جميع الويكيات في النموذج.",
+	"apihelp-query+wikidiscover-param-limit": "أقصى عدد من النتائج لإظهارها.",
+	"apihelp-query+wikidiscover-param-prop": "معلومات للعودة عن ويكي محددة.",
+	"apihelp-query+wikidiscover-param-state": "قم بالتصفية حسب حالة إنشاء الويكي المعرفة للويكي.",
+	"apihelp-query+wikidiscover-summary": "الحصول على قائمة الويكيات في مزرعة الويكي إنشاء ويكي.",
 	"randomwiki": "إعادة التوجيه إلى ويكي عشوائي",
 	"randomwiki-header": "اختر الفئة واللغة أدناه وعند الإرسال، سيتم إعادة توجيهك إلى ويكي عشوائي يلبي المعايير المحددة.",
 	"randomwiki-parameters": "حدد المعلمات",
@@ -19,11 +24,5 @@
 	"wikidiscover-table-language": "اللغة",
 	"wikidiscover-table-state": "الحالة",
 	"wikidiscover-table-visibility": "الرؤية",
-	"wikidiscover-table-wiki": "اسم الويكي",
-	"apihelp-wikidiscover-summary": "الحصول على قائمة الويكيات في مزرعة الويكي إنشاء ويكي.",
-	"apihelp-wikidiscover-param-state": "قم بالتصفية حسب حالة إنشاء الويكي المعرفة للويكي.",
-	"apihelp-wikidiscover-param-siteprop": "معلومات للعودة عن ويكي محددة.",
-	"apihelp-wikidiscover-param-limit": "أقصى عدد من النتائج لإظهارها.",
-	"apihelp-wikidiscover-param-wikislist": "احصل على قائمة بكل الويكيات",
-	"apihelp-wikidiscover-example": "عرض جميع الويكيات في النموذج."
+	"wikidiscover-table-wiki": "اسم الويكي"
 }

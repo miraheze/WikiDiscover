@@ -7,6 +7,11 @@
 			"Toliño"
 		]
 	},
+	"apihelp-query+wikidiscover-example": "Amosar tódalas wikis no sitio.",
+	"apihelp-query+wikidiscover-param-limit": "O número máximo de resultados a seren amosados.",
+	"apihelp-query+wikidiscover-param-prop": "A información a devolver sobre unha wiki definida.",
+	"apihelp-query+wikidiscover-param-state": "Filtrar polo estado dunha wiki definida por CrearWiki.",
+	"apihelp-query+wikidiscover-summary": "Obter unha lista das wikis nun sitio de aloxamento de wikis CrearWiki.",
 	"randomwiki": "Wiki aleatorio",
 	"randomwiki-header": "Seleccione máis abaixo unha categoría e unha lingua e irá a un wiki ó chou que cumpra cos criterios seleccionados.",
 	"wikidiscover": "Descubrir wikis",
@@ -15,10 +20,5 @@
 	"wikidiscover-table-language": "Lingua",
 	"wikidiscover-table-state": "Estado",
 	"wikidiscover-table-visibility": "Visibilidade",
-	"wikidiscover-table-wiki": "Nome do wiki",
-	"apihelp-wikidiscover-summary": "Obter unha lista das wikis nun sitio de aloxamento de wikis CrearWiki.",
-	"apihelp-wikidiscover-param-state": "Filtrar polo estado dunha wiki definida por CrearWiki.",
-	"apihelp-wikidiscover-param-siteprop": "A información a devolver sobre unha wiki definida.",
-	"apihelp-wikidiscover-param-limit": "O número máximo de resultados a seren amosados.",
-	"apihelp-wikidiscover-example": "Amosar tódalas wikis no sitio."
+	"wikidiscover-table-wiki": "Nome do wiki"
 }

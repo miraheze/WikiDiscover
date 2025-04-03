@@ -7,6 +7,11 @@
 			"Jon Harald Søby"
 		]
 	},
+	"apihelp-query+wikidiscover-example": "Vis alle wikier med formen.",
+	"apihelp-query+wikidiscover-param-limit": "Maksimalt antall resultater som skal vises.",
+	"apihelp-query+wikidiscover-param-prop": "Informasjon som skal returneres om en definert wiki.",
+	"apihelp-query+wikidiscover-param-state": "Filtrer etter den CreateWiki-definerte statusen til en wiki.",
+	"apihelp-query+wikidiscover-summary": "Hent en liste over wikier på en CreateWiki-wikifarm.",
 	"randomwiki": "Tilfeldig wiki",
 	"randomwiki-header": "Velg en kategori og et språk nedenfor, så blir du automatisk omdirigert til en tilfeldig wiki som imøtekommer de valgte kriteriene.",
 	"wikidiscover": "Wikioppdager",
@@ -16,10 +21,5 @@
 	"wikidiscover-table-language": "Språk",
 	"wikidiscover-table-state": "Status",
 	"wikidiscover-table-visibility": "Synlighet",
-	"wikidiscover-table-wiki": "Wikiens navn",
-	"apihelp-wikidiscover-summary": "Hent en liste over wikier på en CreateWiki-wikifarm.",
-	"apihelp-wikidiscover-param-state": "Filtrer etter den CreateWiki-definerte statusen til en wiki.",
-	"apihelp-wikidiscover-param-siteprop": "Informasjon som skal returneres om en definert wiki.",
-	"apihelp-wikidiscover-param-limit": "Maksimalt antall resultater som skal vises.",
-	"apihelp-wikidiscover-example": "Vis alle wikier med formen."
+	"wikidiscover-table-wiki": "Wikiens navn"
 }

@@ -6,6 +6,10 @@
 			"렌즈"
 		]
 	},
+	"apihelp-query+wikidiscover-example": "양식에 모든 위키를 표시합니다.",
+	"apihelp-query+wikidiscover-param-limit": "표시할 결과의 최대 수입니다.",
+	"apihelp-query+wikidiscover-param-prop": "정의된 위키에 관해 반환할 정보입니다.",
+	"apihelp-query+wikidiscover-summary": "CreateWiki 위키팜에서 위키 목록을 가져옵니다.",
 	"randomwiki": "임의의 위키로 넘겨주기",
 	"wikidiscover": "위키 발견",
 	"wikidiscover-table-category": "분류",
@@ -14,10 +18,5 @@
 	"wikidiscover-table-language": "언어",
 	"wikidiscover-table-state": "상태",
 	"wikidiscover-table-visibility": "공개 설정",
-	"wikidiscover-table-wiki": "위키 이름",
-	"apihelp-wikidiscover-summary": "CreateWiki 위키팜에서 위키 목록을 가져옵니다.",
-	"apihelp-wikidiscover-param-siteprop": "정의된 위키에 관해 반환할 정보입니다.",
-	"apihelp-wikidiscover-param-limit": "표시할 결과의 최대 수입니다.",
-	"apihelp-wikidiscover-param-wikislist": "모든 위키의 목록을 가져옵니다.",
-	"apihelp-wikidiscover-example": "양식에 모든 위키를 표시합니다."
+	"wikidiscover-table-wiki": "위키 이름"
 }

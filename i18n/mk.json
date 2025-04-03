@@ -4,6 +4,11 @@
 			"Bjankuloski06"
 		]
 	},
+	"apihelp-query+wikidiscover-example": "Прикажи ги сите викија на фармата.",
+	"apihelp-query+wikidiscover-param-limit": "Највеќе ставки за приказ.",
+	"apihelp-query+wikidiscover-param-prop": "Кои информации за определеното вики да се дадат.",
+	"apihelp-query+wikidiscover-param-state": "Филтрирај по состојба на викито според „Создај вики“",
+	"apihelp-query+wikidiscover-summary": "Дај список на викија во фармата на „Создај вики“.",
 	"randomwiki": "Пренасочи кон случајно вики",
 	"randomwiki-header": "Изберете категорија и јазик за да бидете одведени на случајно вики кое одговара на одбраните услови.",
 	"randomwiki-parameters": "Изберете параметри",
@@ -17,11 +22,5 @@
 	"wikidiscover-table-language": "Јазик",
 	"wikidiscover-table-state": "Состојба",
 	"wikidiscover-table-visibility": "Видливост",
-	"wikidiscover-table-wiki": "Име на викито",
-	"apihelp-wikidiscover-summary": "Дај список на викија во фармата на „Создај вики“.",
-	"apihelp-wikidiscover-param-state": "Филтрирај по состојба на викито според „Создај вики“",
-	"apihelp-wikidiscover-param-siteprop": "Кои информации за определеното вики да се дадат.",
-	"apihelp-wikidiscover-param-limit": "Највеќе ставки за приказ.",
-	"apihelp-wikidiscover-param-wikislist": "Дај список на сите викија.",
-	"apihelp-wikidiscover-example": "Прикажи ги сите викија на фармата."
+	"wikidiscover-table-wiki": "Име на викито"
 }

@@ -6,6 +6,11 @@
 			"YuriNikolai"
 		]
 	},
+	"apihelp-query+wikidiscover-example": "Mostrar todas as wikis no site.",
+	"apihelp-query+wikidiscover-param-limit": "O número máximo de resultados a serem mostrados.",
+	"apihelp-query+wikidiscover-param-prop": "Informações para retornar sobre um wiki definido.",
+	"apihelp-query+wikidiscover-param-state": "Filtrar pelo estado de uma wiki definido por CriarWiki.",
+	"apihelp-query+wikidiscover-summary": "Obter uma lista das wikis num site de alojamento de wikis CriarWiki.",
 	"randomwiki": "Redirecionar a uma wiki aleatória",
 	"randomwiki-header": "Selecione uma categoria e um idioma abaixo e ao enviar será redirecionado para uma wiki aleatória que preenche os critérios selecionados!",
 	"wikidiscover": "Descubra wikis",
@@ -16,11 +21,5 @@
 	"wikidiscover-table-language": "Idioma",
 	"wikidiscover-table-state": "Estado",
 	"wikidiscover-table-visibility": "Visibilidade",
-	"wikidiscover-table-wiki": "Nome da wiki",
-	"apihelp-wikidiscover-summary": "Obter uma lista das wikis num site de alojamento de wikis CriarWiki.",
-	"apihelp-wikidiscover-param-state": "Filtrar pelo estado de uma wiki definido por CriarWiki.",
-	"apihelp-wikidiscover-param-siteprop": "Informações para retornar sobre um wiki definido.",
-	"apihelp-wikidiscover-param-limit": "O número máximo de resultados a serem mostrados.",
-	"apihelp-wikidiscover-param-wikislist": "Obtenha uma lista de todas as wikis.",
-	"apihelp-wikidiscover-example": "Mostrar todas as wikis no site."
+	"wikidiscover-table-wiki": "Nome da wiki"
 }

@@ -8,6 +8,11 @@
 			"Jakeukalane"
 		]
 	},
+	"apihelp-query+wikidiscover-example": "Mostrar todas las wikis del formulario.",
+	"apihelp-query+wikidiscover-param-limit": "Número máximo de resultados para mostrar.",
+	"apihelp-query+wikidiscover-param-prop": "Información que devolver acerca de una wiki definida.",
+	"apihelp-query+wikidiscover-param-state": "Filtrar por el estado definido de CreateWiki de una wiki.",
+	"apihelp-query+wikidiscover-summary": "Obtenga una lista de wikis de una granja de wiki de CreateWiki.",
 	"randomwiki": "Redirigir a una wiki al azar",
 	"randomwiki-header": "Elija una categoría y un idioma a continuación y, al enviarlo, se le redirigirá a un wiki aleatorio que cumpla los criterios seleccionados.",
 	"randomwiki-parameters": "Seleccionar parámetros",
@@ -21,11 +26,5 @@
 	"wikidiscover-table-language": "Idioma",
 	"wikidiscover-table-state": "Estado o provincia",
 	"wikidiscover-table-visibility": "Visibilidad",
-	"wikidiscover-table-wiki": "Nombre de la wiki",
-	"apihelp-wikidiscover-summary": "Obtenga una lista de wikis de una granja de wiki de CreateWiki.",
-	"apihelp-wikidiscover-param-state": "Filtrar por el estado definido de CreateWiki de una wiki.",
-	"apihelp-wikidiscover-param-siteprop": "Información que devolver acerca de una wiki definida.",
-	"apihelp-wikidiscover-param-limit": "Número máximo de resultados para mostrar.",
-	"apihelp-wikidiscover-param-wikislist": "Conseguir una lista de todas las wikis.",
-	"apihelp-wikidiscover-example": "Mostrar todas las wikis del formulario."
+	"wikidiscover-table-wiki": "Nombre de la wiki"
 }

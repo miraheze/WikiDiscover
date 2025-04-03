@@ -6,6 +6,11 @@
 			"Yardom78"
 		]
 	},
+	"apihelp-query+wikidiscover-example": "Zobraziť všetky wiki na formulári.",
+	"apihelp-query+wikidiscover-param-limit": "Maximálny počet zobrazených výsledkov.",
+	"apihelp-query+wikidiscover-param-prop": "Informácie o definovanej wiki.",
+	"apihelp-query+wikidiscover-param-state": "Filtrovať podľa určeného stavu wiki.",
+	"apihelp-query+wikidiscover-summary": "Získať zoznam wiki stránok na farme Vytvor wiki.",
 	"randomwiki": "Presmerovanie na náhodnú wiki",
 	"randomwiki-header": "Nižšie vyberte kategóriu a jazyk a po odoslaní budete presmerovaní na náhodnú wiki, ktorá spĺňa vybrané kritériá.",
 	"randomwiki-parameters": "Vyberte parametre",
@@ -19,11 +24,5 @@
 	"wikidiscover-table-language": "Jazyk",
 	"wikidiscover-table-state": "Štát",
 	"wikidiscover-table-visibility": "Viditeľnosť",
-	"wikidiscover-table-wiki": "Názov wiki",
-	"apihelp-wikidiscover-summary": "Získať zoznam wiki stránok na farme Vytvor wiki.",
-	"apihelp-wikidiscover-param-state": "Filtrovať podľa určeného stavu wiki.",
-	"apihelp-wikidiscover-param-siteprop": "Informácie o definovanej wiki.",
-	"apihelp-wikidiscover-param-limit": "Maximálny počet zobrazených výsledkov.",
-	"apihelp-wikidiscover-param-wikislist": "Získať zoznam všetkých wiki.",
-	"apihelp-wikidiscover-example": "Zobraziť všetky wiki na formulári."
+	"wikidiscover-table-wiki": "Názov wiki"
 }

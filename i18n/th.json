@@ -4,6 +4,11 @@
 			"Patsagorn Y."
 		]
 	},
+	"apihelp-query+wikidiscover-example": "แสดงวิกิทั้งหมดบนฟาร์ม",
+	"apihelp-query+wikidiscover-param-limit": "จำนวนการตอบกลับสูงสุดที่จะแสดง",
+	"apihelp-query+wikidiscover-param-prop": "ข้อมูลที่ส่งคืนเกี่ยวกับวิกิที่กำหนด",
+	"apihelp-query+wikidiscover-param-state": "กรองตามสถานะของวิกิที่กำหนดโดย CreateWiki",
+	"apihelp-query+wikidiscover-summary": "ดูรายชื่อวิกิบนวิกิฟาร์มที่มี CreateWiki",
 	"randomwiki": "สุ่มวิกิ",
 	"randomwiki-header": "เลือกหมวดหมู่และภาษาด้านล่าง และเมื่อส่ง คุณจะถูกนำไปยังวิกิแบบสุ่มซึ่งตรงตามเกณฑ์ที่เลือก",
 	"wikidiscover": "สำรวจวิกิ",
@@ -14,11 +19,5 @@
 	"wikidiscover-table-language": "ภาษา",
 	"wikidiscover-table-state": "สถานะ",
 	"wikidiscover-table-visibility": "การมองเห็น",
-	"wikidiscover-table-wiki": "ชื่อวิกิ",
-	"apihelp-wikidiscover-summary": "ดูรายชื่อวิกิบนวิกิฟาร์มที่มี CreateWiki",
-	"apihelp-wikidiscover-param-state": "กรองตามสถานะของวิกิที่กำหนดโดย CreateWiki",
-	"apihelp-wikidiscover-param-siteprop": "ข้อมูลที่ส่งคืนเกี่ยวกับวิกิที่กำหนด",
-	"apihelp-wikidiscover-param-limit": "จำนวนการตอบกลับสูงสุดที่จะแสดง",
-	"apihelp-wikidiscover-param-wikislist": "ดูรายชื่อวิกิทั้งหมด",
-	"apihelp-wikidiscover-example": "แสดงวิกิทั้งหมดบนฟาร์ม"
+	"wikidiscover-table-wiki": "ชื่อวิกิ"
 }

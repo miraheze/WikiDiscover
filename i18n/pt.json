@@ -4,6 +4,11 @@
 			"Hamilton Abreu"
 		]
 	},
+	"apihelp-query+wikidiscover-example": "Mostrar todas as wikis no sítio.",
+	"apihelp-query+wikidiscover-param-limit": "O número máximo de resultados a serem mostrados.",
+	"apihelp-query+wikidiscover-param-prop": "A informação a devolver sobre uma wiki definida.",
+	"apihelp-query+wikidiscover-param-state": "Filtrar pelo estado de uma wiki definido por CriarWiki.",
+	"apihelp-query+wikidiscover-summary": "Obter uma lista das wikis num sítio de alojamento de wikis CriarWiki.",
 	"randomwiki": "Wiki aleatória",
 	"randomwiki-header": "Selecione uma categoria e uma língua abaixo e ao enviar será redirecionado para uma wiki aleatória que preenche os critérios selecionados!",
 	"wikidiscover": "WikiDescoberta",
@@ -14,11 +19,5 @@
 	"wikidiscover-table-language": "Língua",
 	"wikidiscover-table-state": "Estado",
 	"wikidiscover-table-visibility": "Visibilidade",
-	"wikidiscover-table-wiki": "Nome da wiki",
-	"apihelp-wikidiscover-summary": "Obter uma lista das wikis num sítio de alojamento de wikis CriarWiki.",
-	"apihelp-wikidiscover-param-state": "Filtrar pelo estado de uma wiki definido por CriarWiki.",
-	"apihelp-wikidiscover-param-siteprop": "A informação a devolver sobre uma wiki definida.",
-	"apihelp-wikidiscover-param-limit": "O número máximo de resultados a serem mostrados.",
-	"apihelp-wikidiscover-param-wikislist": "Obter uma lista de todas as wikis.",
-	"apihelp-wikidiscover-example": "Mostrar todas as wikis no sítio."
+	"wikidiscover-table-wiki": "Nome da wiki"
 }

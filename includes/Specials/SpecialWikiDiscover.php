@@ -31,19 +31,19 @@ class SpecialWikiDiscover extends SpecialPage {
 		$state = $this->getRequest()->getText( 'state' );
 
 		$stateOptions = [
-			'(any)' => 'any',
-			'Active' => 'active',
-			'Locked' => 'locked',
+			'wikidiscover-label-any' => '*',
+			'wikidiscover-label-active' => 'active',
+			'wikidiscover-label-locked' => 'locked',
 		];
 
 		if ( $this->getConfig()->get( 'CreateWikiUseClosedWikis' ) ) {
-			$stateOptions['Closed'] = 'closed';
+			$stateOptions['wikidiscover-label-closed'] = 'closed';
 		}
 
-		$stateOptions['Deleted'] = 'deleted';
+		$stateOptions['wikidiscover-label-deleted'] = 'deleted';
 
 		if ( $this->getConfig()->get( 'CreateWikiUseInactiveWikis' ) ) {
-			$stateOptions['Inactive'] = 'inactive';
+			$stateOptions['wikidiscover-label-inactive'] = 'inactive';
 		}
 
 		$formDescriptor = [
@@ -53,24 +53,30 @@ class SpecialWikiDiscover extends SpecialPage {
 			],
 			'language' => [
 				'type' => 'language',
-				'options' => [ '(any)' => 'any' ],
 				'name' => 'language',
 				'label-message' => 'wikidiscover-table-language',
-				'default' => $language ?: 'any',
+				'default' => $language ?: '*',
+				'options' => [
+					// We cannot use options-messages here as otherwise
+					// it overrides all language options.
+					$this->msg( 'wikidiscover-label-any' )->text() => '*',
+				],
 			],
 			'category' => [
 				'type' => 'select',
 				'name' => 'category',
 				'label-message' => 'wikidiscover-table-category',
-				'options' => [ '(any)' => 'any' ] + $this->getConfig()->get( 'CreateWikiCategories' ),
-				'default' => $category ?: 'any',
+				'options' => [
+					$this->msg( 'wikidiscover-label-any' )->text() => '*',
+				] + $this->getConfig()->get( 'CreateWikiCategories' ),
+				'default' => $category ?: '*',
 			],
 			'state' => [
 				'type' => 'select',
 				'name' => 'state',
 				'label-message' => 'wikidiscover-table-state',
-				'options' => $stateOptions,
-				'default' => $state ?: 'any',
+				'options-messages' => $stateOptions,
+				'default' => $state ?: '*',
 			],
 		];
 
@@ -83,12 +89,12 @@ class SpecialWikiDiscover extends SpecialPage {
 				'type' => 'select',
 				'name' => 'visibility',
 				'label-message' => 'wikidiscover-table-visibility',
-				'options' => [
-					'(any)' => 'any',
-					'Public' => 'public',
-					'Private' => 'private',
+				'options-messages' => [
+					'wikidiscover-label-any' => '*',
+					'wikidiscover-label-public' => 'public',
+					'wikidiscover-label-private' => 'private',
 				],
-				'default' => $visibility ?: 'any',
+				'default' => $visibility ?: '*',
 			];
 		} else {
 			$visibility = 'public';
@@ -115,7 +121,8 @@ class SpecialWikiDiscover extends SpecialPage {
 			$visibility
 		);
 
-		$this->getOutput()->addParserOutputContent( $pager->getFullOutput() );
+		$table = $pager->getFullOutput();
+		$this->getOutput()->addParserOutputContent( $table );
 	}
 
 	/** @inheritDoc */

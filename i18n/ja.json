@@ -12,6 +12,11 @@
 			"しぃ"
 		]
 	},
+	"apihelp-query+wikidiscover-example": "フォームに表示されているすべてのウィキを表示します。",
+	"apihelp-query+wikidiscover-param-limit": "表示する結果の最大数",
+	"apihelp-query+wikidiscover-param-prop": "定義されたウィキに関する情報を返します。",
+	"apihelp-query+wikidiscover-param-state": "CreateWikiで定義されたウィキの状態でフィルタリングします。",
+	"apihelp-query+wikidiscover-summary": "CreateWikiのウィキファームに登録されているウィキのリストを取得します。",
 	"randomwiki": "ウィキをランダムに選んでリダイレクト",
 	"randomwiki-header": "以下のカテゴリと言語を選択して送信すると、選択した条件を満たすウィキにランダムにリダイレクトされます。",
 	"randomwiki-parameters": "パラメーターを選択",
@@ -25,11 +30,5 @@
 	"wikidiscover-table-language": "言語",
 	"wikidiscover-table-state": "状態",
 	"wikidiscover-table-visibility": "閲覧レベル",
-	"wikidiscover-table-wiki": "ウィキの名前",
-	"apihelp-wikidiscover-summary": "CreateWikiのウィキファームに登録されているウィキのリストを取得します。",
-	"apihelp-wikidiscover-param-state": "CreateWikiで定義されたウィキの状態でフィルタリングします。",
-	"apihelp-wikidiscover-param-siteprop": "定義されたウィキに関する情報を返します。",
-	"apihelp-wikidiscover-param-limit": "表示する結果の最大数",
-	"apihelp-wikidiscover-param-wikislist": "すべてのウィキのリストを取得します。",
-	"apihelp-wikidiscover-example": "フォームに表示されているすべてのウィキを表示します。"
+	"wikidiscover-table-wiki": "ウィキの名前"
 }

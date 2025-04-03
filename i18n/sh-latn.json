@@ -5,6 +5,11 @@
 			"Winston Sung"
 		]
 	},
+	"apihelp-query+wikidiscover-example": "Prikaži sve vikije na farmi.",
+	"apihelp-query+wikidiscover-param-limit": "Maksimalan broj rezultata za prikaz.",
+	"apihelp-query+wikidiscover-param-prop": "Koje informacije o definisanom vikiju treba vratiti.",
+	"apihelp-query+wikidiscover-param-state": "Filtriraj prema stanju vikija za \"Napravi viki\"",
+	"apihelp-query+wikidiscover-summary": "Daj spisak vikija u farmi za \"Napravi viki\".",
 	"randomwiki": "Nasumični viki",
 	"randomwiki-header": "Izaberite kategoriju i jezik da biste se odvedeni na nasumični viki koji ispunjava izabrane kriterije.",
 	"wikidiscover": "Otkrij vikije",
@@ -15,11 +20,5 @@
 	"wikidiscover-table-language": "Jezik",
 	"wikidiscover-table-state": "Stanje",
 	"wikidiscover-table-visibility": "Vidljivost",
-	"wikidiscover-table-wiki": "Ime vikija",
-	"apihelp-wikidiscover-summary": "Daj spisak vikija u farmi za \"Napravi viki\".",
-	"apihelp-wikidiscover-param-state": "Filtriraj prema stanju vikija za \"Napravi viki\"",
-	"apihelp-wikidiscover-param-siteprop": "Koje informacije o definisanom vikiju treba vratiti.",
-	"apihelp-wikidiscover-param-limit": "Maksimalan broj rezultata za prikaz.",
-	"apihelp-wikidiscover-param-wikislist": "Daj spisak svih vikija.",
-	"apihelp-wikidiscover-example": "Prikaži sve vikije na farmi."
+	"wikidiscover-table-wiki": "Ime vikija"
 }

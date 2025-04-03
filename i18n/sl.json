@@ -4,6 +4,11 @@
 			"Eleassar"
 		]
 	},
+	"apihelp-query+wikidiscover-example": "Prikaži vse vikije farme.",
+	"apihelp-query+wikidiscover-param-limit": "Največje število prikazanih zadetkov.",
+	"apihelp-query+wikidiscover-param-prop": "Informacije o določenem vikiju za vrnitev.",
+	"apihelp-query+wikidiscover-param-state": "Filtrira po stanju vikija, določenem s CreateWiki.",
+	"apihelp-query+wikidiscover-summary": "Pridobite seznam vikijev v vikifarmi CreateWiki.",
 	"randomwiki": "Naključni viki",
 	"randomwiki-header": "Spodaj izberite kategorijo in jezik in ob predložitvi boste preusmerjeni na naključen viki, ki izpolnjuje izbrana merila.",
 	"wikidiscover": "Odkrijte vikije",
@@ -14,11 +19,5 @@
 	"wikidiscover-table-language": "Jezik",
 	"wikidiscover-table-state": "Status",
 	"wikidiscover-table-visibility": "Vidnost",
-	"wikidiscover-table-wiki": "Ime vikija",
-	"apihelp-wikidiscover-summary": "Pridobite seznam vikijev v vikifarmi CreateWiki.",
-	"apihelp-wikidiscover-param-state": "Filtrira po stanju vikija, določenem s CreateWiki.",
-	"apihelp-wikidiscover-param-siteprop": "Informacije o določenem vikiju za vrnitev.",
-	"apihelp-wikidiscover-param-limit": "Največje število prikazanih zadetkov.",
-	"apihelp-wikidiscover-param-wikislist": "Pridobi seznam vseh vikijev.",
-	"apihelp-wikidiscover-example": "Prikaži vse vikije farme."
+	"wikidiscover-table-wiki": "Ime vikija"
 }

@@ -9,6 +9,11 @@
 			"铁桶"
 		]
 	},
+	"apihelp-query+wikidiscover-example": "显示在表单上的所有wiki。",
+	"apihelp-query+wikidiscover-param-limit": "显示结果的最大数量。",
+	"apihelp-query+wikidiscover-param-prop": "返回关于定义wiki的信息。",
+	"apihelp-query+wikidiscover-param-state": "根据CreateWiki所定义的wiki状态进行筛选。",
+	"apihelp-query+wikidiscover-summary": "获取使用CreateWiki的wiki农场上的wiki列表。",
 	"randomwiki": "重定向至随机wiki",
 	"randomwiki-header": "在下方选择分类和语言并提交后，您将重定向至符合所选标准的随机wiki。",
 	"randomwiki-parameters": "选择参数",
@@ -22,11 +27,5 @@
 	"wikidiscover-table-language": "语言",
 	"wikidiscover-table-state": "状态",
 	"wikidiscover-table-visibility": "可见性",
-	"wikidiscover-table-wiki": "wiki名称",
-	"apihelp-wikidiscover-summary": "获取使用CreateWiki的wiki农场上的wiki列表。",
-	"apihelp-wikidiscover-param-state": "根据CreateWiki所定义的wiki状态进行筛选。",
-	"apihelp-wikidiscover-param-siteprop": "返回关于定义wiki的信息。",
-	"apihelp-wikidiscover-param-limit": "显示结果的最大数量。",
-	"apihelp-wikidiscover-param-wikislist": "获取所有wiki的列表。",
-	"apihelp-wikidiscover-example": "显示在表单上的所有wiki。"
+	"wikidiscover-table-wiki": "wiki名称"
 }

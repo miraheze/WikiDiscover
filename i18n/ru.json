@@ -17,6 +17,11 @@
 			"WerySkok"
 		]
 	},
+	"apihelp-query+wikidiscover-example": "Показать все вики в форме.",
+	"apihelp-query+wikidiscover-param-limit": "Максимальное количество результатов для отображения.",
+	"apihelp-query+wikidiscover-param-prop": "Информация, которую нужно вернуть о переданной вики.",
+	"apihelp-query+wikidiscover-param-state": "Фильтровать по установленному CreateWiki состоянию вики.",
+	"apihelp-query+wikidiscover-summary": "Получить список вики на вики-ферме CreateWiki.",
 	"randomwiki": "Перенаправление на случайный вики-проект",
 	"randomwiki-header": "Выберите категорию и язык ниже, и при отправке вы будете перенаправлены случайным образом в вики, которая соответствует выбранным критериям.",
 	"randomwiki-parameters": "Выберите параметры",
@@ -30,11 +35,5 @@
 	"wikidiscover-table-language": "Язык",
 	"wikidiscover-table-state": "Состояние",
 	"wikidiscover-table-visibility": "Видимость",
-	"wikidiscover-table-wiki": "Название вики",
-	"apihelp-wikidiscover-summary": "Получить список вики на вики-ферме CreateWiki.",
-	"apihelp-wikidiscover-param-state": "Фильтровать по установленному CreateWiki состоянию вики.",
-	"apihelp-wikidiscover-param-siteprop": "Информация, которую нужно вернуть о переданной вики.",
-	"apihelp-wikidiscover-param-limit": "Максимальное количество результатов для отображения.",
-	"apihelp-wikidiscover-param-wikislist": "Получить список всех вики.",
-	"apihelp-wikidiscover-example": "Показать все вики в форме."
+	"wikidiscover-table-wiki": "Название вики"
 }

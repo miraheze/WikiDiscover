@@ -4,12 +4,12 @@
 			"Lam-ang"
 		]
 	},
+	"apihelp-query+wikidiscover-example": "Ipakita amin dagiti wiki iti porma.",
+	"apihelp-query+wikidiscover-param-limit": "Kaaduan a bilang dagiti resulta a maipakita.",
+	"apihelp-query+wikidiscover-param-prop": "Maisubli a pakaammo a maipanggep iti naipalawag a wiki.",
 	"wikidiscover-table-category": "Kategoria",
 	"wikidiscover-table-language": "Pagsasao",
 	"wikidiscover-table-state": "Aktibidad",
 	"wikidiscover-table-visibility": "Pannakakita",
-	"wikidiscover-table-wiki": "Nagan ti Wiki",
-	"apihelp-wikidiscover-param-siteprop": "Maisubli a pakaammo a maipanggep iti naipalawag a wiki.",
-	"apihelp-wikidiscover-param-limit": "Kaaduan a bilang dagiti resulta a maipakita.",
-	"apihelp-wikidiscover-example": "Ipakita amin dagiti wiki iti porma."
+	"wikidiscover-table-wiki": "Nagan ti Wiki"
 }

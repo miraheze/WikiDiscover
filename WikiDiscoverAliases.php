@@ -3,6 +3,7 @@
 $specialPageAliases = [];
 
 $specialPageAliases['en'] = [
+	'DeletedWikis' => [ 'DeletedWikis' ],
 	'RandomWiki' => [ 'RandomWiki' ],
 	'WikiDiscover' => [ 'WikiDiscover' ],
 ];
@@ -59,6 +60,10 @@ $specialPageAliases['gl'] = [
 $specialPageAliases['he'] = [
 	'RandomWiki' => [ 'אתר ויקי אקראי' ],
 	'WikiDiscover' => [ 'גילוי אתרי ויקי' ],
+];
+
+$specialPageAliases['ja'] = [
+	'DeletedWikis' => [ '削除されたウィキ' ],
 ];
 
 $specialPageAliases['ko'] = [
@@ -118,6 +123,10 @@ $specialPageAliases['tr'] = [
 
 $specialPageAliases['uk'] = [
 	'RandomWiki' => [ 'Випадкова вікі' ],
+];
+
+$specialPageAliases['vi'] = [
+	'DeletedWikis' => [ 'Wiki bị xóa' ],
 ];
 
 $specialPageAliases['zh-hans'] = [

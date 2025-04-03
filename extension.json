@@ -20,6 +20,13 @@
 		}
 	},
 	"SpecialPages": {
+		"DeletedWikisWD": {
+			"class": "Miraheze\\WikiDiscover\\Specials\\SpecialDeletedWikis",
+			"services": [
+				"CreateWikiDatabaseUtils",
+				"ExtensionRegistry"
+			]
+		},
 		"RandomWiki": {
 			"class": "Miraheze\\WikiDiscover\\Specials\\SpecialRandomWiki",
 			"services": [

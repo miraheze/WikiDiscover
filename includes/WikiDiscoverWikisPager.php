@@ -106,7 +106,10 @@ class WikiDiscoverWikisPager extends TablePager {
 				break;
 			case 'wiki_category':
 				$wikiCategories = array_flip( $this->getConfig()->get( 'CreateWikiCategories' ) );
-				$formatted = $this->escape( $wikiCategories[$row->wiki_category] ?? 'uncategorised' );
+				$formatted = $this->escape(
+					$wikiCategories[$row->wiki_category] ??
+					$row->wiki_category
+				);
 				break;
 			case 'wiki_creation':
 				$formatted = $this->escape( $this->getLanguage()->userTimeAndDate(

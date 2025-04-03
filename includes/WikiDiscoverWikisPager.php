@@ -175,12 +175,14 @@ class WikiDiscoverWikisPager extends TablePager {
 				->from( 'cw_requests' )
 				->where( [
 					'cw_status' => 'approved',
-					// 'cw_user' => $this->getUser()->getId(),
+					'cw_user' => $this->getUser()->getId(),
 				] )
 				->caller( __METHOD__ )
 				->fetchFieldValues();
 
-			$info['conds']['wiki_dbname'] = $wikis;
+			if ( $wikis ) {
+				$info['conds']['wiki_dbname'] = $wikis;
+			}
 		}
 
 		if ( $this->language && $this->language !== '*' ) {

@@ -16,11 +16,12 @@ class WikiDiscoverWikisPager extends TablePager {
 
 	public function __construct(
 		IContextSource $context,
-		CreateWikiDatabaseUtils $databaseUtils,
 		LinkRenderer $linkRenderer,
+		private readonly CreateWikiDatabaseUtils $databaseUtils,
 		private readonly CreateWikiValidator $validator,
 		private readonly ExtensionRegistry $extensionRegistry,
 		private readonly LanguageNameUtils $languageNameUtils,
+		private readonly bool $myWikis,
 		private readonly string $category,
 		private readonly string $language,
 		private readonly string $state,
@@ -166,6 +167,23 @@ class WikiDiscoverWikisPager extends TablePager {
 			'conds' => [],
 			'joins_conds' => [],
 		];
+
+		if ( $this->myWikis ) {
+			$dbr = $this->databaseUtils->getCentralWikiReplicaDB();
+			$wikis = $dbr->newSelectQueryBuilder()
+				->select( 'cw_dbname' )
+				->from( 'cw_requests' )
+				->where( [
+					'cw_status' => 'approved',
+					'cw_user' => $this->getUser()->getId(),
+				] )
+				->caller( __METHOD__ )
+				->fetchFieldValues();
+
+			if ( $wikis ) {
+				$info['conds']['wiki_dbname'] = $wikis;
+			}
+		}
 
 		if ( $this->language && $this->language !== '*' ) {
 			$info['conds']['wiki_language'] = $this->language;

@@ -26,6 +26,7 @@ class SpecialWikiDiscover extends SpecialPage {
 		$this->setHeaders();
 		$this->outputHeader();
 
+		$myWikis = $this->getRequest()->getBool( 'mywikis' );
 		$category = $this->getRequest()->getText( 'category' );
 		$language = $this->getRequest()->getText( 'language' );
 		$state = $this->getRequest()->getText( 'state' );
@@ -50,6 +51,12 @@ class SpecialWikiDiscover extends SpecialPage {
 			'intro' => [
 				'type' => 'info',
 				'default' => $this->msg( 'wikidiscover-header-info' )->text(),
+			],
+			'mywikis' => [
+				'type' => 'check',
+				'name' => 'mywikis',
+				'label-message' => 'wikidiscover-table-mywikis',
+				'default' => $myWikis,
 			],
 			'language' => [
 				'type' => 'language',
@@ -110,11 +117,12 @@ class SpecialWikiDiscover extends SpecialPage {
 
 		$pager = new WikiDiscoverWikisPager(
 			$this->getContext(),
-			$this->databaseUtils,
 			$this->getLinkRenderer(),
+			$this->databaseUtils,
 			$this->validator,
 			$this->extensionRegistry,
 			$this->languageNameUtils,
+			$myWikis,
 			$category,
 			$language,
 			$state,

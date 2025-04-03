@@ -180,9 +180,7 @@ class WikiDiscoverWikisPager extends TablePager {
 				->caller( __METHOD__ )
 				->fetchFieldValues();
 
-			if ( $wikis ) {
-				$info['conds']['wiki_dbname'] = $wikis;
-			}
+			$info['conds']['wiki_dbname'] = $wikis;
 		}
 
 		if ( $this->language && $this->language !== '*' ) {

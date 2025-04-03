@@ -117,8 +117,8 @@ class SpecialWikiDiscover extends SpecialPage {
 
 		$pager = new WikiDiscoverWikisPager(
 			$this->getContext(),
-			$this->databaseUtils,
 			$this->getLinkRenderer(),
+			$this->databaseUtils,
 			$this->validator,
 			$this->extensionRegistry,
 			$this->languageNameUtils,

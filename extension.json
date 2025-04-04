@@ -98,7 +98,7 @@
 		}
 	},
 	"config": {
-		"WikiDiscoverDescriptionMaxLength": {
+		"WikiDiscoverDescriptionsMaxLength": {
 			"description": "Integer. The maxmimum length of wiki descriptions.",
 			"value": 512
 		},

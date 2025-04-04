@@ -34,7 +34,7 @@ class ManageWiki implements
 			'label-message' => 'wikidiscover-label-description',
 			'type' => 'text',
 			'default' => $remoteWiki->getExtraFieldData( 'description' ) ?? '',
-			'maxlength' => $this->config->get( 'WikiDiscoverDescriptionMaxLength' ),
+			'maxlength' => $this->config->get( 'WikiDiscoverDescriptionsMaxLength' ),
 			'disabled' => !$ceMW,
 			'section' => 'main',
 		];

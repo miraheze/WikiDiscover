@@ -10,6 +10,7 @@ use MediaWiki\Pager\TablePager;
 use MediaWiki\Registration\ExtensionRegistry;
 use Miraheze\CreateWiki\Services\CreateWikiDatabaseUtils;
 use Miraheze\CreateWiki\Services\CreateWikiValidator;
+use Miraheze\CreateWiki\Services\RemoteWikiFactory;
 use Miraheze\ManageWiki\Helpers\ManageWikiSettings;
 
 class WikiDiscoverWikisPager extends TablePager {
@@ -21,6 +22,7 @@ class WikiDiscoverWikisPager extends TablePager {
 		private readonly CreateWikiValidator $validator,
 		private readonly ExtensionRegistry $extensionRegistry,
 		private readonly LanguageNameUtils $languageNameUtils,
+		private readonly RemoteWikiFactory $remoteWikiFactory,
 		private readonly string $category,
 		private readonly string $language,
 		private readonly string $state,
@@ -50,10 +52,7 @@ class WikiDiscoverWikisPager extends TablePager {
 			'wiki_creation' => $this->msg( 'wikidiscover-table-established' )->text(),
 		];
 
-		if (
-			$this->extensionRegistry->isLoaded( 'ManageWiki' ) &&
-			$this->getConfig()->get( 'WikiDiscoverUseDescriptions' )
-		) {
+		if ( $this->getConfig()->get( 'WikiDiscoverUseDescriptions' ) ) {
 			$headers['wiki_description'] = $this->msg( 'wikidiscover-table-description' )->text();
 		}
 
@@ -117,8 +116,8 @@ class WikiDiscoverWikisPager extends TablePager {
 				) );
 				break;
 			case 'wiki_description':
-				$manageWikiSettings = new ManageWikiSettings( $row->wiki_dbname );
-				$value = $manageWikiSettings->list( 'wgWikiDiscoverDescription' );
+				$remoteWiki = $this->remoteWikiFactory->newInstance( $row->wiki_dbname );
+				$value = $remoteWiki->getExtraFieldData( 'description' );
 				$formatted = $this->escape( $value ?? '' );
 				break;
 			default:

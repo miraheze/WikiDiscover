@@ -8,6 +8,7 @@ use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\SpecialPage\SpecialPage;
 use Miraheze\CreateWiki\Services\CreateWikiDatabaseUtils;
 use Miraheze\CreateWiki\Services\CreateWikiValidator;
+use Miraheze\CreateWiki\Services\RemoteWikiFactory;
 use Miraheze\WikiDiscover\WikiDiscoverWikisPager;
 
 class SpecialWikiDiscover extends SpecialPage {
@@ -16,7 +17,8 @@ class SpecialWikiDiscover extends SpecialPage {
 		private readonly CreateWikiDatabaseUtils $databaseUtils,
 		private readonly CreateWikiValidator $validator,
 		private readonly ExtensionRegistry $extensionRegistry,
-		private readonly LanguageNameUtils $languageNameUtils
+		private readonly LanguageNameUtils $languageNameUtils,
+		private readonly RemoteWikiFactory $remoteWikiFactory
 	) {
 		parent::__construct( 'WikiDiscover' );
 	}
@@ -115,6 +117,7 @@ class SpecialWikiDiscover extends SpecialPage {
 			$this->validator,
 			$this->extensionRegistry,
 			$this->languageNameUtils,
+			$this->remoteWikiFactory,
 			$category,
 			$language,
 			$state,

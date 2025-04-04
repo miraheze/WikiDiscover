@@ -67,6 +67,12 @@
 		"GetMagicVariableIDs": {
 			"handler": "Main"
 		},
+		"ManageWikiCoreAddFormFields": {
+			"handler": "ManageWiki"
+		},
+		"ManageWikiCoreFormSubmission": {
+			"handler": "ManageWiki"
+		},
 		"ParserFirstCallInit": {
 			"handler": "Main"
 		},
@@ -81,12 +87,18 @@
 				"CreateWikiDatabaseUtils",
 				"MainConfig"
 			]
+		},
+		"ManageWiki": {
+			"class": "Miraheze\\WikiDiscover\\HookHandlers\\ManageWiki",
+			"services": [
+				"MainConfig"
+			]
 		}
 	},
 	"config": {
 		"WikiDiscoverDescriptionMaxLength": {
-			"description": "Integer. The maxmimum length of a wiki description.",
-			"value": false
+			"description": "Integer. The maxmimum length of wiki descriptions.",
+			"value": 512
 		},
 		"WikiDiscoverListPrivateWikis": {
 			"description": "Boolean. Whether to show private wikis on Special:WikiDiscover.",

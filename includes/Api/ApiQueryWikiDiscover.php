@@ -10,7 +10,7 @@ use MediaWiki\Languages\LanguageNameUtils;
 use MediaWiki\Registration\ExtensionRegistry;
 use Miraheze\CreateWiki\Services\CreateWikiDatabaseUtils;
 use Miraheze\CreateWiki\Services\CreateWikiValidator;
-use Miraheze\ManageWiki\Helpers\ManageWikiSettings;
+use Miraheze\CreateWiki\Services\RemoteWikiFactory;
 use Wikimedia\ParamValidator\ParamValidator;
 use Wikimedia\ParamValidator\TypeDef\IntegerDef;
 use Wikimedia\Rdbms\IReadableDatabase;
@@ -23,7 +23,8 @@ class ApiQueryWikiDiscover extends ApiQueryBase {
 		private readonly CreateWikiDatabaseUtils $databaseUtils,
 		private readonly CreateWikiValidator $validator,
 		private readonly ExtensionRegistry $extensionRegistry,
-		private readonly LanguageNameUtils $languageNameUtils
+		private readonly LanguageNameUtils $languageNameUtils,
+		private readonly RemoteWikiFactory $remoteWikiFactory
 	) {
 		parent::__construct( $query, $moduleName, 'wd' );
 	}
@@ -174,10 +175,8 @@ class ApiQueryWikiDiscover extends ApiQueryBase {
 			}
 
 			if ( in_array( 'description', $prop ) ) {
-				if ( $this->extensionRegistry->isLoaded( 'ManageWiki' ) ) {
-					$manageWikiSettings = new ManageWikiSettings( $wiki['dbname'] );
-					$wiki['description'] = $manageWikiSettings->list( 'wgWikiDiscoverDescription' );
-				}
+				$remoteWiki = $this->remoteWikiFactory->newInstance( $wiki['dbname'] );
+				$wiki['description'] = $remoteWiki->getExtraFieldData( 'description' );
 			}
 
 			if ( in_array( 'creationdate', $prop ) ) {

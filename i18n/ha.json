@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"MercyDansanda"
+		]
+	},
+	"apihelp-query+wikidiscover-param-category": "Tace ta hanyar ƙirƙiraWiki ma'anar nau'in wiki.",
+	"apihelp-query+wikidiscover-param-customurl": "Tace idan wiki yana da URL na al'ada da aka ayyana Wiki",
+	"apihelp-query+wikidiscover-param-language": "Tace ta CreateWiki ma'anar lambar yare na wiki.",
+	"wikidiscover-extensionname": "Binciken Wiki",
+	"wikidiscover-label-active": "Mai aiki",
+	"wikidiscover-label-any": "(kowane)",
+	"wikidiscover-label-closed": "Rufe",
+	"wikidiscover-label-deleted": "Gogewa",
+	"wikidiscover-label-inactive": "Rashin aiki",
+	"wikidiscover-label-locked": "An kulle shi",
+	"wikidiscover-label-open": "Bude",
+	"wikidiscover-label-private": "Na sirri",
+	"wikidiscover-label-public": "Jama'a"
+}

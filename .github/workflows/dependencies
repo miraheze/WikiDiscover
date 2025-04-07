@@ -1,6 +1,6 @@
 CreateWiki:
-  branch: master
+  branch: main
   repo: https://github.com/miraheze/CreateWiki
 ManageWiki:
-  branch: master
+  branch: main
   repo: https://github.com/miraheze/ManageWiki

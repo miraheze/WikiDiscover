@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"AnupamM",
+			"Magarw",
 			"Saurmandal"
 		]
 	},
@@ -10,6 +11,14 @@
 	"apihelp-query+wikidiscover-param-prop": "परिभाषित विकि के बारे में लौटाने के लिए जानकारी।",
 	"apihelp-query+wikidiscover-param-state": "CreateWiki और विकि की स्थिति के अनुसार छानें।",
 	"apihelp-query+wikidiscover-summary": "किसी CreateWiki विकि-फ़ार्म पर विकियों की सूची पाएँ।",
+	"wikidiscover-extensionname": "विकीडिस्कवर",
+	"wikidiscover-label-active": "सक्रिय",
+	"wikidiscover-label-any": "(कोई भी)",
+	"wikidiscover-label-closed": "बंद किया गया",
+	"wikidiscover-label-deleted": "हटाया गया",
+	"wikidiscover-label-inactive": "असक्रिय",
+	"wikidiscover-label-locked": "लॉक किया हुआ",
+	"wikidiscover-label-public": "सार्वजनिक",
 	"wikidiscover-table-category": "श्रेणी",
 	"wikidiscover-table-description": "विवरण",
 	"wikidiscover-table-established": "स्थापित किया गया",

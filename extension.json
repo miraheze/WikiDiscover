@@ -20,6 +20,7 @@
 		}
 	},
 	"SpecialPages": {
+		"MyWikis": "Miraheze\\WikiDiscover\\Specials\\SpecialMyWikis",
 		"RandomWiki": {
 			"class": "Miraheze\\WikiDiscover\\Specials\\SpecialRandomWiki",
 			"services": [

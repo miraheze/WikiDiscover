@@ -33,7 +33,7 @@ class ManageWiki implements
 		$formDescriptor['description'] = [
 			'label-message' => 'wikidiscover-label-description',
 			'type' => 'text',
-			'default' => $remoteWiki->getExtraFieldData( 'description' ) ?? '',
+			'default' => $remoteWiki->getExtraFieldData( 'description', default: '' ),
 			'maxlength' => $this->config->get( 'WikiDiscoverDescriptionsMaxLength' ),
 			'disabled' => !$ceMW,
 			'section' => 'main',
@@ -52,7 +52,7 @@ class ManageWiki implements
 		}
 
 		$remoteWiki->setExtraFieldData(
-			'description', $formData['description'] ?: null
+			'description', $formData['description'], default: ''
 		);
 	}
 }

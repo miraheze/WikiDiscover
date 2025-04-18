@@ -117,8 +117,8 @@ class WikiDiscoverWikisPager extends TablePager {
 				break;
 			case 'wiki_description':
 				$remoteWiki = $this->remoteWikiFactory->newInstance( $row->wiki_dbname );
-				$value = $remoteWiki->getExtraFieldData( 'description' );
-				$formatted = $this->escape( $value ?? '' );
+				$value = $remoteWiki->getExtraFieldData( 'description', default: '' );
+				$formatted = $this->escape( $value );
 				break;
 			default:
 				$formatted = $this->escape( "Unable to format $name" );

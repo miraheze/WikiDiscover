@@ -176,7 +176,7 @@ class ApiQueryWikiDiscover extends ApiQueryBase {
 
 			if ( in_array( 'description', $prop ) ) {
 				$remoteWiki = $this->remoteWikiFactory->newInstance( $wiki['dbname'] );
-				$wiki['description'] = $remoteWiki->getExtraFieldData( 'description' );
+				$wiki['description'] = $remoteWiki->getExtraFieldData( 'description', default: '' ) ?: null;
 			}
 
 			if ( in_array( 'creationdate', $prop ) ) {

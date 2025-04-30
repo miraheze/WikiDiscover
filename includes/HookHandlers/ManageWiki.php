@@ -4,10 +4,9 @@ namespace Miraheze\WikiDiscover\HookHandlers;
 
 use MediaWiki\Config\Config;
 use MediaWiki\Context\IContextSource;
-use Miraheze\CreateWiki\Services\RemoteWikiFactory;
+use Miraheze\ManageWiki\Helpers\ConfigModuleFactory;
 use Miraheze\ManageWiki\Hooks\ManageWikiCoreAddFormFieldsHook;
 use Miraheze\ManageWiki\Hooks\ManageWikiCoreFormSubmissionHook;
-use Wikimedia\Rdbms\IDatabase;
 
 class ManageWiki implements
 	ManageWikiCoreAddFormFieldsHook,
@@ -21,7 +20,7 @@ class ManageWiki implements
 
 	public function onManageWikiCoreAddFormFields(
 		IContextSource $context,
-		RemoteWikiFactory $remoteWiki,
+		ConfigModuleFactory $moduleFactory,
 		string $dbName,
 		bool $ceMW,
 		array &$formDescriptor
@@ -30,6 +29,7 @@ class ManageWiki implements
 			return;
 		}
 
+		$remoteWiki = $moduleFactory->core( $dbname );
 		$formDescriptor['description'] = [
 			'label-message' => 'wikidiscover-label-description',
 			'type' => 'text',
@@ -42,8 +42,7 @@ class ManageWiki implements
 
 	public function onManageWikiCoreFormSubmission(
 		IContextSource $context,
-		IDatabase $dbw,
-		RemoteWikiFactory $remoteWiki,
+		ConfigModuleFactory $moduleFactory,
 		string $dbName,
 		array $formData
 	): void {
@@ -51,6 +50,7 @@ class ManageWiki implements
 			return;
 		}
 
+		$remoteWiki = $moduleFactory->core( $dbname );
 		$remoteWiki->setExtraFieldData(
 			'description', $formData['description'], default: ''
 		);

@@ -7,7 +7,6 @@ use MediaWiki\Context\IContextSource;
 use Miraheze\CreateWiki\Services\RemoteWikiFactory;
 use Miraheze\ManageWiki\Hooks\ManageWikiCoreAddFormFieldsHook;
 use Miraheze\ManageWiki\Hooks\ManageWikiCoreFormSubmissionHook;
-use Wikimedia\Rdbms\IDatabase;
 
 class ManageWiki implements
 	ManageWikiCoreAddFormFieldsHook,
@@ -42,7 +41,6 @@ class ManageWiki implements
 
 	public function onManageWikiCoreFormSubmission(
 		IContextSource $context,
-		IDatabase $dbw,
 		RemoteWikiFactory $remoteWiki,
 		string $dbName,
 		array $formData

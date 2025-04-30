@@ -4,7 +4,7 @@ namespace Miraheze\WikiDiscover\HookHandlers;
 
 use MediaWiki\Config\Config;
 use MediaWiki\Context\IContextSource;
-use Miraheze\ManageWiki\Helpers\ConfigModuleFactory;
+use Miraheze\ManageWiki\Helpers\ManageWikiModuleFactory;
 use Miraheze\ManageWiki\Hooks\ManageWikiCoreAddFormFieldsHook;
 use Miraheze\ManageWiki\Hooks\ManageWikiCoreFormSubmissionHook;
 
@@ -20,7 +20,7 @@ class ManageWiki implements
 
 	public function onManageWikiCoreAddFormFields(
 		IContextSource $context,
-		ConfigModuleFactory $moduleFactory,
+		ManageWikiModuleFactory $moduleFactory,
 		string $dbname,
 		bool $ceMW,
 		array &$formDescriptor
@@ -42,7 +42,7 @@ class ManageWiki implements
 
 	public function onManageWikiCoreFormSubmission(
 		IContextSource $context,
-		ConfigModuleFactory $moduleFactory,
+		ManageWikiModuleFactory $moduleFactory,
 		string $dbname,
 		array $formData
 	): void {

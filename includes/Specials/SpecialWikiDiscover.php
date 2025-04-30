@@ -4,7 +4,6 @@ namespace Miraheze\WikiDiscover\Specials;
 
 use MediaWiki\HTMLForm\HTMLForm;
 use MediaWiki\Languages\LanguageNameUtils;
-use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\SpecialPage\SpecialPage;
 use Miraheze\CreateWiki\Services\CreateWikiDatabaseUtils;
 use Miraheze\CreateWiki\Services\CreateWikiValidator;
@@ -16,7 +15,6 @@ class SpecialWikiDiscover extends SpecialPage {
 	public function __construct(
 		private readonly CreateWikiDatabaseUtils $databaseUtils,
 		private readonly CreateWikiValidator $validator,
-		private readonly ExtensionRegistry $extensionRegistry,
 		private readonly LanguageNameUtils $languageNameUtils,
 		private readonly RemoteWikiFactory $remoteWikiFactory
 	) {
@@ -115,7 +113,6 @@ class SpecialWikiDiscover extends SpecialPage {
 			$this->databaseUtils,
 			$this->getLinkRenderer(),
 			$this->validator,
-			$this->extensionRegistry,
 			$this->languageNameUtils,
 			$this->remoteWikiFactory,
 			$category,

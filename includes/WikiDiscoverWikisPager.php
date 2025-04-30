@@ -7,11 +7,9 @@ use MediaWiki\Html\Html;
 use MediaWiki\Languages\LanguageNameUtils;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Pager\TablePager;
-use MediaWiki\Registration\ExtensionRegistry;
 use Miraheze\CreateWiki\Services\CreateWikiDatabaseUtils;
 use Miraheze\CreateWiki\Services\CreateWikiValidator;
 use Miraheze\CreateWiki\Services\RemoteWikiFactory;
-use Miraheze\ManageWiki\Helpers\ManageWikiSettings;
 
 class WikiDiscoverWikisPager extends TablePager {
 
@@ -20,7 +18,6 @@ class WikiDiscoverWikisPager extends TablePager {
 		CreateWikiDatabaseUtils $databaseUtils,
 		LinkRenderer $linkRenderer,
 		private readonly CreateWikiValidator $validator,
-		private readonly ExtensionRegistry $extensionRegistry,
 		private readonly LanguageNameUtils $languageNameUtils,
 		private readonly RemoteWikiFactory $remoteWikiFactory,
 		private readonly string $category,
@@ -57,18 +54,6 @@ class WikiDiscoverWikisPager extends TablePager {
 		}
 
 		return $headers;
-	}
-
-	/** @inheritDoc */
-	public function formatRow( $row ): string {
-		if ( $this->extensionRegistry->isLoaded( 'ManageWiki' ) ) {
-			$manageWikiSettings = new ManageWikiSettings( $row->wiki_dbname );
-			if ( $manageWikiSettings->list( 'wgWikiDiscoverExclude' ) ) {
-				return '';
-			}
-		}
-
-		return parent::formatRow( $row );
 	}
 
 	/** @inheritDoc */

@@ -21,7 +21,7 @@ class ManageWiki implements
 	public function onManageWikiCoreAddFormFields(
 		IContextSource $context,
 		ConfigModuleFactory $moduleFactory,
-		string $dbName,
+		string $dbname,
 		bool $ceMW,
 		array &$formDescriptor
 	): void {
@@ -43,7 +43,7 @@ class ManageWiki implements
 	public function onManageWikiCoreFormSubmission(
 		IContextSource $context,
 		ConfigModuleFactory $moduleFactory,
-		string $dbName,
+		string $dbname,
 		array $formData
 	): void {
 		if ( !isset( $formData['description'] ) ) {

@@ -4,7 +4,7 @@ namespace Miraheze\WikiDiscover\HookHandlers;
 
 use MediaWiki\Config\Config;
 use MediaWiki\Context\IContextSource;
-use Miraheze\ManageWiki\Helpers\ModuleFactory;
+use Miraheze\ManageWiki\Helpers\Factories\ModuleFactory;
 use Miraheze\ManageWiki\Hooks\ManageWikiCoreAddFormFieldsHook;
 use Miraheze\ManageWiki\Hooks\ManageWikiCoreFormSubmissionHook;
 

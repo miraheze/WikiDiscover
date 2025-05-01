@@ -29,11 +29,11 @@ class ManageWiki implements
 			return;
 		}
 
-		$remoteWiki = $moduleFactory->core( $dbname );
+		$mwCore = $moduleFactory->core( $dbname );
 		$formDescriptor['description'] = [
 			'label-message' => 'wikidiscover-label-description',
 			'type' => 'text',
-			'default' => $remoteWiki->getExtraFieldData( 'description', default: '' ),
+			'default' => $mwCore->getExtraFieldData( 'description', default: '' ),
 			'maxlength' => $this->config->get( 'WikiDiscoverDescriptionsMaxLength' ),
 			'disabled' => !$ceMW,
 			'section' => 'main',
@@ -50,8 +50,8 @@ class ManageWiki implements
 			return;
 		}
 
-		$remoteWiki = $moduleFactory->core( $dbname );
-		$remoteWiki->setExtraFieldData(
+		$mwCore = $moduleFactory->core( $dbname );
+		$mwCore->setExtraFieldData(
 			'description', $formData['description'], default: ''
 		);
 	}

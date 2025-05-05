@@ -133,6 +133,6 @@ class SpecialRandomWiki extends SpecialPage {
 
 	/** @inheritDoc */
 	protected function getGroupName(): string {
-		return 'redirects';
+		return 'wikimanage';
 	}
 }

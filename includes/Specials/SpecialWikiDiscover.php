@@ -127,6 +127,6 @@ class SpecialWikiDiscover extends SpecialPage {
 
 	/** @inheritDoc */
 	protected function getGroupName(): string {
-		return 'wikimanage';
+		return 'wiki';
 	}
 }

@@ -7,7 +7,6 @@ use MediaWiki\Api\ApiQuery;
 use MediaWiki\Api\ApiQueryBase;
 use MediaWiki\Api\ApiResult;
 use MediaWiki\Languages\LanguageNameUtils;
-use MediaWiki\Registration\ExtensionRegistry;
 use Miraheze\CreateWiki\Services\CreateWikiDatabaseUtils;
 use Miraheze\CreateWiki\Services\CreateWikiValidator;
 use Miraheze\CreateWiki\Services\RemoteWikiFactory;
@@ -22,7 +21,6 @@ class ApiQueryWikiDiscover extends ApiQueryBase {
 		string $moduleName,
 		private readonly CreateWikiDatabaseUtils $databaseUtils,
 		private readonly CreateWikiValidator $validator,
-		private readonly ExtensionRegistry $extensionRegistry,
 		private readonly LanguageNameUtils $languageNameUtils,
 		private readonly RemoteWikiFactory $remoteWikiFactory
 	) {
@@ -215,12 +213,9 @@ class ApiQueryWikiDiscover extends ApiQueryBase {
 				case $row->wiki_inactive_exempt:
 					$wiki['inactive'] = 'exempt';
 					if ( in_array( 'exemptreason', $prop ) ) {
-						$reason = $row->wiki_inactive_exempt_reason;
-						if ( $this->extensionRegistry->isLoaded( 'ManageWiki' ) ) {
-							$options = $this->getConfig()->get( 'ManageWikiInactiveExemptReasonOptions' );
-							$reason = array_flip( $options )[$reason] ?? $reason;
-						}
-						$wiki['exemptreason'] = $reason;
+						$options = $this->getConfig()->get( 'CreateWikiInactiveExemptReasonOptions' );
+						$reason = array_flip( $options )[$row->wiki_inactive_exempt_reason];
+						$wiki['exemptreason'] = $reason ?? $row->wiki_inactive_exempt_reason;
 					}
 					break;
 

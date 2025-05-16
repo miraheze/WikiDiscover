@@ -214,7 +214,7 @@ class ApiQueryWikiDiscover extends ApiQueryBase {
 					$wiki['inactive'] = 'exempt';
 					if ( in_array( 'exemptreason', $prop ) ) {
 						$options = $this->getConfig()->get( 'CreateWikiInactiveExemptReasonOptions' );
-						$reason = array_flip( $options )[$row->wiki_inactive_exempt_reason];
+						$reason = array_flip( $options )[$row->wiki_inactive_exempt_reason] ?? null;
 						$wiki['exemptreason'] = $reason ?? $row->wiki_inactive_exempt_reason;
 					}
 					break;

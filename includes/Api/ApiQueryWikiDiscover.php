@@ -106,6 +106,10 @@ class ApiQueryWikiDiscover extends ApiQueryBase {
 			if ( in_array( 'deleted', $state ) ) {
 				$this->addWhereFld( 'wiki_deleted', 1 );
 			}
+
+			if ( in_array( 'undeleted', $state ) ) {
+				$this->addWhereFld( 'wiki_deleted', 0 );
+			}
 		}
 
 		$this->addWhereIf(
@@ -305,6 +309,7 @@ class ApiQueryWikiDiscover extends ApiQueryBase {
 					'open',
 					'private',
 					'public',
+					'undeleted',
 					'unlocked',
 				],
 			],

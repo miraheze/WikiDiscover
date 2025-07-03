@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Aca",
 			"Vlad5250",
 			"Winston Sung"
 		]
@@ -9,7 +10,7 @@
 	"apihelp-query+wikidiscover-param-limit": "Maksimalan broj rezultata za prikaz.",
 	"apihelp-query+wikidiscover-param-prop": "Koje informacije o definisanom vikiju treba vratiti.",
 	"apihelp-query+wikidiscover-param-state": "Filtriraj prema stanju vikija za \"Napravi viki\"",
-	"apihelp-query+wikidiscover-summary": "Daj spisak vikija u farmi za \"Napravi viki\".",
+	"apihelp-query+wikidiscover-summary": "Daj listu vikija u farmi za \"Napravi viki\".",
 	"randomwiki": "Nasumični viki",
 	"randomwiki-header": "Izaberite kategoriju i jezik da biste se odvedeni na nasumični viki koji ispunjava izabrane kriterije.",
 	"wikidiscover": "Otkrij vikije",

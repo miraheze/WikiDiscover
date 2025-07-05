@@ -21,7 +21,9 @@ class SpecialWikiDiscover extends SpecialPage {
 		parent::__construct( 'WikiDiscover' );
 	}
 
-	/** @inheritDoc */
+	/**
+	 * @param ?string $par @phan-unused-param
+	 */
 	public function execute( $par ): void {
 		$this->setHeaders();
 		$this->outputHeader();

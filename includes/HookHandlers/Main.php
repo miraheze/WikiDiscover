@@ -9,6 +9,7 @@ use MediaWiki\Hook\ParserFirstCallInitHook;
 use MediaWiki\Hook\ParserGetVariableValueSwitchHook;
 use MediaWiki\MainConfigNames;
 use MediaWiki\Parser\Parser;
+use MediaWiki\Parser\PPFrame;
 use Miraheze\CreateWiki\Services\CreateWikiDatabaseUtils;
 
 class Main implements
@@ -75,7 +76,10 @@ class Main implements
 		);
 	}
 
-	/** @inheritDoc */
+	/**
+	 * @inheritDoc
+	 * @param PPFrame $frame @phan-unused-param
+	 */
 	public function onParserGetVariableValueSwitch(
 		$parser,
 		&$variableCache,
@@ -234,6 +238,7 @@ class Main implements
 		}
 	}
 
+	/** @param Parser $parser @phan-unused-param */
 	public function getNumberOfWikisInCategory(
 		Parser $parser,
 		string $category = 'uncategorised'
@@ -250,6 +255,7 @@ class Main implements
 			->fetchRowCount();
 	}
 
+	/** @param Parser $parser @phan-unused-param */
 	public function getNumberOfWikisInLanguage(
 		Parser $parser,
 		string $language = 'en'
@@ -266,6 +272,7 @@ class Main implements
 			->fetchRowCount();
 	}
 
+	/** @param Parser $parser @phan-unused-param */
 	public function getNumberOfWikisBySetting(
 		Parser $parser,
 		mixed $setting = null,
@@ -309,6 +316,7 @@ class Main implements
 		return $settingUsageCount;
 	}
 
+	/** @param Parser $parser @phan-unused-param */
 	public function getWikiCreationDate(
 		Parser $parser,
 		?string $database = null

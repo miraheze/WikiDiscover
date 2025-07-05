@@ -17,7 +17,9 @@ class SpecialRandomWiki extends SpecialPage {
 		parent::__construct( 'RandomWiki' );
 	}
 
-	/** @inheritDoc */
+	/**
+	 * @param ?string $par @phan-unused-param
+	 */
 	public function execute( $par ): void {
 		$this->setHeaders();
 		$this->outputHeader();

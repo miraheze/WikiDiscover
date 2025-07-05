@@ -149,7 +149,6 @@ class ApiQueryWikiDiscover extends ApiQueryBase {
 		$res = $this->select( __METHOD__ );
 
 		$count = 0;
-		$data = [];
 		foreach ( $res as $row ) {
 			if ( ++$count > $limit ) {
 				$this->setContinueEnumParameter( 'offset', $offset + $limit );
@@ -244,7 +243,10 @@ class ApiQueryWikiDiscover extends ApiQueryBase {
 		);
 	}
 
-	/** @inheritDoc */
+	/**
+	 * @inheritDoc
+	 * @param array $params @phan-unused-param
+	 */
 	public function getCacheMode( $params ): string {
 		return 'public';
 	}

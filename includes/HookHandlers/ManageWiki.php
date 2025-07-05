@@ -18,6 +18,10 @@ class ManageWiki implements
 	) {
 	}
 
+	/**
+	 * @inheritDoc
+	 * @param IContextSource $context @phan-unused-param
+	 */
 	public function onManageWikiCoreAddFormFields(
 		IContextSource $context,
 		ModuleFactory $moduleFactory,
@@ -40,6 +44,10 @@ class ManageWiki implements
 		];
 	}
 
+	/**
+	 * @inheritDoc
+	 * @param IContextSource $context @phan-unused-param
+	 */
 	public function onManageWikiCoreFormSubmission(
 		IContextSource $context,
 		ModuleFactory $moduleFactory,

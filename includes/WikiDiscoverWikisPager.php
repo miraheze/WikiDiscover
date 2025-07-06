@@ -59,9 +59,7 @@ class WikiDiscoverWikisPager extends TablePager {
 	/** @inheritDoc */
 	public function formatValue( $field, $value ): string {
 		$row = $this->getCurrentRow();
-		if ( $value === null ) {
-			return '';
-		}
+		$value ??= '';
 
 		switch ( $field ) {
 			case 'wiki_dbname':

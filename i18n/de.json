@@ -3,6 +3,7 @@
 		"authors": [
 			"Justman10000",
 			"Metalhead64",
+			"PretzelRocky",
 			"TomatoCake"
 		]
 	},
@@ -18,6 +19,16 @@
 	"wikidiscover-desc": "Ermöglicht das [[Special:WikiDiscover|Erkunden von Wikis]] auf einer Wikifarm mit [[Special:CreateWiki|Wikis erstellen]].",
 	"wikidiscover-header": "Wähle Parameter für deine Suche",
 	"wikidiscover-header-info": "Du kannst in dieser Farm nach Wikis suchen, indem du Parameter wie Sprache und mehr auswählst.",
+	"wikidiscover-label-active": "Aktiv",
+	"wikidiscover-label-any": "(beliebig)",
+	"wikidiscover-label-closed": "Geschlossen",
+	"wikidiscover-label-deleted": "Gelöscht",
+	"wikidiscover-label-description": "Kurze Beschreibung",
+	"wikidiscover-label-inactive": "Inaktiv",
+	"wikidiscover-label-locked": "Gesperrt",
+	"wikidiscover-label-open": "Offen",
+	"wikidiscover-label-private": "Privat",
+	"wikidiscover-label-public": "Öffentlich",
 	"wikidiscover-table-category": "Kategorie",
 	"wikidiscover-table-description": "Beschreibung",
 	"wikidiscover-table-established": "Gegründet",

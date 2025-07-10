@@ -1,0 +1,25 @@
+{
+	"@metadata": {
+		"authors": [
+			"Умар"
+		]
+	},
+	"randomwiki-parameters": "Харжа параметраш",
+	"wikidiscover": "Вики лехар",
+	"wikidiscover-label-active": "Жигара",
+	"wikidiscover-label-closed": "ДӀачӀагӀа",
+	"wikidiscover-label-deleted": "ДӀайаьккхина",
+	"wikidiscover-label-description": "Боца хаам",
+	"wikidiscover-label-inactive": "Жигара доцуш",
+	"wikidiscover-label-locked": "Блоктоьхна",
+	"wikidiscover-label-open": "Йиллина",
+	"wikidiscover-label-private": "Къайла",
+	"wikidiscover-label-public": "Массарна",
+	"wikidiscover-table-category": "Категори",
+	"wikidiscover-table-description": "Цуьнах лаьцна",
+	"wikidiscover-table-established": "ДӀахӀоттийна",
+	"wikidiscover-table-language": "Мотт",
+	"wikidiscover-table-state": "Статус",
+	"wikidiscover-table-visibility": "Гуш хилар",
+	"wikidiscover-table-wiki": "Викин цӀе"
+}

@@ -4,9 +4,12 @@
 			"Умар"
 		]
 	},
+	"apihelp-query+wikidiscover-example": "Массо а вики форма тӀехь гайта.",
+	"randomwiki": "Лаамаза вики-проекте дӀахьажор",
 	"randomwiki-parameters": "Харжа параметраш",
 	"wikidiscover": "Вики лехар",
 	"wikidiscover-label-active": "Жигара",
+	"wikidiscover-label-any": "(муьлхха а)",
 	"wikidiscover-label-closed": "ДӀачӀагӀа",
 	"wikidiscover-label-deleted": "ДӀайаьккхина",
 	"wikidiscover-label-description": "Боца хаам",

@@ -1,0 +1,40 @@
+{
+	"@metadata": {
+		"authors": [
+			"JeffreyKim"
+		]
+	},
+	"apihelp-query+wikidiscover-example": "喺表格上面顯示晒所有維基。",
+	"apihelp-query+wikidiscover-param-category": "按建立維基定義嘅維基類別篩選。",
+	"apihelp-query+wikidiscover-param-customurl": "如果維基有 CreateWiki 定義嘅自訂網址，請過濾。",
+	"apihelp-query+wikidiscover-param-language": "用CreateWiki定義嘅維基語言代碼過濾。",
+	"apihelp-query+wikidiscover-param-limit": "要顯示嘅最多結果數量。",
+	"apihelp-query+wikidiscover-param-prop": "要返回嘅有關定義咗嘅維基嘅資料。",
+	"apihelp-query+wikidiscover-param-state": "按 CreateWiki 定義嘅維基狀態進行篩選。",
+	"apihelp-query+wikidiscover-param-wikis": "攞個特定維基嘅清單。",
+	"apihelp-query+wikidiscover-summary": "喺CreateWiki維基農場攞個維基清單。",
+	"randomwiki": "重新導向去隨機嘅維基",
+	"randomwiki-header": "喺下面揀一個類別同語言，提交嗰陣，你會重新導向去一個符合所選準則嘅隨機維基。",
+	"randomwiki-parameters": "揀參數",
+	"wikidiscover": "發掘維基",
+	"wikidiscover-desc": "允許[[Special:WikiDiscover|發現維基]]喺維基農場上面用[[Special:CreateWiki|創建維基]]。",
+	"wikidiscover-header": "揀你嘅搜尋參數",
+	"wikidiscover-header-info": "你可以透過揀語言等等嘅參數嚟搜尋呢個農場入面嘅維基。",
+	"wikidiscover-label-active": "活躍",
+	"wikidiscover-label-any": "（任何）",
+	"wikidiscover-label-closed": "閂咗",
+	"wikidiscover-label-deleted": "刪除咗",
+	"wikidiscover-label-description": "簡短嘅描述",
+	"wikidiscover-label-inactive": "閒置",
+	"wikidiscover-label-locked": "鎖咗",
+	"wikidiscover-label-open": "打開",
+	"wikidiscover-label-private": "私人",
+	"wikidiscover-label-public": "公開",
+	"wikidiscover-table-category": "類別",
+	"wikidiscover-table-description": "描述",
+	"wikidiscover-table-established": "建立咗",
+	"wikidiscover-table-language": "語言",
+	"wikidiscover-table-state": "陳述",
+	"wikidiscover-table-visibility": "可見度",
+	"wikidiscover-table-wiki": "維基名"
+}

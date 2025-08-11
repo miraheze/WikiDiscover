@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"JeffreyKim"
+			"JeffreyKim",
+			"Yueman"
 		]
 	},
 	"apihelp-query+wikidiscover-example": "喺表格上面顯示晒所有維基。",
@@ -13,7 +14,7 @@
 	"apihelp-query+wikidiscover-param-state": "按 CreateWiki 定義嘅維基狀態進行篩選。",
 	"apihelp-query+wikidiscover-param-wikis": "攞個特定維基嘅清單。",
 	"apihelp-query+wikidiscover-summary": "喺CreateWiki維基農場攞個維基清單。",
-	"randomwiki": "重新導向去隨機嘅維基",
+	"randomwiki": "跳轉去隨機嘅維基",
 	"randomwiki-header": "喺下面揀一個類別同語言，提交嗰陣，你會重新導向去一個符合所選準則嘅隨機維基。",
 	"randomwiki-parameters": "揀參數",
 	"wikidiscover": "發掘維基",

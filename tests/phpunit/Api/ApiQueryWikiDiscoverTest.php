@@ -49,7 +49,7 @@ class ApiQueryWikiDiscoverTest extends ApiTestCase {
 				'wiki_language' => 'en',
 				'wiki_private' => 0,
 				'wiki_creation' => $dbw->timestamp(),
-				'wiki_category' => 'uncategorised',
+				'wiki_category' => 'test',
 			] )
 			->caller( __METHOD__ )
 			->execute();

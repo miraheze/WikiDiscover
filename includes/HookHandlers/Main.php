@@ -241,7 +241,7 @@ class Main implements
 	/** @param Parser $parser @phan-unused-param */
 	public function getNumberOfWikisInCategory(
 		Parser $parser,
-		string $category = 'uncategorised'
+		string $category = ''
 	): int {
 		$dbr = $this->databaseUtils->getGlobalReplicaDB();
 		return $dbr->newSelectQueryBuilder()

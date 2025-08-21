@@ -39,8 +39,8 @@ class SpecialRandomWiki extends SpecialPage {
 				'type' => 'select',
 				'name' => 'category',
 				'label-message' => 'wikidiscover-table-category',
+				'required' => true,
 				'options' => $this->getConfig()->get( 'CreateWikiCategories' ),
-				'default' => 'uncategorised',
 			],
 		];
 

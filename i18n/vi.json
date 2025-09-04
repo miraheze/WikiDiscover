@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Bapham123",
 			"Minh Nguyen",
 			"Nguyễn Mạnh An",
 			"Pisceskaze",
@@ -19,6 +20,14 @@
 	"wikidiscover-desc": "Cho phép [[Special:WikiDiscover|khám phá wiki]] trong cụm wiki với [[Special:CreateWiki|CreateWiki]].",
 	"wikidiscover-header": "Chọn các tham số cho tìm kiếm của bạn",
 	"wikidiscover-header-info": "Bạn có thể tìm kiếm wiki trên trang trại này bằng cách chọn các tham số như ngôn ngữ và nhiều hơn nữa.",
+	"wikidiscover-label-closed": "Đã đóng",
+	"wikidiscover-label-deleted": "Đã xóa",
+	"wikidiscover-label-description": "Mô tả ngắn",
+	"wikidiscover-label-inactive": "Không hoạt động",
+	"wikidiscover-label-locked": "Bị khóa",
+	"wikidiscover-label-open": "Mở",
+	"wikidiscover-label-private": "Riêng tư",
+	"wikidiscover-label-public": "Công khai",
 	"wikidiscover-table-category": "Danh mục",
 	"wikidiscover-table-description": "Mô tả",
 	"wikidiscover-table-established": "Thành lập vào",

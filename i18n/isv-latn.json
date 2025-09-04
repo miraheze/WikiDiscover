@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Danvintius Bookix"
+		]
+	},
+	"wikidiscover": "Izsledovati viki",
+	"wikidiscover-label-active": "Aktivna",
+	"wikidiscover-label-any": "(vsaky)",
+	"wikidiscover-label-closed": "Zatvorjeno",
+	"wikidiscover-label-description": "Kratky opis",
+	"wikidiscover-label-inactive": "Neaktivna",
+	"wikidiscover-label-private": "Privatna",
+	"wikidiscover-label-public": "Občedostupna",
+	"wikidiscover-table-category": "Kategorija",
+	"wikidiscover-table-description": "Opis",
+	"wikidiscover-table-language": "Jezyk",
+	"wikidiscover-table-state": "Stanje",
+	"wikidiscover-table-wiki": "Ime viki"
+}

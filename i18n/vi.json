@@ -12,6 +12,7 @@
 	"apihelp-query+wikidiscover-param-limit": "Số lượng kết quả tối đa để hiển thị.",
 	"apihelp-query+wikidiscover-param-prop": "Thông tin để trả về một wiki được xác định.",
 	"apihelp-query+wikidiscover-param-state": "Lọc theo trạng thái CreateWiki được xác định của một wiki.",
+	"apihelp-query+wikidiscover-param-wikis": "Nhận danh sách các wiki cụ thể.",
 	"apihelp-query+wikidiscover-summary": "Nhận danh sách các wiki trên một trang trại wiki với CreateWiki.",
 	"randomwiki": "Chuyển hướng đến wiki ngẫu nhiên",
 	"randomwiki-header": "Chọn một thể loại và ngôn ngữ bên dưới và khi gửi, bạn sẽ được chuyển hướng đến một wiki ngẫu nhiên đáp ứng các tiêu chí đã chọn.",

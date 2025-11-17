@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Dogogos123",
+			"Jimkats",
 			"NikosLikomitros",
 			"Nikosgranturismogt"
 		]
@@ -11,13 +12,13 @@
 	"apihelp-query+wikidiscover-param-prop": "Πληροφορίες για επιστροφή σχετικά με ένα ορισμένο βίκι.",
 	"apihelp-query+wikidiscover-param-state": "Φιλτράρισμα κατά την ορισμένη κατάσταση CreateWiki ενός βίκι.",
 	"apihelp-query+wikidiscover-summary": "Πάρτε μια λίστα βίκι σε μια βικιφάρμα CreateWiki.",
-	"randomwiki": "Τυχαίο wiki",
+	"randomwiki": "Ανακατεύθυνση σε ένα τυχαίο wiki",
 	"randomwiki-header": "Επιλέξτε μια κατηγορία και γλώσσα παρακάτω και στην υποβολή θα ανακατευθυνθείτε τυχαίως σε ένα wiki που πληρεί τα επιλεγμένα κριτήρια!",
 	"wikidiscover": "Ανακαλύψτε τα wiki",
 	"wikidiscover-desc": "Επιτρέπει την [[Special:WikiDiscover|ανακάλυψη βίκι]] σε μια φάρμα βίκι με το [[Special:CreateWiki|CreateWiki]].",
 	"wikidiscover-table-category": "Κατηγορία",
 	"wikidiscover-table-language": "Γλώσσα",
-	"wikidiscover-table-state": "Δραστηριότητα",
+	"wikidiscover-table-state": "Κατάσταση",
 	"wikidiscover-table-visibility": "Ορατότητα",
 	"wikidiscover-table-wiki": "Όνομα βίκι"
 }

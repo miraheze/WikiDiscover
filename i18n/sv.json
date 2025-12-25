@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Sabelöga",
+			"Stefan2255",
 			"WikiPhoenix"
 		]
 	},
@@ -10,9 +11,9 @@
 	"apihelp-query+wikidiscover-param-prop": "Information att returnera om en definierad wiki.",
 	"apihelp-query+wikidiscover-param-state": "Filtrera efter en wikis CreateWiki-definierade tillstånd.",
 	"apihelp-query+wikidiscover-summary": "Hämta en lista över wikier på en CreateWiki-wikifarm.",
-	"randomwiki": "Slumpwiki",
-	"randomwiki-header": "Välj en kategori och ett språk nedan och vid föreläggande kommer du omdirigeras slumpmässigt till en wiki som möter kriterierna du valt!",
-	"wikidiscover": "WikiDiscover",
+	"randomwiki": "Omdirigera till en slumpmässig wiki",
+	"randomwiki-header": "Välj en kategori och ett språk nedan, och när du skickar in ditt bidrag kommer du att omdirigeras till en slumpmässig wiki som uppfyller de valda kriterierna.",
+	"wikidiscover": "Upptäck wikier",
 	"wikidiscover-desc": "Gör det möjligt att [[Special:WikiDiscover|upptäcka wikier]] på en wikifarm med [[Special:CreateWiki|CreateWiki]].",
 	"wikidiscover-table-category": "Kategori",
 	"wikidiscover-table-description": "Beskrivning",

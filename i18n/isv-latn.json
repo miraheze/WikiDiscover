@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Danvintius Bookix"
+			"Danvintius Bookix",
+			"IJzeren Jan"
 		]
 	},
+	"apihelp-query+wikidiscover-example": "Pokazati vse viki na formularu.",
 	"wikidiscover": "Izsledovati viki",
 	"wikidiscover-label-active": "Aktivna",
 	"wikidiscover-label-any": "(vsako)",

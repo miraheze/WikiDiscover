@@ -4,6 +4,7 @@ namespace Miraheze\WikiDiscover\Specials;
 
 use MediaWiki\HTMLForm\HTMLForm;
 use MediaWiki\Languages\LanguageNameUtils;
+use MediaWiki\Parser\ParserOptions;
 use MediaWiki\SpecialPage\SpecialPage;
 use Miraheze\CreateWiki\Services\CreateWikiDatabaseUtils;
 use Miraheze\CreateWiki\Services\CreateWikiValidator;
@@ -124,7 +125,8 @@ class SpecialWikiDiscover extends SpecialPage {
 		);
 
 		$table = $pager->getFullOutput();
-		$this->getOutput()->addParserOutputContent( $table );
+		$parserOptions = ParserOptions::newFromContext( $this->getContext() );
+		$this->getOutput()->addParserOutputContent( $table, $parserOptions );
 	}
 
 	/** @inheritDoc */

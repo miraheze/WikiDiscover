@@ -1,0 +1,23 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cabal"
+		]
+	},
+	"apihelp-query+wikidiscover-example": "ਪਰਚੇ ਉੱਤੇ ਸਾਰੀਆਂ ਵਿਕੀਆਂ ਵਿਖਾਓ।",
+	"randomwiki-parameters": "ਮਾਪਦੰਡ ਚੁਣੋ",
+	"wikidiscover": "ਵਿਕੀਆਂ ਦੀ ਖੋਜ ਕਰੋ",
+	"wikidiscover-label-active": "ਸਰਗਰਮ",
+	"wikidiscover-label-any": "(ਕੋਈ ਵੀ)",
+	"wikidiscover-label-closed": "ਬੰਦ ਕੀਤਾ ਗਿਆ",
+	"wikidiscover-label-deleted": "ਮਿਟਾਇਆ ਗਿਆ",
+	"wikidiscover-label-description": "ਛੋਟਾ ਵੇਰਵਾ",
+	"wikidiscover-label-locked": "ਤਾਲੇਬੰਦ",
+	"wikidiscover-label-open": "ਖੋਲ੍ਹੋ",
+	"wikidiscover-label-private": "ਨਿੱਜੀ",
+	"wikidiscover-table-category": "ਵੰਨਗੀਆਂ",
+	"wikidiscover-table-description": "ਵੇਰਵਾ",
+	"wikidiscover-table-language": "ਬੋਲੀ",
+	"wikidiscover-table-visibility": "ਦਿੱਸਣਯੋਗਤਾ",
+	"wikidiscover-table-wiki": "ਵਿਕੀ ਨਾਂ"
+}

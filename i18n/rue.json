@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cevioch"
+		]
+	},
+	"wikidiscover-label-closed": "Заперти",
+	"wikidiscover-label-deleted": "Змазаный",
+	"wikidiscover-label-description": "Куртый опис",
+	"wikidiscover-label-inactive": "Неактивный",
+	"wikidiscover-label-locked": "Замкнуто",
+	"wikidiscover-label-open": "Одкрытый",
+	"wikidiscover-label-private": "Пріватный",
+	"wikidiscover-label-public": "Публічный",
+	"wikidiscover-table-category": "Катеґорія",
+	"wikidiscover-table-description": "Попис",
+	"wikidiscover-table-established": "Установленый",
+	"wikidiscover-table-language": "Язык",
+	"wikidiscover-table-state": "Штат",
+	"wikidiscover-table-visibility": "Видительность",
+	"wikidiscover-table-wiki": "Назва вікы"
+}

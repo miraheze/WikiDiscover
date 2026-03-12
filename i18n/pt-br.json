@@ -8,6 +8,8 @@
 		]
 	},
 	"apihelp-query+wikidiscover-example": "Mostrar todas as wikis no site.",
+	"apihelp-query+wikidiscover-param-category": "Filtrar pela categoria definida pelo CreateWiki de um wiki.",
+	"apihelp-query+wikidiscover-param-customurl": "Filtrar se o wiki tiver uma URL personalizada definida como CreateWiki.",
 	"apihelp-query+wikidiscover-param-language": "Filtrar pelo código de idioma definido pelo CreateWiki de um wiki.",
 	"apihelp-query+wikidiscover-param-limit": "O número máximo de resultados a serem mostrados.",
 	"apihelp-query+wikidiscover-param-prop": "Informações para retornar sobre um wiki definido.",

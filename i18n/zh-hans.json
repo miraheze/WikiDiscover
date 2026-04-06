@@ -10,7 +10,7 @@
 			"铁桶"
 		]
 	},
-	"apihelp-query+wikidiscover-example": "显示在表单上的所有wiki。",
+	"apihelp-query+wikidiscover-example": "显示表单上的所有wiki。",
 	"apihelp-query+wikidiscover-param-category": "按CreateWiki定义的wiki类别进行过滤。",
 	"apihelp-query+wikidiscover-param-customurl": "筛选条件是wiki是否定义了CreateWiki自定义URL。",
 	"apihelp-query+wikidiscover-param-language": "根据CreateWiki所定义的wiki状态进行筛选。",

@@ -6,7 +6,8 @@
 			"Fitoschido",
 			"HylianAngel",
 			"Jackiezelaya",
-			"Jakeukalane"
+			"Jakeukalane",
+			"JorgeElias2302"
 		]
 	},
 	"apihelp-query+wikidiscover-example": "Mostrar todas las wikis del formulario.",
@@ -21,8 +22,14 @@
 	"wikidiscover-desc": "Permite [[Special:WikiDiscover|descubrir wikis]] de un servicio de alojamiento a través de [[Special:CreateWiki|CreateWiki]].",
 	"wikidiscover-header": "Seleccione parámetros para tu busqueda",
 	"wikidiscover-header-info": "Puede buscar wikis en esta wikigranja seleccionando parámetros como el idioma y otros.",
+	"wikidiscover-label-active": "Activo",
 	"wikidiscover-label-any": "(cualquier)",
+	"wikidiscover-label-closed": "Cerrado",
+	"wikidiscover-label-deleted": "Borrado",
 	"wikidiscover-label-inactive": "Inactivo",
+	"wikidiscover-label-locked": "Bloqueado",
+	"wikidiscover-label-open": "Abierto",
+	"wikidiscover-label-private": "Privado",
 	"wikidiscover-label-public": "Público",
 	"wikidiscover-table-category": "Categoría",
 	"wikidiscover-table-description": "Descripción",

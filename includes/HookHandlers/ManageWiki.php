@@ -29,19 +29,17 @@ class ManageWiki implements
 		bool $ceMW,
 		array &$formDescriptor
 	): void {
-		if ( !$this->config->get( 'WikiDiscoverUseDescriptions' ) ) {
-			return;
+		if ( $this->config->get( 'WikiDiscoverUseDescriptions' ) ) {
+			$mwCore = $moduleFactory->core( $dbname );
+			$formDescriptor['description'] = [
+				'label-message' => 'wikidiscover-label-description',
+				'type' => 'text',
+				'default' => $mwCore->getExtraFieldData( 'description', default: '' ),
+				'maxlength' => $this->config->get( 'WikiDiscoverDescriptionsMaxLength' ),
+				'disabled' => !$ceMW,
+				'section' => 'main',
+			];
 		}
-
-		$mwCore = $moduleFactory->core( $dbname );
-		$formDescriptor['description'] = [
-			'label-message' => 'wikidiscover-label-description',
-			'type' => 'text',
-			'default' => $mwCore->getExtraFieldData( 'description', default: '' ),
-			'maxlength' => $this->config->get( 'WikiDiscoverDescriptionsMaxLength' ),
-			'disabled' => !$ceMW,
-			'section' => 'main',
-		];
 	}
 
 	/**
@@ -54,13 +52,28 @@ class ManageWiki implements
 		string $dbname,
 		array $formData
 	): void {
-		if ( !isset( $formData['description'] ) ) {
-			return;
+		$mwCore = $moduleFactory->core( $dbname );
+
+		if ( isset( $formData['description'] ) ) {
+			$mwCore->setExtraFieldData(
+				'description', $formData['description'], default: ''
+			);
 		}
 
-		$mwCore = $moduleFactory->core( $dbname );
-		$mwCore->setExtraFieldData(
-			'description', $formData['description'], default: ''
-		);
+		if (
+			$this->config->get( 'CreateWikiUseInactiveWikis' ) &&
+			isset( $formData['inactive-exempt'] )
+		) {
+			if ( $formData['inactive-exempt'] ) {
+				$actorId = $context->getUser()->getActorId();
+				$mwCore->setExtraFieldData(
+					'inactive_exempt_actor', $actorId, default: 0
+				);
+			} else {
+				$mwCore->setExtraFieldData(
+					'inactive_exempt_actor', 0, default: 0
+				);
+			}
+		}
 	}
 }

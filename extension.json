@@ -20,6 +20,15 @@
 		}
 	},
 	"SpecialPages": {
+		"InactivityExemptWikis": {
+			"class": "Miraheze\\WikiDiscover\\Specials\\SpecialInactivityExemptWikis",
+			"services": [
+				"CreateWikiDatabaseUtils",
+				"CreateWikiValidator",
+				"LanguageNameUtils",
+				"RemoteWikiFactory"
+			]
+		},
 		"RandomWiki": {
 			"class": "Miraheze\\WikiDiscover\\Specials\\SpecialRandomWiki",
 			"services": [
@@ -103,6 +112,10 @@
 		"WikiDiscoverListPrivateWikis": {
 			"description": "Boolean. Whether to show private wikis on Special:WikiDiscover.",
 			"value": true
+		},
+		"WikiDiscoverShowExemptActor": {
+			"description": "Boolean. Whether to show the actor who granted an inactivity exemption on Special:InactivityExemptWikis. The actor is stored as an actor ID (never as a plain username) and resolved to a display name at render time.",
+			"value": false
 		},
 		"WikiDiscoverUseDescriptions": {
 			"description": "Boolean. Whether to enable wiki descriptions.",

@@ -3,6 +3,7 @@
 $specialPageAliases = [];
 
 $specialPageAliases['en'] = [
+	'InactivityExemptWikis' => [ 'InactivityExemptWikis' ],
 	'RandomWiki' => [ 'RandomWiki' ],
 	'WikiDiscover' => [ 'WikiDiscover' ],
 ];

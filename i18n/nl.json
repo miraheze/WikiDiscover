@@ -9,7 +9,7 @@
 			"Siebrand"
 		]
 	},
-	"apihelp-query+wikidiscover-example": "Toont alle wiki's op het formulier.",
+	"apihelp-query+wikidiscover-example": "Alle wiki's op het formulier weergeven.",
 	"apihelp-query+wikidiscover-param-category": "Filteren op de door CreateWiki gedefinieerde categorie van een wiki.",
 	"apihelp-query+wikidiscover-param-customurl": "Filteren op de aanwezigheid van een door CreateWiki gedefinieerde aangepaste URL.",
 	"apihelp-query+wikidiscover-param-language": "Filteren op de door CreateWiki gedefinieerde taalcode van een wiki.",

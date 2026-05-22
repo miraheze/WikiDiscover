@@ -27,7 +27,7 @@
 	"wikidiscover-inactivityexempt-actor-unknown": "Unknown",
 	"wikidiscover-inactivityexempt-disabled": "The inactivity/dormancy policy feature is not enabled on this wiki farm.",
 	"wikidiscover-inactivityexempt-header": "Filter exempt wikis",
-	"wikidiscover-inactivityexempt-header-info": "The wikis listed below have been granted an exemption from the inactivity (dormancy) policy.",
+	"wikidiscover-inactivityexempt-header-info": "The wikis listed below have been granted an exemption from the [[Dormancy Policy]].",
 	"wikidiscover-inactivityexempt-table-actor": "Exemption granted by",
 	"wikidiscover-inactivityexempt-table-reason": "Exemption reason",
 	"wikidiscover-label-active": "Active",

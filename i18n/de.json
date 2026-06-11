@@ -8,9 +8,13 @@
 		]
 	},
 	"apihelp-query+wikidiscover-example": "Zeigt alle Wikis auf der Farm an.",
+	"apihelp-query+wikidiscover-param-category": "Filtert nach der durch CreateWiki definierten Kategorie eines Wikis.",
+	"apihelp-query+wikidiscover-param-customurl": "Filtert danach, ob das Wiki eine in CreateWiki definierte eigene URL hat.",
+	"apihelp-query+wikidiscover-param-language": "Filtert nach dem CreateWiki-definierten Sprachcode eines Wikis.",
 	"apihelp-query+wikidiscover-param-limit": "Maximale Anzahl der anzuzeigenden Ergebnisse.",
 	"apihelp-query+wikidiscover-param-prop": "Zurückzugebende Informationen über ein angegebenes Wiki.",
 	"apihelp-query+wikidiscover-param-state": "Filtert nach dem CreateWiki-definierten Status eines Wikis.",
+	"apihelp-query+wikidiscover-param-wikis": "Rufe eine Liste bestimmter Wikis ab.",
 	"apihelp-query+wikidiscover-summary": "Ruft eine Liste der Wikis auf einer CreateWiki-Wikifarm ab.",
 	"randomwiki": "Weiterleitung zu einem zufälligen Wiki",
 	"randomwiki-header": "Wähle unten eine Kategorie und eine Sprache aus. Nach der Anmeldung wirst du zu einem zufälligen Wiki weitergeleitet, das die ausgewählten Kriterien erfüllt.",

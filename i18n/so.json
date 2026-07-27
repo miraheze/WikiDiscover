@@ -1,0 +1,40 @@
+{
+	"@metadata": {
+		"authors": [
+			"AhmedG612"
+		]
+	},
+	"apihelp-query+wikidiscover-example": "Muuji dhammaan wikiyada foomka",
+	"apihelp-query+wikidiscover-param-category": "Ku shaandhee qaybta wiki-ga ee ay qeexday Abuur Wiki.",
+	"apihelp-query+wikidiscover-param-customurl": "Ku shaandhee haddii wiki-gu leeyahay URL gaar ah oo ay qeexday Abuur Wiki.",
+	"apihelp-query+wikidiscover-param-language": "Ku shaandhee koodhka luqadda wiki-ga ee ay qeexday Abuur Wiki.",
+	"apihelp-query+wikidiscover-param-limit": "Tirada ugu badan ee natiijooyinka la muujinayo.",
+	"apihelp-query+wikidiscover-param-prop": "Macluumaadka laga soo celinayo wiki la qeexay.",
+	"apihelp-query+wikidiscover-param-state": "Ku shaandhee xaaladda wiki-ga ee ay qeexday Abuur Wiki.",
+	"apihelp-query+wikidiscover-param-wikis": "Hel liiska wikiyada gaar ah.",
+	"apihelp-query+wikidiscover-summary": "Hel liiska wikiyada ku jira wikifarm CreateWiki.",
+	"randomwiki": "Sii toosin aan kala sooc lahayn wiki",
+	"randomwiki-header": "Dooro qayb iyo luqad hoos ku qoran, marka la gudbiyana waxaa loo sii toosin doonaa wiki aan kala sooc lahayn oo buuxiya shuruudaha la doortay.",
+	"randomwiki-parameters": "Dooro cabbirrada",
+	"wikidiscover": "Soo hel wikiyada",
+	"wikidiscover-desc": "Waxay oggolaanaysaa [[Special:WikiDiscover|soo helidda wikiyada]] ku jira wikifarm leh [[Special:CreateWiki|CreateWiki]].",
+	"wikidiscover-header": "Dooro cabbirrada raadintaada",
+	"wikidiscover-header-info": "Waxaad ka raadin kartaa wikiyada ku baahsan farm-kan adiga oo dooranaya cabbirro sida luqadda iyo waxyaabo kale.",
+	"wikidiscover-label-active": "Firfircoon",
+	"wikidiscover-label-any": "(wax kasta)",
+	"wikidiscover-label-closed": "La xiray",
+	"wikidiscover-label-deleted": "Tirtiray",
+	"wikidiscover-label-description": "Sharaxaad gaaban",
+	"wikidiscover-label-inactive": "Aan firfircoonayn",
+	"wikidiscover-label-locked": "La qufulay",
+	"wikidiscover-label-open": "Fur",
+	"wikidiscover-label-private": "Gaar ah",
+	"wikidiscover-label-public": "Dadweyne",
+	"wikidiscover-table-category": "Qeybta",
+	"wikidiscover-table-description": "Sharaxaad",
+	"wikidiscover-table-established": "La aasaasay",
+	"wikidiscover-table-language": "Luuqada",
+	"wikidiscover-table-state": "Xaalada",
+	"wikidiscover-table-visibility": "Muuqaalka",
+	"wikidiscover-table-wiki": "Magaca wiki"
+}

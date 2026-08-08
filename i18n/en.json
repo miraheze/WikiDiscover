@@ -25,7 +25,7 @@
 	"wikidiscover-header": "Choose parameters for your search",
 	"wikidiscover-header-info": "You may search for wikis across this farm by selecting parameters such as language and more.",
 	"wikidiscover-inactivityexempt-actor-unknown": "Unknown",
-	"wikidiscover-inactivityexempt-disabled": "The inactivity/dormancy policy feature is not enabled on this wiki farm.",
+	"wikidiscover-inactivityexempt-disabled": "The inactivity feature is not enabled on this wiki farm.",
 	"wikidiscover-inactivityexempt-header": "Filter exempt wikis",
 	"wikidiscover-inactivityexempt-header-info": "The wikis listed below have been granted an exemption from the [[Dormancy Policy]].",
 	"wikidiscover-inactivityexempt-table-actor": "Exemption granted by",

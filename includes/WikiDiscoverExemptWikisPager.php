@@ -100,18 +100,12 @@ class WikiDiscoverExemptWikisPager extends TablePager {
 	}
 
 	private function resolveActorName( int $actorId ): ?string {
-		$row = $this->mDb->selectRow(
-			'actor',
-			[ 'actor_name' ],
-			[ 'actor_id' => $actorId ],
-			__METHOD__
-		);
-
-		return $row ? $row->actor_name : null;
+		$user = MediaWikiServices::getInstance()->getUserFactory()->newFromActorId( $actorId );
+		return $user ? $user->getName() : null;
 	}
 
-	private function escape( string $value ): string {
-		return htmlspecialchars( $value, ENT_QUOTES );
+	private function escape( ?string $value ): string {
+		return htmlspecialchars( $value ?? '', ENT_QUOTES );
 	}
 
 	/** @inheritDoc */

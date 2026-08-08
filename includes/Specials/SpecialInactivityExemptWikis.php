@@ -46,7 +46,7 @@ class SpecialInactivityExemptWikis extends SpecialPage {
 				'type' => 'language',
 				'name' => 'language',
 				'label-message' => 'wikidiscover-table-language',
-				'default' => $language ?: '*',
+				'default' => $this->getRequest()->getText( 'language', '*' ),
 				'options' => [
 					$this->msg( 'wikidiscover-label-any' )->text() => '*',
 				],
@@ -58,7 +58,7 @@ class SpecialInactivityExemptWikis extends SpecialPage {
 				'options' => [
 					$this->msg( 'wikidiscover-label-any' )->text() => '*',
 				] + $this->getConfig()->get( 'CreateWikiCategories' ),
-				'default' => $category ?: '*',
+				'default' => $this->getRequest()->getText( 'category', '*' ),
 			],
 		];
 

@@ -41,6 +41,7 @@ class SpecialInactivityExemptWikis extends SpecialPage {
 			'intro' => [
 				'type' => 'info',
 				'default' => $this->msg( 'wikidiscover-inactivityexempt-header-info' )->parse(),
+				'raw' => true,
 			],
 			'language' => [
 				'type' => 'language',

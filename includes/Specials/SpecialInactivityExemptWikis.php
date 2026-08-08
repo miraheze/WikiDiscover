@@ -40,7 +40,7 @@ class SpecialInactivityExemptWikis extends SpecialPage {
 		$formDescriptor = [
 			'intro' => [
 				'type' => 'info',
-				'default' => $this->msg( 'wikidiscover-inactivityexempt-header-info' )->text(),
+				'default' => $this->msg( 'wikidiscover-inactivityexempt-header-info' )->parse(),
 			],
 			'language' => [
 				'type' => 'language',

@@ -101,8 +101,7 @@ class WikiDiscoverExemptWikisPager extends TablePager {
 	}
 
 	private function resolveActorName( int $actorId ): ?string {
-		$user = MediaWikiServices::getInstance()->getUserFactory()->newFromActorId( $actorId );
-		return $user ? $user->getName() : null;
+		return MediaWikiServices::getInstance()->getUserFactory()->newFromActorId( $actorId )->getName();
 	}
 
 	private function escape( ?string $value ): string {

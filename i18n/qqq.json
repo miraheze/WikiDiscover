@@ -29,6 +29,7 @@
 	"wikidiscover-inactivityexempt-header": "Legend header on Special:InactivityExemptWikis.",
 	"wikidiscover-inactivityexempt-header-info": "Introductory text on Special:InactivityExemptWikis explaining what the page lists.",
 	"wikidiscover-inactivityexempt-table-actor": "Column header for the user who granted the inactivity exemption. The value is resolved from a stored actor ID – never a raw username – for privacy reasons.",
+	"wikidiscover-inactivityexempt-table-reason": "Column header for the expiry date for an inactivity exemption granted to a wiki.",
 	"wikidiscover-inactivityexempt-table-reason": "Column header for the reason a wiki was granted an inactivity exemption.",
 	"wikidiscover-label-active": "Label for 'Active'",
 	"wikidiscover-label-any": "Label for '(any)'",

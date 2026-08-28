@@ -35,6 +35,7 @@ class WikiDiscoverExemptWikisPager extends TablePager {
 			'wiki_language' => $this->msg( 'wikidiscover-table-language' )->text(),
 			'wiki_category' => $this->msg( 'wikidiscover-table-category' )->text(),
 			'wiki_inactive_exempt_reason' => $this->msg( 'wikidiscover-inactivityexempt-table-reason' )->text(),
+			'wiki_inactive_exempt_expiry' => $this->msg( 'wikidiscover-inactivityexempt-table-expiry' )->text(),
 		];
 
 		if ( $this->getConfig()->get( 'WikiDiscoverShowExemptActor' ) ) {
@@ -80,6 +81,16 @@ class WikiDiscoverExemptWikisPager extends TablePager {
 				}
 				break;
 
+			case 'wiki_inactive_exempt_expiry':
+				if ( !$value || $value === 'infinity' ) {
+					$formatted = $this->msg( 'wikidiscover-inactivityexempt-expiry-indefinite' )->escaped();
+				} else {
+					$formatted = $this->escape(
+						$this->getLanguage()->timeanddate( $value, true )
+					);
+				}
+				break;
+
 			case 'wiki_inactive_exempt_actor':
 				$remoteWiki = $this->remoteWikiFactory->newInstance( $row->wiki_dbname );
 				$actorId = (int)$remoteWiki->getExtraFieldData( 'inactive_exempt_actor', default: 0 );
@@ -119,6 +130,7 @@ class WikiDiscoverExemptWikisPager extends TablePager {
 				'wiki_sitename',
 				'wiki_url',
 				'wiki_inactive_exempt_reason',
+				'wiki_inactive_exempt_expiry',
 			],
 			'conds' => [
 				'wiki_inactive_exempt' => 1,

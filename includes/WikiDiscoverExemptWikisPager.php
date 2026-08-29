@@ -82,13 +82,9 @@ class WikiDiscoverExemptWikisPager extends TablePager {
 				break;
 
 			case 'wiki_inactive_exempt_expiry':
-				if ( !$value || $value === 'indefinite' ) {
-					$formatted = $this->msg( 'wikidiscover-inactivityexempt-expiry-indefinite' )->escaped();
-				} else {
-					$formatted = $this->escape(
-						$this->getLanguage()->timeanddate( $value, true )
-					);
-				}
+				$formatted = $this->escape(
+					$this->getLanguage()->formatExpiry( $value ?? '' )
+				);
 				break;
 
 			case 'wiki_inactive_exempt_actor':

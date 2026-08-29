@@ -83,7 +83,7 @@ class WikiDiscoverExemptWikisPager extends TablePager {
 
 			case 'wiki_inactive_exempt_expiry':
 				$formatted = $this->escape(
-					$this->getLanguage()->formatExpiry( $value ?? '' )
+					$this->getLanguage()->formatExpiry( $value )
 				);
 				break;
 

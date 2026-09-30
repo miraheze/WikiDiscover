@@ -308,6 +308,10 @@ class Main implements
 			->fetchFieldValues();
 
 		foreach ( $selectSettings as $key ) {
+			if ( !is_string( $key ) ) {
+				continue;
+			}
+
 			if ( !is_bool( array_search( $value, (array)( json_decode( $key, true )[$setting] ?? [] ) ) ) ) {
 				$settingUsageCount++;
 			}

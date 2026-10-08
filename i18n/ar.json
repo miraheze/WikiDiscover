@@ -26,6 +26,7 @@
 	"wikidiscover-inactivityexempt-actor-unknown": "مجهول",
 	"wikidiscover-inactivityexempt-disabled": "خاصية عدم النشاط غير مفعلة في مزرعة الويكي هذه.",
 	"wikidiscover-inactivityexempt-header": "تصفية مواقع الويكي المعفاة",
+	"wikidiscover-inactivityexempt-header-info": "مُنحت مواقع الويكي المدرجة أدناه استثناءً من [[Dormancy Policy]].",
 	"wikidiscover-inactivityexempt-table-actor": "الإعفاء الممنوح من",
 	"wikidiscover-inactivityexempt-table-reason": "سبب الإعفاء",
 	"wikidiscover-label-active": "نشيط",

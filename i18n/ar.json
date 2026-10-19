@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Meno25",
+			"Mohammed Qays",
 			"ديفيد",
 			"محمد أحمد عبد الفتاح"
 		]
@@ -32,7 +33,7 @@
 	"wikidiscover-label-active": "نشيط",
 	"wikidiscover-label-any": "(أي)",
 	"wikidiscover-label-closed": "مغلق",
-	"wikidiscover-label-deleted": "تم الحذف",
+	"wikidiscover-label-deleted": "حُذفت",
 	"wikidiscover-label-description": "وصف مختصر",
 	"wikidiscover-label-inactive": "غير نشط",
 	"wikidiscover-label-locked": "مغلق",

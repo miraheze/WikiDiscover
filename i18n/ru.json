@@ -15,7 +15,8 @@
 			"Rubin16",
 			"Stjn",
 			"Vonavy",
-			"WerySkok"
+			"WerySkok",
+			"Yurina Tatiana"
 		]
 	},
 	"apihelp-query+wikidiscover-example": "Показать все вики в форме.",
@@ -31,6 +32,7 @@
 	"wikidiscover-desc": "Позволяет [[Special:WikiDiscover|находить вики]] на вики-ферме вики с [[Special:CreateWiki|CreateWiki]].",
 	"wikidiscover-header": "Выберите параметры для вашего поиска",
 	"wikidiscover-header-info": "Вы можете искать вики по всей этой ферме, выбирая такие параметры, как язык и т. д.",
+	"wikidiscover-inactivityexempt-actor-unknown": "Неизвестно",
 	"wikidiscover-label-active": "Активная",
 	"wikidiscover-label-any": "(любое)",
 	"wikidiscover-label-closed": "Закрытая",

@@ -33,6 +33,7 @@
 	"wikidiscover-header": "Choisissez les paramètres de votre recherche",
 	"wikidiscover-header-info": "Vous pouvez rechercher des wikis dans cette ferme en sélectionnant des paramètres tels que la langue et autres.",
 	"wikidiscover-inactivityexempt-actor-unknown": "Inconnu",
+	"wikidiscover-inactivityexempt-table-reason": "Motif d'exemption",
 	"wikidiscover-label-active": "Actif",
 	"wikidiscover-label-any": "(Tous)",
 	"wikidiscover-label-closed": "Fermé",

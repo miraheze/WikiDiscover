@@ -23,6 +23,7 @@
 	"wikidiscover-desc": "Permite [[Special:WikiDiscover|descobrir wikis]] num site de alojamento de wikis com [[Special:CreateWiki|CriarWiki]].",
 	"wikidiscover-header": "Escolha os parâmetros para sua pesquisa",
 	"wikidiscover-header-info": "Você pode pesquisar wikis nesta \"farm\" selecionando parâmetros como idioma e outros.",
+	"wikidiscover-inactivityexempt-actor-unknown": "Desconhecido",
 	"wikidiscover-label-active": "Ativo",
 	"wikidiscover-label-any": "(qualquer)",
 	"wikidiscover-label-closed": "Fechado",

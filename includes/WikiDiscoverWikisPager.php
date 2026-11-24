@@ -23,7 +23,9 @@ class WikiDiscoverWikisPager extends TablePager {
 		private readonly string $category,
 		private readonly string $language,
 		private readonly string $state,
-		private readonly string $visibility
+		private readonly string $visibility,
+		private readonly bool $closureReasons,
+		private readonly string $closureReason
 	) {
 		$this->mDb = $databaseUtils->getGlobalReplicaDB();
 		parent::__construct( $context, $linkRenderer );
@@ -38,6 +40,10 @@ class WikiDiscoverWikisPager extends TablePager {
 
 		if ( $this->getConfig()->get( 'CreateWikiUseClosedWikis' ) ) {
 			$headers['wiki_closed'] = $this->msg( 'wikidiscover-table-state' )->text();
+		}
+
+		if ( $this->closureReasons && $this->getConfig()->get( 'CreateWikiUseClosedWikis' ) ) {
+			$headers['wiki_closed_reason'] = $this->msg( 'wikidiscover-table-closurereason' )->text();
 		}
 
 		if ( $this->getConfig()->get( 'CreateWikiUsePrivateWikis' ) ) {
@@ -82,6 +88,11 @@ class WikiDiscoverWikisPager extends TablePager {
 					default => $this->msg( 'wikidiscover-label-open' )->escaped(),
 				};
 				break;
+			case 'wiki_closed_reason':
+				$options = $this->getConfig()->get( 'CreateWikiClosedReasons' );
+				$label = array_flip( $options )[$value] ?? null;
+				$formatted = $this->escape( $label ?? $value );
+				break;
 			case 'wiki_private':
 				if ( (bool)$value ) {
 					$formatted = $this->msg( 'wikidiscover-label-private' )->escaped();
@@ -122,6 +133,9 @@ class WikiDiscoverWikisPager extends TablePager {
 		$fields = [];
 		if ( $this->getConfig()->get( 'CreateWikiUseClosedWikis' ) ) {
 			$fields[] = 'wiki_closed';
+			if ( $this->closureReasons ) {
+				$fields[] = 'wiki_closed_reason';
+			}
 		}
 
 		if ( $this->getConfig()->get( 'CreateWikiUseInactiveWikis' ) ) {
@@ -183,6 +197,15 @@ class WikiDiscoverWikisPager extends TablePager {
 					$info['conds']['wiki_inactive'] = 0;
 				}
 			}
+		}
+
+		if (
+			$this->closureReasons &&
+			$this->closureReason &&
+			$this->closureReason !== '*' &&
+			$this->getConfig()->get( 'CreateWikiUseClosedWikis' )
+		) {
+			$info['conds']['wiki_closed_reason'] = $this->closureReason;
 		}
 
 		if (

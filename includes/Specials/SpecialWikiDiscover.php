@@ -49,6 +49,9 @@ class SpecialWikiDiscover extends SpecialPage {
 			$stateOptions['wikidiscover-label-inactive'] = 'inactive';
 		}
 
+		$closureReasons = $this->getRequest()->getBool( 'closurereasons' );
+		$closureReason = $this->getRequest()->getText( 'closurereason' );
+
 		$formDescriptor = [
 			'intro' => [
 				'type' => 'info',
@@ -82,6 +85,25 @@ class SpecialWikiDiscover extends SpecialPage {
 				'default' => $state ?: '*',
 			],
 		];
+
+		if ( $this->getConfig()->get( 'CreateWikiUseClosedWikis' ) ) {
+			$formDescriptor['closurereasons'] = [
+				'type' => 'check',
+				'name' => 'closurereasons',
+				'label-message' => 'wikidiscover-label-closurereasons',
+				'default' => $closureReasons,
+			];
+			$formDescriptor['closurereason'] = [
+				'type' => 'select',
+				'name' => 'closurereason',
+				'label-message' => 'wikidiscover-table-closurereason',
+				'hide-if' => [ '!==', 'closurereasons', '1' ],
+				'options' => [
+					$this->msg( 'wikidiscover-label-any' )->text() => '*',
+				] + $this->getConfig()->get( 'CreateWikiClosedReasons' ),
+				'default' => $closureReason ?: '*',
+			];
+		}
 
 		if (
 			$this->getConfig()->get( 'CreateWikiUsePrivateWikis' ) &&
@@ -121,7 +143,9 @@ class SpecialWikiDiscover extends SpecialPage {
 			$category,
 			$language,
 			$state,
-			$visibility
+			$visibility,
+			$closureReasons,
+			$closureReason
 		);
 
 		$table = $pager->getFullOutput();

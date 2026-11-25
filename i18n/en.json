@@ -29,6 +29,7 @@
 	"wikidiscover-inactivityexempt-header": "Filter exempt wikis",
 	"wikidiscover-inactivityexempt-header-info": "The wikis listed below have been granted an exemption from the [[Dormancy Policy]].",
 	"wikidiscover-inactivityexempt-table-actor": "Exemption granted by",
+	"wikidiscover-inactivityexempt-table-expiry": "Exemption expiry",
 	"wikidiscover-inactivityexempt-table-reason": "Exemption reason",
 	"wikidiscover-label-active": "Active",
 	"wikidiscover-label-any": "(any)",
